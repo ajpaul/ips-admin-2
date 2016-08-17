@@ -1,7 +1,30 @@
 @import '../../css/colors.less';
 
+@inputgray: #b5b5b5;
 /* MIXINS */
 
+.acuity-md-input {
+    /deep/ input {
+        color: @maingray;
+    }
+    /deep/ label {
+        color: @inputgray;
+    }
+
+    /deep/ .md-input-underline {
+        color: @inputgray;
+    }
+}
+
+.acuity-md-checkbox {
+    /deep/ label {
+        color: @maingray;
+    }
+
+    /deep/ .md-checkbox-frame {
+        border-color: @lightgray;
+    }
+}
 
 /* CLASSES */
 .siteDetailParent {
@@ -17,28 +40,65 @@
     }
 
     .site-address-container {
-        padding: 10px 40px 70px 10px;
-        width: 100%;
+        padding: 10px 40px 50px 10px;
     }
 
-    .address-title {
-        color: @graytext; 
+    .section-title {
+        color: @inputgray; 
 
     }
 
     .address {
         width: 100%;
-        /deep/ input {
-            color: @maingray;
-        }
-        /deep/ label {
-            color: @graytext;
-        }
-
-        /deep/ .md-input-underline {
-            color: @graytext;
-        }
+        .acuity-md-input;
     }
+
+    .site-location-container {
+        display: -ms-flex;
+        display: -webkit-flex;
+        display: flex;
+        justify-content: space-between;
+        -ms-flex-wrap: wrap;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
+
+        padding-top: 30px;
+    }
+
+
+    .location-input {
+        min-width: 20%;
+        .acuity-md-input;
+    }
+
+    .separator {
+        border-top: 1px solid #d9dee2;
+        border-bottom: 1px solid #b9bec2;
+        margin-bottom: 10px;
+    }
+
+    .site-buildings-container {
+        padding: 10px 40px 50px 10px;
+    }
+
+    .buildings-title {
+        padding-bottom: 40px;
+    }
+
+    .buildings-input {
+        padding-left: 15px;
+        
+        .acuity-md-checkbox;
+    }
+/*    .location-input-container:first-child {
+        padding-right: 5%;
+        padding-left: 0%;
+    }   
+
+    .location-input-container:last-child {
+        padding-right: 0px;
+        padding-left: 5%;
+    }*/
 /*    .address-line-2 {
     /deep/ label {
         &:not(.md-empty) {

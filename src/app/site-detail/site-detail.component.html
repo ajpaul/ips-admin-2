@@ -1,7 +1,7 @@
 <div class="siteDetailParent">
     <div class="site-detail-top">
         <div class="site-address-container">
-            <div class="address-title">SITE ADDRESS</div>
+            <div class="section-title address-title">SITE ADDRESS</div>
             <div class="street-name-container">
                 <md-input 
                     class="address address-line-1" 
@@ -14,22 +14,33 @@
             </div>
             <div class="site-location-container">
                 <md-input 
-                    class="city" 
+                    class="city location-input" 
                     placeholder="City"
                     ></md-input>
+            
                 <md-input 
-                    class="state" 
+                    class="state location-input" 
                     placeholder="State"
                     ></md-input>
+            
                 <md-input 
-                    class="zip" 
+                    class="zip location-input" 
                     placeholder="Zip/Postal Code"
                     ></md-input>
+            
                 <md-input 
-                    class="country" 
+                    class="country location-input" 
                     placeholder="Country"
                     ></md-input>
             </div>
+        </div>
+        <div class="separator"></div>
+        <div class="site-buildings-container">
+            <div class="section-title buildings-title">BUILDINGS</div>
+            <md-checkbox
+                class="buildings-input">
+                This site has multiple buildings
+            </md-checkbox>
         </div>
     </div>
 </div>
