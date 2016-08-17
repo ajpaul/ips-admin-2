@@ -17,30 +17,70 @@
                     class="city location-input" 
                     placeholder="City"
                     ></md-input>
-            
                 <md-input 
                     class="state location-input" 
                     placeholder="State"
                     ></md-input>
-            
                 <md-input 
                     class="zip location-input" 
                     placeholder="Zip/Postal Code"
                     ></md-input>
-            
                 <md-input 
                     class="country location-input" 
                     placeholder="Country"
                     ></md-input>
             </div>
         </div>
+
         <div class="separator"></div>
+
         <div class="site-buildings-container">
             <div class="section-title buildings-title">BUILDINGS</div>
             <md-checkbox
                 class="buildings-input">
                 This site has multiple buildings
             </md-checkbox>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="site-timezone-container">
+            <div class="section-title timezone-title">TIMEZONE OFFSET</div>
+            <div class="timezone-label-container">
+                <div class="timezone-utc-offset">UTC Offset</div>
+                <div class="timezone-current-time">Current Time</div>
+            </div>
+        </div>
+    </div>
+    <div class="site-detail-bottom">
+        <div class="email-alerts-header">
+            <div class="email-alerts-title">EMAIL HEALTH ALERTS</div>
+            <div class="email-alerts-add"><md-icon>add</md-icon></div>
+        </div>
+        <div class="email-table-container">
+            <div class="email-table-header">
+                <div class="email-table-header-title user-title user-column">User</div>
+                <div class="email-table-header-title email-title email-column">Email</div>
+                <div class="email-table-row-delete delete-column"></div>
+            </div>
+            <div class="email-table-row">
+                <div class="email-table-row-item email-table-row-user user-column">Arya Stark</div>
+                <div class="email-table-row-item email-table-row-email email-column">a@google.com</div>
+                <div class="email-table-row-delete delete-column">
+                    <div class="delete-container">
+                        <md-icon class="delete">delete</md-icon>
+                    </div>
+                </div>
+            </div>
+            <div class="email-table-row">
+                <div class="email-table-row-item email-table-row-user user-column">Hodor</div>
+                <div class="email-table-row-item email-table-row-email email-column">hodor@hodor.com</div>
+                <div class="email-table-row-delete delete-column">
+                    <div class="delete-container">
+                        <md-icon class="delete">delete</md-icon>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
