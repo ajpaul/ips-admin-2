@@ -1,10 +1,9 @@
 import { Component } from './notFound';
 
-import './notFound.component.less';
-
 @Component({
     selector: 'app-notFound',
-    templateUrl: '../src/app/notFound/notFound.component.html'
+    template: require('./notFound.component.html'),
+    styles: [require('./notFound.component.less')]
 })
 
 export class NotFoundComponent{

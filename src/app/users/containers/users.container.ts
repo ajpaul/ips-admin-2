@@ -3,12 +3,11 @@ import { Component, AuthenticationComponent, ChangeDetectionStrategy,
     IUser, UsersService, ButtonComponent, FilterComponent,
     BreadcrumbComponent, AppStore } from '../users';
 
-import './users.container.less';
-
 @Component({
     selector: 'app-users',
     providers: [UsersService],
-    templateUrl: '../src/app/users/containers/users.container.html',
+    template: require('./users.container.html'),
+    styles: [require('./users.container.less')],
     directives: [BreadcrumbComponent, AuthenticationComponent, UsersList, UsersDetail],
     changeDetection: ChangeDetectionStrategy.OnPush
 })

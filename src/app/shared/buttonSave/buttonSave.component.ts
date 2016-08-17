@@ -1,7 +1,5 @@
 import { Component, MdButton, MdIcon, MdIconRegistry } from './buttonSave';
 
-import './buttonSave.component.less';
-
 @Component({
     selector: 'ui-buttonSave',
     template:
@@ -10,6 +8,7 @@ import './buttonSave.component.less';
        <md-icon class="md-24">save</md-icon>
     </button>
     `,
+    styles: [require('./buttonSave.component.less')],
     directives: [MdButton, MdIcon],
     viewProviders: [MdIconRegistry]
 })

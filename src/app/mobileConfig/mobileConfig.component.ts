@@ -1,12 +1,11 @@
 import { Component, MobileConfigService, IMobileConfig, ButtonComponent, FilterComponent,
     BreadcrumbComponent, ButtonSaveComponent } from './mobileConfig';
 
-import './mobileConfig.component.less';
-
 @Component({
     selector: 'app-mobileConfig',
     directives: [ButtonComponent, FilterComponent, BreadcrumbComponent, ButtonSaveComponent],
-    templateUrl: '../src/app/mobileConfig/mobileConfig.component.html',
+    template: require('./mobileConfig.component.html'),
+    styles: [require('./mobileConfig.component.less')],
     providers: [MobileConfigService]
 })
 

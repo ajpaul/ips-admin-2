@@ -1,13 +1,12 @@
 import { Component, Input } from '@angular/core';
 
-import './breadcrumbs.component.less';
-
 @Component({
     selector: 'ui-breadcrumb',
     template: 
     `
     <div>{{navHeader}}</div>
     `,
+    styles: [require('./breadcrumbs.component.less')]
     
 })
 

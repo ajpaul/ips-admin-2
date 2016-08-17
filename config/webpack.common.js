@@ -11,7 +11,7 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ['', '.js', '.ts'],
+        extensions: ['', '.js', '.ts', '.less'],
 
         // Make sure root is src
         root: helpers.root('src'),
@@ -45,16 +45,16 @@ module.exports = {
                 exclude: [/node_modules/]
             },
 
-            //Finds less files in the global css folder
+            //Finds less files not named with c*omponent or *container (assumed global styles)
             {
-                test: /css\/.*?\.less$/,
+                test: /^((?!component|container).)*.less$/,
                 loaders: ['style-loader', 'css-loader', 'less-loader'],
                 exclude: [/node_modules/]
             },
 
-            //Finds non global less files (assumed to be component less files and loads them as strings)
+            //Finds component or container less files (assumed angular component)
             {
-                test: /^(?:(?!css\/).)*\.less$/,
+                test: /(component|container)\.less$/,
                 loaders: ['to-string-loader', 'css-loader', 'less-loader'],
                 exclude: [/node_modules/]
             }

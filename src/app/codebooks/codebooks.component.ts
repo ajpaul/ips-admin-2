@@ -1,12 +1,11 @@
 import { Component, ICodebooks, CodebooksService, ButtonComponent, FilterComponent,
     BreadcrumbComponent, ButtonSaveComponent } from './codebooks';
 
-import './codebooks.component.less';
-
 @Component({
     selector: 'app-codebooks',
     directives: [ButtonComponent, FilterComponent, BreadcrumbComponent, ButtonSaveComponent],
-    templateUrl: '../src/app/codebooks/codebooks.component.html',
+    template: require('./codebooks.component.html'),
+    styles: [require('./codebooks.component.less')],
     providers: [CodebooksService]
 })
 

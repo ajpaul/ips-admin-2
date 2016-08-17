@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { MdButton } from '@angular2-material/button/button';
 
-import './button.component.less';
-
 @Component({
     selector: 'ui-button',
     template: 
@@ -11,6 +9,7 @@ import './button.component.less';
         <ng-content></ng-content>
     </button>
     `,
+    styles: [require('./button.component.less')],
     directives: [MdButton]
 })
 

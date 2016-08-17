@@ -2,11 +2,10 @@ import { Component, BreadcrumbComponent, NgForm, GeneralSettingsService,
      IPointOfContact, IBusinessAddress, BusinessAddress, MD_INPUT_DIRECTIVES,
     MD_CARD_DIRECTIVES, ButtonSaveComponent } from './general';
 
-import './general.component.less';
-
 @Component({
     selector: 'app-general',
-    templateUrl: '../src/app/general/general.component.html',
+    template: require('./general.component.html'),
+    styles: [require('./general.component.less')],
     directives: [BreadcrumbComponent, MD_INPUT_DIRECTIVES, MD_CARD_DIRECTIVES, ButtonSaveComponent],
     providers: [GeneralSettingsService]
 })
