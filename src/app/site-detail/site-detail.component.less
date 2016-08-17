@@ -1,0 +1,52 @@
+@import '../../css/colors.less';
+
+/* MIXINS */
+
+
+/* CLASSES */
+.siteDetailParent {
+    display: flex;
+    height: calc(~'100% - 64px');
+    font-family: inherit;
+
+
+
+    .site-detail-top {
+        width: 100%;
+        padding: 40px;
+    }
+
+    .site-address-container {
+        padding: 10px 40px 70px 10px;
+        width: 100%;
+    }
+
+    .address-title {
+        color: @graytext; 
+
+    }
+
+    .address {
+        width: 100%;
+        /deep/ input {
+            color: @maingray;
+        }
+        /deep/ label {
+            color: @graytext;
+        }
+
+        /deep/ .md-input-underline {
+            color: @graytext;
+        }
+    }
+/*    .address-line-2 {
+    /deep/ label {
+        &:not(.md-empty) {
+            display: none;
+        }
+        &.md-focused {
+            display: none;
+        }
+    }
+}*/
+}

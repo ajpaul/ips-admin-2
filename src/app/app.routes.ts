@@ -2,7 +2,7 @@ import { provideRouter, RouterConfig, DashboardComponent, SitesAllContainer,
      SitesGroupsComponent, BlankComponent, UsersContainer, SettingsComponent,
     LightsContainer, APIKeysComponent, CodebooksComponent, DeploymentComponent, 
     MobileConfigComponent, GeneralComponent, AuthenticationComponent, NotFoundComponent,
-    SitesComponent } from './app'
+    SitesComponent, SiteDetailContainer } from './app'
 
 
 //BlankComponent == I haven't implemented it yet ​
@@ -22,6 +22,7 @@ export const routes: RouterConfig = [
         ] },
     { path: 'lights', component: LightsContainer },
     { path: 'users', component: UsersContainer },
+    { path: 'detail', component: SiteDetailContainer },
     { 
         path: 'settings', 
         component: SettingsComponent,
