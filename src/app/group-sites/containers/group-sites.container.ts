@@ -1,10 +1,9 @@
-import { Component, ROUTER_DIRECTIVES, ISite, AllSitesService, OnInit, OnDestroy, Subscription } from './group-sites';
-import { GroupSitesComponent } from './group-sites.component';
+import { Component, ROUTER_DIRECTIVES, ISite, AllSitesService, OnInit, OnDestroy, Subscription } from '../group-sites';
+import { GroupSitesComponent } from '../group-sites.component';
 
 @Component({
     selector: 'app-group-sites',
     template: '<app-group-sites *ngIf="sites" [sites]="sites"></app-group-sites>',
-    styles: [require('./group-sites.component.less')],
     directives: [GroupSitesComponent],
     providers: [AllSitesService]
 })

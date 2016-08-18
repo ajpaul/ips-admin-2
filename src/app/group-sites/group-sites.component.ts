@@ -11,6 +11,5 @@ export class GroupSitesComponent {
   @Input() sites: ISite[];
 
   ngOnChanges() {
-    console.log(this.sites);
   }
 }
