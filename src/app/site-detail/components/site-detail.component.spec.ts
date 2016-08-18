@@ -5,7 +5,7 @@ import {
 
 import { SiteDetailComponent } from './site-detail.component';
 
-describe('GeneralComponent::', () => {
+describe('SiteDetailComponent::', () => {
 
     beforeEach(() => {
         addProviders([
