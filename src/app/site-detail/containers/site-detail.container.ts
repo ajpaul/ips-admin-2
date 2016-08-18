@@ -1,10 +1,9 @@
-import { Component, ROUTER_DIRECTIVES, ISite, AllSitesService, OnInit, OnDestroy, Subscription } from './site-detail';
-import { SiteDetailComponent } from './site-detail.component';
+import { Component, ROUTER_DIRECTIVES, ISite, AllSitesService, OnInit, OnDestroy, Subscription } from '../site-detail';
+import { SiteDetailComponent } from '../components/site-detail.component';
 
 @Component({
     selector: 'app-site-detail',
-    template: '<app-site-detail *ngIf="site" [site]="site"></app-site-detail>',
-    styles: [require('./site-detail.component.less')],
+    template: '<app-site-detail></app-site-detail>',
     directives: [SiteDetailComponent],
     providers: [AllSitesService]
 })

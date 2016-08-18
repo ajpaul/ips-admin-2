@@ -27,6 +27,6 @@ export { DeploymentComponent } from './deployment/deployment.component';
 export { MobileConfigComponent } from './mobileConfig/mobileConfig.component';
 export { GeneralComponent } from './general/general.component';
 export { NotFoundComponent } from './notFound/notFound.component';
-export { SiteDetailContainer } from './site-detail/site-detail.container';
+export { SiteDetailContainer } from './site-detail/containers/site-detail.container';
 export { GroupSitesContainer } from './group-sites/group-sites.container';
 export { GroupDetails } from './group-details/group-details.component';

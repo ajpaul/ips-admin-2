@@ -1,4 +1,4 @@
-import { Component, ROUTER_DIRECTIVES, Input, ISite, MdInput, MdCheckbox, MdIcon } from './site-detail';
+import { Component, ROUTER_DIRECTIVES, Input, ISite, MdInput, MdCheckbox, MdIcon } from '../site-detail';
 
 @Component({
     selector: 'app-site-detail',
@@ -8,9 +8,4 @@ import { Component, ROUTER_DIRECTIVES, Input, ISite, MdInput, MdCheckbox, MdIcon
 })
 
 export class SiteDetailComponent {
-  @Input() site: ISite;
-
-  ngOnChanges() {
-    console.log(this.site);
-  }
 }
