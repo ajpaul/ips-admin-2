@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
     selector: 'ui-buttonAdd',
     template:
     `
-    <button>+</button>
+    <button class="buttonAdd">
+    +
+    </button>
     `,
     styles: [require('./buttonAdd.component.less')]
 })

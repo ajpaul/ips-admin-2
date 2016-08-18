@@ -1,0 +1,64 @@
+//Make sure all new styling is within the namespace for the current view!
+
+@import '../../../css/colors.less';
+
+.sitesGroupsParent {
+
+    #sitesGroups {
+
+        width: 100%;
+        line-height: 60px;
+        height: calc(~'100% - 121px');
+        overflow-y: auto;
+
+        .groupRow {
+
+            display: flex;
+            height: 60px;
+
+            .checkbox {
+                flex-shrink: 1;
+                width: 15%;
+                min-width: 42px;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                input[type='checkbox']{
+                    height: 16px;
+                    width: 16px;
+                    min-width: 16px;
+                    min-height: 16px;
+                    padding: 5px;
+                    margin-right: 21px;
+                }
+            }
+
+            .siteInfo {
+                flex-shrink: 4;
+                width: 85%;
+                height: 100%;
+
+                .siteName {
+                    padding-top: 5px;
+                    display: block;
+                    width: 100%;
+                    line-height: 25px;
+                    height: 25px;
+                    color: @stormyblue;
+                    font-weight: 700;
+                }
+
+
+                .siteDetails {
+                    display: block;
+                    width: 100%;
+                    line-height: 25px;
+                    height: 25px;
+                }
+            }
+        }
+    }
+}
+

@@ -14,13 +14,15 @@ export class LightsService{
         this.lights = store.select<Array<ILight>>('LightsReducer');
     }
 
-    getLights() {
+    getLights(onComplete?) {
+        onComplete = onComplete || (()=>{});
         return this.http.get(this.lightsUrl)
             .map(this.extractData)
             .map(payload => ({type: ADD_LIGHTS, payload}))
             .subscribe(
                 action => this.store.dispatch(action),
-                err => this.handleError(err)
+                err => this.handleError(err),
+                () => { onComplete() }
             );
     }
 

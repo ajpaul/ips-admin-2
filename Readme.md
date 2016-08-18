@@ -30,7 +30,7 @@ The installed dependencies:
 * `core-js`: Used by Karma to work with es6
 * `css-loader`: Used for CSS loading and bundling
 * `html-webpack-plugin`: Builds html files used with webpack bundles
-* `jasmine-core`: unit test library
+* `jasmine*`: unit test library
 * `karma*`: used to run unit tests
 * `*-loader`: Various loader modules to parse application files
 * `less`: CSS preprocessor
@@ -48,6 +48,12 @@ At the time of writing, the primary `webpack-dev-server` is the primary web serv
 * `npm run start` or `npm run start:hot`
 
 This operation will start a webpack-dev-server on [localhost:8080](http://localhost:8080)
+
+## Unit Tests
+
+All components, services, reducers, and other classes should have a matching unit test that tests the behavior of all the units in the class. Unit tests use Karma and Jasmine to run.  The **package.json** includes a test script:
+
+* `npm test`
 
 If the `*:hot` flag is specified, the application will start a Socket.io to listen for module updates and replace dirty modules without a page refresh.
 # ips-admin-2

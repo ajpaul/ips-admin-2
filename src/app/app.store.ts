@@ -9,4 +9,5 @@ export interface AppStore {
     lights: ILight[];
     sites : ISite[];
     users : IUser[];
+    selectedUser : IUser;
 }

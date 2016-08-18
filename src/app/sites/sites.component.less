@@ -14,26 +14,54 @@
         background-color: @reallylightgray;
         flex-shrink: 1;
 
-        input {
-            border: none;
-            height: 40px;
-            line-height: 40px;
+        .filterSection {
+
             background-color: @lightgray;
             width: 100%;
+            height: 40px;
+
+            input {
+                border: none;
+                height: 40px;
+                line-height: 40px;
+                width: 100%;
+                background-color: @lightgray;
+            }
+
         }
+
+        ::-webkit-input-placeholder {
+            padding-left: 10px;
+        }
+
+        :-moz-placeholder { /* Firefox 18- */
+            padding-left: 10px;
+        }
+
+        ::-moz-placeholder {  /* Firefox 19+ */
+            padding-left: 10px; 
+        }
+
+        :-ms-input-placeholder {  
+            padding-left: 10px; 
+        }
+
+
 
     .sitesTabs{
 
+        min-width: 215px; //for now
         display: flex;
+        padding-right: 15px;
 
-            li {
+            .liFlex {
+                flex-shrink: 1;
+                width: 27%;
                 font-size: .8em;
                 text-align: center;
-                flex-shrink: 1;
-                width: 33.3%;
                 display: inline-block;
                 list-style-type: none;
-                color: @mainblue;
+                color: @stormyblue;
                 padding: 10px;
                 box-sizing: border-box;
                 -moz-box-sizing: border-box;
@@ -46,17 +74,58 @@
                 }
             }
 
-            li:hover {
-                //background-color: rgba(55, 68, 76, 0.2) !important;
-                border-bottom: 3px solid @highlightblue;
+            .liFlex:hover {
+                border-bottom: 3px solid @brightblue;
+            }
+
+            .liNoFlex {
+                list-style-type: none;
+                height: 26px;
+                font-size: 26px;
+                padding: 5px;
+                margin-left: 5px;
             }
         }
 
         .dataSettings {
-            height: 25px;
+            height: 40px;
+            display: flex;
+
+            .flexCheckboxHolder {
+
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 15%;
+            min-width: 42px;
+            flex-shrink: 1;
+
+                input[type='checkbox']{
+                    height: 16px;
+                    width: 16px;
+                    min-width: 16px;
+                    min-height: 16px;
+                    margin-right: 21px;
+                }
+            }
+
+            .dataButtonsHolder {
+                height: 40px;
+                display: flex;
+                width: 85%;
+                flex-shrink: 4;
+
+                img {
+                    height: 28px;
+                    padding: 6px 12px 6px 0;
+                }
+
+                ui-buttonAdd {
+                    margin-left: auto;
+                }
+            }
         }
-
-
     }
 
     .panelRight {
@@ -67,7 +136,7 @@
             background-color: @lightgray;
             height: 35px;
             line-height: 35px;
-            color: @mainblue;
+            color: @stormyblue;
             padding-left: 10px;
 
             ul {
@@ -79,7 +148,7 @@
                 list-style-type: none;
 
                 a {
-                    color: @highlightblue;
+                    color: @brightblue;
                 }
             }
         }
@@ -88,6 +157,10 @@
             border: 1px solid @lightgray;
             height: 120px;
             position: relative;
+
+            #mapHeaderBookmark {
+                height: 40px;
+            }
 
             section {
                 padding: 15px;
@@ -113,7 +186,7 @@
                     text-align: center;
                     display: inline-block;
                     list-style-type: none;
-                    color: @mainblue;
+                    color: @stormyblue;
                     padding: 10px 20px 10px 20px;
                     box-sizing: border-box;
                     -moz-box-sizing: border-box;
@@ -128,8 +201,7 @@
             }
 
                 li:hover {
-                    //background-color: rgba(55, 68, 76, 0.2) !important;
-                    border-bottom: 3px solid @highlightblue;
+                    border-bottom: 3px solid @brightblue;
                 }
             }
         }
@@ -144,7 +216,7 @@
 
             .floorsHeader {
                 height: 40px;
-                background-color: @accentblue;
+                background-color: @stormyblue;
 
                 .floorsHeaderValue {
                     color: @white;
@@ -162,10 +234,4 @@
             padding: 20px;
         }
     }
-
-    /* GENERAL ELEMENT STYLES */
-
-
-    /* SPECIFIC ELEMENT STYLES */
-
 }

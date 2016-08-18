@@ -1,11 +1,11 @@
 import { Component, IAPIKeys, APIKeysService, ButtonComponent, FilterComponent,
-    BreadcrumbComponent, ButtonSaveComponent } from './apiKeys';
+     ButtonSaveComponent } from './apiKeys';
 
 import './apiKeys.component.less';
 
 @Component({
     selector: 'app-apiKeys',
-    directives: [ButtonComponent, FilterComponent, BreadcrumbComponent, ButtonSaveComponent],
+    directives: [ButtonComponent, FilterComponent, ButtonSaveComponent],
     templateUrl: '../src/app/apiKeys/apiKeys.component.html',
     providers: [APIKeysService]
 })
@@ -13,7 +13,6 @@ import './apiKeys.component.less';
 export class APIKeysComponent {
 
     apiKeys: IAPIKeys[];
-    navHeader: string = 'Settings > API Keys';
     filterValues = ['Filter', 'By', 'A', 'Value'];
     errorMessage: string;
 

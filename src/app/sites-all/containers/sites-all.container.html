@@ -3,15 +3,17 @@
     <div id="allSites">
 
         <div class="data">
-            <div class="dataRow dataRowSites tall" *ngFor="let site of allSites" (click)="allSitesClick(site.siteId)">
+            <div class="dataRow siteRow tall" *ngFor="let site of allSites" (click)="allSitesClick(site)">
                 
                 <div class="allSitesControls">
                     <input type="checkbox"/>
                     <div class="greenCircle"></div>
                 </div>
                 
-                <div>
-                    <div class="blue30">{{site.siteName}}</div>
+                <div class="allSiteInfo">
+                    <md-icon>bookmark</md-icon>
+                    <div class="blue30">{{site.siteName}}
+                    </div>
                     <div class="gray">{{site.city + ', ' + site.stateProvince + ' |  x groups'}}</div>
                 </div>
             </div>

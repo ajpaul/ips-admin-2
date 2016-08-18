@@ -8,7 +8,6 @@ import { Component, SidebarComponent }  from './settings';
 
 export class SettingsComponent {
 
-    navHeader: string = "Settings";
     sidebarButtons = [
         { name: "General Settings", path: "general", id: "sbGeneral"},
         { name: "Codebooks", path: "codebooks", id: "sbCodebooks"},

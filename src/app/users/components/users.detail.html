@@ -1,0 +1,15 @@
+<h2>Editing {{originalName}}</h2>
+<form novalidate>
+    <div class="mdl-textfield mdl-js-textfield">
+        <label>Display Name</label>
+        <input [(ngModel)]="selectedItem.displayName" name="displayName"
+               placeholder="Enter a name"
+               class="mdl-textfield__input" type="text">
+    </div>
+</form>
+<div class="mdl-card__actions">
+    <button type="submit" (click)="cancelled.emit(selectedItem)"
+            class="mdl-button mdl-js-button mdl-js-ripple-effect">Cancel</button>
+    <button type="submit" (click)="saved.emit(selectedItem)"
+            class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect">Save</button>
+</div>

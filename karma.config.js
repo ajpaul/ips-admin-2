@@ -3,7 +3,7 @@ var webpackConfig = require('./config/webpack.test.js');
 module.exports = function(config) {
     config.set({
         basePath: '',
-        frameworks: ['jasmine'],
+        frameworks: ['jasmine-ajax','jasmine'],
 
         reporters: ['progress'],
         port: 9876,

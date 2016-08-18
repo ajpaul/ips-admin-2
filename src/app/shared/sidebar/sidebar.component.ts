@@ -8,7 +8,7 @@ import { MD_LIST_DIRECTIVES } from '@angular2-material/list/list';
     `
     <md-nav-list class="sidebar">
         <a md-list-item *ngFor="let value of values; let i = index"
-             id={{value.id}} [routerLink]="value.path"
+             id='{{value.id}}' [routerLink]="value.path"
              [ngClass]="setClasses(value.id)"
              (click)="setSelectedAnchor($event)">{{ value.name }}
         </a>

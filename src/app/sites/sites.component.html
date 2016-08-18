@@ -2,23 +2,34 @@
 
     <div class="panelLeft">
         
-        <!--<ui-breadcrumb [navHeader]="navHeader"></ui-breadcrumb>-->
         <header>
             <nav class="sitesTabs">
-                <li [routerLink]="['all']"><a>All</a></li>
-                <li [routerLink]="['groups']"><a>Group</a></li>
-                <li><a>Favs</a></li>
+                <li class="liFlex" [routerLink]="['all']"><a>All</a></li>
+                <li class="liFlex" [routerLink]="['groups']"><a>Group</a></li>
+                <li class="liFlex" [routerLink]="['favorites']"><a>Favs</a></li>
+                <li class="liNoFlex" (click)="detailsClick()"><md-icon>apps</md-icon></li>
+                <li class="liNoFlex" (click)="noDetailsClick()"><md-icon>menu</md-icon></li>
             </nav>
 
-            <input type="text" placeholder="Search for site...">
+            <div class="filterSection">
+                <input type="text" placeholder="Search for site...">
+            </div>
+
 
             <div class="dataSettings">
-                Icons go here
-                <ui-buttonAdd></ui-buttonAdd>
+                <div class="flexCheckboxHolder">
+                    <input type="checkbox"/>
+                </div>
+
+                <div class="dataButtonsHolder">
+                    <img src="../assets/bookmark.svg" alt="Bookmark">
+                    <img src="../assets/group.svg" alt="Group">
+                    <ui-buttonAdd></ui-buttonAdd>
+                </div>
             </div>
 
             <main>
-                <router-outlet></router-outlet>
+                <router-outlet [showDetails]="showDetails"></router-outlet>
             </main>
 
         </header>
@@ -39,10 +50,15 @@
 
             <header class="mapHeader">
 
+                
+
                 <section>
-                    <h2>Red Keep</h2>
-                    <div>Kingsroad, Westeros</div>
-                    <a href="#">View Site Analytics</a>
+                    <img id="mapHeaderBookmark" src="../assets/bookmark.svg" alt="Bookmark">
+                    <div>
+                        <h2>Red Keep</h2>
+                        <div>Kingsroad, Westeros</div>
+                        <a href="#">View Site Analytics</a> 
+                    </div>                    
                 </section>
 
                 <nav class="mapTabs">

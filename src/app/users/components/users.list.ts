@@ -9,7 +9,7 @@ import { Component, Input, Output, EventEmitter, IUser } from '../users';
 //-------------------------------------------------------------------
 @Component({
     selector: 'users-list',
-    templateUrl: '../src/app/users/components/users.list.html'
+    template: require('./users.list.html'),
 })
 export class UsersList {
     @Input() items: IUser[];

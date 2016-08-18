@@ -15,7 +15,4 @@ describe('DeploymentComponent::', () => {
         expect(component).toEqual(jasmine.any(DeploymentComponent));
     }));
 
-    it('should have a navHeader', inject([DeploymentComponent], (component: DeploymentComponent) => {
-        expect(component.navHeader).toEqual('Settings > Deployment');
-    }));
 });

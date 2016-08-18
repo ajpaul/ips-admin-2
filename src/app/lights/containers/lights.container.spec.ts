@@ -2,15 +2,27 @@ import {
     addProviders,
     inject
 } from '@angular/core/testing';
-import { provide } from '@angular/core'
-import { ILight } from '../lights.interface';
-import { LightsService } from '../lights.service';
+import { provide } from '@angular/core';
+import { provideStore }	 	from '@ngrx/store';
+import { ILight, LightsService, Observable, LightsReducer } from '../lights';
 import { LightsContainer } from './lights.container';
+import 'rxjs/add/observable/of';
 
 class MockLightService {
-    public getAllFixtureTypes(): ILight[] {
-        return [
-            {
+    lightsUrl: string = '';
+    lights: Observable<Array<ILight>> = Observable.of([<ILight>{
+        'luminaireTypeId': 1,
+        'organization_ID': 1,
+        'displayName': 'Light 1',
+        'exteriorWidth': 2,
+        'exteriorLength': 2,
+        'interiorWidth': 2,
+        'interiorLength': 1
+    }]);
+
+    getLights(onComplete?) {
+        this.lights = Observable.of(
+            [<ILight>{
                 'luminaireTypeId': 1,
                 'organization_ID': 1,
                 'displayName': 'Light 1',
@@ -19,7 +31,7 @@ class MockLightService {
                 'interiorWidth': 2,
                 'interiorLength': 1
             },
-            {
+            <ILight>{
                 'luminaireTypeId': 2,
                 'organization_ID': 1,
                 'displayName': 'Light 2',
@@ -27,7 +39,17 @@ class MockLightService {
                 'exteriorLength': 4,
                 'interiorWidth': 4,
                 'interiorLength': 1
-            }];
+            }]);
+    }
+
+    public addLight (light: ILight): Observable<ILight> {
+        return Observable.of(<ILight>light);
+    }
+    public updateLight (light: ILight): Observable<ILight> {
+        return Observable.of(<ILight>light);
+    }
+    public deleteLight(light: ILight) {
+
     }
 }
 
@@ -35,31 +57,61 @@ describe('LightsContainer::', () => {
 
     beforeEach(() => {
         addProviders([
-            LightsContainer,
-            provide(LightsService, {useClass: MockLightService})
+            provideStore({ LightsReducer }), //add a store
+            provide(LightsService, {useClass: MockLightService}),
+            LightsContainer
         ]);
     });
 
-    it('should instantiate by injection', inject([LightsContainer], (component: LightsContainer) => {
-        expect(component).toEqual(jasmine.any(LightsContainer));
-    }));
+    describe('withProviders::', () => {
+        var testComponent;
+        beforeEach(inject([LightsContainer], (component: LightsContainer) => {
+            testComponent = component;
+        }));
 
-    it('should have lights', inject([LightsContainer], (component: LightsContainer) => {
-        //expect(component.lights.length).toBeGreaterThan(0); <-- this is an observable now - dunno how to look at length or if we should
-    }));
+        describe('instantiated', () => {
+            var component;
+            beforeEach(() => {
+                component = testComponent;
+            });
 
-    it('should have a navHeader', inject([LightsContainer], (component: LightsContainer) => {
-        expect(component.navHeader).toEqual('Lights');
-    }));
+            it('should instantiate with injection', () => {
+                expect(component).toEqual(jasmine.any(LightsContainer));
+            });
 
-    it('should have columns', inject([LightsContainer], (component: LightsContainer) => {
-        expect(component.columns.length).toBeGreaterThan(0);
-        expect(component.columns[0]).toEqual('Name')
-    }));
+            it('should have lights', (done) => {
+                component.ngOnInit();
+                component.lights.subscribe(
+                        action => {
+                        expect(action.length).toBeGreaterThan(0);
+                        let lightType:ILight = {
+                            'luminaireTypeId': 1,
+                            'organization_ID': 1,
+                            'displayName': 'Light 1',
+                            'exteriorWidth': 2,
+                            'exteriorLength': 2,
+                            'interiorWidth': 2,
+                            'interiorLength': 1
+                        };
+                        expect(typeof action).toBe(typeof lightType);
+                        done();
+                    },
+                        err => {
+                        expect(err).toBe(0);
+                        done();
+                    }
+                );
+            });
 
-    it('should have filters values', inject([LightsContainer], (component: LightsContainer) => {
-        expect(component.filterValues.length).toBeGreaterThan(0);
-        expect(component.filterValues[0]).toEqual('Filter');
-    }));
+            it('should have columns', () => {
+                expect(component.columns.length).toBeGreaterThan(0);
+                expect(component.columns[0]).toEqual('Name')
+            });
 
+            it('should have filters values', () => {
+                expect(component.filterValues.length).toBeGreaterThan(0);
+                expect(component.filterValues[0]).toEqual('Filter');
+            });
+        });
+    });
 });

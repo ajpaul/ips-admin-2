@@ -1,18 +1,21 @@
 <div class="appParent">
 
     <md-toolbar class="mainToolbar">
-        <!--<div id="toolbarBtn" class="preventHighlight">
-            <md-icon>menu</md-icon>
-            <span>Menu</span>
-        </div>-->
-        Admin
+        <div class="acuityButton">
+            <img id="acuity" src="../assets/acuitya.svg" alt="Acuity Brands">
+            dministration
+            <md-icon class="downArrow">keyboard_arrow_down</md-icon>
+        </div>
     
         <!-- This fills the remaining space of the current row -->
         <span class="fill-remaining-space"></span>
 
         <!--<span>Something on the right</span>-->
-        <md-icon>person</md-icon>
-        <ui-dropdown [values]="dropdownValues" [(value)]="value"></ui-dropdown>
+        <div class="userButton">
+            <md-icon>person</md-icon>
+            {{user}}
+            <md-icon class="downArrow">keyboard_arrow_down</md-icon>
+        </div>
     </md-toolbar>
 
     <ul class="sideDrawer">

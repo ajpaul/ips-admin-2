@@ -1,5 +1,5 @@
 <div class="dataRow" *ngFor="let item of items" (click)="selected.emit(item)">
-    <div class="big blue">{{item.displayName}}</div>
+    <div class="big blue" (click)="selected.emit(item)">{{item.displayName}}</div>
     <div class="mdl-card__menu">
         <button (click)="deleted.emit(item); $event.stopPropagation();"
                 class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">

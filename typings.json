@@ -2,9 +2,10 @@
   "globalDependencies": {
     "angular-protractor": "registry:dt/angular-protractor#1.5.0+20160425143459",
     "geojson": "registry:dt/geojson#0.0.0+20160619034323",
-    "jasmine": "registry:dt/jasmine#2.2.0+20160505161446",
+    "jasmine": "registry:dt/jasmine#2.2.0+20160621224255",
+    "jasmine-ajax": "registry:dt/jasmine-ajax#3.1.1+20160802133254",
     "leaflet": "registry:dt/leaflet#1.0.0+20160630180443",
-    "node": "registry:dt/node#6.0.0+20160514165920",
+    "node": "registry:dt/node#6.0.0+20160817093604",
     "selenium-webdriver": "registry:dt/selenium-webdriver#2.44.0+20160317120654"
   }
 }

@@ -1,6 +1,6 @@
 import { Component, ROUTER_DIRECTIVES, provideRouter,
     RouterConfig, Store, Observable, AuthenticationComponent, MdButton, MdToolbar,
-    MD_LIST_DIRECTIVES, MdIcon, MdIconRegistry, Dropdown, DashboardComponent, 
+    MD_LIST_DIRECTIVES, MdIcon, MdIconRegistry, DashboardComponent, 
     SitesAllContainer, SitesGroupsComponent, BlankComponent, UsersContainer,
     SettingsComponent, LightsContainer, APIKeysComponent, CodebooksComponent,
     DeploymentComponent, MobileConfigComponent, GeneralComponent, NotFoundComponent} from './app'
@@ -13,7 +13,7 @@ import '../css/styles.less';
    template: require('./app.component.html'),
    styles: [require('./app.component.less')],
    directives: [ROUTER_DIRECTIVES, AuthenticationComponent, MdButton, MD_LIST_DIRECTIVES, 
-   DashboardComponent, MdToolbar, MdIcon, Dropdown],
+   DashboardComponent, MdToolbar, MdIcon],
    viewProviders: [MdIconRegistry]
 })
 
@@ -24,20 +24,7 @@ export class AppComponent {
     //text decoration values for sublist anchors
     clicked: string = null;
     private selectedAnchorId: string;
-    dropdownValues = ['Adam', 'This', 'Is', 'Just', 'A', 'Sample', 'Component'];
-
-    //for future use with advanced icons and stuff
-    // constructor(mdIconRegistry: MdIconRegistry) {
-    //     mdIconRegistry
-    //         .addSvgIcon('thumb-up', '/icon/assets/thumbup-icon.svg')
-    //         .addSvgIconSetInNamespace('core', '/icon/assets/core-icon-set.svg')
-    //         .registerFontClassAlias('fontawesome', 'fa');
-    // }
-
-    // sideNavClick(clicked: string): void {
-
-    //     this.clicked = this.clicked == clicked ? null : clicked;
-    // }
+    user: string = "Adam"; //this will later be replaced with dynamic user profile info
 
     setSelectedAnchor(e): void {
 

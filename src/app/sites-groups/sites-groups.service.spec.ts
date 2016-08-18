@@ -3,28 +3,26 @@ import {
     inject
 } from '@angular/core/testing';
 
-import { ISiteGroups } from './sites-groups.interface';
-import { SiteGroupsService } from './sites-groups.service';
+import { XHRBackend, HTTP_PROVIDERS } from '@angular/http';
+import { InMemoryBackendService, SEED_DATA }  from 'angular2-in-memory-web-api';
+import { MockData }   from '../api/mock-data';
+
+import { ISiteGroups, SiteGroupsService } from './sites-groups';
+import 'rxjs/add/operator/catch';
 
 describe('SiteGroupsService::', () => {
 
     beforeEach(() => {
-        addProviders([SiteGroupsService]);
+        addProviders([
+            SiteGroupsService,
+            HTTP_PROVIDERS,
+            { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem mock http server
+            { provide: SEED_DATA,  useClass: MockData }                // in-mem mock server data
+        ]);
     });
 
     it('should instantiate by injection', inject([SiteGroupsService], (service: SiteGroupsService) => {
         expect(service).toEqual(jasmine.any(SiteGroupsService));
     }));
 
-    it('should return sites', inject([SiteGroupsService], (service: SiteGroupsService) => {
-        let sites = service.getAllSiteGroups();
-        expect(sites.length).toBeGreaterThan(0);
-        let sightType: ISiteGroups = {
-            'siteGroupID': 1,
-            'organization_ID': 1,
-            'siteGroupName': 'Group 1',
-            'description': 'This is the first site group'
-        };
-        expect(typeof sites).toBe(typeof sightType);
-    }));
 });

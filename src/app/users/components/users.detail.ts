@@ -4,15 +4,19 @@
 
 import { Component, Input, Output, EventEmitter, IUser } from '../users';
 
-//-------------------------------------------------------------------
-// LIGHTS-LIST
-//-------------------------------------------------------------------
 @Component({
     selector: 'users-detail',
-    template: `<div class="defaultPlaceholder">Select a user to view details</div>`
+    template: require('./users.detail.html')
 })
 export class UsersDetail {
-     @Input() item: IUser;
-    // @Output() selected = new EventEmitter();
-    // @Output() deleted = new EventEmitter();
+
+    originalName: string;
+    selectedItem: IUser;
+    @Output() saved = new EventEmitter();
+    @Output() cancelled = new EventEmitter();
+
+    @Input('item') set item(value: IUser){
+        if (value) this.originalName = value.displayName;
+        this.selectedItem = Object.assign({}, value);
+    }
 }

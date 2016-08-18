@@ -2,29 +2,26 @@ import {
     addProviders,
     inject
 } from '@angular/core/testing';
+import { XHRBackend, HTTP_PROVIDERS } from '@angular/http';
+import { InMemoryBackendService, SEED_DATA }  from 'angular2-in-memory-web-api';
+import { MockData }   from '../api/mock-data';
 
-import { IMobileConfig } from './mobileConfig.interface';
-import { MobileConfigService } from './mobileConfig.service';
+import { IMobileConfig, MobileConfigService } from './mobileConfig';
+import 'rxjs/add/operator/catch';
 
 describe('MobileConfigService::', () => {
 
     beforeEach(() => {
-        addProviders([MobileConfigService]);
+        addProviders([
+            MobileConfigService,
+            HTTP_PROVIDERS,
+            { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem mock http server
+            { provide: SEED_DATA,  useClass: MockData }                // in-mem mock server data
+        ]);
     });
 
     it('should instantiate by injection', inject([MobileConfigService], (service: MobileConfigService) => {
         expect(service).toEqual(jasmine.any(MobileConfigService));
     }));
 
-    it('should return configs', inject([MobileConfigService], (service: MobileConfigService) => {
-        let configs = service.getAllFixtureTypes();
-        expect(configs.length).toBeGreaterThan(0);
-        let configType: IMobileConfig = {
-            'mobileConfigID': 1,
-            'lumicastSDKVersion': '1.023a',
-            'mobileConfigString': 'Config config config',
-            'lastUpdatedBy': 'Adam'
-        };
-        expect(typeof configs).toBe(typeof configType);
-    }));
 });

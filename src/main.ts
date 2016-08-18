@@ -15,14 +15,14 @@ import { AppComponent } 	from './app/app.component';
 import { MdIconRegistry } from '@angular2-material/icon/icon-registry';
 
 import { LightsReducer } from './app/lights/lights';
-import { UsersReducer } from './app/users/users';
+import { UsersReducer, SelectedUserReducer } from './app/users/users';
 
 export function main(): Promise<any> {
 
 	return bootstrap(AppComponent, [
 		APP_ROUTER_PROVIDERS,
 		provide(LocationStrategy, {useClass: HashLocationStrategy}),
-		provideStore({ LightsReducer, UsersReducer }), //add a store
+		provideStore({ LightsReducer, UsersReducer, SelectedUserReducer }), //add a store
 		disableDeprecatedForms(),
 		provideForms(),
 		HTTP_PROVIDERS,

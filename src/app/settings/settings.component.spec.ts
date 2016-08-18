@@ -16,10 +16,6 @@ describe('SettingsComponent::', () => {
         expect(component).toEqual(jasmine.any(SettingsComponent));
     }));
 
-    it('should have a navHeader', inject([SettingsComponent], (component: SettingsComponent) => {
-        expect(component.navHeader).toEqual('Settings');
-    }));
-
     it('should have sidebarButtons', inject([SettingsComponent], (component: SettingsComponent) => {
         expect(component.sidebarButtons.length).toBeGreaterThan(0);
     }));

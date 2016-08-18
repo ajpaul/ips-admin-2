@@ -1,0 +1,17 @@
+<div class="sitesFavoritesParent">
+
+    <div id="sitesFavorites">
+
+        <div class="data">
+            <div class="dataRow favRow" *ngFor="let fav of siteFavs" (click)="favoritesClick()">
+                <div class="checkbox">
+                    <input type="checkbox">
+                </div>
+                <div class="favInfo">
+                    <div class="favName">{{fav.siteName}}</div>
+                    <div class="favDetails">x Sites | x Users</div>                 
+                </div>      
+            </div>
+        </div>
+    </div>
+</div>
