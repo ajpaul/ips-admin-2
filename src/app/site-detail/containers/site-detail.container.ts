@@ -1,9 +1,12 @@
 import { Component, ROUTER_DIRECTIVES, ISite, AllSitesService, OnInit, OnDestroy, Subscription } from '../site-detail';
 import { SiteDetailComponent } from '../components/site-detail.component';
 
+
+// This is just a placeholder container used to pull a single site
+// from the allSitesService and pass it into the SiteDetailComponent
 @Component({
     selector: 'app-site-detail',
-    template: '<app-site-detail></app-site-detail>',
+    template: '<app-site-detail *ngIf="site" [site]="site"></app-site-detail>',
     directives: [SiteDetailComponent],
     providers: [AllSitesService]
 })

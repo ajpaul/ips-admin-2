@@ -8,4 +8,5 @@ import { Component, ROUTER_DIRECTIVES, Input, ISite, MdInput, MdCheckbox, MdIcon
 })
 
 export class SiteDetailComponent {
+    @Input() site: ISite;
 }
