@@ -7,7 +7,7 @@ import { provideStore }	 	from '@ngrx/store';
 import { InMemoryBackendService, SEED_DATA }  from 'angular2-in-memory-web-api';
 import { MockData }   from '../api/mock-data';
 
-import { IUser, UsersService, UsersReducer } from './users';
+import { IUser, UsersService, UsersReducer, SelectedUserReducer } from './users';
 import 'rxjs/add/operator/catch';
 
 describe('UsersService::InMemoryBackend::', () => {
@@ -16,7 +16,7 @@ describe('UsersService::InMemoryBackend::', () => {
         addProviders([
             UsersService,
             HTTP_PROVIDERS,
-            provideStore({ UsersReducer }), //add a store
+            provideStore({ UsersReducer, SelectedUserReducer }), //add a store
             { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem mock http server
             { provide: SEED_DATA,  useClass: MockData }                // in-mem mock server data
         ]);
@@ -38,7 +38,7 @@ describe('UsersService::InMemoryBackend::', () => {
             it('should get users', (done) => {
                 service.userUrl = 'localhost:8080/users';
                 service.users.subscribe(
-                        action => {
+                    action => {
                         expect(action.length).toBeGreaterThan(0);
                         let user: IUser = {
                             'displayName': 'User 33',
@@ -48,7 +48,43 @@ describe('UsersService::InMemoryBackend::', () => {
                         expect(typeof action).toBe(typeof user);
                         done();
                     },
-                        err => {
+                    err => {
+                        expect(err).toBe(0);
+                        done();
+                    }
+                );
+            });
+        });
+    });
+
+    describe('mockdata::', () => {
+        var testService;
+        beforeEach(inject([UsersService], (service: UsersService) => {
+            testService = service;
+        }));
+
+        describe('injected::', () => {
+            var service;
+            beforeEach((done) => {
+                service = testService;
+                let user: IUser = {
+                    'displayName': 'User 123',
+                    'displayEmail': 'foo@bar.com',
+                    'bookmarked': false
+                };
+                service.selectUser(user);
+                done();
+            });
+
+            it('should select user 123', (done) => {
+                service.selectedUser.subscribe(
+                    action => {
+                        let user = <IUser>{};
+                        expect(typeof action).toBe(typeof user);
+                        expect(action.displayName).toBe('User 123');
+                        done();
+                    },
+                    err => {
                         expect(err).toBe(0);
                         done();
                     }
@@ -63,7 +99,7 @@ describe('UsersService::JasmineAjax::', () => {
         addProviders([
             UsersService,
             HTTP_PROVIDERS,
-            provideStore({ UsersReducer }), //add a store
+            provideStore({ UsersReducer, SelectedUserReducer }), //add a store
         ]);
         jasmine.Ajax.install();
     });
