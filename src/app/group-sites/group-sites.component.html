@@ -1,0 +1,49 @@
+<div class="siteDetailParent">
+
+    <div class="group-sites-header">
+        <div class="group-sites-title">SITES ASSOCIATED TO GROUP</div>
+    </div>
+    <div class="site-search-container">
+        <div class="site-search-icon">
+            <md-icon>search</md-icon>
+        </div>
+        <div class="site-search-title">
+            Start typing here to search for a user to add, separate by a comma to add multiple
+        </div>
+        <div class="site-search-add"><md-icon>add</md-icon></div>
+    </div>
+    <div class="group-sites-container">
+        <div class="group-sites-table-header">
+            <div class="group-sites-header-row-item header-checkbox-column checkbox-container">
+                <md-checkbox class="master-site-checkbox"></md-checkbox>
+            </div>
+            <div class="group-sites-header-row-item header-delete">
+                <div class="md-icon-circle-container delete-container">
+                    <md-icon>delete</md-icon>
+                </div>
+            </div>
+            <div class="group-sites-header-row-item header-people">
+                <div class="md-icon-circle-container people-outline-container">
+                    <md-icon>people_outline</md-icon>
+                </div>
+            </div>
+            <div class="group-sites-header-row-item header-filter">
+                <input type="text" class="header-filter-input" placeholder="Filter group site list..."/>
+            </div>
+        </div>
+        <div class="group-sites-row" *ngFor="let site of sites">
+            <div class="group-sites-row-item checkbox-column checkbox-container">
+                <md-checkbox class="site-checkbox">{{ site.siteName }}</md-checkbox>
+            </div>            
+            <div class="group-sites-row-item delete-column">
+                <div class="md-icon-circle-container delete-container">
+                    <md-icon>delete</md-icon>
+                </div>                
+            </div>
+        </div>
+        <div class="group-sites-row-last">
+            <div class="group-sites-row-item"></div>
+        </div>
+    </div>
+
+</div>
