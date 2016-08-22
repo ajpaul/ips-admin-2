@@ -1,0 +1,59 @@
+@import '../../css/colors.less';
+
+@inputgray: #b5b5b5;
+
+/* MIXINS */
+
+.acuity-md-input {
+    /deep/ input {
+        color: @asphalt;
+    }
+    /deep/ label {
+        color: @inputgray;
+    }
+
+    /deep/ .md-input-underline {
+        color: @inputgray;
+    }
+}
+
+/* CLASSES */
+
+.group-details-container {
+    font-weight: normal;
+
+  .details-title-container {
+    padding: 30px 25px 10px 25px;
+  }
+
+  .details-title {
+    border-bottom: 1px solid @inputgray;
+    color: @inputgray;
+    line-height: 36px;
+    padding-left: 5px;
+    width: 100%;
+  }
+
+  .input-container {
+    padding: 20px 40px 10px 40px;
+  }
+
+  .group-name {
+    width: 50%;
+    .acuity-md-input;
+  }
+
+  .group-description {
+    width: 100%;
+    .acuity-md-input;
+  }
+
+  .group-delete-container {
+    padding-top: 60px;
+
+    /deep/ button {
+      background-color: #f25f54;
+    }
+  }
+
+}

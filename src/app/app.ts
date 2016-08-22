@@ -10,6 +10,7 @@ export { AuthenticationComponent } from './authentication/authentication.compone
 export { MdButton } from '@angular2-material/button/button';
 export { MdToolbar } from '@angular2-material/toolbar/toolbar';
 export { MD_LIST_DIRECTIVES } from '@angular2-material/list/list';
+export { MdIcon, MdIconRegistry } from '@angular2-material/icon/icon';
 export { DashboardComponent } from './dashboard/dashboard.component';
 
 export { SitesAllContainer } from './sites-all/containers/sites-all.container';
@@ -20,3 +21,6 @@ export { BlankComponent } from './blank/blank.component';
 export { UsersContainer } from './users/containers/users.container';
 export { LightsContainer } from './lights/containers/lights.container';
 export { NotFoundComponent } from './notFound/notFound.component';
+export { SiteDetailContainer } from './site-detail/containers/site-detail.container';
+export { GroupSitesContainer } from './group-sites/containers/group-sites.container';
+export { GroupDetails } from './group-details/group-details.component';

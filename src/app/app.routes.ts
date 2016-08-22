@@ -1,6 +1,6 @@
 import { provideRouter, RouterConfig, DashboardComponent, SitesAllContainer,
-     SitesGroupsComponent, BlankComponent, UsersContainer, LightsContainer, 
-    AuthenticationComponent, NotFoundComponent, SitesComponent, SitesFavoritesComponent } from './app'
+     SitesGroupsComponent, BlankComponent, UsersContainer, LightsContainer, AuthenticationComponent, NotFoundComponent, 
+SitesComponent, SitesFavoritesComponent, SiteDetailContainer, GroupSitesContainer, GroupDetails } from './app'
 
 
 //BlankComponent == I haven't implemented it yet ​
@@ -21,6 +21,10 @@ export const routes: RouterConfig = <RouterConfig>[
         ] },
     { path: 'lights', component: LightsContainer },
     { path: 'users', component: UsersContainer },
+    { path: 'detail', component: SiteDetailContainer },
+    { path: 'groupsites', component: GroupSitesContainer },
+    { path: 'group', component: GroupDetails },
+
     { path: 'login', component: AuthenticationComponent },
     { path: '**', component: NotFoundComponent } //404 support
 ];
