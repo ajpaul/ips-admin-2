@@ -47,7 +47,7 @@ module.exports = {
 
             //Finds less files not named with c*omponent or *container (assumed global styles)
             {
-                test: /^((?!component|container).)*.less$/,
+                test: /^((?!component|container|list|details).)*.less$/,
                 loaders: ['style-loader', 'css-loader', 'less-loader'],
                 exclude: [/node_modules/]
             },
