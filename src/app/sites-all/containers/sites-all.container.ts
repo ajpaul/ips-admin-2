@@ -1,14 +1,11 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { ISite, AllSitesService, ButtonComponent, FilterComponent } from '../sites-all';
-import { MdIcon, MdIconRegistry } from '@angular2-material/icon/icon';
-
-
+import { ISite, AllSitesService } from '../sites-all';
 
 @Component({
     selector: 'app-sites-all',
     template: require('./sites-all.container.html'),
     styles: [require('./sites-all.container.less')],
-    directives: [ButtonComponent, FilterComponent, MdIcon],
+    directives: [],
     providers: [AllSitesService]
 })
 

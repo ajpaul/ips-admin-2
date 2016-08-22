@@ -8,53 +8,284 @@
 }
 
 //global classes
-.header {
-  color: @mattegray;
-}
-
-.tableHeader {
-  background-color: @lightgray;
-  border: 1px solid @wetstone;
-  height: 30px;
-  line-height: 30px;
-  display: flex;
-  flex-wrap: nowrap;
-
-    .text {
-      font-weight: 700;
-      font-size: 1em;
-      color: @mattegray;
-      text-align: center;
-    }
-}
-
-.big, .small {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    text-align: center;
-}
-
-.gray {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-.blue {
-  color: @brightblue;
+.bookmarkClicked {
+    color: @rosyred;
 }
 
 .dataRow {
-  background-color: @white;
-  border: 1px solid @lightgray;
+  background-color: @icy;
+  border: 1px solid @paleblue;
   display: flex;
   flex-wrap: nowrap;
+
+        .listInfo60px{
+
+        flex-shrink: 4;
+        width: 85%;
+        height: 100%;
+        padding-left: 10px;
+
+        i {
+            color: @rosyred;
+            float: right;
+            margin-top: -1px;
+            padding-right: 30px;
+        }
+
+        .blue30 {
+            padding-top: 5px;
+            line-height: 30px;
+            height: 25px;
+            color: @moonlitsky;
+            text-align: left;
+            font-size: 1.1em;
+        }
+
+        .gray {
+            line-height: 25px;
+            height: 25px;
+            font-size: .8em;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            color: @wetstone;
+        }
+    }
 }
 
 .dataRow:hover {
-  background-color: @lightgray;
+  background-color: @white;
 }
+
+.filterSection {
+
+    background-color: @filtergray;
+    width: 100%;
+    height: 60px;
+    display: flex;
+
+    input {
+        border: none;
+        height: 60px;
+        line-height: 60px;
+        background-color: transparent;
+        flex-shrink: 9;
+        width: 90%;
+    }
+
+        ::-webkit-input-placeholder {
+            color: @wetstone;
+        }
+
+        :-moz-placeholder { /* Firefox 18- */
+            color: @wetstone;
+        }
+
+        ::-moz-placeholder {  /* Firefox 19+ */
+            color: @wetstone;
+        }
+
+        :-ms-input-placeholder {  
+            color: @wetstone;
+        }
+
+    img {
+      height: 20px;
+      flex-shrink: 1;
+      width: 10%;
+      min-width: 40px;
+      padding-top: 20px;
+    }
+
+}
+
+.dataSettings {
+    height: 40px;
+    display: flex;
+    background-color: @icy;
+
+    img {
+      height: 28px;
+      padding: 6px 12px 6px 0;
+    }
+
+    .flexCheckboxHolder {
+
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+    min-width: 42px;
+    flex-shrink: 1;
+
+        input[type='checkbox']{
+            height: 16px;
+            width: 16px;
+            min-width: 16px;
+            min-height: 16px;
+            margin-right: 21px;
+        }
+        
+    }
+
+    .dataButtonsHolder {
+        height: 40px;
+        display: flex;
+        width: 85%;
+        flex-shrink: 4;
+
+        span  {
+            color: @iconGray;
+            padding: 4px 8px 4px 0;
+
+            .smallIcon {
+                font-size: .8em;
+                line-height: .8em;
+                top: 15px;
+            }
+        }
+
+        ui-buttonAdd {
+            margin-left: auto;
+        }
+    }
+}
+
+.listControls {
+
+    flex-shrink: 1;
+    width: 15%;
+    min-width: 42px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    input[type='checkbox']{
+        height: 16px;
+        width: 16px;
+        min-width: 16px;
+        min-height: 16px;
+        margin-right: 10px;
+        //min values hold size constant
+        //flex might try to shrink them!
+    }
+
+    .greenCircle {
+        background-color: @treefroggreen;
+        border-radius: 50%;
+        width: 10px;
+        height: 10px; 
+        min-width: 10px;
+        min-height: 10px;
+        //min values hold size constant
+        //flex might try to shrink them
+    }
+}
+
+.panelLeftNavTabs{
+
+    min-width: 215px; //for now
+    display: flex;
+
+    .liFlex {
+        flex-shrink: 1;
+        width: 25%;
+        font-size: .8em;
+        text-align: center;
+        display: inline-block;
+        list-style-type: none;
+        color: @stormyblue;
+        padding: 10px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        height: 35px;
+
+        a {
+            cursor: pointer;
+            text-decoration: none;
+
+        }
+    }
+
+    .liFlex:hover {
+        border-bottom: 3px solid @brightblue;
+    }
+
+    .showDetails {
+
+        flex-shrink: 1;
+        width: 25%;
+        height: 35px;
+        display: flex;
+
+        i {
+            cursor: point;
+            display: inline-block;
+            line-height: 35px;
+            flex-shrink: 1;
+            width: 50%;
+            padding-top: 2px;
+        }
+        
+    }
+
+}
+
+.detailHeader {
+    height: 40px;
+    background-color: @stormyblue;
+
+    .detailHeaderValue {
+        color: @white;
+        display: inline-block;
+        padding-left: 15px;
+        vertical-align: middle;
+        position: relative;
+        top: 10px;
+    }
+}
+
+.detailToggleArea {
+        float: right;
+        padding-right: 20px;
+
+        .toggleText {
+            color: @stormyblue;
+            font-weight: 500;
+            height: 34px;
+            vertical-align: middle;
+            padding-right: 0;
+            display: inline-block;
+            padding-right: 20px;
+        }
+}
+
+.recentSites {
+    background-color: @icy;
+    height: 35px;
+    line-height: 35px;
+    color: @stormyblue;
+    padding-left: 10px;
+    font-size: .8em;
+
+    ul {
+        display: inline-block;
+    }
+
+    li {
+        display: inline-block;
+        list-style-type: none;
+
+        a {
+            color: @brightblue;
+            font-weight: 700;
+        }
+    }
+}
+
 
 .paddingLeft160 { //it's really 160 + 15px padding all around
   padding: 15px 15px 15px 175px;
@@ -73,10 +304,12 @@
 h1 {
   color: @stormyblue; 
   font-size: 250%;
+  font-family: "Roboto", Tahoma, Verdana, sans-serif;
 }
 h2, h3 { 
-  color: @stormcloud;
+  color: @moonlitsky;
   font-weight: lighter;
+  font-family: "Roboto", Tahoma, Verdana, sans-serif;
 }
 body { 
   margin: 0;

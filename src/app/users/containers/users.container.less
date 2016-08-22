@@ -1,16 +1,25 @@
 @import '../../../css/colors.less';
+@import '../../../css/mixins.less';
 
-/* MIXINS */
+.usersParent {
 
-.usersParent{
+    display: flex;
+    height: @containerHeight;
 
-    padding: 15px;
-    
-    /* CLASSES */
+    .panelLeft {
+        width: 25%;
+        background: @snowwhite;
+        flex-shrink: 1;
 
+        #usersList {
+            height: @dataHeight;
+            overflow-y: auto;
+        }
+    }
 
-    /* GENERAL ELEMENT STYLES */
-
-
-    /* SPECIFIC ELEMENT STYLES */
+    .panelRight {
+        width: 75%;
+        flex-shrink: 3;
+    }
 }
+

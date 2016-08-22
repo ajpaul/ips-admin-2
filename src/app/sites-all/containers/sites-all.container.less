@@ -5,82 +5,16 @@
 
 #allSites {
 
-    height: @dataheight;
+    height: @dataHeight;
     overflow-y: auto;
     text-align: left;
-
 
     .siteRow {
 
         display: flex;
         height: 60px;
         min-width: 200px;
-
-        .allSitesControls {
-
-            flex-shrink: 1;
-            width: 15%;
-            min-width: 42px;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            input[type='checkbox']{
-                height: 16px;
-                width: 16px;
-                min-width: 16px;
-                min-height: 16px;
-                margin-right: 10px;
-                //min values hold size constant
-                //flex might try to shrink them!
-            }
-
-            .greenCircle {
-                background-color: @treefroggreen;
-                border-radius: 50%;
-                width: 10px;
-                height: 10px; 
-                min-width: 10px;
-                min-height: 10px;
-                //min values hold size constant
-                //flex might try to shrink them
-            }
-        }
-
-        .allSiteInfo{
-
-            flex-shrink: 4;
-            width: 85%;
-            height: 100%;
-            padding-left: 10px;
-
-            md-icon{
-                color: @rosyred;
-                float: right;
-                margin-top: -4px;
-                padding-right: 20px;
-            }
-
-            .blue30 {
-                padding-top: 5px;
-                line-height: 25px;
-                height: 25px;
-                color: @stormyblue;
-                font-weight: 700;
-                text-align: left;
-            }
-
-            .gray {
-                line-height: 25px;
-                height: 25px;
-                color: @asphalt;
-                text-align: left;
-            }
-        }
-
     }
-
 }
 
 

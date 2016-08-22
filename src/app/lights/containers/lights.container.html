@@ -2,19 +2,12 @@
 
     <div class="panelLeft">
 
-        <ui-breadcrumb [navHeader]="navHeader"></ui-breadcrumb>
-
         <ui-filter [values]="filterValues" [(value)]="value"></ui-filter>
 
         <ui-button>+ New Light</ui-button>
 
         <div id="lights">
-            <div class="tableHeader">
-                <div class="big text">Name</div>
-                <div class="small text">Aperture Dimensions</div>
-                <div class="small text">Exterior Dimensions</div>
-            </div>
-            <div class="data">
+            <div>
                 <lights-list [items]="lights | async"
                             (selected)="selectItem($event)"
                             (deleted)="deleteItem($event)"></lights-list>

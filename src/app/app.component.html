@@ -2,7 +2,7 @@
     <div class="acuityButton">
         <img id="acuity" src="../assets/acuitya.svg" alt="Acuity Brands">
         dministration
-        <md-icon class="downArrow">keyboard_arrow_down</md-icon>
+        <i class="fa fa-angle-down"></i>
     </div>
 
     <!-- This fills the remaining space of the current row -->
@@ -10,47 +10,58 @@
 
     <!--<span>Something on the right</span>-->
     <div class="userButton">
-        <md-icon>person</md-icon>
+
+        <span class="fa-stack">
+            <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+            <i class="fa fa-user fa-stack-1x"></i>
+        </span>
+
         {{user}}
-        <md-icon class="downArrow">keyboard_arrow_down</md-icon>
+        <i class="fa fa-angle-down"></i>
     </div>
 </md-toolbar>
 
-<ul class="sideDrawer">
+<nav class="sideDrawer">
 
     <div class="sideDrawerText">MAIN</div>
-
-    <li id="dashboard" md-list-item [routerLink]="['/']" (click)="setSelectedAnchor($event)" [ngClass]="setClasses('dashboard')">
-        <div class="iconHolder"><md-icon class="navIcon">keyboard</md-icon>
-        <div class="iconText">Dashboard</div></div>      
-    </li>
-    <li id="sites" md-list-item [routerLink]="['/sites']" (click)="setSelectedAnchor($event)" [ngClass]="setClasses('sites')">
-        <div class="iconHolder"><md-icon class="navIcon">location_city</md-icon>
-        <div class="iconText">Sites</div></div>
-    </li>
-    <li id="lights" md-list-item [routerLink]="['/lights']" (click)="setSelectedAnchor($event)" [ngClass]="setClasses('lights')">
-        <div class="iconHolder"><md-icon class="navIcon">lightbulb_outline</md-icon>
-        <div class="iconText">Lights</div></div>
-    </li>
-    <li id="users" md-list-item [routerLink]="['/users']" (click)="setSelectedAnchor($event)" [ngClass]="setClasses('users')">
-        <div class="iconHolder"><md-icon class="navIcon">wc</md-icon>
-        <div class="iconText">Users</div></div>
-    </li>
+    <ul>
+        <li id="dashboard" md-list-item [routerLink]="['/']" (click)="setSelectedAnchor($event)" [ngClass]="setClasses('dashboard')">
+            <div class="iconHolder">
+                <i class="fa fa-keyboard-o fa-lg"></i>
+            <div class="iconText">Dashboard</div></div>      
+        </li>
+        <li id="sites" md-list-item [routerLink]="['/sites']" (click)="setSelectedAnchor($event)" [ngClass]="setClasses('sites')">
+            <div class="iconHolder">
+                <i class="fa fa-building-o fa-lg"></i>
+            <div class="iconText">Sites</div></div>
+        </li>
+        <li id="lights" md-list-item [routerLink]="['/lights']" (click)="setSelectedAnchor($event)" [ngClass]="setClasses('lights')">
+            <div class="iconHolder">
+                <i class="fa fa-lightbulb-o fa-lg"></i>
+            <div class="iconText">Lights</div></div>
+        </li>
+        <li id="users" md-list-item [routerLink]="['/users']" (click)="setSelectedAnchor($event)" [ngClass]="setClasses('users')">
+            <div class="iconHolder">
+                <i class="fa fa-user fa-lg"></i>
+            <div class="iconText">Users</div></div>
+        </li>
+    </ul>
 
     <!--hidden for now-->
     <!--<li id="settings" md-list-item [routerLink]="['/settings']" (click)="setSelectedAnchor($event)" [ngClass]="setClasses('settings')">
-        <a><md-icon class="navIcon">settings</md-icon>Settings</a>
     </li>-->
 
     <div class="blueBorder"></div>
 
     <div class="sideDrawerText">OTHER</div>
-
-    <li id="feedback" md-list-item [ngClass]="setClasses('feedback')">
-        <div class="iconHolder"><md-icon class="navIcon">feedback</md-icon>
-        <div class="iconText">Feedback</div></div>
-    </li>
-</ul>
+    <ul>
+        <li id="feedback" md-list-item [ngClass]="setClasses('feedback')">
+            <div class="iconHolder">
+                <i class="fa fa-comment fa-lg"></i>
+            <div class="iconText">Feedback</div></div>
+        </li>
+    </ul>
+</nav>
 
 <div class="routerContent">
     <router-outlet></router-outlet>

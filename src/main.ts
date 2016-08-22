@@ -12,8 +12,6 @@ import { HTTP_PROVIDERS } from '@angular/http';
 import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
 import { provideStore }	 	from '@ngrx/store';
 import { AppComponent } 	from './app/app.component';
-import { MdIconRegistry } from '@angular2-material/icon/icon-registry';
-
 import { LightsReducer } from './app/lights/lights';
 import { UsersReducer, SelectedUserReducer } from './app/users/users';
 
@@ -26,7 +24,6 @@ export function main(): Promise<any> {
 		disableDeprecatedForms(),
 		provideForms(),
 		HTTP_PROVIDERS,
-		MdIconRegistry,
 		{ provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem mock http server
 		{ provide: SEED_DATA,  useClass: MockData }                // in-mem mock server data
 	])

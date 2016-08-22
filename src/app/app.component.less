@@ -3,11 +3,15 @@
 
 // **** MEDIA QUERIES ****
 
-@media screen and
-  (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
     
     .sideDrawer {
-      width: 60px !important;
+      width: 55px !important;
+
+      li .iconHolder i {
+
+        width: 0 !important;
+      }
 
       .iconText{
         display: none !important;
@@ -19,16 +23,18 @@
     }
 
   .routerContent {
-    padding-left: 60px !important;
+    padding-left: 55px !important;
   }
 }
 
-@media only screen 
-  and (min-width: 1025px) 
-  and (max-width: 1199px) {
+@media only screen and (min-width: 1025px) and (max-width: 1199px) {
 
     .sideDrawer {
-      width: 80px !important;
+      width: 55px !important;
+
+      li .iconHolder i {
+        width: 0 !important;
+      }
 
         .iconText{
           display: none !important;
@@ -40,10 +46,9 @@
     }
 
   .routerContent {
-    padding-left: 80px !important;
+    padding-left: 55px !important;
   }
 }
-
 
 .mainToolbar {
 
@@ -53,31 +58,31 @@
   background: -webkit-linear-gradient(left, @moonlitsky 0%, @stormyblue 100%);
   background: linear-gradient(to right, @moonlitsky 0%, @stormyblue 100%);
 
-  #acuity {
-    height: 20px;
-    margin-right: -5px;
+#acuity {
+  height: 20px;
+  margin-right: -5px;
+}
+
+.fill-remaining-space {
+// This fills the remaining space, by using flexbox. 
+flex: 1 1 auto;
+}
+
+.userButton, .acuityButton {
+  background: none;
+  color: @white;  
+  position: relative; 
+  font-family: "Roboto", Tahoma, Verdana, sans-serif;
+
+  .fa-user {
+    color: @stormyblue;
   }
 
-  .fill-remaining-space {
-  // This fills the remaining space, by using flexbox. 
-  flex: 1 1 auto;
+  .downArrow {
+    font-size: 14px;
+    height: 18px;
   }
-
-  .userButton, .acuityButton {
-    background: none;
-    color: @white;  
-    position: relative; 
-
-    md-icon {
-      vertical-align: bottom;
-      line-height: 1em;
-    } 
-
-    .downArrow {
-      font-size: 14px;
-      height: 18px;
-    }
-  }
+}
 
 
   
@@ -128,7 +133,7 @@ color: @white;
   width: 160px;
   position: absolute;
   top: 64px;
-  height: @sitesheight;
+  height: @containerHeight;
   padding-top: 0;
 
   //no highlighty
@@ -149,28 +154,34 @@ color: @white;
       color: @white;
       text-decoration: none;
       position: relative;
-      top: 12px;
+      line-height: 50px;
+      height: 50px;
+      //top: 12px;
 
-      md-icon {
+      i {
         color: @white;
-        vertical-align: bottom;
-        padding-left: 15px;
+        vertical-align: middle;
+        padding: 0 8px 0 15px;
+        width: 25px;
       }
 
       .iconText {
         display: inline-block;
+        font-family: "Roboto", Tahoma, Verdana, sans-serif;
+        cursor: pointer;
       }
     }
   }
 
   .sideDrawerText {
     color: @stormcloud;
+    font-family: "Roboto", Tahoma, Verdana, sans-serif;
     font-weight: 700;
     padding: 20px 0 15px 10px;
   }
 
   .blueBorder {
-    border-bottom: 1px solid @stormyblue;
+    border-bottom: 1px solid @moonlitsky;
   }
 
 
@@ -178,14 +189,6 @@ color: @white;
 
 .routerContent {
   padding-left: 160px;
-}
-
-/* SPECIFIC ELEMENT STYLES */
-#toolbarBtn {
-
-  md-icon {
-    vertical-align: bottom;
-  }
 }
 
 

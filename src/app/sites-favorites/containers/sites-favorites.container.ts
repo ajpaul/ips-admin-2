@@ -1,11 +1,10 @@
-import {Component, ISiteFavorites, SiteFavoritesService, ButtonComponent, FilterComponent
-     } from '../sites-favorites';
+import {Component, ISiteFavorites, SiteFavoritesService, ButtonComponent } from '../sites-favorites';
 
 @Component({
     selector: 'app-sites-groups',
     template: require('./sites-favorites.container.html'),
     styles: [require('./sites-favorites.container.less')],
-    directives: [ButtonComponent, FilterComponent],
+    directives: [ButtonComponent],
     providers: [SiteFavoritesService]
 })
 
@@ -14,10 +13,10 @@ export class SitesFavoritesComponent {
     siteFavs: ISiteFavorites[];
     errorMessage: string;
 
-    constructor(private _siteGroupsService: SiteFavoritesService) {}
+    constructor(private siteGroupsService: SiteFavoritesService) {}
 
     ngOnInit() {
-        this._siteGroupsService.getSiteFavorites().subscribe(
+        this.siteGroupsService.getSiteFavorites().subscribe(
                 siteFavs => this.siteFavs = siteFavs,
                 error =>  this.errorMessage = <any>error);
     }

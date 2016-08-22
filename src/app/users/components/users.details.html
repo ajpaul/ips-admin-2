@@ -1,0 +1,63 @@
+<section class="recentSites">
+    <span>Recent Sites:</span>
+    <ul>
+        <li><a href="#">Castle Black,</a></li>
+        <li><a href="#">Flea Bottom</a></li>
+    </ul>
+</section>
+
+<header class="userDetailHeader">
+
+    <section>
+        <span class="fa-stack fa-lg bookmark bookmarkClicked">
+            <i class="fa fa-circle-thin fa-stack-2x"></i>
+            <i class="fa fa-bookmark fa-stack-1x"></i>
+        </span>
+        <div class="userInfo">
+            <h2>Selected username here or {{originalName}}</h2>
+        </div>  
+
+        <div class="detailToggleArea">
+            <div class="toggleText">Active:</div>
+            <ui-toggle></ui-toggle>    
+        </div>                    
+    </section>
+
+    <nav class="userDetailTabs">
+        <li (click)="showUserDetailsClick()"><a>Details</a></li>
+        <li (click)="showUserSitesClick()"><a>Sites</a></li>
+    </nav>
+</header>
+
+<div *ngIf="showUserDetails" class="userDetails">
+
+
+
+    <form>
+        <section class="userDetailNames">
+            <md-input [(ngModel)]="selectedItem.displayName" name="displayName" placeholder="First Name"></md-input>
+            <md-input placeholder="Last Name"></md-input>
+        </section>
+
+        <section>
+            <md-input [(ngModel)]="selectedItem.displayEmail" name="displayEmail" placeholder="Email Address"></md-input>  
+        </section>
+        
+        <!--<div class="mdl-card__actions">
+            <button type="submit" (click)="cancelled.emit(selectedItem)"
+                    class="mdl-button mdl-js-button mdl-js-ripple-effect">Cancel</button>
+            <button type="submit" (click)="saved.emit(selectedItem)"
+                    class="mdl-button mdl-js-button mdl-button--colored mdl-js-ripple-effect">Save</button>
+        </div>-->
+
+        <button id="deleteUserBtn">Delete User</button>
+
+    </form>
+</div>
+
+
+<div *ngIf="showUserSites">
+    <header class="detailHeader">
+        <div class="detailHeaderValue">ASSIGNED SITES</div>   
+    </header>
+</div>

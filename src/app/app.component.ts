@@ -1,9 +1,8 @@
 import { Component, ROUTER_DIRECTIVES, provideRouter,
     RouterConfig, Store, Observable, AuthenticationComponent, MdButton, MdToolbar,
-    MD_LIST_DIRECTIVES, MdIcon, MdIconRegistry, DashboardComponent, 
+    MD_LIST_DIRECTIVES, DashboardComponent, 
     SitesAllContainer, SitesGroupsComponent, BlankComponent, UsersContainer,
-    SettingsComponent, LightsContainer, APIKeysComponent, CodebooksComponent,
-    DeploymentComponent, MobileConfigComponent, GeneralComponent, NotFoundComponent} from './app'
+    LightsContainer, NotFoundComponent} from './app'
 
 //import global less file
 import '../css/styles.less';
@@ -13,8 +12,7 @@ import '../css/styles.less';
    template: require('./app.component.html'),
    styles: [require('./app.component.less')],
    directives: [ROUTER_DIRECTIVES, AuthenticationComponent, MdButton, MD_LIST_DIRECTIVES, 
-   DashboardComponent, MdToolbar, MdIcon],
-   viewProviders: [MdIconRegistry]
+   DashboardComponent, MdToolbar]
 })
 
 

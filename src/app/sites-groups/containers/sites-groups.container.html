@@ -1,13 +1,13 @@
 <div id="sitesGroups">
 
-    <div class="data">
+    <div  >
         <div class="dataRow groupRow" *ngFor="let group of siteGroups" (click)="sitesGroupsClick(group.siteGroupID)">
             <div class="checkbox">
                 <input type="checkbox">
             </div>
-            <div class="siteInfo">
-                <div class="siteName">{{group.siteGroupName}}</div>
-                <div class="siteDetails">x Sites | x Users</div>                 
+            <div class="listInfo60px">
+                <div class="blue30">{{group.siteGroupName}}</div>
+                <div class="gray">x Sites | x Users</div>                 
             </div>
             <!--<div *ngIf="showDetails" class="siteDetails">x Sites | x Users</div>-->
         </div>

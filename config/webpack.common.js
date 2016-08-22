@@ -47,14 +47,14 @@ module.exports = {
 
             //Finds less files not named with c*omponent or *container (assumed global styles)
             {
-                test: /^((?!component|container).)*.less$/,
+                test: /^((?!component|container|list|details).)*.less$/,
                 loaders: ['style-loader', 'css-loader', 'less-loader'],
                 exclude: [/node_modules/]
             },
 
             //Finds component or container less files (assumed angular component)
             {
-                test: /(component|container)\.less$/,
+                test: /(component|container|list|details)\.less$/,
                 loaders: ['to-string-loader', 'css-loader', 'less-loader'],
                 exclude: [/node_modules/]
             }

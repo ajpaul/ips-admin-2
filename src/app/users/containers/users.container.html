@@ -1,35 +1,56 @@
 <div class="usersParent">
 
-
-
     <div class="panelLeft">
 
-        <ui-breadcrumb [navHeader]="navHeader"></ui-breadcrumb>
+        <header>
+            <nav class="panelLeftNavTabs">
+                <li class="liFlex"><a>All</a></li>
+                <li class="liFlex"><a>Favs</a></li>
+            </nav>
+        </header>
 
-        <app-login></app-login>
-
-        <ui-filter [values]="filterValues" [(value)]="value"></ui-filter>
-
-        <ui-button>+ New User</ui-button>
-
-        <div id="lights">
-            <div class="tableHeader">
-                <div class="big text">Name</div>
-                <div class="small text">Aperture Dimensions</div>
-                <div class="small text">Exterior Dimensions</div>
+            <div class="filterSection">
+                <img src="../assets/search.svg" alt="Search">
+                <input type="text" placeholder="Search for site...">
             </div>
-            <div class="data">
+
+
+            <div class="dataSettings">
+                <div class="flexCheckboxHolder">
+                    <input type="checkbox"/>
+                </div>
+
+                <div class="dataButtonsHolder">
+
+                    <span class="fa-stack">
+                        <i class="fa fa-circle-thin fa-stack-2x"></i>
+                        <i class="fa fa-bookmark fa-stack-1x smallIcon"></i>
+                    </span>
+
+                    <span class="fa-stack">
+                        <i class="fa fa-circle-thin fa-stack-2x"></i>
+                        <i class="fa fa-clone fa-stack-1x smallIcon"></i>
+                    </span>
+
+                    <ui-buttonAdd></ui-buttonAdd>
+                </div>
+            </div>   
+
+            <div id="usersList">
                 <users-list [items]="users | async"
-                             (selected)="selectItem($event)"
-                             (deleted)="deleteItem($event)"></users-list>
+                                (selected)="selectItem($event)"
+                                (deleted)="deleteItem($event)"></users-list>
             </div>
-        </div>
     </div>
 
     <div class="panelRight">
         <users-detail
                 (saved)="saveItem($event)" (cancelled)="resetItem($event)"
                 [item]="selectedUser | async"></users-detail>
+
+
+
     </div>
 
 </div>
+

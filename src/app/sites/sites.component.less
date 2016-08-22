@@ -1,183 +1,31 @@
 @import '../../css/colors.less';
 @import '../../css/mixins.less';
 
-/* CLASSES */
 .sitesParent {
+    
     display: flex;
-    height: @sitesheight;
-    font-family: inherit;
+    height: @containerHeight;
 
     .panelLeft {
         width: 25%;
         background-color: @snowwhite;
         flex-shrink: 1;
-
-        .filterSection {
-
-            background-color: @lightgray;
-            width: 100%;
-            height: 40px;
-
-            input {
-                border: none;
-                height: 40px;
-                line-height: 40px;
-                width: 100%;
-                background-color: @lightgray;
-            }
-
-        }
-
-        ::-webkit-input-placeholder {
-            padding-left: 10px;
-        }
-
-        :-moz-placeholder { /* Firefox 18- */
-            padding-left: 10px;
-        }
-
-        ::-moz-placeholder {  /* Firefox 19+ */
-            padding-left: 10px; 
-        }
-
-        :-ms-input-placeholder {  
-            padding-left: 10px; 
-        }
-
-
-
-    .sitesTabs{
-
-        min-width: 215px; //for now
-        display: flex;
-        padding-right: 15px;
-
-            .liFlex {
-                flex-shrink: 1;
-                width: 27%;
-                font-size: .8em;
-                text-align: center;
-                display: inline-block;
-                list-style-type: none;
-                color: @stormyblue;
-                padding: 10px;
-                box-sizing: border-box;
-                -moz-box-sizing: border-box;
-                -webkit-box-sizing: border-box;
-                height: 35px;
-
-                a {
-                    text-decoration: none;
-
-                }
-            }
-
-            .liFlex:hover {
-                border-bottom: 3px solid @brightblue;
-            }
-
-            .liNoFlex {
-                list-style-type: none;
-                height: 26px;
-                font-size: 26px;
-                padding: 5px;
-                margin-left: 5px;
-            }
-        }
-
-        .dataSettings {
-            height: 40px;
-            display: flex;
-
-            .flexCheckboxHolder {
-
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 15%;
-            min-width: 42px;
-            flex-shrink: 1;
-
-                input[type='checkbox']{
-                    height: 16px;
-                    width: 16px;
-                    min-width: 16px;
-                    min-height: 16px;
-                    margin-right: 21px;
-                }
-            }
-
-            .dataButtonsHolder {
-                height: 40px;
-                display: flex;
-                width: 85%;
-                flex-shrink: 4;
-
-                img {
-                    height: 28px;
-                    padding: 6px 12px 6px 0;
-                }
-
-                ui-buttonAdd {
-                    margin-left: auto;
-                }
-            }
-        }
     }
 
     .panelRight {
         width: 75%;
-        flex-shrink: 1;
-
-        .rightDetails {
-            background-color: @lightgray;
-            height: 35px;
-            line-height: 35px;
-            color: @stormyblue;
-            padding-left: 10px;
-
-            ul {
-                display: inline-block;
-            }
-
-            li {
-                display: inline-block;
-                list-style-type: none;
-
-                a {
-                    color: @brightblue;
-                }
-            }
-        }
+        flex-shrink: 3;
 
         .mapHeader {
             border: 1px solid @lightgray;
             height: 120px;
             position: relative;
 
-            #mapHeaderBookmark {
-                height: 40px;
-            }
-
-            .toggleArea {
-                    float: right;
-
-                    .toggleText {
-                        color: @stormyblue;
-                        font-weight: 700;
-                        height: 34px;
-                        vertical-align: middle;
-                        padding-right: 0;
-                    }
-            }
-
             section {
                 padding: 15px;
 
-                div {
-                    display: inline-block;
-                    padding-right: 20px;
+                .bookmark {
+                    vertical-align: top;
                 }
 
                 a {
@@ -190,7 +38,7 @@
                     position: absolute;
                     top: 85px;
                     min-width: 300px;
-
+                    cursor: pointer;
 
                 li {
                     font-size: .8em;
@@ -224,20 +72,6 @@
         .floors {
             background-color: @lightgray;
             height: 20px;
-
-            .floorsHeader {
-                height: 40px;
-                background-color: @stormyblue;
-
-                .floorsHeaderValue {
-                    color: @white;
-                    display: inline-block;
-                    padding-left: 15px;
-                    vertical-align: middle;
-                    position: relative;
-                    top: 12px;
-                }
-            }
         }
 
         .inProgress {

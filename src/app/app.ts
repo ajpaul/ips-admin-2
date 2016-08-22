@@ -19,13 +19,7 @@ export { SitesFavoritesComponent } from './sites-favorites/containers/sites-favo
 export { SitesComponent } from './sites/sites.component';
 export { BlankComponent } from './blank/blank.component';
 export { UsersContainer } from './users/containers/users.container';
-export { SettingsComponent } from './settings/settings.component';
 export { LightsContainer } from './lights/containers/lights.container';
-export { APIKeysComponent } from './apiKeys/apiKeys.component';
-export { CodebooksComponent } from './codebooks/codebooks.component';
-export { DeploymentComponent } from './deployment/deployment.component';
-export { MobileConfigComponent } from './mobileConfig/mobileConfig.component';
-export { GeneralComponent } from './general/general.component';
 export { NotFoundComponent } from './notFound/notFound.component';
 export { SiteDetailContainer } from './site-detail/containers/site-detail.container';
 export { GroupSitesContainer } from './group-sites/containers/group-sites.container';
