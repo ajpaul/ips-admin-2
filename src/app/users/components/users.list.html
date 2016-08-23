@@ -1,7 +1,7 @@
 <ul class="item-list">
     <li *ngFor="let item of items" (click)="selected.emit(item)" class="bookmark">
-       <input class="list-check" type="checkbox"/>
-        <!--<i class="fa fa-square list-check"></i>-->
+       <!--<input class="list-check" type="checkbox"/>-->
+        <i class="fa fa-square list-check"></i>
         <i class="status fa fa-circle"></i>
         <div>
             <h1>{{item.displayName}}</h1>
