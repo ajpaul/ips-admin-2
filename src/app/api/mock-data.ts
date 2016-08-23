@@ -344,13 +344,13 @@ export class MockData {
           }];
       let users = [
           {
-              'displayName': 'User 1',
-              'displayEmail': 'user1@email.com',
+              'displayName': 'Daniel Bradshaw',
+              'displayEmail': 'daniel.bradshaw@acuitybrands.com',
               'bookmarked': false
           },
           {
-              'displayName': 'User 2',
-              'displayEmail': 'user2@email.com',
+              'displayName': 'Adam Paul',
+              'displayEmail': 'adam.paul@acuitybrands.com',
               'bookmarked': false
           },
           {

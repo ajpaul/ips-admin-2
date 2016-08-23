@@ -1,71 +1,47 @@
-<md-toolbar class="mainToolbar">
-    <div class="acuityButton">
-        <img id="acuity" src="../assets/acuitya.svg" alt="Acuity Brands">
-        dministration
-        <i class="fa fa-angle-down"></i>
-    </div>
+<header class="mainToolbar">
+    
+    <!-- Logo:  TODO Replace with new logo -->
+    <img src="../assets/logo.png" height="20px"/>
 
-    <!-- This fills the remaining space of the current row -->
-    <span class="fill-remaining-space"></span>
-
-    <!--<span>Something on the right</span>-->
-    <div class="userButton">
-
-        <span class="fa-stack">
+    <!-- Profile -->
+    <div class="profileBlob">
+        <span class="fa-stack fa-lg" style="font-size: 1em">
             <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
             <i class="fa fa-user fa-stack-1x"></i>
         </span>
-
-        {{user}}
-        <i class="fa fa-angle-down"></i>
+        <span class="bumpr">{{user}}</span>
+        <i class="fa fa-caret-down bumpr"></i>
     </div>
-</md-toolbar>
 
-<nav class="sideDrawer">
+</header>
 
-    <div class="sideDrawerText">MAIN</div>
-    <ul>
-        <li id="dashboard" md-list-item [routerLink]="['/']" (click)="setSelectedAnchor($event)" [ngClass]="setClasses('dashboard')">
-            <div class="iconHolder">
-                <i class="fa fa-keyboard-o fa-lg"></i>
-            <div class="iconText">Dashboard</div></div>      
-        </li>
-        <li id="sites" md-list-item [routerLink]="['/sites']" (click)="setSelectedAnchor($event)" [ngClass]="setClasses('sites')">
-            <div class="iconHolder">
-                <i class="fa fa-building-o fa-lg"></i>
-            <div class="iconText">Sites</div></div>
-        </li>
-        <li id="lights" md-list-item [routerLink]="['/lights']" (click)="setSelectedAnchor($event)" [ngClass]="setClasses('lights')">
-            <div class="iconHolder">
-                <i class="fa fa-lightbulb-o fa-lg"></i>
-            <div class="iconText">Lights</div></div>
-        </li>
-        <li id="users" md-list-item [routerLink]="['/users']" (click)="setSelectedAnchor($event)" [ngClass]="setClasses('users')">
-            <div class="iconHolder">
-                <i class="fa fa-user fa-lg"></i>
-            <div class="iconText">Users</div></div>
-        </li>
-    </ul>
+<section class="main">
 
-    <!--hidden for now-->
-    <!--<li id="settings" md-list-item [routerLink]="['/settings']" (click)="setSelectedAnchor($event)" [ngClass]="setClasses('settings')">
-    </li>-->
+    <!-- Primary Navigation -->
+    <nav class="primaryNav">
+        <h1>ADMIN</h1>
+        <ul class="nav-list">
+            <li><a routerLink="/"><i class="fa fa-sitemap"></i><span>Organizations</span></a></li>
+            <li><a routerLink="/"><i class="fa fa-support"></i><span>Super Users</span></a></li>
+        </ul>
+        <h1>MAIN</h1>
+        <ul class="nav-list">
+            <li><a routerLink="/"><i class="fa fa-bar-chart-o"></i><span>Dashboard</span></a></li>
+            <li><a routerLink="/sites" routerLinkActive="active"><i class="fa fa-building-o"></i><span>Sites</span></a></li>
+            <li><a routerLink="/lights" routerLinkActive="active"><i class="fa fa-lightbulb-o"></i><span>Lights</span></a></li>
+            <li><a routerLink="/users" routerLinkActive="active"><i class="fa fa-group"></i><span>Users</span></a></li>
+        </ul>
+        <h1>OTHER</h1>
+        <ul class="nav-list">
+            <li><a routerLink="/"><i class="fa fa-cog"></i><span>Settings</span></a></li>
+            <li><a routerLink="/"><i class="fa fa-bullhorn"></i><span>Feedback</span></a></li>
+        </ul>
+    </nav>
 
-    <div class="blueBorder"></div>
-
-    <div class="sideDrawerText">OTHER</div>
-    <ul>
-        <li id="feedback" md-list-item [ngClass]="setClasses('feedback')">
-            <div class="iconHolder">
-                <i class="fa fa-comment fa-lg"></i>
-            <div class="iconText">Feedback</div></div>
-        </li>
-    </ul>
-</nav>
-
-<div class="routerContent">
+    <!-- Main Router View -->
     <router-outlet></router-outlet>
-</div>
+
+</section>
 
 
 
