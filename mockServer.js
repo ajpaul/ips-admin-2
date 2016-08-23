@@ -7,22 +7,16 @@
  */
 var express = require('express'),
     mockApi = require('mock-json-api'),
-    fs = require('fs'),
-    http = require('http');
+    fs = require('fs');
 
 var app = express();
-
-// all environments
-app.set('port', 3080);// jshint ignore:line
 
 var mockRoutes = [];
 var mocks = fs.readdirSync(__dirname + '/mocks'); // jshint ignore:line
 
 for (var i in mocks) {
     var mock = mocks[i];
-console.log(mock);
     var template = require(__dirname + '/mocks/' + mock);// jshint ignore:line
-console.log(template);
     for (var ii in template.mocks) {
         mockRoutes.push(template.mocks[ii]);
     }
@@ -35,10 +29,7 @@ var mockapi = mockApi({
 
 app.use(mockapi.registerRoutes);
 
-///HTTP Server
-var server = http.createServer(app);
-
 //Listen via http
-server.listen(app.get('port'), function(){
-    console.log('Express server listening on port ' + app.get('port'));
+app.listen(3080, function(){
+    console.log('Express server listening on port 3080');
 });
