@@ -88,7 +88,7 @@ a { color: @anchorColor; }
     position: relative;
     height: @tabBarHeight;
     padding: 0px 10px;
-    background: @secondarySelectColor;
+    background: #fff;
     border-bottom: 1px solid @secondaryBorderColor;
     align-items: center;
 }
@@ -126,7 +126,6 @@ a { color: @anchorColor; }
     display: flex;
     align-items: center;
     padding: 0 15px;
-
     span > i {
         color: @secondaryAccentColor;
     }
@@ -148,25 +147,25 @@ a { color: @anchorColor; }
     border-bottom: 1px solid @secondaryBorderColor;
     padding: 0 40px;
     position: relative;
-    -webkit-box-shadow: 0 0px 15px -1px rgba(0,0,0,0.08);
-    box-shadow: 0 0px 15px -1px rgba(0,0,0,0.08);
+    -webkit-box-shadow: 0 2px 12px -1px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 12px -1px rgba(0,0,0,0.08);
 
     .item-marker {
         display: inline-block;
         vertical-align: top;
-        margin-top: 35px;
+        margin-top: 30px;
     }
     .item-title {
         display: inline-block;
         vertical-align: top;
         margin-left: 5px;
-        margin-top: 35px;
+        margin-top: 33px;
     }
     .item-toggle {
         display: flex;
         align-items: center;
         float: right;
-        margin-top: 35px;
+        margin-top: 33px;
     }
     h1 {
         font-size: 2.5em;
@@ -175,7 +174,7 @@ a { color: @anchorColor; }
     p {
         font-weight: 300;
         color: @tagColor;
-        margin-top: 5px;
+        margin-top: 7px;
     }
     .fa-stack {
         font-size: .6em;
@@ -231,6 +230,7 @@ a { color: @anchorColor; }
     top: @tabBarHeight + @searchBarHeight + @actionBarHeight; 
     bottom: 0px; left: 0px; right: 0px;
     overflow: auto;
+    background-color:darken(@secondaryColor, 3%);
 
     li {
         position: relative;
@@ -238,6 +238,7 @@ a { color: @anchorColor; }
         display: flex;
         align-items: center;
         border-bottom: 1px solid @secondaryBorderColor;
+        background: @secondaryColor;
 
         h1 {
             font-weight: 300;
@@ -248,7 +249,7 @@ a { color: @anchorColor; }
             display: block;
             margin-top: 3px;
             color: @tagColor;
-            font-size: .9em;
+            font-weight: 300;
             width: @listWidth - 60px;
             .truncate;
         }
@@ -257,6 +258,17 @@ a { color: @anchorColor; }
             color: @successColor; 
             width: 20px;
             display: none;
+        }
+    }
+    li.no-results {
+        margin: 20px;
+        .radius(5px);
+        border: 1px dashed @secondaryAccentColor;
+        color: @secondaryAccentColor;
+        text-align:center;
+
+        p {
+            line-height: 1.7em;
         }
     }
     li:hover {

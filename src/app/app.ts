@@ -8,7 +8,6 @@ export { Observable } from 'rxjs/Observable';
 export { AuthenticationComponent } from './authentication/authentication.component';
 //import { AuthRedirectComponent } from './authRedirect/authRedirect.component';
 export { MD_LIST_DIRECTIVES } from '@angular2-material/list/list';
-export { MdIcon, MdIconRegistry } from '@angular2-material/icon/icon';
 export { DashboardComponent } from './dashboard/dashboard.component';
 
 export { SitesAllContainer } from './sites-all/containers/sites-all.container';
