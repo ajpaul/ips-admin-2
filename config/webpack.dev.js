@@ -3,6 +3,12 @@ const webpackMerge = require('webpack-merge');
 const helpers = require('./helpers');
 
 /**
+ * Mock backend
+ */
+const mockApi = require('../mockServer.js');
+mockApi.launch(3080);
+
+/**
  * Webpack Plugins
  */
 const DefinePlugin = require('webpack/lib/DefinePlugin');
@@ -105,7 +111,10 @@ module.exports = webpackMerge(commonConfig, {
             aggregateTimeout: 300,
             poll: 1000
         },
-        outputPath: helpers.root('dist')
+        outputPath: helpers.root('dist'),
+        proxy: {
+            "*" : "http://localhost:3080" // <- backend
+        }
     },
 
     /*
