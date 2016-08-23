@@ -1,13 +1,15 @@
-import { provideRouter, RouterConfig, DashboardComponent, SitesAllContainer,
-     SitesGroupsComponent, BlankComponent, UsersContainer, SettingsComponent,
+import { Routes, RouterModule } from '@angular/router';
+
+import { DashboardComponent, SitesAllContainer,
+     SitesGroupsComponent, BlankComponent, SettingsComponent,
     LightsContainer, APIKeysComponent, CodebooksComponent, DeploymentComponent, 
     MobileConfigComponent, GeneralComponent, AuthenticationComponent, NotFoundComponent,
-    SitesComponent, SitesFavoritesComponent } from './app'
+    SitesComponent, SitesFavoritesComponent, UsersContainer } from './app';
 
 
 //BlankComponent == I haven't implemented it yet ​
 
-export const routes: RouterConfig = <RouterConfig>[
+export const routes: Routes = <Routes>[
     { path: '', component: DashboardComponent },
     { 
         path: 'sites', 
@@ -39,6 +41,4 @@ export const routes: RouterConfig = <RouterConfig>[
     { path: '**', component: NotFoundComponent } //404 support
 ];
 ​
-export const APP_ROUTER_PROVIDERS = [
-    provideRouter(routes)
-];
+export const APP_ROUTER = RouterModule.forRoot(routes, { useHash: true });

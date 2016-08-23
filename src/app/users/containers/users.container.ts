@@ -1,22 +1,18 @@
-import { Component, AuthenticationComponent, ChangeDetectionStrategy,
-    Observable, UsersList, UsersDetail,
-    IUser, UsersService, ButtonComponent, FilterComponent,
-    BreadcrumbComponent} from '../users';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
+import { IUser, UsersService } from '../users';
 
 @Component({
     selector: 'app-users',
     template: require('./users.container.html'),
-    styles: [require('./users.container.less')],
-    providers: [UsersService],
-    directives: [BreadcrumbComponent, AuthenticationComponent, UsersList, UsersDetail],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    styles: [require('./users.container.less')]
 })
 
 export class UsersContainer {
 
     users: Observable<Array<IUser>>;
     selectedUser: Observable<IUser>;
-
     navHeader: string = 'Users';
 
     constructor(private usersService: UsersService) {

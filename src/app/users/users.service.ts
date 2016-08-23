@@ -1,8 +1,11 @@
-import { Store, Observable, Injectable, Http, Headers, RequestOptions, Response, AppStore, IUser, ADD_USERS, DELETE_USER, CREATE_USER, SELECT_USER } from './users';
+import { Injectable } from '@angular/core';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
+import { AppStore } from '../app.store';
+import { IUser, ADD_USERS, DELETE_USER, CREATE_USER, SELECT_USER } from './users';
 
 const HEADER = { headers: new Headers({ 'Content-Type': 'application/json' }) };
-
-
 
 @Injectable()
 export class UsersService{

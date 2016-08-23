@@ -1,6 +1,4 @@
 import { Component, Output, Input } from "@angular/core";
-import { ROUTER_DIRECTIVES } from '@angular/router';
-import { MD_LIST_DIRECTIVES } from '@angular2-material/list/list';
 
 @Component({
     selector: 'ui-sidebar',
@@ -15,8 +13,7 @@ import { MD_LIST_DIRECTIVES } from '@angular2-material/list/list';
     </md-nav-list>
     <router-outlet></router-outlet>
     `,
-    styles: [require('./sidebar.component.less')],
-    directives: [ROUTER_DIRECTIVES, MD_LIST_DIRECTIVES]
+    styles: [require('./sidebar.component.less')]
 })
 
 //that's a crappy template. sorry

@@ -1,8 +1,5 @@
-/**
- * Created by sxd15 on 8/11/2016.
- */
-
-import { Component, Input, Output, EventEmitter, IUser } from '../users';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { IUser } from '../users';
 
 @Component({
     selector: 'users-detail',

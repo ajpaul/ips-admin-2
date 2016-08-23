@@ -20,8 +20,18 @@ module.exports = {
     },
 
     module: {
+
         loaders: [
-            { 
+            {
+                test: /\.js$/,
+                loader: 'string-replace',
+                query: {
+                    search: 'moduleId: module.id,',
+                    replace: '',
+                    flags: 'g'
+                }
+            },
+            {
                 test: /\.ts$/, 
                 loaders: ['awesome-typescript-loader','angular2-template-loader'],
                 exclude: [/\.(spec|e2e)\.ts$/, /node_modules/]
