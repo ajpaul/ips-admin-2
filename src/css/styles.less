@@ -21,13 +21,13 @@ html, body, .viewport {
     height: 100%;
     margin: 0;
     font-size: 14px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', Helvetica, sans-serif;
     overflow: hidden;
     color: @textColor;
 }
 
 h1, h2, h3, h4, h5 {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', Tahoma, sans-serif;
 }
 
 a { color: @anchorColor; }
@@ -56,13 +56,6 @@ a { color: @anchorColor; }
         -ms-flex-direction: column;
             flex-direction: column;
 }
-.main {
-    position: absolute;
-    top: @headerHeight;
-    left: 0px; 
-    bottom: 0px;
-    right: 0px; 
-}
 .bumpr { margin-left: 5px; }
 .bumpl { margin-right: 5px; }
 .fl { float: left; }
@@ -72,6 +65,13 @@ a { color: @anchorColor; }
 // ----------------------------
 // CONTAINER STYLES
 // ----------------------------
+.main {
+    position: absolute;
+    top: @headerHeight;
+    left: 0px; 
+    bottom: 0px;
+    right: 0px; 
+}
 .panel-left {
     width: @listWidth;
     background: @secondaryColor;
@@ -200,11 +200,11 @@ a { color: @anchorColor; }
 .tab-list {
     .basic-list;
     display: flex;
+    justify-content: flex-start;
     position: absolute;
     bottom: 0px;
     font-size: .9em;
-    justify-content: flex-start;
-
+    
     li {
         display: block;
         text-align: center;
@@ -223,12 +223,13 @@ a { color: @anchorColor; }
 }
 .tab-list.wide li {
     padding: 5px 25px;
-    margin-right: 15px;
+    margin-right: 10px;
 }
 .item-list {
     .basic-list;
     position:absolute;
-    top: @tabBarHeight + @searchBarHeight + @actionBarHeight; bottom: 0px; left: 0px; right: 0px;
+    top: @tabBarHeight + @searchBarHeight + @actionBarHeight; 
+    bottom: 0px; left: 0px; right: 0px;
     overflow: auto;
 
     li {
@@ -269,7 +270,6 @@ a { color: @anchorColor; }
         right: 20px;
     }
 }
-
 .list-check { margin-right: 15px; font-size: 1.2em; }
 
 
@@ -291,6 +291,9 @@ form {
         font-size: 1.15em;
     }
 }
+.form-section {
+    margin-bottom: 40px;
+}
 .form-group {
     display: flex;
     flex-direction: row;
@@ -308,9 +311,6 @@ form {
 .button-group.end {
     justify-content: flex-end;
 }
-.form-section {
-    margin-bottom: 40px;
-}
 md-input {
     flex: 1;
     margin: 10px 5px 5px 5px;
@@ -322,6 +322,10 @@ md-input {
     padding: 5px !important;
 }
 
+
+// ----------------------------
+// BUTTONS
+// ----------------------------
 .btn {
     position: relative;
     vertical-align: top;
@@ -377,21 +381,37 @@ md-input {
 /* close commented backslash hack */
 
 
-
 // ----------------------------
 // MEDIA QUERIES
 // ----------------------------
 @media screen and (max-width: @mobileWidthMax) {
     .panel-left {
-        width: @listWidthMobile;
+        width: @listWidth;
+        left: @navWidth;
     }
     .panel-right {
-        left: @navWidth + @listWidthMobile;
+        left: @navWidth + @listWidth;
     }
 }
 
 @media only screen and (min-width: @tabletWidthMin) and (max-width: @tabletWidthMax) {
+    .panel-left {
+        width: @listWidthTablet;
+        left: @navWidthTablet;
+    }
+    .panel-right {
+        left: @navWidthTablet + @listWidthTablet;
+    }
+}
 
+@media only screen and (min-width: @desktopWidthMin) {
+    .panel-left {
+        width: @listWidthDesktop;
+        left: @navWidthDesktop;
+    }
+    .panel-right {
+        left: @navWidthDesktop + @listWidthDesktop;
+    }
 }
 
 

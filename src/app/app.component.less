@@ -11,10 +11,9 @@
     color: @inverseTextColor;
     font-weight: 300;
 }
-.profileBlob {
+.profile {
     .fa-user { color: @headerColor; }
 }
-
 .primaryNav {
     position: absolute;
     top: 0px;
@@ -33,7 +32,6 @@
         padding: 20px 15px 15px 15px;
     }
 }
-
 .nav-list {
     .basic-list;
     margin-bottom: 15px;
@@ -74,10 +72,18 @@
 // **** MEDIA QUERIES ****
 @media screen and (max-width: @mobileWidthMax) {
     .primaryNav {
-        width: @listWidthMobile;
+        width: @navWidth;
     }
 }
 
 @media only screen and (min-width: @tabletWidthMin) and (max-width: @tabletWidthMax) {
+    .primaryNav {
+        width: @navWidthTablet;
+    }
+}
 
+@media only screen and (min-width: @desktopWidthMin) {
+    .primaryNav {
+        width: @navWidthDesktop;
+    }
 }

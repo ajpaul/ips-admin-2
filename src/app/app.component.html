@@ -1,10 +1,10 @@
 <header class="mainToolbar">
     
-    <!-- Logo:  TODO Replace with new logo -->
+    <!-- Logo - TODO: Replace with new logo -->
     <img src="../assets/logo.png" height="20px"/>
 
     <!-- Profile -->
-    <div class="profileBlob">
+    <div class="profile">
         <span class="fa-stack fa-lg" style="font-size: 1em">
             <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
             <i class="fa fa-user fa-stack-1x"></i>
@@ -15,15 +15,18 @@
 
 </header>
 
+<!-- Main View Area -->
 <section class="main">
 
     <!-- Primary Navigation -->
     <nav class="primaryNav">
+
         <h1>ADMIN</h1>
         <ul class="nav-list">
             <li><a routerLink="/"><i class="fa fa-sitemap"></i><span>Organizations</span></a></li>
             <li><a routerLink="/"><i class="fa fa-support"></i><span>Super Users</span></a></li>
         </ul>
+
         <h1>MAIN</h1>
         <ul class="nav-list">
             <li><a routerLink="/"><i class="fa fa-bar-chart-o"></i><span>Dashboard</span></a></li>
@@ -31,6 +34,7 @@
             <li><a routerLink="/lights" routerLinkActive="active"><i class="fa fa-lightbulb-o"></i><span>Lights</span></a></li>
             <li><a routerLink="/users" routerLinkActive="active"><i class="fa fa-group"></i><span>Users</span></a></li>
         </ul>
+
         <h1>OTHER</h1>
         <ul class="nav-list">
             <li><a routerLink="/"><i class="fa fa-cog"></i><span>Settings</span></a></li>
@@ -38,7 +42,7 @@
         </ul>
     </nav>
 
-    <!-- Main Router View -->
+    <!-- Primary Router View -->
     <router-outlet></router-outlet>
 
 </section>
