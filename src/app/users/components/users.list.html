@@ -1,18 +1,11 @@
-<div class="userRow dataRow" *ngFor="let item of items" (click)="selected.emit(item)">
-   
-    <div class="listControls">
-        <input type="checkbox"/>
-        <div class="greenCircle"></div>
-    </div>
-   
-   <div class="listInfo60px">
-        <div class="blue30" (click)="selected.emit(item)">{{item.displayName}}</div>
-        <!--<div class="mdl-card__menu">
-            <button (click)="deleted.emit(item); $event.stopPropagation();"
-                    class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                <i class="material-icons">close</i>
-            </button>
-        </div>-->
-        <div class="gray">{{item.displayEmail}}</div>
-    </div>
-</div>
+<ul class="item-list">
+    <li *ngFor="let item of items" (click)="selected.emit(item)" class="bookmark">
+       <!--<input class="list-check" type="checkbox"/>-->
+        <i class="fa fa-square list-check"></i>
+        <i class="status fa fa-circle"></i>
+        <div>
+            <h1>{{item.displayName}}</h1>
+            <span>{{item.displayEmail}}</span>
+        </div>
+    </li>
+</ul>

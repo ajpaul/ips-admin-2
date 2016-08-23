@@ -1,195 +1,112 @@
 @import '../css/colors.less';
 @import '../css/mixins.less';
 
-// **** MEDIA QUERIES ****
+.main-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: @headerHeight;
+    padding: 0 25px;
+    background: @headerColor;
+    color: @inverseTextColor;
+    font-weight: 300;
+}
+.profile {
+    .fa-user { color: @headerColor; }
+}
+.primary-nav {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    width: @navWidth;
+    background: @primaryColor;
 
-@media screen and (max-width: 1024px) {
-    
-    .sideDrawer {
-      width: 55px !important;
-
-      li .iconHolder i {
-
-        width: 0 !important;
-      }
-
-      .iconText{
-        display: none !important;
-      }
+    h1 {
+        border-top: 1px solid @primarySelectColor;
+        color: @primaryAccentColor;
+        font-weight: 300;
+        font-size: .9em;
+        text-align: center;
+        padding: 20px 15px 15px 15px;
     }
+}
+.nav-list {
+    .basic-list;
+    margin-bottom: 15px;
 
-    .sideDrawerText {
-      display: none;
+    li {
+        .preventHighlight;
+        color: @inverseTextColor;
+        font-size: 1.1em;
     }
-
-  .routerContent {
-    padding-left: 55px !important;
-  }
+    a {
+        display: block;
+        padding: 15px 0;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    a.active, a.active:hover {
+        border-left: 5px solid @activeColor;
+        background: @primarySelectColor;
+    }
+    a:hover {
+        background: @primarySelectColor;
+    }
+    i {
+        width: 35px;
+        color: @inverseTextColor;
+        font-size: 1.3em;
+    }
+    span {
+        display: block;
+        margin-top: 5px;
+        text-decoration: none;
+        color: @inverseTextColor;
+        font-weight: 300;
+        font-size: .6em;
+    }
 }
 
-@media only screen and (min-width: 1025px) and (max-width: 1199px) {
 
-    .sideDrawer {
-      width: 55px !important;
+// **** MEDIA QUERIES ****
+@media screen and (max-width: @mobileWidthMax) {
+    .primary-nav {
+        width: @navWidth;
+    }
+}
 
-      li .iconHolder i {
-        width: 0 !important;
-      }
+@media only screen and (min-width: @tabletWidthMin) and (max-width: @tabletWidthMax) {
+    
+}
 
-        .iconText{
-          display: none !important;
+@media only screen and (min-width: @desktopWidthMin) {
+    .primary-nav {
+        width: @navWidthDesktop;
+
+        h1 {
+            font-size: 1.2em;
+            text-align: inherit;
         }
     }
-
-    .sideDrawerText {
-      display: none;
+    .nav-list {
+        a {
+            line-height: 50px;
+            text-align: left;
+            border-left: 5px solid @primaryColor;
+            padding: inherit;
+        }
+        a:hover {
+            border-left: 5px solid @primarySelectColor;
+        }
+        i {
+            margin-left: 15px;
+        }
+        span {
+            display: inline;
+            font-size: inherit;
+            margin-top: inherit;
+        }
     }
-
-  .routerContent {
-    padding-left: 55px !important;
-  }
 }
-
-.mainToolbar {
-
-  color: @white;
-  background: @stormyblue;
-  background:-moz-linear-gradient(left, @moonlitsky 0%, @stormyblue 100%);
-  background: -webkit-linear-gradient(left, @moonlitsky 0%, @stormyblue 100%);
-  background: linear-gradient(to right, @moonlitsky 0%, @stormyblue 100%);
-
-#acuity {
-  height: 20px;
-  margin-right: -5px;
-}
-
-.fill-remaining-space {
-// This fills the remaining space, by using flexbox. 
-flex: 1 1 auto;
-}
-
-.userButton, .acuityButton {
-  background: none;
-  color: @white;  
-  position: relative; 
-  font-family: "Roboto", Tahoma, Verdana, sans-serif;
-
-  .fa-user {
-    color: @stormyblue;
-  }
-
-  .downArrow {
-    font-size: 14px;
-    height: 18px;
-  }
-}
-
-
-  
-}
-
-.navIcon {
-  padding-right: 10px;
-}
-
-// .triangle {
-//     border-color: @asphalt;
-//     border-right-color: transparent;
-//     border-left-color: transparent;
-//     border-style: solid;
-//     border-width: 10px 10px 0 10px;
-//     height: 0;
-//     width: 0;
-//     left: 14px;
-//     position: absolute;
-// }
-
-.preventHighlight {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-}
-
-.anchor {
-// just used for selection purposes
-}
-
-.anchorClicked {
-font-weight: 700;
-border-left: 5px solid @brightblue;
-background-color: @moonlitsky;
-color: @white;
-}
-
-
-.sideDrawer {
-  font-family: 'Open Sans', sans-serif;  
-  background: @stormyblue; 
-  color: @white;
-  width: 160px;
-  position: absolute;
-  top: 64px;
-  height: @containerHeight;
-  padding-top: 0;
-
-  //no highlighty
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-
-  li {
-
-    height: 50px;
-    position: relative;
-
-    .iconHolder {
-      color: @white;
-      text-decoration: none;
-      position: relative;
-      line-height: 50px;
-      height: 50px;
-      //top: 12px;
-
-      i {
-        color: @white;
-        vertical-align: middle;
-        padding: 0 8px 0 15px;
-        width: 25px;
-      }
-
-      .iconText {
-        display: inline-block;
-        font-family: "Roboto", Tahoma, Verdana, sans-serif;
-        cursor: pointer;
-      }
-    }
-  }
-
-  .sideDrawerText {
-    color: @stormcloud;
-    font-family: "Roboto", Tahoma, Verdana, sans-serif;
-    font-weight: 700;
-    padding: 20px 0 15px 10px;
-  }
-
-  .blueBorder {
-    border-bottom: 1px solid @moonlitsky;
-  }
-
-
-}
-
-.routerContent {
-  padding-left: 160px;
-}
-
-
-

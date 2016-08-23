@@ -1,4 +1,47 @@
 // **** GLOBAL MIXINS ****
+@mobileWidthMax: 767px;
+@tabletWidthMin: 769px;
+@tabletWidthMax: 1024px;
+@desktopWidthMin: 1025px;
 
+@headerHeight: 60px;
+@navWidth: 84px;
+@navWidthTablet: 84px;
+@navWidthDesktop: 220px;
+@listWidth: 200px;
+@listWidthTablet: 250px;
+@listWidthDesktop: 340px;
+@tabBarHeight: 50px;
+@searchBarHeight: 50px;
+@actionBarHeight: 40px;
+@recentBarHeight: 30px;
+@itemHeaderHeight: 150px;
+
+//TODO:  Deprecate Calculations
 @dataHeight: calc(~'100% - 136px');
 @containerHeight: calc(~'100% - 64px');
+
+.preventHighlight {
+    //no highlighty
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+.basic-list {
+	margin-left: 0px; padding: 0; list-style: none;
+    li { margin-bottom: 0px; }
+}
+.radius(@radius: 3px) {
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
+}
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
