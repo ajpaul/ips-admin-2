@@ -5,8 +5,8 @@ const helpers = require('./helpers');
 /**
  * Mock backend
  */
-const mockApi = require('../mockServer.js');
-mockApi.launch(3080);
+// const mockApi = require('../mockServer.js');
+// mockApi.launch(3080);
 
 /**
  * Webpack Plugins
