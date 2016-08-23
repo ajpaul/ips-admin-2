@@ -6,7 +6,7 @@ import './apiKeys.component.less';
 @Component({
     selector: 'app-apiKeys',
     directives: [ButtonComponent, FilterComponent, ButtonSaveComponent],
-    templateUrl: '../src/app/apiKeys/apiKeys.component.html',
+    template: require('./apiKeys.component.html'),
     providers: [APIKeysService]
 })
 

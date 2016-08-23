@@ -2,7 +2,7 @@ import { Component, SidebarComponent }  from './settings';
 
 @Component({
     selector: 'app-settings',
-    templateUrl: '../src/app/settings/settings.component.html',
+    template: require('./settings.component.html'),
     directives: [SidebarComponent]
 })
 
