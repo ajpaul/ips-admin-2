@@ -1,7 +1,7 @@
 @import '../css/colors.less';
 @import '../css/mixins.less';
 
-.mainToolbar {
+.main-toolbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -14,21 +14,20 @@
 .profile {
     .fa-user { color: @headerColor; }
 }
-.primaryNav {
+.primary-nav {
     position: absolute;
     top: 0px;
     bottom: 0px;
     left: 0px;
     width: @navWidth;
     background: @primaryColor;
-    min-width: 170px;
 
     h1 {
-        font-family: "Roboto", sans-serif;
         border-top: 1px solid @primarySelectColor;
         color: @primaryAccentColor;
         font-weight: 300;
-        font-size: 1.2em;
+        font-size: .9em;
+        text-align: center;
         padding: 20px 15px 15px 15px;
     }
 }
@@ -42,49 +41,72 @@
         font-size: 1.1em;
     }
     a {
-      display: block;
-      height: 50px;
-      line-height: 50px;
-      text-decoration: none;
-      border-left: 5px solid @primaryColor;
-      cursor: pointer;
+        display: block;
+        padding: 15px 0;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
     }
     a.active, a.active:hover {
         border-left: 5px solid @activeColor;
         background: @primarySelectColor;
     }
     a:hover {
-        border-left: 5px solid @primarySelectColor;
         background: @primarySelectColor;
     }
     i {
         width: 35px;
         color: @inverseTextColor;
-        margin-left: 15px;
         font-size: 1.3em;
     }
     span {
+        display: block;
+        margin-top: 5px;
         text-decoration: none;
         color: @inverseTextColor;
         font-weight: 300;
+        font-size: .6em;
     }
 }
 
+
 // **** MEDIA QUERIES ****
 @media screen and (max-width: @mobileWidthMax) {
-    .primaryNav {
+    .primary-nav {
         width: @navWidth;
     }
 }
 
 @media only screen and (min-width: @tabletWidthMin) and (max-width: @tabletWidthMax) {
-    .primaryNav {
-        width: @navWidthTablet;
-    }
+    
 }
 
 @media only screen and (min-width: @desktopWidthMin) {
-    .primaryNav {
+    .primary-nav {
         width: @navWidthDesktop;
+
+        h1 {
+            font-size: 1.2em;
+            text-align: inherit;
+        }
+    }
+    .nav-list {
+        a {
+            line-height: 50px;
+            text-align: left;
+            border-left: 5px solid @primaryColor;
+            padding: inherit;
+        }
+        a:hover {
+            border-left: 5px solid @primarySelectColor;
+        }
+        i {
+            margin-left: 15px;
+        }
+        span {
+            display: inline;
+            font-size: inherit;
+            margin-top: inherit;
+        }
     }
 }

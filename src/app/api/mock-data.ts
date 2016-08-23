@@ -345,7 +345,7 @@ export class MockData {
       let users = [
           {
               'displayName': 'Daniel Bradshaw',
-              'displayEmail': 'daniel.bradshaw@acuitybrands.com',
+              'displayEmail': 'daniel.bradshawareallylongemail@acuitybrands.com',
               'bookmarked': false
           },
           {

@@ -148,8 +148,8 @@ a { color: @anchorColor; }
     border-bottom: 1px solid @secondaryBorderColor;
     padding: 0 40px;
     position: relative;
-    -webkit-box-shadow: 0 2px 10px -1px rgba(0,0,0,0.08);
-    box-shadow: 0 2px 10px -1px rgba(0,0,0,0.08);
+    -webkit-box-shadow: 0 0px 15px -1px rgba(0,0,0,0.08);
+    box-shadow: 0 0px 15px -1px rgba(0,0,0,0.08);
 
     .item-marker {
         display: inline-block;
@@ -245,13 +245,18 @@ a { color: @anchorColor; }
             padding: 0 0 3px 0;
         }
         span {
+            display: block;
+            margin-top: 3px;
             color: @tagColor;
             font-size: .9em;
+            width: @listWidth - 60px;
+            .truncate;
         }
         i.status {
             font-size:.6em; 
             color: @successColor; 
             width: 20px;
+            display: none;
         }
     }
     li:hover {
@@ -402,6 +407,13 @@ md-input {
     .panel-right {
         left: @navWidthTablet + @listWidthTablet;
     }
+    .item-list {
+        li {
+            span {
+                width: @listWidthTablet - 60px;
+            }
+        }
+    }
 }
 
 @media only screen and (min-width: @desktopWidthMin) {
@@ -411,6 +423,16 @@ md-input {
     }
     .panel-right {
         left: @navWidthDesktop + @listWidthDesktop;
+    }
+    .item-list {
+        li {
+            i.status {
+                display: inline;
+            }
+            span {
+                width: @listWidthDesktop - 85px;
+            }
+        }
     }
 }
 
