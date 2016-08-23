@@ -8,7 +8,8 @@
     "start": "webpack-dev-server --config config/webpack.dev.js --progress --watch --display-error-details --display-cached --content-base src/",
       "start:dev": "npm start -- --inline",
       "start:dev:hot": "npm run start:dev -- --hot",
-
+    "start:mockServer": "node launchMockServer.js",
+    "start:mockServer:reset": "node launchMockServer.js reset",
     "webdriver-manager": "webdriver-manager",
     "protractor": "protractor",
     "webdriver:update": "npm run webdriver-manager update",
