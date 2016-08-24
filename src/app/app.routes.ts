@@ -1,28 +1,15 @@
 import { Routes, RouterModule } from '@angular/router';
 
-import { DashboardComponent, SitesAllContainer,
-     SitesGroupsComponent, BlankComponent, SettingsComponent,
+import { DashboardComponent, BlankComponent, SettingsComponent,
     LightsContainer, APIKeysComponent, CodebooksComponent, DeploymentComponent, 
     MobileConfigComponent, GeneralComponent, AuthenticationComponent, NotFoundComponent,
-    SitesComponent, SitesFavoritesComponent, UsersContainer } from './app';
+    SitesComponent, UsersContainer } from './app';
 
 
 //BlankComponent == I haven't implemented it yet ​
 
 export const routes: Routes = <Routes>[
     { path: '', component: DashboardComponent },
-    { 
-        path: 'sites', 
-        component: SitesComponent,
-        children: [
-            { path: '', 
-              redirectTo: 'all',
-              pathMatch: 'full' 
-            },
-            { path: 'all', component: SitesAllContainer },
-            { path: 'groups', component: SitesGroupsComponent },
-            { path: 'favorites', component: SitesFavoritesComponent }
-        ] },
     { path: 'lights', component: LightsContainer },
     { path: 'users', component: UsersContainer },
     { 

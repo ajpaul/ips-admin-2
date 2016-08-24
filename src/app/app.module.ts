@@ -7,6 +7,7 @@ import { AppComponent } 	from './app.component';
 import { APP_ROUTER } from './app.routes';
 
 import { SharedModule } from './shared/shared.module';
+import { SitesModule } from './sites/sites.module';
 import { UsersModule } from './users/users.module';
 import { APIKeysComponent } from './apiKeys/apiKeys.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
@@ -19,10 +20,6 @@ import { LightsContainer } from './lights/containers/lights.container';
 import { MobileConfigComponent } from './mobileConfig/mobileConfig.component';
 import { NotFoundComponent } from './notFound/notFound.component';
 import { SettingsComponent } from './settings/settings.component';
-import { SitesAllContainer } from './sites-all/containers/sites-all.container';
-import { SitesGroupsComponent } from './sites-groups/containers/sites-groups.container';
-import { SitesFavoritesComponent } from './sites-favorites/containers/sites-favorites.container';
-import { SitesComponent } from './sites/sites.component';
 
 import { Store, provideStore } from '@ngrx/store';
 import { AppStore } from './app.store';
@@ -45,6 +42,7 @@ import { provide } from '@angular/core';
         BrowserModule,
         HttpModule,
         APP_ROUTER,
+        SitesModule,
         UsersModule,
         SharedModule
     ],
@@ -54,11 +52,7 @@ import { provide } from '@angular/core';
         DashboardComponent,
         AuthenticationComponent,
         SettingsComponent,
-        SitesComponent,
         LightsContainer,
-        SitesFavoritesComponent,
-        SitesGroupsComponent,
-        SitesAllContainer,
         BlankComponent,
         GeneralComponent,
         CodebooksComponent,

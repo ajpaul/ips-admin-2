@@ -1,12 +1,10 @@
-import {Component, ISiteGroups, SiteGroupsService, ButtonComponent, FilterComponent
-     } from '../sites-groups';
+import { Component } from '@angular/core';
+import {ISiteGroups, SiteGroupsService } from '../sites-groups';
 
 @Component({
     selector: 'app-sites-groups',
     template: require('./sites-groups.container.html'),
-    styles: [require('./sites-groups.container.less')],
-    directives: [ButtonComponent, FilterComponent],
-    providers: [SiteGroupsService]
+    styles: [require('./sites-groups.container.less')]
 })
 
 export class SitesGroupsComponent {
