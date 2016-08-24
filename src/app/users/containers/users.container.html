@@ -1,33 +1,51 @@
 <div class="usersParent">
 
-
-
-    <div class="panelLeft">
-
-        <ui-breadcrumb [navHeader]="navHeader"></ui-breadcrumb>
-
-        <app-login></app-login>
-
-        <ui-button>+ New User</ui-button>
-
-        <div id="lights">
-            <div class="tableHeader">
-                <div class="big text">Name</div>
-                <div class="small text">Aperture Dimensions</div>
-                <div class="small text">Exterior Dimensions</div>
-            </div>
-            <div class="data">
-                <users-list [items]="users | async"
-                             (selected)="selectItem($event)"
-                             (deleted)="deleteItem($event)"></users-list>
-            </div>
+    <aside class="panel-left">
+        
+        <!-- List Option Tabs -->
+        <div class="tab-bar hbox">
+            <ul class="tab-list">
+                <li class="active">All</li>
+                <li>Favs</li>
+            </ul>
         </div>
-    </div>
 
-    <div class="panelRight">
+        <!-- Search/Filter Box -->
+        <div class="search-bar">
+            <i class="fa fa-search"></i>
+            <input type="text" placeholder="Search for user..."/>
+        </div>
+
+        <!-- List Action Bar -->
+        <div class="action-bar">
+            <!--<input type="checkbox" class="list-check"/>-->
+            <i class="fa fa-square list-check"></i>
+            <span class="fa-stack fa-lg" style="font-size: 1em">
+                <i class="fa fa-circle-thin fa-stack-2x"></i>
+                <i class="fa fa-bookmark fa-stack-1x"></i>
+            </span>
+            <span class="fa-stack fa-lg bumpr" style="font-size: 1em">
+                <i class="fa fa-circle-thin fa-stack-2x"></i>
+                <i class="fa fa-link fa-stack-1x"></i>
+            </span>
+            <ui-buttonAdd></ui-buttonAdd>
+        </div>
+
+        <!-- Users List -->
+        <users-list [items]="users | async"
+                    (selected)="selectItem($event)"
+                    (deleted)="deleteItem($event)"></users-list>
+
+    </aside>
+
+    <section class="panel-right">
+
+        <!-- Selected Item Details -->
         <users-detail
                 (saved)="saveItem($event)" (cancelled)="resetItem($event)"
                 [item]="selectedUser | async"></users-detail>
-    </div>
+
+    </section>
 
 </div>
+

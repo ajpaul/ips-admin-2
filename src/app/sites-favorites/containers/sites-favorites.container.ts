@@ -12,10 +12,10 @@ export class SitesFavoritesComponent {
     siteFavs: ISiteFavorites[];
     errorMessage: string;
 
-    constructor(private _siteGroupsService: SiteFavoritesService) {}
+    constructor(private siteGroupsService: SiteFavoritesService) {}
 
     ngOnInit() {
-        this._siteGroupsService.getSiteFavorites().subscribe(
+        this.siteGroupsService.getSiteFavorites().subscribe(
                 siteFavs => this.siteFavs = siteFavs,
                 error =>  this.errorMessage = <any>error);
     }

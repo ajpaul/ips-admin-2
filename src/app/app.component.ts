@@ -10,22 +10,6 @@ import '../css/styles.less';
 })
 
 export class AppComponent {
-
     //text decoration values for sublist anchors
-    clicked: string = null;
-    private selectedAnchorId: string;
-    user: string = "Adam"; //this will later be replaced with dynamic user profile info
-
-    setSelectedAnchor(e): void {
-
-      this.selectedAnchorId = e.currentTarget.id;
-    }
-
-    setClasses(elementId: string) {
-
-        return {
-            anchor: true,
-            anchorClicked: this.selectedAnchorId === elementId
-        }
-    }
+    user: string = "adam.paul@acuitybrands.com"; //this will later be replaced with dynamic user profile info
 }

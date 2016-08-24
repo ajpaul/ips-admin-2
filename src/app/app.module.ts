@@ -9,29 +9,24 @@ import { APP_ROUTER } from './app.routes';
 import { SharedModule } from './shared/shared.module';
 import { SitesModule } from './sites/sites.module';
 import { UsersModule } from './users/users.module';
-import { APIKeysComponent } from './apiKeys/apiKeys.component';
-import { AuthenticationComponent } from './authentication/authentication.component';
-import { BlankComponent } from './blank/blank.component';
-import { CodebooksComponent } from './codebooks/codebooks.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { DeploymentComponent } from './deployment/deployment.component';
-import { GeneralComponent } from './general/general.component';
-import { LightsContainer } from './lights/containers/lights.container';
-import { MobileConfigComponent } from './mobileConfig/mobileConfig.component';
-import { NotFoundComponent } from './notFound/notFound.component';
-import { SettingsComponent } from './settings/settings.component';
+
+import {
+    AuthenticationComponent,
+    BlankComponent,
+    DashboardComponent,
+    GroupDetails,
+    GroupSitesComponent,
+    GroupSitesContainer,
+    LightsContainer,
+    NotFoundComponent,
+    SiteDetailContainer,
+    SitesGroupsComponent} from './app';
 
 import { Store, provideStore } from '@ngrx/store';
 import { AppStore } from './app.store';
 import { Observable } from 'rxjs/Observable';
 import { LightsReducer } from './lights/lights';
 import { UsersReducer, SelectedUserReducer } from './users/users';
-
-
-// Imports for loading & configuring the in-memory web api for mock http server and mock data
-import { XHRBackend } from '@angular/http';
-import { InMemoryBackendService, SEED_DATA }  from 'angular2-in-memory-web-api';
-import { MockData }   from './api/mock-data';
 
 //usual imports
 import { provide } from '@angular/core';
@@ -48,23 +43,21 @@ import { provide } from '@angular/core';
     ],
     declarations: [
         AppComponent,
+        GroupDetails,
+        GroupSitesContainer,
+        GroupSitesComponent,
+        SiteDetailContainer,
         NotFoundComponent,
         DashboardComponent,
         AuthenticationComponent,
-        SettingsComponent,
         LightsContainer,
-        BlankComponent,
-        GeneralComponent,
-        CodebooksComponent,
-        MobileConfigComponent,
-        APIKeysComponent,
-        DeploymentComponent
+        BlankComponent
     ],
-    bootstrap: [AppComponent],
+    bootstrap: [
+        AppComponent
+    ],
     providers: [
         provideStore({ LightsReducer, UsersReducer, SelectedUserReducer }), //add a store
-        { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem mock http server
-        { provide: SEED_DATA,  useClass: MockData }                // in-mem mock server data
     ]
 })
 export class AppModule {}

@@ -13,7 +13,6 @@ export class UsersContainer {
 
     users: Observable<Array<IUser>>;
     selectedUser: Observable<IUser>;
-    navHeader: string = 'Users';
 
     constructor(private usersService: UsersService) {
 

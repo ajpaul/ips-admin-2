@@ -3,7 +3,7 @@ import {
     inject
 } from '@angular/core/testing';
 
-import { UsersDetail } from './users.detail';
+import { UsersDetail } from './users.details';
 
 describe('UsersDetail::', () => {
 

@@ -7,7 +7,7 @@ import { ISite } from '../sites-all/sites-all.interface';
 export class AllSitesService{
     constructor(private http : Http){}
 
-    siteUrl: string = 'localhost:8080/sites';
+    siteUrl: string = 'http://localhost:8080/sites';
 
     getSites(): Observable<ISite[]> {
         return this.http.get(this.siteUrl)

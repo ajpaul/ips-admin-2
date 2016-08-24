@@ -3,15 +3,20 @@
     <div class="panelLeft">
         
         <header>
-            <nav class="sitesTabs">
+            <nav class="panelLeftNavTabs">
                 <li class="liFlex" [routerLink]="['all']"><a>All</a></li>
                 <li class="liFlex" [routerLink]="['groups']"><a>Group</a></li>
                 <li class="liFlex" [routerLink]="['favorites']"><a>Favs</a></li>
-                <li class="liNoFlex" (click)="detailsClick()"><md-icon>apps</md-icon></li>
-                <li class="liNoFlex" (click)="noDetailsClick()"><md-icon>menu</md-icon></li>
+                <div class="showDetails">
+                    <i class="fa fa-th fa-lg"></i>
+                    <i class="fa fa-bars fa-lg"></i>
+                </div>
+
             </nav>
+        </header>
 
             <div class="filterSection">
+                <img src="../assets/search.svg" alt="Search">
                 <input type="text" placeholder="Search for site...">
             </div>
 
@@ -22,8 +27,17 @@
                 </div>
 
                 <div class="dataButtonsHolder">
-                    <img src="../assets/bookmark.svg" alt="Bookmark">
-                    <img src="../assets/group.svg" alt="Group">
+                    
+                    <span class="fa-stack">
+                        <i class="fa fa-circle-thin fa-stack-2x"></i>
+                        <i class="fa fa-bookmark fa-stack-1x smallIcon"></i>
+                    </span>
+
+                    <span class="fa-stack">
+                        <i class="fa fa-circle-thin fa-stack-2x"></i>
+                        <i class="fa fa-clone fa-stack-1x smallIcon"></i>
+                    </span>
+
                     <ui-buttonAdd></ui-buttonAdd>
                 </div>
             </div>
@@ -32,7 +46,7 @@
                 <router-outlet></router-outlet>
             </main>
 
-        </header>
+        
 
         
 
@@ -40,26 +54,35 @@
 
     <div class="panelRight">
 
-            <section class="rightDetails">
+            <section class="recentSites">
                 <span>Recent Sites:</span>
                 <ul>
-                    <li><a href="#">Castle Black</a></li>
+                    <li><a href="#">Castle Black,</a></li>
                     <li><a href="#">Flea Bottom</a></li>
                 </ul>
             </section>
 
             <header class="mapHeader">
 
-                
-
                 <section>
-                    <img id="mapHeaderBookmark" src="../assets/bookmark.svg" alt="Bookmark">
+                    <span class="fa-stack fa-lg bookmark bookmarkClicked">
+                        <i class="fa fa-circle-thin fa-stack-2x"></i>
+                        <i class="fa fa-bookmark fa-stack-1x"></i>
+                    </span>
                     <div>
                         <h2>Red Keep</h2>
-                        <div>Kingsroad, Westeros</div>
+                        <i class="fa fa-map-marker"></i>
+                        <div class="gray">Kingsroad, Westeros</div>
                         <a href="#">View Site Analytics</a> 
-                    </div>                    
+                    </div>     
+
+                    <div class="detailToggleArea">
+                        <div class="toggleText">Service:</div>
+                        <ui-toggle></ui-toggle>    
+                    </div>               
                 </section>
+
+                
 
                 <nav class="mapTabs">
                     <li><a>Details</a></li>
@@ -74,8 +97,8 @@
 
   
             <div class="floors">
-                <header class="floorsHeader">
-                    <div class="floorsHeaderValue">FLOORS</div>
+                <header class="detailHeader">
+                    <div class="detailHeaderValue">FLOORS</div>
 
                     <ui-buttonAdd></ui-buttonAdd>
                 </header>

@@ -3,10 +3,10 @@
 <svg version="1.1" id="group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:none;stroke:#778D9E;stroke-linecap:round;stroke-linejoin:round;}
+	.st0{fill:none;stroke:#808080;stroke-linecap:round;stroke-linejoin:round;}
 	.st1{filter:url(#Adobe_OpacityMaskFilter);}
-	.st2{fill:#FFFFFF;}
-	.st3{mask:url(#mask-2);fill:none;stroke:#778D9E;stroke-linecap:round;stroke-linejoin:round;}
+	.st2{fill:#808080;}
+	.st3{mask:url(#mask-2);fill:none;stroke:#808080;stroke-linecap:round;stroke-linejoin:round;}
 </style>
 <polygon id="Stroke-1" class="st0" points="15.8,23.5 15.8,15.8 8.2,15.8 8.2,8.2 0.5,8.2 0.5,23.5 "/>
 <g id="Clip-4">

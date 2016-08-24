@@ -5,8 +5,10 @@
     "postinstall": "typings install",
     "build": "webpack --config config/webpack.dev",
     "start": "webpack-dev-server --config config/webpack.dev.js --progress --watch --display-error-details --display-cached --content-base src/",
-    "start:dev": "npm start -- --inline",
-    "start:dev:hot": "npm run start:dev -- --hot",
+      "start:dev": "npm start -- --inline",
+      "start:dev:hot": "npm run start:dev -- --hot",
+    "start:mockServer": "node launchMockServer.js",
+    "start:mockServer:reset": "node launchMockServer.js reset",
     "webdriver-manager": "webdriver-manager",
     "protractor": "protractor",
     "webdriver:update": "npm run webdriver-manager update",
@@ -31,6 +33,7 @@
     "@angular/router": "3.0.0-rc.1",
     "@angular2-material/button": "2.0.0-alpha.7",
     "@angular2-material/card": "2.0.0-alpha.7",
+    "@angular2-material/checkbox": "2.0.0-alpha.7",
     "@angular2-material/core": "2.0.0-alpha.7",
     "@angular2-material/icon": "2.0.0-alpha.7",
     "@angular2-material/input": "2.0.0-alpha.7",
@@ -72,6 +75,8 @@
     "ts-node": "^0.9.3",
     "typescript": "^1.8.10",
     "webpack": "^1.13.1",
-    "webpack-merge": "^0.12.0"
+    "webpack-merge": "^0.12.0",
+    "express": "^4.14.0",
+    "mock-json-api": "^0.1.2"
   }
 }

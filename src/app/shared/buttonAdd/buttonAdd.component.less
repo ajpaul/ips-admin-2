@@ -1,19 +1,16 @@
 @import "../../../css/colors.less";
+@import "../../../css/mixins.less";
 
-.buttonAdd {
-    background-color: @moonlitsky;
-    color: @white !important;
-    height: 40px;
-    width: 40px;
-    float: right;
-    border: none;
-    font-size: 28px;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
+.add-button {
+    position: absolute;
+    top: 0px;
+    right: -1px;
+    bottom: -1px;
+    width: 50px;
+    padding: 0;
+    .radius(0px);
+    
+    i {
+        margin-right: 0px;
+    }
 }
-

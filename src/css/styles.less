@@ -1,89 +1,452 @@
-@import (inline) "normalize.css";
+@import (inline) "reset.css";
 @import "colors.less";
+@import "mixins.less";
 
-//reset stuff
+// ----------------------------
+//GLOBAL STYLES
+// ----------------------------
 * {
-  margin: 0;
-  padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+*:before,
+*:after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+html, body, .viewport {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-size: 14px;
+    font-family: 'Open Sans', Helvetica, sans-serif;
+    overflow: hidden;
+    color: @textColor;
 }
 
-//global classes
-.header {
-  color: @graytext;
+h1, h2, h3, h4, h5 {
+    font-family: 'Roboto', Tahoma, sans-serif;
 }
 
-.tableHeader {
-  background-color: @lightgray;
-  border: 1px solid @wetstone;
-  height: 30px;
-  line-height: 30px;
-  display: flex;
-  flex-wrap: nowrap;
+a { color: @anchorColor; }
 
-    .text {
-      font-weight: 700;
-      font-size: 1em;
-      color: @graytext;
-      text-align: center;
+
+// ----------------------------
+// LAYOUT HELPER STYLES
+// ----------------------------
+.hbox {
+    display: -webkit-flex;
+    display:    -moz-flex;
+    display:     -ms-flex;
+    display:         flex;
+    -webkit-flex-direction: row;
+        -moz-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+}
+.vbox {
+    display: -webkit-flex;
+    display:    -moz-flex;
+    display:     -ms-flex;
+    display:         flex;
+    -webkit-flex-direction: column;
+        -moz-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+}
+.bumpr { margin-left: 5px; }
+.bumpl { margin-right: 5px; }
+.fl { float: left; }
+.fr { float: right; }
+
+
+// ----------------------------
+// CONTAINER STYLES
+// ----------------------------
+.main {
+    position: absolute;
+    top: @headerHeight;
+    left: 0px; 
+    bottom: 0px;
+    right: 0px; 
+}
+.panel-left {
+    width: @listWidth;
+    background: @secondaryColor;
+    border-right: 1px solid @secondaryBorderColor;
+    position: absolute;
+    top: 0px; bottom: 0px; left: @navWidth;
+    display: block;
+}
+.panel-right {
+    position: absolute;
+    top: 0px; right: 0px; bottom: 0px; left: @navWidth + @listWidth;
+}
+.tab-bar {
+    position: relative;
+    height: @tabBarHeight;
+    padding: 0px 10px;
+    background: #fff;
+    border-bottom: 1px solid @secondaryBorderColor;
+    align-items: center;
+}
+.search-bar{
+    display: flex;
+    align-items: center;
+    background: @actionInputColor;
+    height: @searchBarHeight;
+    border-bottom: 1px solid @secondaryBorderColor;
+    position: relative;
+    padding: 0 15px;
+
+    i {
+        font-size: 1.3em; 
+        color: @secondaryAccentColor;
+    }
+    input {
+        height: 100%;
+        width: 100%;
+        border: 0; 
+        outline: 0;
+        background: transparent;
+        font-size: 1em;
+        padding-left: 20px;
+    }
+    input::-webkit-input-placeholder {
+        color: @secondaryAccentColor;
+        font-weight: 300;
+    }
+}
+.action-bar {
+    border-bottom: 2px solid @secondaryBorderColor;
+    height: @actionBarHeight;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    span > i {
+        color: @secondaryAccentColor;
+    }
+}
+.recent-bar {
+    height: @recentBarHeight;
+    line-height: @recentBarHeight;
+    padding: 0 15px;
+    font-size: .9em;
+    background: @secondaryColor;
+
+    span {
+        color: @secondaryAccentColor;
+    }
+}
+.item-header {
+    height: @itemHeaderHeight;
+    background: @secondarySelectColor;
+    border-bottom: 1px solid @secondaryBorderColor;
+    padding: 0 40px;
+    position: relative;
+    -webkit-box-shadow: 0 2px 12px -1px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 12px -1px rgba(0,0,0,0.08);
+
+    .item-marker {
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 30px;
+    }
+    .item-title {
+        display: inline-block;
+        vertical-align: top;
+        margin-left: 5px;
+        margin-top: 33px;
+    }
+    .item-toggle {
+        display: flex;
+        align-items: center;
+        float: right;
+        margin-top: 33px;
+    }
+    h1 {
+        font-size: 2.5em;
+        font-weight: 300;
+    }
+    p {
+        font-weight: 300;
+        color: @tagColor;
+        margin-top: 7px;
+    }
+    .fa-stack {
+        font-size: .6em;
+        color: @inactiveColor;
+    }
+    .fa-stack.active {
+        color: @warningColor;
+    }
+}
+.item-content {
+    position: absolute;
+    top: @recentBarHeight + @itemHeaderHeight; 
+    bottom: 0px; right: 0px; left: 0px;
+    padding: 40px;
+    overflow: auto;
+}
+
+
+// ----------------------------
+// LIST STYLES
+// ----------------------------
+.tab-list {
+    .basic-list;
+    display: flex;
+    justify-content: flex-start;
+    position: absolute;
+    bottom: 0px;
+    font-size: .9em;
+    
+    li {
+        display: block;
+        text-align: center;
+        padding: 5px 15px;
+        color: @tabInactiveColor;
+        cursor: pointer;
+        margin-right: 3px;
+    }
+    li.active {
+        border-bottom: 5px solid @activeColor;
+        color: @tabActiveColor;
+    }
+    li:hover {
+        color: @tabActiveColor;
+    }
+}
+.tab-list.wide li {
+    padding: 5px 25px;
+    margin-right: 10px;
+}
+.item-list {
+    .basic-list;
+    position:absolute;
+    top: @tabBarHeight + @searchBarHeight + @actionBarHeight; 
+    bottom: 0px; left: 0px; right: 0px;
+    overflow: auto;
+    background-color:darken(@secondaryColor, 3%);
+
+    li {
+        position: relative;
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid @secondaryBorderColor;
+        background: @secondaryColor;
+
+        h1 {
+            font-weight: 300;
+            font-size: 1em;
+            padding: 0 0 3px 0;
+        }
+        span {
+            display: block;
+            margin-top: 3px;
+            color: @tagColor;
+            font-weight: 300;
+            width: @listWidth - 60px;
+            .truncate;
+        }
+        i.status {
+            font-size:.6em; 
+            color: @successColor; 
+            width: 20px;
+            display: none;
+        }
+    }
+    li.no-results {
+        margin: 20px;
+        .radius(5px);
+        border: 1px dashed @secondaryAccentColor;
+        color: @secondaryAccentColor;
+        text-align:center;
+
+        p {
+            line-height: 1.7em;
+        }
+    }
+    li:hover {
+        background: @secondarySelectColor;
+        cursor: pointer;
+    }
+    li:active {
+        background: @secondarySelectColor;
+    }
+    li.bookmark:after {
+        font-family: FontAwesome;
+        content: "\f02e";
+        position:absolute;
+        color: @warningColor;
+        top: -2px;
+        right: 20px;
+    }
+}
+.list-check { margin-right: 15px; font-size: 1.2em; color: #fff; }
+
+
+// ----------------------------
+// FORMS
+// ----------------------------
+.standard-form {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+
+    h1{
+        font-family: "Roboto", sans-serif;
+        border-bottom: 1px solid @formTitleColor;
+        color: @formTitleColor;
+        padding: 10px 5px;
+        margin: 15px 0;
+        font-weight: 300;
+        font-size: 1.15em;
+    }
+}
+.form-section {
+    margin-bottom: 40px;
+}
+.form-group {
+    display: flex;
+    flex-direction: row;
+    //margin: 0 -5px;
+}
+.button-group {
+    display: flex;
+    flex-direction: row;
+    margin: 0 -5px;
+
+    button {
+        margin: 0 5px;
+    }
+}
+.button-group.end {
+    justify-content: flex-end;
+}
+md-input {
+    flex: 1;
+    margin: 10px 10px 5px 10px;
+}
+.md-input-underline {
+    border-top: 1px solid @secondaryBorderColor !important;
+}
+.md-input-element {
+    padding: 5px !important;
+}
+
+
+// ----------------------------
+// BUTTONS
+// ----------------------------
+.btn {
+    position: relative;
+    vertical-align: top;
+    padding: 15px 30px;
+    font-size: 1em;
+    color:#fff;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    border: 0;
+    cursor: pointer;
+    background: @buttonColor;
+    border-bottom: 2px solid @buttonShadowColor;
+    -webkit-box-shadow: inset 0 -2px @buttonShadowColor;
+    box-shadow: inset 0 -2px @buttonShadowColor;
+    outline: none;
+    .radius(3px);
+    
+    i {
+        color:#fff;
+        margin-right: 5px;
+    }
+}
+.btn:active, .btn.warn:active {
+    top: 1px;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+}
+.btn.warn {
+    background: @warningColor;
+    border-bottom: 2px solid @warningShadowColor;
+    -webkit-box-shadow: inset 0 -2px @warningShadowColor;
+    box-shadow: inset 0 -2px @warningShadowColor;
+}
+
+
+// ----------------------------
+// HACKS AND TRICKS
+// ----------------------------
+.cf:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.cf { display: inline-block; }
+/* start commented backslash hack \*/
+* html .cf { height: 1%; }
+.cf { display: block; }
+/* close commented backslash hack */
+
+
+// ----------------------------
+// MEDIA QUERIES
+// ----------------------------
+@media screen and (max-width: @mobileWidthMax) {
+    .panel-left {
+        width: @listWidth;
+        left: @navWidth;
+    }
+    .panel-right {
+        left: @navWidth + @listWidth;
     }
 }
 
-.big, .small {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    text-align: center;
+@media only screen and (min-width: @tabletWidthMin) and (max-width: @tabletWidthMax) {
+    .panel-left {
+        width: @listWidthTablet;
+        left: @navWidthTablet;
+    }
+    .panel-right {
+        left: @navWidthTablet + @listWidthTablet;
+    }
+    .item-list {
+        li {
+            span {
+                width: @listWidthTablet - 60px;
+            }
+        }
+    }
 }
 
-.gray {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+@media only screen and (min-width: @desktopWidthMin) {
+    .panel-left {
+        width: @listWidthDesktop;
+        left: @navWidthDesktop;
+    }
+    .panel-right {
+        left: @navWidthDesktop + @listWidthDesktop;
+    }
+    .item-list {
+        li {
+            i.status {
+                display: inline;
+            }
+            span {
+                width: @listWidthDesktop - 85px;
+            }
+        }
+    }
 }
 
-.blue {
-  color: @brightblue;
-}
 
-.dataRow {
-  background-color: @white;
-  border: 1px solid @lightgray;
-  display: flex;
-  flex-wrap: nowrap;
-}
 
-.paddingLeft160 { //it's really 160 + 15px padding all around
-  padding: 15px 15px 15px 175px;
-}
-
-.inline {
-  display: inline-block;
-}
-
-.defaultPlaceholder {
-  text-align: center;
-  margin-top: 30px;
-}
-
-//global elements
-h1 {
-  color: @stormyblue; 
-  font-size: 250%;
-}
-h2, h3 { 
-  color: @stormcloud;
-  font-weight: lighter;
-}
-body { 
-  margin: 0;
-  font-weight: 400;
-}
-body, input[text], button { 
-  color: #888; 
-}
-
-ui-buttonSave {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-}

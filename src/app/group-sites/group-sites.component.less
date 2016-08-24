@@ -1,0 +1,194 @@
+@import '../../css/colors.less';
+
+@inputgray: #b5b5b5;
+/* These should be in a stylesheet */
+@smallfont: 0.875em;
+@mediumfont: 1em;
+@largefont: 1.125em;
+/* MIXINS */
+
+.acuity-md-input {
+    /deep/ input {
+        color: @asphalt;
+    }
+    /deep/ label {
+        color: @inputgray;
+    }
+
+    /deep/ .md-input-underline {
+        color: @inputgray;
+    }
+}
+
+.acuity-md-checkbox {
+    /deep/ label {
+        color: @asphalt;
+    }
+
+    /deep/ .md-checkbox-frame {
+        border-color: @lightgray;
+    }
+}
+
+.site-checkbox /deep/ .md-checkbox-inner-container {
+    margin-right: 25px;
+}
+
+/* CLASSES */
+.siteDetailParent {
+    font-family: inherit;
+    padding-bottom: 50px;
+    font-weight: normal;
+}
+
+.group-sites-header {
+
+    .group-sites-title {
+        background-color: @primaryColor;
+        color: white;
+        padding-left: 35px;
+        line-height: 50px;
+        width: 100%;
+        font-size: @largefont;
+    }
+}
+
+.site-search-container {
+    background-color: #f3f3f3;
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    padding-left: 15px;
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #f3f3f3;      
+
+
+    .site-search-icon {
+        width: 25px;
+
+        .material-icons {
+            line-height: 40px;
+        }
+    }
+    .site-search-title {
+        color: @inputgray;
+        line-height: 40px;
+        padding-left: 5px;
+        width: calc(~"100% - 70px");
+    }
+
+    .site-search-add {
+        background-color: #e6e6e6;
+        color: #ccc;
+        text-align: center;
+        height: 40px;
+        width: 40px;
+        .material-icons { 
+            line-height: 40px;
+            font-size: 30px;
+            width: 40px;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.group-sites-container {
+
+    .group-sites-table-header {
+        display: flex;
+        flex-direction: row;
+        border-bottom: 1px solid #e5e5e5;
+        border-top: 1px solid #f3f3f3;        
+        height: 45px;
+        line-height: 45px;
+        border-bottom: 1px solid #e5e5e5;
+
+        .md-icon-circle-container {
+            margin-top: 4px;
+        }
+
+        .header-filter {
+            margin-top: 6px;
+            .header-filter-input {
+                padding: 2px 2px 2px 10px;
+                border: 1px solid @inputgray;
+                border-radius: 4px;
+                height: 30px;
+                color: @inputgray;
+                font-weight: 300;
+                width: 250px;
+                font-size: @smallfont;
+            }
+        }        
+    }
+
+    .header-checkbox-column {
+        width: 30px;
+    }
+
+    .checkbox-container {
+        padding-top: 10px;
+    }
+
+    .checkbox-column {
+        width: calc(~"100% - 70px");
+    }
+
+    .delete-column {
+        width: 70px;
+        .md-icon-circle-container {
+            margin-top: 6px;
+        }
+    }
+
+    .group-sites-row {
+        border-bottom: 1px solid #e5e5e5;
+        border-top: 1px solid #f3f3f3;
+        color: @asphalt;
+        display: flex;
+        line-height: 50px;
+        height: 50px;
+        font-size: @mediumfont;
+        font-weight: normal;
+        &:nth-child(odd) {
+            background-color: #fcfcfc;
+        }
+    }
+
+    .group-sites-row-last {
+        border-top: 1px solid #f3f3f3;
+        line-height: 1px;
+        height: 1px;        
+    }
+
+    .group-sites-row-item, .group-sites-header-row-item {
+        padding-left: 15px;
+    }
+
+    .master-site-checkbox {
+        .acuity-md-checkbox;
+    }
+
+    .site-checkbox {
+        .acuity-md-checkbox;
+    }    
+
+}
+
+.md-icon-circle-container {
+    border: 2px solid @inputgray;
+    color: @inputgray;
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+    text-align: center;
+    .material-icons {
+        line-height: 32px;
+    } 
+}
+
+.material-icons {
+    cursor: pointer;
+}

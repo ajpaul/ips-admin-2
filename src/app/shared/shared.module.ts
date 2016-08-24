@@ -5,19 +5,16 @@ import { RouterModule } from '@angular/router';
 
 import { MdButtonModule } from '@angular2-material/button';
 import { MdCardModule } from '@angular2-material/card/card';
+import { MdCheckboxModule } from '@angular2-material/checkbox/checkbox';
 import { MdIconModule } from '@angular2-material/icon/icon';
 import { MdInputModule } from '@angular2-material/input/input';
 import { MdListModule  } from '@angular2-material/list/list';
 import { MdToolbarModule } from '@angular2-material/toolbar/toolbar';
 
-import { BreadcrumbComponent } from './breadcrumbs/breadcrumbs.component';
 import { ButtonComponent } from './button/button.component';
 import { ButtonAddComponent } from './buttonAdd/buttonAdd.component';
-import { ButtonSaveComponent } from './buttonSave/buttonSave.component';
-import { Dropdown } from './dropdown/dropdown.component';
-import { FilterComponent } from './filter/filter.component';
 import { MapComponent } from './map/map.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { ToggleComponent } from './toggle/toggle.component';
 
 
 @NgModule({
@@ -31,14 +28,10 @@ import { SidebarComponent } from './sidebar/sidebar.component';
         MdToolbarModule
     ],
     declarations: [
-        BreadcrumbComponent,
         ButtonComponent,
         ButtonAddComponent,
-        ButtonSaveComponent,
-        Dropdown,
-        FilterComponent,
         MapComponent,
-        SidebarComponent
+        ToggleComponent
     ],
     exports: [
         CommonModule,
@@ -49,14 +42,10 @@ import { SidebarComponent } from './sidebar/sidebar.component';
         MdInputModule,
         MdListModule,
         MdToolbarModule,
-        BreadcrumbComponent,
         ButtonComponent,
         ButtonAddComponent,
-        ButtonSaveComponent,
-        Dropdown,
-        FilterComponent,
         MapComponent,
-        SidebarComponent
+        ToggleComponent
     ]
 })
 export class SharedModule {}

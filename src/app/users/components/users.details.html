@@ -1,0 +1,76 @@
+
+<!-- Recents -->
+<div class="recent-bar">
+    <span class="bumpl">Recent Sites: </span>
+    <a href="#">Castle Black</a>,
+    <a href="#">Deepwood Motte</a>
+</div>
+
+
+<!-- Selected Item Header -->
+<div class="item-header">
+    <div class="item-marker">
+        <span class="fa-stack fa-lg" style="font-size: 1.5em;">
+            <i class="fa fa-circle-thin fa-stack-2x"></i>
+            <i class="fa fa-bookmark fa-stack-1x"></i>
+        </span>
+    </div>
+    <div class="item-title">
+        <h1>Daniel Bradshaw</h1>
+        <p>
+            <span><i class="fa fa-envelope" aria-hidden="true"></i> email.address@acuitybrands.com</span>
+            <!--<span class="bumpl bumpr black">&bull;</span>
+            <span><a href="#">view site analytics</a></span>-->
+        </p>
+    </div>
+    <div class="item-toggle">
+        <span class="bumpl">Active:</span>
+        <ui-toggle></ui-toggle>    
+    </div>
+    <ul class="tab-list wide">
+        <li class="active">Details</li>
+        <li>Related Sites</li>
+    </ul>
+</div>
+
+
+<!-- Selected Item Content -->
+<div class="item-content">
+
+    <!-- User Detail Form -->
+    <form class="standard-form">
+        <h1>BASIC INFORMATION</h1>
+        <div class="form-section">
+            <div class="form-group">
+                <md-input [(ngModel)]="selectedItem.displayName" name="displayName" placeholder="First Name"></md-input>
+                <md-input placeholder="Last Name"></md-input>
+            </div>
+            <div class="form-group">
+                <md-input [(ngModel)]="selectedItem.displayEmail" name="displayEmail" placeholder="Email Address"></md-input>  
+            </div>
+        </div>
+
+        <h1>CONTACT ADDRESS</h1>
+        <div class="form-section">
+            <div class="form-group">
+                <md-input name="addressLine1" placeholder="Address Line 1"></md-input>
+            </div>
+            <div class="form-group">
+                <md-input name="addressLine2" placeholder="Address Line 2"></md-input>
+            </div>
+            <div class="form-group">
+                <md-input name="city" placeholder="City"></md-input>  
+                <md-input name="state" placeholder="State"></md-input> 
+                <md-input name="zip" placeholder="Zip"></md-input> 
+            </div>
+        </div>
+
+        <div class="form-section">
+            <div class="button-group">
+                <button class="btn"><i class="fa fa-cloud-upload" aria-hidden="true"></i> Save User</button>
+                <button class="btn warn"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete User</button>
+            </div>
+        </div>
+    </form>
+
+</div>

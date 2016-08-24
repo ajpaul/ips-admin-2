@@ -10,6 +10,4 @@ export { LightsReducer, ADD_LIGHTS, DELETE_LIGHT } from './lights.reducer';
 export { LightsList } from './components/lights.list';
 export { LightsDetail } from './components/lights.detail';
 export { ButtonComponent } from '../shared/button/button.component';
-export { FilterComponent } from '../shared/filter/filter.component';
-export { BreadcrumbComponent } from '../shared/breadcrumbs/breadcrumbs.component';
 export { Observable } from 'rxjs/Observable';

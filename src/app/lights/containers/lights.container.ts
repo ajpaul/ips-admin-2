@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy,
     Observable, Store, LightsList, LightsDetail,
-    ILight, LightsService, ButtonComponent, FilterComponent,
-    BreadcrumbComponent, AppStore} from '../lights';
+    ILight, LightsService, ButtonComponent,
+     AppStore} from '../lights';
 
 //-------------------------------------------------------------------
 // MAIN COMPONENT
@@ -11,7 +11,7 @@ import { Component, ChangeDetectionStrategy,
     template: require('./lights.container.html'),
     styles: [require('./lights.container.less')],
     providers: [LightsService],
-    directives: [ButtonComponent, FilterComponent, BreadcrumbComponent, LightsList, LightsDetail],
+    directives: [ButtonComponent, LightsList, LightsDetail],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 
@@ -20,7 +20,6 @@ export class LightsContainer {
     lights: Observable<Array<ILight>>;
     selectedLight: Observable<ILight>;
 
-    navHeader: string = 'Lights';
     columns = ['Name'];
     filterValues = ['Filter', 'By', 'A', 'Different', 'Value'];
     errorMessage: string;

@@ -1,9 +1,17 @@
-<div class="dataRow" *ngFor="let item of items" (click)="selected.emit(item)">
-    <div class="big blue" (click)="selected.emit(item)">{{item.displayName}}</div>
-    <div class="mdl-card__menu">
-        <button (click)="deleted.emit(item); $event.stopPropagation();"
-                class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-            <i class="material-icons">close</i>
-        </button>
-    </div>
-</div>
+<ul class="item-list">
+    <li *ngFor="let item of items" (click)="selected.emit(item)" class="bookmark">
+       <!--<input class="list-check" type="checkbox"/>-->
+        <i class="fa fa-square list-check"></i>
+        <i class="status fa fa-circle"></i>
+        <div>
+            <h1>{{item.displayName}}</h1>
+            <span>{{item.displayEmail}}</span>
+        </div>
+    </li>
+    <li class="no-results">
+        <p>
+            Oops, there's no users available right now <i class="fa fa-frown-o" aria-hidden="true"></i>.  
+            No worries, go ahead and <a href="#">create one now.</a>
+        </p>
+    </li>
+</ul>
