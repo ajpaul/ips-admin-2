@@ -15,6 +15,7 @@ import { LoadingListComponent } from '../../shared/loading-list/loading-list.com
 })
 export class UsersList {
     @Input() items: IUser[];
+    @Input() isLoading: boolean;
     @Output() selected = new EventEmitter();
     @Output() deleted = new EventEmitter();
 }
