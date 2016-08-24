@@ -39,6 +39,8 @@
                     (selected)="selectItem($event)"
                     (deleted)="deleteItem($event)"></users-list>
 
+        <app-loading-list [hidden]="!isLoading"></app-loading-list>    
+
     </aside>
 
     <section class="panel-right">

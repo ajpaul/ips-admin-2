@@ -7,6 +7,8 @@ export const CREATE_USER = 'CREATE_USER';
 export const ADD_ERROR = 'ADD_ERROR';
 export const REMOVE_ERROR = 'REMOVE_ERROR';
 export const SELECT_USER = 'SELECT_USER';
+export const REQUEST_USER = 'REQUEST_USER';
+export const RECEIVE_USER = 'RECEIVE_USER';
 
 export const UsersReducer = (state: any = [], {type, payload}) => {
     switch (type) {
@@ -44,6 +46,17 @@ export const SelectedUserReducer = (state: any = null, {type, payload}) => {
     switch (type) {
         case SELECT_USER:
             return payload;
+        default:
+            return state;
+    }
+};
+
+export const LoadingUserReducer = (state: boolean = false, {type, payload}) => {
+    switch (type) {
+        case REQUEST_USER:
+            return true;
+        case RECEIVE_USER:
+            return false;
         default:
             return state;
     }

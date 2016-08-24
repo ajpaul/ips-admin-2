@@ -1,4 +1,4 @@
-import { UsersReducer, SelectedUserReducer } from './users';
+import { UsersReducer, SelectedUserReducer, LoadingUserReducer } from './users';
 
 describe('UsersReducer::', ()=> {
 
@@ -20,9 +20,26 @@ describe('UsersReducer::', ()=> {
 
 });
 
-describe('UsersReducer::', ()=> {
+describe('SelectedUserReducer::', ()=> {
     it('returns the payload', ()=>{
         let defaultState = SelectedUserReducer(undefined, {type: 'SELECT_USER', payload: {}});
         expect(defaultState).toEqual({});
     });
+});
+
+describe('LoadingUserReducer::', ()=> {
+    it('returns false by default', ()=>{
+        let defaultState = LoadingUserReducer(undefined, {type: 'random', payload: null });
+        expect(defaultState).toEqual(false);
+    });
+
+    it('REQUEST_USER changes store to true', ()=>{
+        let loadingItem = LoadingUserReducer(undefined, {type: 'REQUEST_USER', payload: null });
+        expect(loadingItem).toEqual(true);
+    });
+
+    it('RECEIVE_USER changes store to false', ()=>{
+        let loadingItem = LoadingUserReducer(undefined, {type: 'RECEIVE_USER', payload: null });
+        expect(loadingItem).toEqual(false);
+    });        
 });
