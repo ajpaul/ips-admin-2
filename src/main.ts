@@ -9,6 +9,7 @@ import { provideStore }	 	from '@ngrx/store';
 import { AppComponent } 	from './app/app.component';
 import { LightsReducer } from './app/lights/lights';
 import { UsersReducer, SelectedUserReducer } from './app/users/users';
+import { ConfigService } from './app/shared/config/config';
 
 export function main(): Promise<any> {
 
@@ -18,7 +19,8 @@ export function main(): Promise<any> {
 		provideStore({ LightsReducer, UsersReducer, SelectedUserReducer }), //add a store
 		disableDeprecatedForms(),
 		provideForms(),
-		HTTP_PROVIDERS
+		HTTP_PROVIDERS,
+		ConfigService
 	])
 	.catch(err => console.error(err));
 
