@@ -7,7 +7,7 @@ const HEADER = { headers: new Headers({ 'Content-Type': 'application/json' }) };
 @Injectable()
 export class UsersService{
 
-    userUrl: string = 'localhost:8080/users';
+    userUrl: string = 'http://localhost:8080/users';
     users: Observable<Array<IUser>>;
     selectedUser: Observable<IUser>;
 
