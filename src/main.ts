@@ -8,7 +8,7 @@ import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@a
 import { provideStore }	 	from '@ngrx/store';
 import { AppComponent } 	from './app/app.component';
 import { LightsReducer } from './app/lights/lights';
-import { UsersReducer, SelectedUserReducer } from './app/users/users';
+import { UsersReducer, SelectedUserReducer, UserErrorsReducer } from './app/users/users';
 import { ConfigService } from './app/shared/config/config';
 
 export function main(): Promise<any> {
@@ -16,7 +16,7 @@ export function main(): Promise<any> {
 	return bootstrap(AppComponent, [
 		APP_ROUTER_PROVIDERS,
 		provide(LocationStrategy, {useClass: HashLocationStrategy}),
-		provideStore({ LightsReducer, UsersReducer, SelectedUserReducer }), //add a store
+		provideStore({ LightsReducer, UsersReducer, SelectedUserReducer, UserErrorsReducer }), //add a store
 		disableDeprecatedForms(),
 		provideForms(),
 		HTTP_PROVIDERS,

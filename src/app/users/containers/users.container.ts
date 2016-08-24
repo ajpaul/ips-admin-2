@@ -18,7 +18,7 @@ export class UsersContainer {
 
     users: Observable<Array<IUser>>;
     selectedUser: Observable<IUser>;
-
+    userErrors: Observable<string[]>;
     constructor(private usersService: UsersService) {
 
     }
@@ -26,7 +26,12 @@ export class UsersContainer {
     ngOnInit() {
         this.users = this.usersService.users;
         this.selectedUser = this.usersService.selectedUser;
+        this.userErrors = this.usersService.userErrors;
         this.usersService.getUsers();
+    }
+
+    onClickError(index: number) {
+        this.usersService.deleteError(index);
     }
 
     selectItem(item: IUser) {
