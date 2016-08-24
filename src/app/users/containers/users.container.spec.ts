@@ -5,10 +5,22 @@ import {
 import { provide } from '@angular/core';
 import { IUser, UsersService, UsersReducer, Observable } from '../users';
 import { UsersContainer } from './users.container';
+import { ConfigService } from '../../shared/config/config';
 import 'rxjs/add/observable/of';
 
 class MockUsersService {
-    userUrl: string = 'localhost:8080/users';
+    userUrl: string = 'http://localhost:8080/users';
+    selectedUser: Observable<IUser> = Observable.of(
+        <IUser>
+        {
+            'displayName': 'User 33',
+            'displayEmail': '',
+            'bookmarked': false
+        }
+    );
+    loadingUser: Observable<boolean> = Observable.of(false);    
+    isLoading: boolean = false;
+
     users: Observable<Array<IUser>> = Observable.of(
         [<IUser>
         {
@@ -47,6 +59,7 @@ describe('UsersContainer::', () => {
 
     beforeEach(() => {
         addProviders([
+            ConfigService,
             provide(UsersService, {useClass: MockUsersService}),
             UsersContainer
         ]);
