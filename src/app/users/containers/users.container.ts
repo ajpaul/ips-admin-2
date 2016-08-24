@@ -19,6 +19,7 @@ export class UsersContainer {
 
     users: Observable<Array<IUser>>;
     selectedUser: Observable<IUser>;
+    userErrors: Observable<string[]>;
     loadingUser: Observable<boolean>;
     isLoading: boolean;
 
@@ -29,10 +30,15 @@ export class UsersContainer {
     ngOnInit() {
         this.users = this.usersService.users;
         this.selectedUser = this.usersService.selectedUser;
+        this.userErrors = this.usersService.userErrors;
         this.loadingUser = this.usersService.loadingUser;
         this.isLoading = false;        
         this.loadingUser.subscribe( isLoading => this.isLoading = isLoading );
         this.usersService.getUsers();
+    }
+
+    onClickError(index: number) {
+        this.usersService.deleteError(index);
     }
 
     selectItem(item: IUser) {
