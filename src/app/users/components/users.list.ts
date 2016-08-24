@@ -3,7 +3,7 @@
  */
 
 import { Component, Input, Output, EventEmitter, IUser } from '../users';
-
+import { LoadingListComponent } from '../../shared/loading-list/loading-list.component';
 //-------------------------------------------------------------------
 // LIGHTS-LIST
 //-------------------------------------------------------------------
@@ -11,6 +11,7 @@ import { Component, Input, Output, EventEmitter, IUser } from '../users';
     selector: 'users-list',
     styles: [require('./users.list.less')],
     template: require('./users.list.html'),
+    directives: [LoadingListComponent]
 })
 export class UsersList {
     @Input() items: IUser[];

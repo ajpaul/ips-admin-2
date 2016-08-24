@@ -1,7 +1,9 @@
 import { Component, ChangeDetectionStrategy,
-    Observable, UsersList, UsersDetail,
-    IUser, UsersService, ButtonComponent, ButtonAddComponent
+    Observable,
+    IUser, UsersService, UsersDetail, UsersList
     } from '../users';
+
+import { ButtonAddComponent } from '../../shared/buttonAdd/buttonAdd.component';
 
 @Component({
     selector: 'app-users',
