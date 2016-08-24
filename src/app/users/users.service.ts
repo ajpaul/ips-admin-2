@@ -1,4 +1,4 @@
-import { Store, Observable, Injectable, Inject, Http, Headers, RequestOptions, Response, AppStore, IUser, ADD_USERS, DELETE_USER, CREATE_USER, SELECT_USER } from './users';
+import { Store, Observable, Injectable, Http, Headers, RequestOptions, Response, AppStore, IUser, ADD_USERS, DELETE_USER, CREATE_USER, SELECT_USER } from './users';
 import { ConfigService } from '../shared/config/config';
 
 const HEADER = { headers: new Headers({ 'Content-Type': 'application/json' }) };
