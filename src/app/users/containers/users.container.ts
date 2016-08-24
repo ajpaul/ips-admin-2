@@ -1,15 +1,12 @@
-import { Component, ChangeDetectionStrategy,
-    Observable, UsersList, UsersDetail,
-    IUser, UsersService, ButtonComponent, ButtonAddComponent
-    } from '../users';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
+import { IUser, UsersService } from '../users';
 
 @Component({
     selector: 'app-users',
     template: require('./users.container.html'),
-    styles: [require('./users.container.less')],
-    providers: [UsersService],
-    directives: [UsersList, UsersDetail, ButtonAddComponent],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    styles: [require('./users.container.less')]
 })
 
 export class UsersContainer {

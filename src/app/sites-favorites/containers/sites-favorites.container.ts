@@ -1,11 +1,10 @@
-import {Component, ISiteFavorites, SiteFavoritesService, ButtonComponent } from '../sites-favorites';
+import { Component } from '@angular/core';
+import { ISiteFavorites, SiteFavoritesService } from '../sites-favorites';
 
 @Component({
     selector: 'app-sites-groups',
     template: require('./sites-favorites.container.html'),
-    styles: [require('./sites-favorites.container.less')],
-    directives: [ButtonComponent],
-    providers: [SiteFavoritesService]
+    styles: [require('./sites-favorites.container.less')]
 })
 
 export class SitesFavoritesComponent {

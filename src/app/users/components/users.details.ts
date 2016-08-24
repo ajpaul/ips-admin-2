@@ -1,18 +1,11 @@
-/**
- * Created by sxd15 on 8/11/2016.
- */
-
-import { Component, Input, Output, EventEmitter, IUser } from '../users';
-
-//this import will fail if not explicit
-import { ToggleComponent } from '../../shared/toggle/toggle.component';
-import { MD_INPUT_DIRECTIVES } from '@angular2-material/input/input';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { IUser } from '../users';
 
 @Component({
     selector: 'users-detail',
     template: require('./users.details.html'),
-    styles: [require('./users.details.less')],
-    directives: [ToggleComponent, MD_INPUT_DIRECTIVES]
+    styles: [require('./users.details.less')]
 })
 export class UsersDetail {
 

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MdButton } from '@angular2-material/button/button';
 
 @Component({
     selector: 'ui-button',
@@ -9,8 +8,7 @@ import { MdButton } from '@angular2-material/button/button';
         <ng-content></ng-content>
     </button>
     `,
-    styles: [require('./button.component.less')],
-    directives: [MdButton]
+    styles: [require('./button.component.less')]
 })
 
 export class ButtonComponent {

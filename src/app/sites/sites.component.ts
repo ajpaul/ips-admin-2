@@ -1,12 +1,9 @@
-import { Component, ButtonAddComponent, ToggleComponent,
-  SitesAllContainer, SitesGroupsComponent, ROUTER_DIRECTIVES, MapComponent } from './sites';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-sites',
     template: require('./sites.component.html'),
-    styles: [require('./sites.component.less')],
-    directives: [ButtonAddComponent, SitesAllContainer, ToggleComponent,
-                  SitesGroupsComponent, ROUTER_DIRECTIVES, MapComponent],
+    styles: [require('./sites.component.less')]
 })
 
 export class SitesComponent {

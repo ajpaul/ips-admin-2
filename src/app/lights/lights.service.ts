@@ -7,7 +7,7 @@ const HEADER = { headers: new Headers({ 'Content-Type': 'application/json' }) };
 @Injectable()
 export class LightsService{
 
-    lightsUrl: string = 'localhost:8080/lights';
+    lightsUrl: string = 'http://localhost:8080/lights';
     lights: Observable<Array<ILight>>;
 
     constructor(private http : Http, private store: Store<AppStore>) {

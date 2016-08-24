@@ -5,8 +5,6 @@ import { ISite, AllSitesService } from '../sites-all';
     selector: 'app-sites-all',
     template: require('./sites-all.container.html'),
     styles: [require('./sites-all.container.less')],
-    directives: [],
-    providers: [AllSitesService]
 })
 
 export class SitesAllContainer {

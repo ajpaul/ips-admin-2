@@ -5,7 +5,7 @@ import { SiteDetailComponent } from '../components/site-detail.component';
 // This is just a placeholder container used to pull a single site
 // from the allSitesService and pass it into the SiteDetailComponent
 @Component({
-    selector: 'app-site-detail',
+    selector: 'app-site-detail-container',
     template: '<app-site-detail *ngIf="site" [site]="site"></app-site-detail>',
     directives: [SiteDetailComponent],
     providers: [AllSitesService]
