@@ -8,12 +8,14 @@ import { InMemoryBackendService, SEED_DATA }  from 'angular2-in-memory-web-api';
 import { MockData }   from '../api/mock-data';
 
 import { IUser, UsersService, UsersReducer, SelectedUserReducer } from './users';
+import { ConfigService } from '../shared/config/config';
 import 'rxjs/add/operator/catch';
 
 describe('UsersService::InMemoryBackend::', () => {
 
     beforeEach(() => {
         addProviders([
+            ConfigService,
             UsersService,
             HTTP_PROVIDERS,
             provideStore({ UsersReducer, SelectedUserReducer }), //add a store
@@ -97,6 +99,7 @@ describe('UsersService::InMemoryBackend::', () => {
 describe('UsersService::JasmineAjax::', () => {
     beforeEach(() => {
         addProviders([
+            ConfigService,
             UsersService,
             HTTP_PROVIDERS,
             provideStore({ UsersReducer, SelectedUserReducer }), //add a store
