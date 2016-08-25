@@ -7,7 +7,6 @@ import { IUser } from '../users';
 //-------------------------------------------------------------------
 @Component({
     selector: 'users-list',
-    styles: [require('./users.list.less')],
     template: require('./users.list.html'),
 })
 export class UsersList {

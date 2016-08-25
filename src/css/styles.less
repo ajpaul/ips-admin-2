@@ -141,6 +141,16 @@ a { color: @anchorColor; }
         color: @secondaryAccentColor;
     }
 }
+.toolbar {
+    display: flex;
+    justify-content: flex-end;
+    background: @secondaryColor;
+    padding: 5px;
+    
+    button {
+        margin: 5px;
+    }
+}
 .item-header {
     height: @itemHeaderHeight;
     background: @secondarySelectColor;
@@ -346,8 +356,8 @@ md-input {
 .btn {
     position: relative;
     vertical-align: top;
-    padding: 15px 30px;
-    font-size: 1em;
+    padding: 10px 15px;
+    font-size: .9em;
     color:#fff;
     text-align: center;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
@@ -378,6 +388,36 @@ md-input {
     -webkit-box-shadow: inset 0 -2px @warningShadowColor;
     box-shadow: inset 0 -2px @warningShadowColor;
 }
+
+// ----------------------------
+// TRANSITIONS
+// ----------------------------
+.confirmation-wrapper {
+    position: relative;
+    z-index: 50; /* Fixes a GPU rendering */
+    overflow: hidden;
+    height: 0px;
+    line-height: 40px;
+    .ease(200ms);
+    background: @secondarySelectColor;
+    margin-bottom: 30px;
+}
+.confirmation-wrapper.show {
+    height: 40px;
+}
+.confirmation-wrapper > .confirmation {
+    position: absolute;
+    right: 0px;
+    z-index: 50; 
+    font-weight: 700;
+    font-size: .9em;
+    .transform(200px, 0, 0);
+    .ease(400ms);
+}
+.confirmation-wrapper.show > .confirmation {
+    .transform(-10px, 0, 0);
+}
+.confirmation-wrapper > .deleting { z-index: 100; position: absolute; .no-margin(); background: rgba(255, 255, 255, .7); text-align: center; color: white; }
 
 
 // ----------------------------
