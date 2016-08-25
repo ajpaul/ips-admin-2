@@ -38,9 +38,7 @@
         <users-list [items]="users | async"
                     [isLoading]="loadingUser | async"
                     (selected)="selectItem($event)"
-                    (deleted)="deleteItem($event)"></users-list>
-
-        <app-loading-list [hidden]="!isLoading"></app-loading-list>    
+                    (deleted)="deleteItem($event)"></users-list>   
 
     </aside>
 

@@ -1,0 +1,28 @@
+@import "../../../css/colors.less";
+
+.loading-results {
+    display: flex;
+    flex-direction: row;
+    padding: 0px;
+    height: 55px;
+    background-color: #fff;
+}
+
+.loading-results-marker {
+    background-color: @activeColor;
+    width: 25px;
+    line-height: 54px;
+    color: #fff;
+    text-align: center;
+    font-size: 1.25em;
+}
+
+.loading-results-text {
+    background-color: #fff;
+    color: @wetstone;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: calc(~"100% - 25px");
+    line-height: 1.4;
+    vertical-align: middle;
+}
