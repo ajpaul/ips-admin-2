@@ -1,13 +1,18 @@
-import { Store, Observable, Injectable, Http, Headers, RequestOptions, Response, AppStore, IUser, ADD_USERS, DELETE_USER, CREATE_USER, SELECT_USER, ADD_ERROR, REMOVE_ERROR, REQUEST_USER, RECEIVE_USER } from './users';
-import { ConfigService } from '../shared/config/config';
+import { Store, Observable, Injectable, Http, Headers, RequestOptions, Response, AppStore, IUser } from './users';
+import { ADD_USERS, DELETE_USER, CREATE_USERS, SELECT_USER, UPDATE_USERS, ADD_ERROR, REMOVE_ERROR, REQUEST_USER, RECEIVE_USER } from './users';
+import { ConfigService, Config } from '../shared/config/config';
 
 const HEADER = { headers: new Headers({ 'Content-Type': 'application/json' }) };
 
 @Injectable()
 export class UsersService{
 
-    userUrl: string;
-    userEndpoint: string = '/users';
+    singleUserUrl: string;
+    updateUsersUrl: string;
+    multipleUsersUrl: string;
+    singleUserEndpoint: string = '/api/user/${userID}';
+    updateUsersEndpoint: string = '/api/user';
+    multipleUsersEndpoint: string = '/api/user/orgID/{orgID}';
     users: Observable<Array<IUser>>;
     selectedUser: Observable<IUser>;
     userErrors: Observable<any>;
@@ -18,14 +23,20 @@ export class UsersService{
         this.selectedUser = store.select<IUser>('SelectedUserReducer');
         this.userErrors = store.select<any>('UserErrorsReducer');
         this.loadingUser = store.select<boolean>('LoadingUserReducer');
-        this.userUrl = configService.getConfig().apiRoot + this.userEndpoint;
+        this.buildUrls(configService.getConfig());
+    }
+
+    buildUrls(config: Config) {
+        this.singleUserUrl = config.apiRoot + this.singleUserEndpoint;
+        this.updateUsersUrl = config.apiRoot + this.updateUsersEndpoint;
+        this.multipleUsersUrl = config.apiRoot + this.multipleUsersEndpoint;
     }
 
     getUsers(onComplete?) {
         onComplete = onComplete || (()=>{});
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: REQUEST_USER });
-        return this.http.get(this.userUrl)
+        return this.http.get(this.multipleUsersUrl)
             .map(this.extractMultipleUsers)
             .map(payload => ({type: ADD_USERS, payload}))
             .subscribe(
@@ -43,17 +54,17 @@ export class UsersService{
             );
     }
 
-    createUser (user: IUser) {
-        let body = JSON.stringify(user);
+    createUsers (users: IUser[]) {
+        let body = JSON.stringify(users);
         let options = new RequestOptions(HEADER);
 
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: REQUEST_USER });
         //assumption here is that we get back the properly formed user from the put
         //the returned object is what will get added into the store
-        return this.http.put(this.userUrl, body, options)
-            .map(this.extractSingleUser)
-            .map(payload => ({type: CREATE_USER, payload}))
+        return this.http.put(this.updateUsersUrl, body, options)
+            .map(this.extractMultipleUsers)
+            .map(payload => ({type: CREATE_USERS, payload}))
             .subscribe(action => this.store.dispatch(action),
                 err => {
                     // dispatch action to say loading is done
@@ -65,20 +76,37 @@ export class UsersService{
                 );
     }
 
-    updateUsers (user: IUser): Observable<IUser> {
-        //TODO: Add store code
-        let body = JSON.stringify(user);
+    createUser (user: IUser) {
+        return this.createUsers([ user ]);
+    }
+
+    updateUsers (users: IUser[]) {
+        let body = JSON.stringify(users);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
 
         // dispatch an action to initiate the loading
-        // TODO Add these REQUEST_USER & RECEIVE_USER dispatch when
-        // we rewrite this method to use store
-        // this.store.dispatch({ type: REQUEST_USER });
-        return this.http.post(this.userUrl, body, options)
+        this.store.dispatch({ type: REQUEST_USER });
+        return this.http.put(this.updateUsersUrl, body, options)
             .map(this.extractMultipleUsers)
-            .catch(this.handleError);
+            .map(payload => ({type: UPDATE_USERS, payload}))
+            .subscribe(
+                action => this.store.dispatch(action),
+                err => {
+                    // dispatch action to say loading is done
+                    this.store.dispatch({ type: RECEIVE_USER });
+                    this.handleError(err)
+                },
+                () => {
+                    // dispatch action to say loading is done
+                    this.store.dispatch({ type: RECEIVE_USER });
+                }
+            );
             // this.store.dispatch({ type: RECEIVE_USER })
+    }
+
+    updateUser (user: IUser) {
+        return this.updateUsers([ user ]);
     }
 
     deleteError(index: number) {
