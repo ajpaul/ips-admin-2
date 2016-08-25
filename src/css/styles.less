@@ -261,14 +261,28 @@ a { color: @anchorColor; }
         }
     }
     li.no-results {
+        &:hover {
+            background-color: darken(@secondaryColor, 3%);
+            cursor: default;
+        }
+        display: block;
         margin: 20px;
-        .radius(5px);
-        border: 1px dashed @secondaryAccentColor;
+        background-color: darken(@secondaryColor, 3%);
+        border: none;
         color: @secondaryAccentColor;
         text-align:center;
+        h3 {
+            display: block;
+            font-size: 1.2em;
+            font-weight: lighter;
+            color: @wetstone;
+            line-height: 2.5em;
 
+        }
         p {
+            display: block;
             line-height: 1.7em;
+            text-align: left;
         }
     }
     li:hover {
