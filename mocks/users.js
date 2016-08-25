@@ -70,14 +70,15 @@ var GetResults = {
         }
     ]
 };
-mocks.push(GetResults);
+//mocks.push(GetResults);
 
 var FailResults = {
     name: 'FailResults',
-    mockRoute: 'users',
+    mockRoute: '\/api\/user\/orgID\/.*',
     testScope: 'error',
-    testScenario: 'failResults'
+    testScenario: 'failResults',
+    latency: '1000-5000', //add this line ot implement 1-5 seconds of random latency per call
 };
-//mocks.push(FailResults);
+mocks.push(FailResults);
 
 exports.mocks = mocks;

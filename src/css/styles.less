@@ -300,6 +300,40 @@ a { color: @anchorColor; }
         top: -2px;
         right: 20px;
     }
+
+    li.error-results {
+
+        display: flex;
+        flex-direction: row;
+        padding: 0px;
+        height: 55px;
+        background-color: #fff;
+        &:hover {
+            cursor: default;
+        }
+        .error-results-marker {
+            background-color: @warningColor;
+            width: 25px;
+            line-height: 54px;
+            color: #fff;
+            text-align: center;
+            font-size: 1.25em;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .error-results-text {
+            background-color: #fff;
+            color: @wetstone;
+            padding-left: 15px;
+            padding-right: 15px;
+            width: calc(~"100% - 25px");
+            line-height: 1.4;
+            vertical-align: middle;
+        }
+    }
+
 }
 .list-check { margin-right: 15px; font-size: 1.2em; color: #fff; }
 

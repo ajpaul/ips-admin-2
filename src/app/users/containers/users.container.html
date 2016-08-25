@@ -2,10 +2,6 @@
 
     <aside class="panel-left">
         <!-- List Option Tabs -->
-        <div *ngFor="let error of userErrors | async; let i = index" (click)="onClickError(i)">
-            {{ error }}
-            <span class="fa fa-hand-spock-o fa-5x"></span>
-        </div>
         <div class="tab-bar hbox">
             <ul class="tab-list">
                 <li class="active">All</li>
@@ -37,6 +33,8 @@
         <!-- Users List -->
         <users-list [items]="users | async"
                     [isLoading]="loadingUser | async"
+                    [isError]="isError"
+                    (onClearError)="onClearError()"
                     (selected)="selectItem($event)"
                     (deleted)="deleteItem($event)"></users-list>   
 

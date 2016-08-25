@@ -1,4 +1,4 @@
-import { UsersReducer, SelectedUserReducer, LoadingUserReducer, UserErrorsReducer, IUser, ADD_USERS, DELETE_USER, CREATE_USERS, UPDATE_USERS } from './users';
+import { UsersReducer, SelectedUserReducer, LoadingUserReducer, UserErrorsReducer, IUser, ADD_USERS, DELETE_USER, CREATE_USERS, UPDATE_USERS, ADD_ERROR_USERS, REMOVE_ERROR_USERS, CLEAR_ERRORS_USERS } from './users';
 
 describe('UsersReducer::', ()=> {
     var makeUser = ({ userID=0, userName='' }: { userID?: number, userName?: string }): IUser => {
@@ -108,13 +108,13 @@ describe('UserErrorsReducer::', ()=> {
         expect(defaultState).toEqual([]);
     });
 
-    it('ADD_ERROR adds error to array', ()=>{
-        let errorStore = UserErrorsReducer(undefined, {type: 'ADD_ERROR', payload: 'some error' });
+    it('ADD_ERROR_USERS adds error to array', ()=>{
+        let errorStore = UserErrorsReducer(undefined, {type: ADD_ERROR_USERS, payload: 'some error' });
         expect(errorStore).toEqual(['some error']);
     });
 
-    it('REMOVE_ERROR removes error', ()=>{
-        let errorStore = UserErrorsReducer(['some error'], {type: 'REMOVE_ERROR', payload: 0 });
+    it('REMOVE_ERROR_USERS removes error', ()=>{
+        let errorStore = UserErrorsReducer(['some error'], {type: REMOVE_ERROR_USERS, payload: 0 });
         expect(errorStore).toEqual([]);
     });        
 });

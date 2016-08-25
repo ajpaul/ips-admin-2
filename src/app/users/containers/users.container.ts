@@ -4,7 +4,8 @@ import { Component, ChangeDetectionStrategy,
     } from '../users';
 
 import { ButtonAddComponent } from '../../shared/buttonAdd/buttonAdd.component';
-
+import { OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
 @Component({
     selector: 'app-users',
     template: require('./users.container.html'),
@@ -14,30 +15,43 @@ import { ButtonAddComponent } from '../../shared/buttonAdd/buttonAdd.component';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class UsersContainer {
+export class UsersContainer implements OnInit, OnDestroy {
 
     users: Observable<Array<IUser>>;
     selectedUser: Observable<IUser>;
     userErrors: Observable<string[]>;
+    userErrorsSubscription: Subscription;
     loadingUser: Observable<boolean>;
     isLoading: boolean;
+    isError: boolean;
 
     constructor(private usersService: UsersService) {
-
+        this.isError = false;
     }
 
     ngOnInit() {
         this.users = this.usersService.users;
         this.selectedUser = this.usersService.selectedUser;
         this.userErrors = this.usersService.userErrors;
+        this.userErrorsSubscription = this.userErrors.subscribe(errors => {
+            if (errors.length > 0) {
+                this.isError = true;
+            } else {
+                this.isError = false;
+            }
+        });
         this.loadingUser = this.usersService.loadingUser;
         this.isLoading = false;        
         this.loadingUser.subscribe( isLoading => this.isLoading = isLoading );
         this.usersService.getUsers();
     }
 
-    onClickError(index: number) {
-        this.usersService.deleteError(index);
+    ngOnDestroy() {
+        this.userErrorsSubscription.unsubscribe();
+    }
+
+    onClearError() {
+        this.usersService.clearErrors();
     }
 
     selectItem(item: IUser) {

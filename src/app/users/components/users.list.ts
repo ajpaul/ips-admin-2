@@ -16,6 +16,13 @@ import { LoadingListComponent } from '../../shared/loading-list/loading-list.com
 export class UsersList {
     @Input() items: IUser[];
     @Input() isLoading: boolean;
+    @Input() isError: boolean;
+    @Output() onClearError = new EventEmitter();
     @Output() selected = new EventEmitter();
     @Output() deleted = new EventEmitter();
+
+    clearError() {
+        this.onClearError.emit({});
+    }
+
 }

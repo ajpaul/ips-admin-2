@@ -8,8 +8,9 @@ export const ADD_USERS = 'ADD_USERS';
 export const DELETE_USER = 'DELETE_USER';
 export const CREATE_USERS = 'CREATE_USERS';
 export const UPDATE_USERS = 'UPDATE_USERS';
-export const ADD_ERROR = 'ADD_ERROR';
-export const REMOVE_ERROR = 'REMOVE_ERROR';
+export const ADD_ERROR_USERS = 'ADD_ERROR_USERS';
+export const REMOVE_ERROR_USERS = 'REMOVE_ERROR_USERS';
+export const CLEAR_ERRORS_USERS = 'CLEAR_ERRORS_USERS';
 export const SELECT_USER = 'SELECT_USER';
 export const REQUEST_USER = 'REQUEST_USER';
 
@@ -42,12 +43,14 @@ export const UsersReducer = (state: IUser[] = [], {type, payload}) => {
 
 export const UserErrorsReducer = (state: string[] = [], {type, payload}) => {
     switch (type) {
-        case ADD_ERROR:
+        case ADD_ERROR_USERS:
             return [...state, payload];
-        case REMOVE_ERROR:
+        case REMOVE_ERROR_USERS:
             return state.filter((val, i) => {
                 return i !== payload;
             });
+        case CLEAR_ERRORS_USERS:
+            return [];
         default:
             return state;
     }

@@ -1,4 +1,13 @@
 <ul class="item-list">
+    <li class="error-results" *ngIf="isError === true">
+        <div class="error-results-marker" (click)="clearError()">
+            <div class="fa fa-times-circle-o"></div>
+        </div>
+        <div class="error-results-text">
+            The server didn't respond. Would you like to <a href="">Retry</a>
+            or <a href="">Report Issue</a>
+        </div>
+    </li>
     <li *ngFor="let item of items" (click)="selected.emit(item)">
        <!--<input class="list-check" type="checkbox"/>-->
         <i class="fa fa-square list-check"></i>
@@ -8,7 +17,7 @@
             <span>{{item.email}}</span>
         </div>
     </li>
-    <li class="no-results" *ngIf="isLoading === false && items.length === 0">
+    <li class="no-results" *ngIf="isError === false && isLoading === false && items.length === 0">
         <h3>No Results Found</h3>
         <p>
             Would you like to create a site with this name? <a href="#">Yes</a>

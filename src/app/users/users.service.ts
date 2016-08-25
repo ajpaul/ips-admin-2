@@ -1,5 +1,5 @@
 import { Store, Observable, Injectable, Http, Headers, RequestOptions, Response, AppStore, IUser } from './users';
-import { ADD_USERS, DELETE_USER, CREATE_USERS, SELECT_USER, UPDATE_USERS, ADD_ERROR, REMOVE_ERROR, REQUEST_USER, RECEIVE_USER } from './users';
+import { ADD_USERS, DELETE_USER, CREATE_USERS, SELECT_USER, UPDATE_USERS, ADD_ERROR_USERS, REMOVE_ERROR_USERS, REQUEST_USER, RECEIVE_USER, CLEAR_ERRORS_USERS } from './users';
 import { ConfigService, Config } from '../shared/config/config';
 
 const HEADER = { headers: new Headers({ 'Content-Type': 'application/json' }) };
@@ -13,13 +13,13 @@ export class UsersService{
     orgUsersEndpoint: string = '/api/user/orgID';
     users: Observable<Array<IUser>>;
     selectedUser: Observable<IUser>;
-    userErrors: Observable<any>;
+    userErrors: Observable<string[]>;
     loadingUser: Observable<boolean>;
 
     constructor(private http : Http, private store: Store<AppStore>,  private configService: ConfigService) {
         this.users = store.select<Array<IUser>>('UsersReducer');
         this.selectedUser = store.select<IUser>('SelectedUserReducer');
-        this.userErrors = store.select<any>('UserErrorsReducer');
+        this.userErrors = store.select<string[]>('UserErrorsReducer');
         this.loadingUser = store.select<boolean>('LoadingUserReducer');
         this.buildUrls(configService.getConfig());
     }
@@ -33,6 +33,7 @@ export class UsersService{
         onComplete = onComplete || (()=>{});
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: REQUEST_USER });
+        this.store.dispatch({ type: CLEAR_ERRORS_USERS });
         return this.http.get(this.orgUsersUrl + '/' + organization_ID.toString())
             .map(this.extractMultipleUsers)
             .map(payload => ({type: ADD_USERS, payload}))
@@ -57,6 +58,7 @@ export class UsersService{
 
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: REQUEST_USER });
+        this.store.dispatch({ type: CLEAR_ERRORS_USERS });
         //assumption here is that we get back the properly formed user from the put
         //the returned object is what will get added into the store
         return this.http.put(this.usersUrl, body, options)
@@ -84,6 +86,7 @@ export class UsersService{
 
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: REQUEST_USER });
+        this.store.dispatch({ type: CLEAR_ERRORS_USERS });
         return this.http.put(this.usersUrl, body, options)
             .map(this.extractMultipleUsers)
             .map(payload => ({type: UPDATE_USERS, payload}))
@@ -107,7 +110,11 @@ export class UsersService{
     }
 
     deleteError(index: number) {
-        this.store.dispatch({ type: REMOVE_ERROR, payload: index});
+        this.store.dispatch({ type: REMOVE_ERROR_USERS, payload: index});
+    }
+
+    clearErrors() {
+        this.store.dispatch({ type: CLEAR_ERRORS_USERS });
     }
 
     selectUser (user: IUser) {
@@ -119,6 +126,7 @@ export class UsersService{
 
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: REQUEST_USER });
+        this.store.dispatch({ type: CLEAR_ERRORS_USERS });
         return this.http.delete(this.usersUrl+'/'+user.userID, options)
             .map(this.extractSingleUser)
             .subscribe(
@@ -168,7 +176,7 @@ export class UsersService{
         let errMsg = (error.message) ? error.message :
             error.status ? `${error.status} - ${error.statusText}` : 'Server error';
         console.error(errMsg); // log to console instead
-        this.store.dispatch({ type: ADD_ERROR, payload: errMsg });
+        this.store.dispatch({ type: ADD_ERROR_USERS, payload: errMsg });
         return Observable.throw(errMsg);
     }
 }
