@@ -6,8 +6,7 @@ var mocks = [];
 
 var GetResults = {
     name: 'GetResults',
-    //mockRoute: '\/user\/orgID\/\d+', //a regex for the route, ex. '\/api\/steps\/.*\/users' is a valid route
-    mockRoute: 'users',
+    mockRoute: '\/api\/user\/orgID\/.*', //a regex for the route, ex. '\/api\/steps\/.*\/users' is a valid route
     testScope: 'success', //success=200 & a scenario response | notFound=404 | error=500 and there's many more...
     testScenario: 'multipleResults',  //change this to one of hte scenario names below and restart the mock server to get new data
     //latency: '1000-5000', //add this line ot implement 1-5 seconds of random latency per call

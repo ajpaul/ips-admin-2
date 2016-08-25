@@ -7,12 +7,10 @@ const HEADER = { headers: new Headers({ 'Content-Type': 'application/json' }) };
 @Injectable()
 export class UsersService{
 
-    singleUserUrl: string;
-    updateUsersUrl: string;
-    multipleUsersUrl: string;
-    singleUserEndpoint: string = '/api/user/${userID}';
-    updateUsersEndpoint: string = '/api/user';
-    multipleUsersEndpoint: string = '/api/user/orgID/{orgID}';
+    usersUrl: string;
+    orgUsersUrl: string;
+    usersEndpoint: string = '/api/user';
+    orgUsersEndpoint: string = '/api/user/orgID';
     users: Observable<Array<IUser>>;
     selectedUser: Observable<IUser>;
     userErrors: Observable<any>;
@@ -27,16 +25,15 @@ export class UsersService{
     }
 
     buildUrls(config: Config) {
-        this.singleUserUrl = config.apiRoot + this.singleUserEndpoint;
-        this.updateUsersUrl = config.apiRoot + this.updateUsersEndpoint;
-        this.multipleUsersUrl = config.apiRoot + this.multipleUsersEndpoint;
+        this.usersUrl = config.apiRoot + this.usersEndpoint;
+        this.orgUsersUrl = config.apiRoot + this.orgUsersEndpoint;
     }
 
-    getUsers(onComplete?) {
+    getUsers(organization_ID: number = 0, onComplete?) {
         onComplete = onComplete || (()=>{});
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: REQUEST_USER });
-        return this.http.get(this.multipleUsersUrl)
+        return this.http.get(this.orgUsersUrl + '/' + organization_ID.toString())
             .map(this.extractMultipleUsers)
             .map(payload => ({type: ADD_USERS, payload}))
             .subscribe(
@@ -62,7 +59,7 @@ export class UsersService{
         this.store.dispatch({ type: REQUEST_USER });
         //assumption here is that we get back the properly formed user from the put
         //the returned object is what will get added into the store
-        return this.http.put(this.updateUsersUrl, body, options)
+        return this.http.put(this.usersUrl, body, options)
             .map(this.extractMultipleUsers)
             .map(payload => ({type: CREATE_USERS, payload}))
             .subscribe(action => this.store.dispatch(action),
@@ -87,7 +84,7 @@ export class UsersService{
 
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: REQUEST_USER });
-        return this.http.put(this.updateUsersUrl, body, options)
+        return this.http.put(this.usersUrl, body, options)
             .map(this.extractMultipleUsers)
             .map(payload => ({type: UPDATE_USERS, payload}))
             .subscribe(
@@ -122,7 +119,7 @@ export class UsersService{
 
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: REQUEST_USER });
-        return this.http.delete(this.singleUserEndpoint+'/'+user.userID, options)
+        return this.http.delete(this.usersUrl+'/'+user.userID, options)
             .map(this.extractSingleUser)
             .subscribe(
                 action => this.store.dispatch({ type: DELETE_USER, payload: user }),
