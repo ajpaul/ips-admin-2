@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HttpModule }     from '@angular/http';
@@ -27,6 +27,7 @@ import { AppStore } from './app.store';
 import { Observable } from 'rxjs/Observable';
 import { LightsReducer } from './lights/lights';
 import { UsersReducer, SelectedUserReducer } from './users/users';
+import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
 //usual imports
 import { provide } from '@angular/core';
@@ -60,4 +61,26 @@ import { provide } from '@angular/core';
         provideStore({ LightsReducer, UsersReducer, SelectedUserReducer }), //add a store
     ]
 })
-export class AppModule {}
+export class AppModule {
+
+    constructor(public appRef: ApplicationRef) {}
+
+    hmrOnInit(store) {
+
+    }
+
+    hmrOnDestroy(store) {
+        var cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
+        // recreate elements
+        store.disposeOldHosts = createNewHosts(cmpLocation);
+        // remove styles
+        removeNgStyles();
+    }
+
+    hmrAfterDestroy(store) {
+        // display new elements
+        store.disposeOldHosts();
+        delete store.disposeOldHosts;
+    }
+    
+}
