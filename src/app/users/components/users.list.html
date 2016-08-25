@@ -1,11 +1,11 @@
 <ul class="item-list">
-    <li *ngFor="let item of items" (click)="selected.emit(item)" class="bookmark">
+    <li *ngFor="let item of items" (click)="selected.emit(item)">
        <!--<input class="list-check" type="checkbox"/>-->
         <i class="fa fa-square list-check"></i>
         <i class="status fa fa-circle"></i>
         <div>
-            <h1>{{item.displayName}}</h1>
-            <span>{{item.displayEmail}}</span>
+            <h1>{{item.givenName}} {{item.surname}}</h1>
+            <span>{{item.email}}</span>
         </div>
     </li>
     <li class="no-results">

@@ -26,11 +26,15 @@ export class UsersService{
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: REQUEST_USER });
         return this.http.get(this.userUrl)
-            .map(this.extractData)
+            .map(this.extractMultipleUsers)
             .map(payload => ({type: ADD_USERS, payload}))
             .subscribe(
                 action => this.store.dispatch(action),
-                err => this.handleError(err),
+                err => {
+                    // dispatch action to say loading is done
+                    this.store.dispatch({ type: RECEIVE_USER });
+                    this.handleError(err)
+                },
                 () => {
                     // dispatch action to say loading is done
                     this.store.dispatch({ type: RECEIVE_USER });
@@ -48,10 +52,14 @@ export class UsersService{
         //assumption here is that we get back the properly formed user from the put
         //the returned object is what will get added into the store
         return this.http.put(this.userUrl, body, options)
-            .map(this.extractData)
+            .map(this.extractSingleUser)
             .map(payload => ({type: CREATE_USER, payload}))
             .subscribe(action => this.store.dispatch(action),
-                err => this.handleError(err),
+                err => {
+                    // dispatch action to say loading is done
+                    this.store.dispatch({ type: RECEIVE_USER });                    
+                    this.handleError(err);
+                },
                 // dispatch action to say loading is done
                 () => this.store.dispatch({ type: RECEIVE_USER })
                 );
@@ -68,7 +76,7 @@ export class UsersService{
         // we rewrite this method to use store
         // this.store.dispatch({ type: REQUEST_USER });
         return this.http.post(this.userUrl, body, options)
-            .map(this.extractData)
+            .map(this.extractMultipleUsers)
             .catch(this.handleError);
             // this.store.dispatch({ type: RECEIVE_USER })
     }
@@ -86,11 +94,15 @@ export class UsersService{
 
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: REQUEST_USER });
-        return this.http.delete(this.userUrl+'/'+user.displayName, options)
-            .map(this.extractData)
+        return this.http.delete(this.userUrl+'/'+user.userID, options)
+            .map(this.extractSingleUser)
             .subscribe(
                 action => this.store.dispatch({ type: DELETE_USER, payload: user }),
-                err => this.handleError(err),
+                err => {
+                    // dispatch action to say loading is done
+                    this.store.dispatch({ type: RECEIVE_USER });                    
+                    this.handleError(err);
+                },
                 // dispatch action to say loading is done
                 () => this.store.dispatch({ type: RECEIVE_USER })                
             );
@@ -98,9 +110,14 @@ export class UsersService{
 
     resetUser () {
         let emptyUser: IUser = {
-            displayName: '',
-            displayEmail: '',
-            bookmarked: false
+            userID: null,
+            organization_ID: null,
+            tenant_ID: null,
+            userName: '',
+            email: '',
+            givenName: '',
+            surname: '',
+            active: false
         };
 
         // :: NOTE ON ABOVE EMPTY OBJECT ::
@@ -112,10 +129,16 @@ export class UsersService{
         this.selectUser(emptyUser);
     }
 
-    private extractData(res: Response) {
+    private extractMultipleUsers(res: Response) {
         let body = res.json();
-        return body ? body.data || { } : { };
+        return body ? body.result || [] : [];
     }
+
+    private extractSingleUser(res: Response) {
+        let body = res.json();
+        return body ? body || {} : {};
+    }
+
     private handleError (error: any) {
         let errMsg = (error.message) ? error.message :
             error.status ? `${error.status} - ${error.statusText}` : 'Server error';
