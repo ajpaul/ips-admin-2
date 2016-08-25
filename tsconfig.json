@@ -9,7 +9,14 @@
         "removeComments": false,
         "noImplicitAny": false
     },
+    "awesomeTypescriptLoaderOptions": {
+        "useWebpackText": true,
+        "forkChecker": true
+    },
+    "compileOnSave": false,
+    "buildOnSave": false,
     "exclude": [
+        "dist",
         "node_modules",
         "typings/index",
         "typings/index.d.ts"

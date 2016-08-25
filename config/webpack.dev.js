@@ -20,7 +20,6 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 8080;
 const HMR = helpers.hasProcessFlag('hot');
-
 const METADATA = webpackMerge(commonConfig.metadata, {
     host: HOST,
     port: PORT,
@@ -34,7 +33,9 @@ module.exports = webpackMerge(commonConfig, {
 
     debug: true,
 
-    devtool: 'eval-cheap-module-source-map',
+    devtool: 'cheap-module-source-map',
+
+    metadata: METADATA,
 
     output: {
 
@@ -59,7 +60,7 @@ module.exports = webpackMerge(commonConfig, {
          *
          * See: http://webpack.github.io/docs/configuration.html#output-sourcemapfilename
          */
-        sourceMapFilename: '[file].map',
+        sourceMapFilename: '[name].map',
 
         //devtoolModuleFilenameTemplate: '[absolute-resource-path]',
 

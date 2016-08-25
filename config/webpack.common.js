@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 const helpers = require('./helpers');
 
 module.exports = {
@@ -7,11 +8,11 @@ module.exports = {
     entry: {
         'polyfills': './src/polyfills.ts',
         'vendor': './src/vendor.ts',
-        'app': './src/main.ts'
+        'main': './src/main.ts'
     },
 
     resolve: {
-        extensions: ['', '.js', '.ts', '.less'],
+        extensions: ['', '.js', '.ts'],
 
         // Make sure root is src
         root: helpers.root('src'),
@@ -32,9 +33,13 @@ module.exports = {
                 }
             },
             {
-                test: /\.ts$/, 
-                loaders: ['awesome-typescript-loader','angular2-template-loader', '@angularclass/hmr-loader'],
-                exclude: [/\.(spec|e2e)\.ts$/, /node_modules/]
+                test: /\.ts$/,
+                loaders: [
+                    'awesome-typescript-loader',
+                    'angular2-template-loader',
+                    '@angularclass/hmr-loader'
+                ],
+                exclude: [/\.(spec|e2e)\.ts$/]
             },
             { 
                 test: /\.html$/,
@@ -51,7 +56,7 @@ module.exports = {
             // Standard [inline] CSS loader
             { 
                 test: /\.css$/, 
-                loaders: ['style-loader', 'css-loader'],
+                loaders: ['to-string-loader', 'css-loader'],
                 exclude: [/node_modules/]
             },
 
@@ -73,6 +78,14 @@ module.exports = {
     },
 
     plugins: [
+         /*
+        * Plugin: ForkCheckerPlugin
+        * Description: Do type checking in a separate process, so webpack don't need to wait.
+        *
+        * See: https://github.com/s-panferov/awesome-typescript-loader#forkchecker-boolean-defaultfalse
+        */
+        new ForkCheckerPlugin(),
+
         /*
         * Plugin: OccurenceOrderPlugin
         * Description: Varies the distribution of the ids to get the smallest id length
@@ -92,7 +105,7 @@ module.exports = {
         * See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
         */
         new webpack.optimize.CommonsChunkPlugin({
-            name: ['app', 'vendor','polyfills']
+            name: ['polyfills', 'vendor'].reverse()
         }),
 
         /*

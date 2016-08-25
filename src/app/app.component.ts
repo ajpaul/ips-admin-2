@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 //import global less file
 import '../css/styles.less';
 
 @Component({
-   selector: 'app',
+   selector: '#app',
    template: require('./app.component.html'),
    styles: [require('./app.component.less')]
 })

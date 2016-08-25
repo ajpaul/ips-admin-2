@@ -5,11 +5,11 @@
     <title>IPS Admin Tool 2.0</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <base href="/">
 
-    <!-- Angular 2 Materials icon support -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <!-- base url -->
+    <base href="<%= webpackConfig.metadata.baseUrl %>">
+
+    <!-- Icon support -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <!-- Leaflet -->
@@ -21,6 +21,6 @@
 </head>
 
 <body>
-    <app class="vbox viewport">Loading...</app>
+    <div id="app">Standby... </div>
 </body>
 </html>
