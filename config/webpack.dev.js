@@ -114,7 +114,9 @@ module.exports = webpackMerge(commonConfig, {
         },
         outputPath: helpers.root('dist'),
         proxy: {
-            "*" : "http://localhost:3080" // <- backend
+            '/api' : {
+                target: 'http://localhost:3080'
+            }
         }
     },
 
