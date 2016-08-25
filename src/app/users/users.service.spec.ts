@@ -43,9 +43,14 @@ describe('UsersService::InMemoryBackend::', () => {
                     action => {
                         expect(action.length).toBeGreaterThan(0);
                         let user: IUser = {
-                            'displayName': 'User 33',
-                            'displayEmail': '',
-                            'bookmarked': false
+                            userName: 'User 33',
+                            email: '',
+                            userID: 0,
+                            organization_ID: 0,
+                            tenant_ID: 0,
+                            givenName: 'Test GivenName',
+                            surname: 'Smith',
+                            active: true, 
                         };
                         expect(typeof action).toBe(typeof user);
                         done();
@@ -70,20 +75,25 @@ describe('UsersService::InMemoryBackend::', () => {
             beforeEach((done) => {
                 service = testService;
                 let user: IUser = {
-                    'displayName': 'User 123',
-                    'displayEmail': 'foo@bar.com',
-                    'bookmarked': false
+                    userName: 'User 33',
+                    email: '',
+                    userID: 0,
+                    organization_ID: 0,
+                    tenant_ID: 0,
+                    givenName: 'Test GivenName',
+                    surname: 'Smith',
+                    active: true, 
                 };
                 service.selectUser(user);
                 done();
             });
 
-            it('should select user 123', (done) => {
+            it('should select user 33', (done) => {
                 service.selectedUser.subscribe(
                     action => {
                         let user = <IUser>{};
                         expect(typeof action).toBe(typeof user);
-                        expect(action.displayName).toBe('User 123');
+                        expect(action.userName).toBe('User 33');
                         done();
                     },
                     err => {
@@ -135,9 +145,14 @@ describe('UsersService::JasmineAjax::', () => {
                 service.usersUrl = 'someValidUrl';
                 let spy = jasmine.createSpy('success');
                 let user: IUser = {
-                    'displayName': 'User 33',
-                    'displayEmail': '',
-                    'bookmarked': false
+                    userName: 'User 33',
+                    email: '',
+                    userID: 0,
+                    organization_ID: 0,
+                    tenant_ID: 0,
+                    givenName: 'Test GivenName',
+                    surname: 'Smith',
+                    active: true, 
                 };
                 service.deleteUser(user);
                 expect(jasmine.Ajax.requests.mostRecent().method).toBe('DELETE');
@@ -147,10 +162,15 @@ describe('UsersService::JasmineAjax::', () => {
                 service.usersUrl = 'someValidUrl';
                 let spy = jasmine.createSpy('success');
                 let user: IUser = {
-                    'displayName': 'User 33',
-                    'displayEmail': '',
-                    'bookmarked': false
-                };
+                            userName: 'User 33',
+                            email: '',
+                            userID: 0,
+                            organization_ID: 0,
+                            tenant_ID: 0,
+                            givenName: 'Test GivenName',
+                            surname: 'Smith',
+                            active: true, 
+                        };
                 service.createUser(user);
                 expect(jasmine.Ajax.requests.mostRecent().method).toBe('PUT');
             });

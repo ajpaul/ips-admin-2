@@ -1,6 +1,6 @@
 import {
     addProviders,
-    inject
+    inject,
 } from '@angular/core/testing';
 import { provide } from '@angular/core';
 import { IUser, UsersService, UsersReducer, Observable } from '../users';
@@ -13,9 +13,14 @@ class MockUsersService {
     selectedUser: Observable<IUser> = Observable.of(
         <IUser>
         {
-            'displayName': 'User 33',
-            'displayEmail': '',
-            'bookmarked': false
+            userName: 'User 33',
+            email: '',
+            userID: 0,
+            organization_ID: 0,
+            tenant_ID: 0,
+            givenName: 'Test GivenName',
+            surname: 'Smith',
+            active: true, 
         }
     );
     loadingUser: Observable<boolean> = Observable.of(false);    
@@ -24,9 +29,14 @@ class MockUsersService {
     users: Observable<Array<IUser>> = Observable.of(
         [<IUser>
         {
-            'displayName': 'User 33',
-            'displayEmail': '',
-            'bookmarked': false
+            userName: 'User 33',
+            email: '',
+            userID: 0,
+            organization_ID: 0,
+            tenant_ID: 0,
+            givenName: 'Test GivenName',
+            surname: 'Smith',
+            active: true,
         }
     ]);
 
@@ -34,14 +44,24 @@ class MockUsersService {
         this.users = Observable.of(
             [<IUser>
                 {
-                    'displayName': 'User 33',
-                    'displayEmail': '',
-                    'bookmarked': false
+                    userName: 'User 33',
+                    email: '',
+                    userID: 0,
+                    organization_ID: 0,
+                    tenant_ID: 0,
+                    givenName: 'Test GivenName',
+                    surname: 'Smith',
+                    active: true,
                 },
                 <IUser>{
-                    'displayName': 'User 44',
-                    'displayEmail': '',
-                    'bookmarked': false
+                    userName: 'User 44',
+                    email: '',
+                    userID: 1,
+                    organization_ID: 0,
+                    tenant_ID: 0,
+                    givenName: 'Test GivenName',
+                    surname: 'Smith',
+                    active: true,
                 }]
         );
     }
@@ -87,9 +107,14 @@ describe('UsersContainer::', () => {
                         action => {
                         expect(action.length).toBeGreaterThan(0);
                         let user:IUser = {
-                            'displayName': 'User 33',
-                            'displayEmail': '',
-                            'bookmarked': false
+                            userName: 'User 33',
+                            email: '',
+                            userID: 0,
+                            organization_ID: 0,
+                            tenant_ID: 0,
+                            givenName: 'Test GivenName',
+                            surname: 'Smith',
+                            active: true,
                         };
                         expect(typeof action).toBe(typeof user);
                         done();

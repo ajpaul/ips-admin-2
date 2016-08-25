@@ -22,7 +22,7 @@ export const UsersReducer = (state: any = [], {type, payload}) => {
         case CREATE_USERS:
             return [...state, ...payload];
         case UPDATE_USERS:
-            
+            return state;
         default:
             return state;
     }
