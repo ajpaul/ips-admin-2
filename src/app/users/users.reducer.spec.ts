@@ -1,4 +1,4 @@
-import { UsersReducer, SelectedUserReducer, LoadingUserReducer } from './users';
+import { UsersReducer, SelectedUserReducer, LoadingUserReducer, UserErrorsReducer } from './users';
 
 describe('UsersReducer::', ()=> {
 
@@ -43,3 +43,21 @@ describe('LoadingUserReducer::', ()=> {
         expect(loadingItem).toEqual(false);
     });        
 });
+
+describe('UserErrorsReducer::', ()=> {
+    it('returns empty array by default', ()=>{
+        let defaultState = UserErrorsReducer(undefined, {type: 'random', payload: null });
+        expect(defaultState).toEqual([]);
+    });
+
+    it('ADD_ERROR adds error to array', ()=>{
+        let errorStore = UserErrorsReducer(undefined, {type: 'ADD_ERROR', payload: 'some error' });
+        expect(errorStore).toEqual(['some error']);
+    });
+
+    it('REMOVE_ERROR removes error', ()=>{
+        let errorStore = UserErrorsReducer(['some error'], {type: 'REMOVE_ERROR', payload: 0 });
+        expect(errorStore).toEqual([]);
+    });        
+});
+

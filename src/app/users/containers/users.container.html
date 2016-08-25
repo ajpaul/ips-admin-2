@@ -36,6 +36,7 @@
 
         <!-- Users List -->
         <users-list [items]="users | async"
+                    [isLoading]="loadingUser | async"
                     (selected)="selectItem($event)"
                     (deleted)="deleteItem($event)"></users-list>
 
