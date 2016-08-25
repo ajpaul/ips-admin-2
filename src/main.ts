@@ -8,3 +8,9 @@ export function main(): Promise<any> {
 		.bootstrapModule(AppModule)
 		.catch(err => console.error(err));
 }
+
+
+// boot on document ready
+bootloader(main);
+
+
