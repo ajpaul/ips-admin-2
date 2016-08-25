@@ -25,7 +25,16 @@ export const UsersReducer = (state: IUser[] = [], {type, payload}) => {
         case CREATE_USERS:
             return [...state, ...payload];
         case UPDATE_USERS:
-            return state;
+            return state.map((user: IUser) => {
+                var userToUpdate: IUser;
+                for(var i = 0; i < payload.length; i++) {
+                    userToUpdate = payload[i];
+                    if (userToUpdate.userID === user.userID) {
+                        return userToUpdate;
+                    }
+                }
+                return user;
+            });
         default:
             return state;
     }
