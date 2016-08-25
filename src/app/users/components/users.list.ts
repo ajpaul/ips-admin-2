@@ -7,7 +7,7 @@ import { IUser } from '../users';
 //-------------------------------------------------------------------
 @Component({
     selector: 'users-list',
-    template: require('./users.list.html'),
+    templateUrl: './users.list.html',
 })
 export class UsersList {
     @Input() items: IUser[];

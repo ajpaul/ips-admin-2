@@ -3,8 +3,8 @@ import { ISite, AllSitesService } from '../sites-all';
 
 @Component({
     selector: 'app-sites-all',
-    template: require('./sites-all.container.html'),
-    styles: [require('./sites-all.container.less')],
+    templateUrl: './sites-all.container.html',
+    styleUrls: ['./sites-all.container.less']
 })
 
 export class SitesAllContainer {

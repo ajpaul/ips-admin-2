@@ -3,8 +3,8 @@ import { ISiteFavorites, SiteFavoritesService } from '../sites-favorites';
 
 @Component({
     selector: 'app-sites-groups',
-    template: require('./sites-favorites.container.html'),
-    styles: [require('./sites-favorites.container.less')]
+    templateUrl: './sites-favorites.container.html',
+    styleUrls: ['./sites-favorites.container.less']
 })
 
 export class SitesFavoritesComponent {

@@ -4,7 +4,7 @@ import { IUser } from '../users';
 
 @Component({
     selector: 'users-detail',
-    template: require('./users.details.html')
+    templateUrl: './users.details.html'
 })
 export class UsersDetail {
 
