@@ -1,21 +1,43 @@
-import { UsersReducer, SelectedUserReducer, LoadingUserReducer, UserErrorsReducer } from './users';
+import { UsersReducer, SelectedUserReducer, LoadingUserReducer, UserErrorsReducer, IUser, ADD_USERS, DELETE_USER } from './users';
 
 describe('UsersReducer::', ()=> {
-
+    var makeDummyUser = ({ id=0 }: { id: number }): IUser => {
+        return {
+            userName: 'User 33',
+            email: '',
+            userID: id,
+            organization_ID: 0,
+            tenant_ID: 0,
+            givenName: 'Test GivenName',
+            surname: 'Smith',
+            active: true, 
+        };
+    }
     it('returns and empty array by default', ()=>{
         let defaultState = UsersReducer(undefined, {type: 'random', payload: {}});
         expect(defaultState).toEqual([]);
     });
 
     it('ADD_USERS adds the provided payload', ()=>{
-        let addItem = UsersReducer(undefined, {type: 'ADD_USERS', payload: 'payload'});
-        expect(addItem).toEqual('payload');
+        let dummyUsers = [
+            makeDummyUser({ id: 0 }),
+            makeDummyUser({ id: 1 }),
+            makeDummyUser({ id: 2 }),
+        ];
+        let addItem = UsersReducer(undefined, {type: ADD_USERS, payload: dummyUsers});
+        expect(addItem).toEqual(dummyUsers);
     });
 
-    it('DELETE_USER removes the provided payload', ()=>{
-        let removeItem = UsersReducer([{displayName: 'random'},{displayName: 'payload'}], {type: 'DELETE_USER', payload: {displayName:'payload'}});
-        expect(removeItem).toEqual([{displayName:'random'}]);
-    })
+    it('DELETE_USER removes the provided payload', () => {
+        let initialUsers = [
+            makeDummyUser({ id: 0 }),
+            makeDummyUser({ id: 1 }),
+            makeDummyUser({ id: 2 }),
+        ];
+        let removeItem = UsersReducer(initialUsers, { type: DELETE_USER, payload: makeDummyUser({ id: 1 }) });
+        expect(removeItem).not.toEqual(initialUsers);
+        expect(removeItem).toEqual(initialUsers.filter((user: IUser) => user.userID !== 1));
+    });
 
 
 });

@@ -122,7 +122,7 @@ export class UsersService{
 
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: REQUEST_USER });
-        return this.http.delete(this.userUrl+'/'+user.userID, options)
+        return this.http.delete(this.singleUserEndpoint+'/'+user.userID, options)
             .map(this.extractSingleUser)
             .subscribe(
                 action => this.store.dispatch({ type: DELETE_USER, payload: user }),

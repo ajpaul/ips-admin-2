@@ -1,6 +1,9 @@
 /**
  * Created by sxd15 on 8/10/2016.
  */
+
+import { IUser } from './users.interface'; 
+
 export const ADD_USERS = 'ADD_USERS';
 export const DELETE_USER = 'DELETE_USER';
 export const CREATE_USERS = 'CREATE_USERS';
@@ -9,15 +12,15 @@ export const ADD_ERROR = 'ADD_ERROR';
 export const REMOVE_ERROR = 'REMOVE_ERROR';
 export const SELECT_USER = 'SELECT_USER';
 export const REQUEST_USER = 'REQUEST_USER';
-export const RECEIVE_USER = 'RECEIVE_USER';
 
-export const UsersReducer = (state: any = [], {type, payload}) => {
+export const RECEIVE_USER = 'RECEIVE_USER';
+export const UsersReducer = (state: IUser[] = [], {type, payload}) => {
     switch (type) {
         case ADD_USERS:
             return payload;
         case DELETE_USER:
-            return state.filter(item => {
-                return item.displayName !== payload.displayName;
+            return state.filter((item: IUser) => {
+                return item.userID !== payload.userID;
             });
         case CREATE_USERS:
             return [...state, ...payload];
@@ -34,11 +37,7 @@ export const UserErrorsReducer = (state: string[] = [], {type, payload}) => {
             return [...state, payload];
         case REMOVE_ERROR:
             return state.filter((val, i) => {
-                if (i === payload) {
-                    return false;
-                } else {
-                    return true;
-                }
+                return i !== payload;
             });
         default:
             return state;
