@@ -16,7 +16,7 @@ import { ButtonAddComponent } from './buttonAdd/buttonAdd.component';
 import { MapComponent } from './map/map.component';
 import { ToggleComponent } from './toggle/toggle.component';
 import { LoadingListComponent } from './loading-list/loading-list.component';
-import { Config, ConfigService } from './config/config';
+import { ConfigService } from './config/config';
 
 
 @NgModule({
@@ -49,9 +49,10 @@ import { Config, ConfigService } from './config/config';
         ButtonAddComponent,
         MapComponent,
         ToggleComponent,
-        LoadingListComponent,
-        ConfigService,
-        Config
+        LoadingListComponent
+    ],
+    providers: [
+        ConfigService
     ]
 })
 export class SharedModule {}
