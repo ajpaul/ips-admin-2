@@ -71,7 +71,7 @@ var GetResults = {
         }
     ]
 };
-//mocks.push(GetResults);
+mocks.push(GetResults);
 
 var FailResults = {
     name: 'FailResults',
@@ -79,6 +79,6 @@ var FailResults = {
     testScope: 'error',
     testScenario: 'failResults'
 };
-mocks.push(FailResults);
+//mocks.push(FailResults);
 
 exports.mocks = mocks;
