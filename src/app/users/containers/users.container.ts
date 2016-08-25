@@ -4,14 +4,13 @@ import { Component, ChangeDetectionStrategy,
     } from '../users';
 
 import { ButtonAddComponent } from '../../shared/buttonAdd/buttonAdd.component';
-import { LoadingListComponent } from '../../shared/loading-list/loading-list.component';
 
 @Component({
     selector: 'app-users',
     template: require('./users.container.html'),
     styles: [require('./users.container.less')],
     providers: [UsersService],
-    directives: [UsersList, UsersDetail, ButtonAddComponent, LoadingListComponent],
+    directives: [UsersList, UsersDetail, ButtonAddComponent],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 
