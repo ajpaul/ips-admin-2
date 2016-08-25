@@ -2,9 +2,11 @@
 
 <html>
 <head>
-    <title>IPS Admin Tool 2.0</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title><%= webpackConfig.metadata.title %></title>
+    <meta name="description" content="<%= webpackConfig.metadata.title %>">
 
      <!-- base url -->
     <base href="<%= webpackConfig.metadata.baseUrl %>">
@@ -22,5 +24,11 @@
 
 <body>
     <div id="app">Standby... </div>
+
+    <% if (webpackConfig.metadata.isDevServer && webpackConfig.metadata.HMR !== true) { %>
+    <!-- Webpack Dev Server reload -->
+    <script src="/webpack-dev-server.js"></script>
+    <% } %>
+    
 </body>
 </html>

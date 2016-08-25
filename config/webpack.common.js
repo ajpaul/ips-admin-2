@@ -3,6 +3,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 const helpers = require('./helpers');
 
+/*
+ * Webpack Constants
+ */
+const METADATA = {
+    title: 'IPS Admin',
+    baseUrl: '/',
+    isDevServer: helpers.isWebpackDevServer()
+};
+
 module.exports = {
 
     entry: {
@@ -19,6 +28,13 @@ module.exports = {
 
         modulesDirectories: ['node_modules']
     },
+
+    /*
+    * Static metadata for index.html
+    *
+    * See: (custom attribute)
+    */
+    metadata: METADATA,
 
     module: {
 
