@@ -1,24 +1,14 @@
-import { provideRouter, RouterConfig, DashboardComponent, SitesAllContainer,
-     SitesGroupsComponent, BlankComponent, UsersContainer, LightsContainer, AuthenticationComponent, NotFoundComponent, 
-SitesComponent, SitesFavoritesComponent, SiteDetailContainer, GroupSitesContainer, GroupDetails } from './app'
+import { Routes, RouterModule } from '@angular/router';
+
+import { DashboardComponent, BlankComponent,
+    LightsContainer, AuthenticationComponent, NotFoundComponent,
+    UsersContainer, SiteDetailContainer, GroupDetails, GroupSitesContainer } from './app';
 
 
 //BlankComponent == I haven't implemented it yet ​
 
-export const routes: RouterConfig = <RouterConfig>[
+export const routes: Routes = <Routes>[
     { path: '', component: DashboardComponent },
-    { 
-        path: 'sites', 
-        component: SitesComponent,
-        children: [
-            { path: '', 
-              redirectTo: 'all',
-              pathMatch: 'full' 
-            },
-            { path: 'all', component: SitesAllContainer },
-            { path: 'groups', component: SitesGroupsComponent },
-            { path: 'favorites', component: SitesFavoritesComponent }
-        ] },
     { path: 'lights', component: LightsContainer },
     { path: 'users', component: UsersContainer },
     { path: 'detail', component: SiteDetailContainer },
@@ -29,6 +19,4 @@ export const routes: RouterConfig = <RouterConfig>[
     { path: '**', component: NotFoundComponent } //404 support
 ];
 ​
-export const APP_ROUTER_PROVIDERS = [
-    provideRouter(routes)
-];
+export const APP_ROUTER = RouterModule.forRoot(routes, { useHash: true });

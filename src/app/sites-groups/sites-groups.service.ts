@@ -7,7 +7,7 @@ import { ISiteGroups } from './sites-groups.interface';
 export class SiteGroupsService{
     constructor(private http : Http){}
 
-    siteUrl: string = 'localhost:8080/siteGroups';
+    siteUrl: string = 'http://localhost:8080/siteGroups';
 
     getSiteGroups(): Observable<ISiteGroups[]> {
         return this.http.get(this.siteUrl)

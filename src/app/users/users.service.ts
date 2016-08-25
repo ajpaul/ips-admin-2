@@ -1,5 +1,11 @@
-import { Store, Observable, Injectable, Http, Headers, RequestOptions, Response, AppStore, IUser } from './users';
-import { ADD_USERS, DELETE_USER, CREATE_USERS, SELECT_USER, UPDATE_USERS, ADD_ERROR_USERS, REMOVE_ERROR_USERS, REQUEST_USER, RECEIVE_USER, CLEAR_ERRORS_USERS } from './users';
+
+
+import { Injectable } from '@angular/core';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
+import { AppStore } from '../app.store';
+import { IUser, ADD_USERS, DELETE_USER, CREATE_USERS, SELECT_USER, UPDATE_USERS, ADD_ERROR_USERS, REMOVE_ERROR_USERS, REQUEST_USER, RECEIVE_USER, CLEAR_ERRORS_USERS  } from './users';
 import { ConfigService, Config } from '../shared/config/config';
 
 const HEADER = { headers: new Headers({ 'Content-Type': 'application/json' }) };

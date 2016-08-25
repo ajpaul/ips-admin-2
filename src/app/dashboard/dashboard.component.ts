@@ -9,7 +9,4 @@ import { Component, AuthenticationComponent } from './dashboard';
 
 export class DashboardComponent {
 
-
-
-
 }

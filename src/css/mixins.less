@@ -45,3 +45,28 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.ease (@duration: 200ms, @property: all, @delay: 0ms) {
+    -webkit-transition: @property @duration ease @delay;
+    -moz-transition: @property @duration ease @delay;
+    -ms-transition: @property @duration ease @delay;
+    -o-transition: @property @duration ease @delay;
+    transition: @property @duration ease @delay;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.transform(@x: 0, @y: 0, @z: 0) {
+    -webkit-transform: translate3d(@x,@y,@z);
+    -moz-transform: translate3d(@x,@y,@z);
+    -ms-transform: translate3d(@x,@y,@z);
+    -o-transform: translate3d(@x,@y,@z);
+    transform: translate3d(@x,@y,@z);
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.no-margin () { top: 0; bottom: 0; left: 0; right: 0; }

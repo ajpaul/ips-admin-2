@@ -29,8 +29,8 @@ export class LightsContainer {
     }
 
     ngOnInit() {
-        this.lights = this.lightsService.lights;
-        this.lightsService.getLights();
+        //this.lights = this.lightsService.lights;
+        //this.lightsService.getLights();
     }
 
     lightsClick(luminaireTypeId: number): void {

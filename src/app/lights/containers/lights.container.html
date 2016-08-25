@@ -1,21 +1,44 @@
-<div class="lightsParent">
+<div class="lights-parent">
 
-    <div class="panelLeft">
+    <div class="panel-left">
 
-        <ui-filter [values]="filterValues" [(value)]="value"></ui-filter>
-
-        <ui-button>+ New Light</ui-button>
-
-        <div id="lights">
-            <div>
-                <lights-list [items]="lights | async"
-                            (selected)="selectItem($event)"
-                            (deleted)="deleteItem($event)"></lights-list>
-            </div>
+        <!-- List Option Tabs -->
+        <div class="tab-bar hbox">
+            <ul class="tab-list">
+                <li class="active">Active</li>
+                <li>Inactive</li>
+            </ul>
         </div>
+
+        <!-- Search/Filter Box -->
+        <div class="search-bar">
+            <i class="fa fa-search"></i>
+            <input type="text" placeholder="Search for light..."/>
+        </div>
+
+        <!-- List Action Bar -->
+        <div class="action-bar">
+            <!--<input type="checkbox" class="list-check"/>-->
+            <i class="fa fa-square list-check"></i>
+            <span class="fa-stack fa-lg" style="font-size: 1em">
+                <i class="fa fa-circle-thin fa-stack-2x"></i>
+                <i class="fa fa-bookmark fa-stack-1x"></i>
+            </span>
+            <span class="fa-stack fa-lg bumpr" style="font-size: 1em">
+                <i class="fa fa-circle-thin fa-stack-2x"></i>
+                <i class="fa fa-link fa-stack-1x"></i>
+            </span>
+            <ui-buttonAdd></ui-buttonAdd>
+        </div>
+
+        <!-- Lights List -->
+        <users-list [items]="lights | async"
+                    (selected)="selectItem($event)"
+                    (deleted)="deleteItem($event)"></users-list>
+
     </div>
 
-    <div class="panelRight">
+    <div class="panel-right">
         <lights-detail [item]="selectedLight | async"></lights-detail>
     </div>
 

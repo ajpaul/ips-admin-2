@@ -1,18 +1,13 @@
-import { Component, ChangeDetectionStrategy,
-    Observable,
-    IUser, UsersService, UsersDetail, UsersList
-    } from '../users';
-
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { IUser, UsersService } from '../users';
 import { ButtonAddComponent } from '../../shared/buttonAdd/buttonAdd.component';
 import { OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 @Component({
     selector: 'app-users',
     template: require('./users.container.html'),
-    styles: [require('./users.container.less')],
-    providers: [UsersService],
-    directives: [UsersList, UsersDetail, ButtonAddComponent],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    styles: [require('./users.container.less')]
 })
 
 export class UsersContainer implements OnInit, OnDestroy {

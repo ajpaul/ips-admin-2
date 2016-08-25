@@ -7,8 +7,9 @@ Hello world sample built with Angular2, Webpack, ngrx/store and TypeScript.
 What you need to run this app:
 
  * `node` and `npm`
- * Global or local install (npm module) of `webpack-dev-server`
  * Global or local install (npm module) of `typings`
+ * Global or local install (npm module) of `webpack-dev-server`
+ * Global or local install (npm module) of `string-replace-loader` currently needed to combat a bug with Angular2 rc5
 
 ## Installation
 

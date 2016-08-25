@@ -3,9 +3,10 @@ import {
     inject,
 } from '@angular/core/testing';
 import { provide } from '@angular/core';
-import { IUser, UsersService, UsersReducer, Observable } from '../users';
+import { IUser, UsersService, UsersReducer } from '../users';
 import { UsersContainer } from './users.container';
 import { ConfigService } from '../../shared/config/config';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
 class MockUsersService {

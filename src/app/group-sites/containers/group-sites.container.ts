@@ -1,11 +1,8 @@
 import { Component, ROUTER_DIRECTIVES, ISite, AllSitesService, OnInit, OnDestroy, Subscription } from '../group-sites';
-import { GroupSitesComponent } from '../group-sites.component';
 
 @Component({
-    selector: 'app-group-sites',
-    template: '<app-group-sites *ngIf="sites" [sites]="sites"></app-group-sites>',
-    directives: [GroupSitesComponent],
-    providers: [AllSitesService]
+    selector: 'app-group-sites-container',
+    template: '<app-group-sites *ngIf="sites" [sites]="sites"></app-group-sites>'
 })
 
 export class GroupSitesContainer implements OnInit, OnDestroy{

@@ -7,7 +7,7 @@ import { ISiteFavorites } from './sites-favorites.interface';
 export class SiteFavoritesService{
      constructor(private http : Http){}
 
-     siteUrl: string = 'localhost:8080/siteFavorites';
+     siteUrl: string = 'http://localhost:8080/siteFavorites';
 
     getSiteFavorites(): Observable<ISiteFavorites[]> {
         return this.http.get(this.siteUrl)
