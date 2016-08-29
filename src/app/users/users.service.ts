@@ -35,10 +35,14 @@ export class UsersService{
 
     getUsers(organization_ID: number = 0, onComplete?) {
         onComplete = onComplete || (()=>{});
+        let options = new RequestOptions(HEADER);
+        options.body = '';
+
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: REQUEST_USER });
         this.store.dispatch({ type: CLEAR_ERRORS_USERS });
-        return this.http.get(this.orgUsersUrl + '/' + organization_ID.toString())
+
+        return this.http.get(this.orgUsersUrl + '/' + organization_ID.toString(), options)
             .map(this.extractMultipleUsers)
             .map(payload => ({type: ADD_USERS, payload}))
             .subscribe(
@@ -85,8 +89,8 @@ export class UsersService{
 
     updateUsers (users: IUser[]) {
         let body = JSON.stringify(users);
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers });
+        let options = new RequestOptions(HEADER);
+        options.body = '';
 
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: REQUEST_USER });
@@ -127,7 +131,7 @@ export class UsersService{
 
     deleteUser (user: IUser) {
         let options = new RequestOptions(HEADER);
-
+        options.body='';
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: REQUEST_USER });
         this.store.dispatch({ type: CLEAR_ERRORS_USERS });

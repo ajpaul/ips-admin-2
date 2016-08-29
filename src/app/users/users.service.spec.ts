@@ -59,9 +59,14 @@ describe('UsersService::', () => {
                 service.usersUrl = 'someValidUrl';
                 let spy = jasmine.createSpy('success');
                 let user: IUser = {
-                    'displayName': 'User 33',
-                    'displayEmail': '',
-                    'bookmarked': false
+                    userName: 'User 123',
+                    email: 'foo@bar.com',
+                    userID: 0,
+                    organization_ID: 0,
+                    tenant_ID: 0,
+                    givenName: 'Test GivenName',
+                    surname: 'Smith',
+                    active: true,
                 };
                 service.deleteUser(user);
                 expect(jasmine.Ajax.requests.mostRecent().method).toBe('DELETE');
@@ -71,9 +76,14 @@ describe('UsersService::', () => {
                 service.usersUrl = 'someValidUrl';
                 let spy = jasmine.createSpy('success');
                 let user: IUser = {
-                    'displayName': 'User 33',
-                    'displayEmail': '',
-                    'bookmarked': false
+                    userName: 'User 123',
+                    email: 'foo@bar.com',
+                    userID: 0,
+                    organization_ID: 0,
+                    tenant_ID: 0,
+                    givenName: 'Test GivenName',
+                    surname: 'Smith',
+                    active: true,
                 };
                 service.createUser(user);
                 expect(jasmine.Ajax.requests.mostRecent().method).toBe('PUT');
@@ -160,9 +170,14 @@ describe('UsersService::', () => {
                         action => {
                         expect(action.length).toBeGreaterThan(0);
                         let user:IUser = {
-                            'displayName': 'User 33',
-                            'displayEmail': '',
-                            'bookmarked': false
+                            userName: 'User 123',
+                            email: 'foo@bar.com',
+                            userID: 0,
+                            organization_ID: 0,
+                            tenant_ID: 0,
+                            givenName: 'Test GivenName',
+                            surname: 'Smith',
+                            active: true,
                         };
                         expect(typeof action).toBe(typeof user);
                         done();
