@@ -16,7 +16,9 @@ export class LightsService{
 
     getLights(onComplete?) {
         onComplete = onComplete || (()=>{});
-        return this.http.get(this.lightsUrl)
+        let options = new RequestOptions(HEADER);
+        options.body = '';
+        return this.http.get(this.lightsUrl, options)
             .map(this.extractData)
             .map(payload => ({type: ADD_LIGHTS, payload}))
             .subscribe(
@@ -51,7 +53,7 @@ export class LightsService{
     deleteLight (light: ILight)
     {
         let options = new RequestOptions(HEADER);
-
+        options.body = '';
         return this.http.delete(this.lightsUrl+'/'+light.luminaireTypeId, options)
             .map(this.extractData)
             .subscribe(

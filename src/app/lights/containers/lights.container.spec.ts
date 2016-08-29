@@ -9,7 +9,7 @@ import { LightsContainer } from './lights.container';
 import 'rxjs/add/observable/of';
 
 class MockLightService {
-    lightsUrl: string = '';
+    lightsUrl: string = 'localhost:8080/lights';
     lights: Observable<Array<ILight>> = Observable.of([<ILight>{
         'luminaireTypeId': 1,
         'organization_ID': 1,
@@ -77,30 +77,6 @@ describe('LightsContainer::', () => {
 
             it('should instantiate with injection', () => {
                 expect(component).toEqual(jasmine.any(LightsContainer));
-            });
-
-            it('should have lights', (done) => {
-                component.ngOnInit();
-                component.lights.subscribe(
-                        action => {
-                        expect(action.length).toBeGreaterThan(0);
-                        let lightType:ILight = {
-                            'luminaireTypeId': 1,
-                            'organization_ID': 1,
-                            'displayName': 'Light 1',
-                            'exteriorWidth': 2,
-                            'exteriorLength': 2,
-                            'interiorWidth': 2,
-                            'interiorLength': 1
-                        };
-                        expect(typeof action).toBe(typeof lightType);
-                        done();
-                    },
-                        err => {
-                        expect(err).toBe(0);
-                        done();
-                    }
-                );
             });
 
             it('should have columns', () => {

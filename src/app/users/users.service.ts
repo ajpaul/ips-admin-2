@@ -3,6 +3,7 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { AppStore } from '../app.store';
+import { RequestOptionsArgs } from '@angular/http'
 import { IUser, ADD_USERS, DELETE_USER, CREATE_USER, SELECT_USER } from './users';
 
 const HEADER = { headers: new Headers({ 'Content-Type': 'application/json' }) };
@@ -21,7 +22,9 @@ export class UsersService{
 
     getUsers(onComplete?) {
         onComplete = onComplete || (()=>{});
-        return this.http.get(this.userUrl)
+        let options = new RequestOptions(HEADER);
+        options.body = '';
+        return this.http.get(this.userUrl, options)
             .map(this.extractData)
             .map(payload => ({type: ADD_USERS, payload}))
             .subscribe(
@@ -61,7 +64,7 @@ export class UsersService{
 
     deleteUser (user: IUser) {
         let options = new RequestOptions(HEADER);
-
+        options.body = '';
         return this.http.delete(this.userUrl+'/'+user.displayName, options)
             .map(this.extractData)
             .subscribe(
