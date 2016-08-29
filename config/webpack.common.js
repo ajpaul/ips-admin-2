@@ -1,23 +1,40 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 const helpers = require('./helpers');
+
+/*
+ * Webpack Constants
+ */
+const METADATA = {
+    title: 'IPS Admin',
+    baseUrl: '/',
+    isDevServer: helpers.isWebpackDevServer()
+};
 
 module.exports = {
 
     entry: {
         'polyfills': './src/polyfills.ts',
         'vendor': './src/vendor.ts',
-        'app': './src/main.ts'
+        'main': './src/main.ts'
     },
 
     resolve: {
-        extensions: ['', '.js', '.ts', '.less'],
+        extensions: ['', '.js', '.ts'],
 
         // Make sure root is src
         root: helpers.root('src'),
 
         modulesDirectories: ['node_modules']
     },
+
+    /*
+    * Static metadata for index.html
+    *
+    * See: (custom attribute)
+    */
+    metadata: METADATA,
 
     module: {
 
@@ -32,9 +49,13 @@ module.exports = {
                 }
             },
             {
-                test: /\.ts$/, 
-                loaders: ['awesome-typescript-loader','angular2-template-loader'],
-                exclude: [/\.(spec|e2e)\.ts$/, /node_modules/]
+                test: /\.ts$/,
+                loaders: [
+                    'awesome-typescript-loader',
+                    'angular2-template-loader',
+                    '@angularclass/hmr-loader'
+                ],
+                exclude: [/\.(spec|e2e)\.ts$/]
             },
             { 
                 test: /\.html$/,
@@ -51,7 +72,7 @@ module.exports = {
             // Standard [inline] CSS loader
             { 
                 test: /\.css$/, 
-                loaders: ['style-loader', 'css-loader'],
+                loaders: ['to-string-loader', 'css-loader'],
                 exclude: [/node_modules/]
             },
 
@@ -73,15 +94,13 @@ module.exports = {
     },
 
     plugins: [
-        /*
-        * Plugin: OccurenceOrderPlugin
-        * Description: Varies the distribution of the ids to get the smallest id length
-        * for often used ids.
+         /*
+        * Plugin: ForkCheckerPlugin
+        * Description: Do type checking in a separate process, so webpack don't need to wait.
         *
-        * See: https://webpack.github.io/docs/list-of-plugins.html#occurrenceorderplugin
-        * See: https://github.com/webpack/docs/wiki/optimization#minimize
+        * See: https://github.com/s-panferov/awesome-typescript-loader#forkchecker-boolean-defaultfalse
         */
-        new webpack.optimize.OccurenceOrderPlugin(true),
+        new ForkCheckerPlugin(),
 
         /*
         * Plugin: CommonsChunkPlugin
@@ -92,7 +111,7 @@ module.exports = {
         * See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
         */
         new webpack.optimize.CommonsChunkPlugin({
-            name: ['app', 'vendor','polyfills']
+            name: ['polyfills', 'vendor'].reverse()
         }),
 
         /*
@@ -118,7 +137,6 @@ module.exports = {
     node: {
         global: 'window',
         crypto: 'empty',
-        process: true,
         module: false,
         clearImmediate: false,
         setImmediate: false

@@ -1,6 +1,7 @@
 import { platformBrowserDynamic }    	from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { enableProdMode } 	from '@angular/core';
+import { bootloader } from '@angularclass/hmr';
 
 export function main(): Promise<any> {
 	return platformBrowserDynamic()
@@ -8,13 +9,7 @@ export function main(): Promise<any> {
 		.catch(err => console.error(err));
 }
 
-//Activate HMR if requested
-if ('development' === ENV && HMR === true) {
-	// activate hot module reload
-	let ngHmr = require('angular2-hmr');
-	ngHmr.hotModuleReplacement(main, module);
-} else {
-	// bootstrap when document is ready
-	document.addEventListener('DOMContentLoaded', () => main());
-}
+// boot on document ready
+bootloader(main);
+
 

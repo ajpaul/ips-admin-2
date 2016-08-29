@@ -4,13 +4,13 @@ import { IUser } from '../users';
 
 @Component({
     selector: 'users-detail',
-    template: require('./users.details.html'),
-    styles: [require('./users.details.less')]
+    templateUrl: './users.details.html'
 })
 export class UsersDetail {
 
     showUserDetails: boolean = true;
     showUserSites: boolean = false;
+    confirmDelete: boolean = false;
     originalName: string;
     selectedItem: IUser;
     @Output() saved = new EventEmitter();
@@ -19,6 +19,14 @@ export class UsersDetail {
     @Input('item') set item(value: IUser){
         if (value) this.originalName = value.displayName;
         this.selectedItem = Object.assign({}, value);
+    }
+
+    confirmDeletion(): void {
+        if(!this.confirmDelete) {
+            this.confirmDelete = true;
+        } else {
+            this.confirmDelete = false;
+        }
     }
 
     showUserDetailsClick(): void {

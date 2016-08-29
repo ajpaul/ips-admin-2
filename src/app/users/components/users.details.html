@@ -16,7 +16,7 @@
         </span>
     </div>
     <div class="item-title">
-        <h1>Daniel Bradshaw</h1>
+        <h1>Kelly Bigley</h1>
         <p>
             <span><i class="fa fa-envelope" aria-hidden="true"></i> email.address@acuitybrands.com</span>
             <!--<span class="bumpl bumpr black">&bull;</span>
@@ -39,6 +39,18 @@
 
     <!-- User Detail Form -->
     <form class="standard-form">
+
+        <!-- Button Bar -->
+        <div class="toolbar">
+            <button class="btn warn" (click)="confirmDeletion()"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete User</button>
+            <button class="btn"><i class="fa fa-cloud-upload" aria-hidden="true"></i> Save User</button>
+        </div>
+        <div class="confirmation-wrapper" [ngClass]="{show: confirmDelete}">
+            <div class="confirmation">
+                <p>You are about to do this action, are you sure? <a class="bumpr">not really</a><span class="bumpl bumpr">|</span><a>yes please</a></p>
+            </div>
+        </div>
+
         <h1>BASIC INFORMATION</h1>
         <div class="form-section">
             <div class="form-group">
@@ -62,13 +74,6 @@
                 <md-input name="city" placeholder="City"></md-input>  
                 <md-input name="state" placeholder="State"></md-input> 
                 <md-input name="zip" placeholder="Zip"></md-input> 
-            </div>
-        </div>
-
-        <div class="form-section">
-            <div class="button-group">
-                <button class="btn"><i class="fa fa-cloud-upload" aria-hidden="true"></i> Save User</button>
-                <button class="btn warn"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete User</button>
             </div>
         </div>
     </form>

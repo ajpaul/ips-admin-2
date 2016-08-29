@@ -2,8 +2,8 @@ import { Component, ROUTER_DIRECTIVES, Input, ISite, MdInput, MdCheckbox, MdIcon
 
 @Component({
     selector: 'app-group-sites',
-    template: require('./group-sites.component.html'),
-    styles: [require('./group-sites.component.less')]
+    templateUrl: './group-sites.component.html',
+    styleUrls: ['./group-sites.component.less']
 })
 
 export class GroupSitesComponent {
