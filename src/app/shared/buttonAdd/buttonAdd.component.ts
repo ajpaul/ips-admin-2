@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
     `
     <button class="btn add-button"><i class="fa fa-plus" aria-hidden="true"></i></button>
     `,
-    styles: [require('./buttonAdd.component.less')]
+    styleUrls: ['./buttonAdd.component.less']
 })
 
 export class ButtonAddComponent {

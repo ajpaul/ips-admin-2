@@ -6,8 +6,8 @@ import { OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 @Component({
     selector: 'app-users',
-    template: require('./users.container.html'),
-    styles: [require('./users.container.less')]
+    templateUrl: './users.container.html',
+    styleUrls: ['./users.container.less']
 })
 
 export class UsersContainer implements OnInit, OnDestroy {

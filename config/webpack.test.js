@@ -1,6 +1,9 @@
 module.exports = {
     resolve: {
-        extensions: ['', '.js', '.ts']
+        extensions: ['', '.js', '.ts'],
+        alias: {
+            handlebars: 'handlebars/dist/handlebars.min.js'
+        }
     },
 
     devtool: 'cheap-module-eval-source-map',
@@ -22,5 +25,15 @@ module.exports = {
                 loader: 'null'
             }
         ]
+    },
+    node: {
+        console: true,
+        global: true,
+        Buffer: true,
+        process: true,
+        crypto: 'empty',
+        module: false,
+        clearImmediate: false,
+        setImmediate: false
     }
 };

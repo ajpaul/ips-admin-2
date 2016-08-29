@@ -1,5 +1,3 @@
-
-
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
@@ -73,7 +71,7 @@ export class UsersService{
             .subscribe(action => this.store.dispatch(action),
                 err => {
                     // dispatch action to say loading is done
-                    this.store.dispatch({ type: RECEIVE_USER });                    
+                    this.store.dispatch({ type: RECEIVE_USER });
                     this.handleError(err);
                 },
                 // dispatch action to say loading is done
@@ -139,11 +137,11 @@ export class UsersService{
                 action => this.store.dispatch({ type: DELETE_USER, payload: user }),
                 err => {
                     // dispatch action to say loading is done
-                    this.store.dispatch({ type: RECEIVE_USER });                    
+                    this.store.dispatch({ type: RECEIVE_USER });
                     this.handleError(err);
                 },
                 // dispatch action to say loading is done
-                () => this.store.dispatch({ type: RECEIVE_USER })                
+                () => this.store.dispatch({ type: RECEIVE_USER })
             );
     }
 

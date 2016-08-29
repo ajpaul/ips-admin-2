@@ -8,8 +8,8 @@ import { LoadingListComponent } from '../../shared/loading-list/loading-list.com
 //-------------------------------------------------------------------
 @Component({
     selector: 'users-list',
-    template: require('./users.list.html'),
-    directives: [LoadingListComponent]
+    templateUrl: './users.list.html'
+    directives: [LoadingListComponent],
 })
 export class UsersList {
     @Input() items: IUser[];

@@ -1,10 +1,9 @@
 {
-  "name": "angular-webpack",
-  "version": "1.0.0",
+  "name": "ips-admin",
+  "version": "2.0.0",
   "scripts": {
-    "postinstall": "typings install",
     "build": "webpack --config config/webpack.dev",
-    "start": "webpack-dev-server --config config/webpack.dev.js --progress --watch --display-error-details --display-cached --content-base src/",
+    "start": "webpack-dev-server --config config/webpack.dev.js --watch --content-base src/",
     "start:dev": "npm start -- --inline",
     "start:dev:hot": "npm run start:dev -- --hot",
     "start:mockServer": "node launchMockServer.js",
@@ -49,10 +48,16 @@
   "devDependencies": {
     "@angularclass/hmr": "^1.0.1",
     "@angularclass/hmr-loader": "^1.0.1",
+    "@types/core-js": "^0.9.32",
+    "@types/jasmine": "^2.2.33",
+    "@types/jasmine-ajax": "^3.1.30",
+    "@types/leaflet": "^1.0.31",
+    "@types/node": "^6.0.38",
+    "@types/selenium-webdriver": "^2.44.28",
+    "@types/webpack": "^1.12.33",
     "awesome-typescript-loader": "1.1.1",
     "css-loader": "^0.23.1",
     "express": "^4.14.0",
-    "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.21.0",
     "jasmine": "^2.4.1",
     "jasmine-ajax": "^3.2.0",
@@ -72,11 +77,11 @@
     "string-replace-loader": "^1.0.3",
     "style-loader": "^0.13.1",
     "to-string-loader": "^1.1.4",
-    "ts-loader": "^0.8.2",
+    "ts-helpers": "^1.1.1",
     "ts-node": "^0.9.3",
-    "typescript": "^1.8.10",
-    "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1",
+    "typescript": "^2.0.0-beta",
+    "webpack": "^2.1.0-beta.21",
+    "webpack-dev-server": "^2.1.0-beta.0",
     "webpack-merge": "^0.14.0"
   }
 }

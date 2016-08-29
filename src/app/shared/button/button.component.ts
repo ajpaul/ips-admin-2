@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
         <ng-content></ng-content>
     </button>
     `,
-    styles: [require('./button.component.less')]
+    styleUrls: ['./button.component.less']
 })
 
 export class ButtonComponent {

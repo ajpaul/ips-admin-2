@@ -3,8 +3,8 @@ import {ISiteGroups, SiteGroupsService } from '../sites-groups';
 
 @Component({
     selector: 'app-sites-groups',
-    template: require('./sites-groups.container.html'),
-    styles: [require('./sites-groups.container.less')]
+    templateUrl: './sites-groups.container.html',
+    styleUrls: ['./sites-groups.container.less']
 })
 
 export class SitesGroupsComponent {
