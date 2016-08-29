@@ -9,7 +9,7 @@ import { Component, Input, Output, EventEmitter, ILight } from '../lights';
 //-------------------------------------------------------------------
 @Component({
     selector: 'lights-list',
-    template: require('./lights.list.html')
+    templateUrl: './lights.list.html'
 })
 export class LightsList {
     @Input() items: ILight[];
