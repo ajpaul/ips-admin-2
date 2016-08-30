@@ -6,7 +6,10 @@ import { AppStore } from '../app.store';
 import { IUser, ADD_USERS, DELETE_USER, CREATE_USERS, SELECT_USER, UPDATE_USERS, ADD_ERROR_USERS, REMOVE_ERROR_USERS, REQUEST_USER, RECEIVE_USER, CLEAR_ERRORS_USERS  } from './users';
 import { ConfigService, Config } from '../shared/config/config';
 
-const HEADER = { headers: new Headers({ 'Content-Type': 'application/json' }) };
+const REQUEST = {
+    headers: new Headers({ 'Content-Type': 'application/json' }),
+    body: ''
+};
 
 @Injectable()
 export class UsersService{
@@ -14,34 +17,43 @@ export class UsersService{
     usersUrl: string;
     orgUsersUrl: string;
     usersEndpoint: string = '/api/user';
-    orgUsersEndpoint: string = '/api/user/orgID';
+    orgUsersEndpoint: string = '/api/user/orgID/';
     users: Observable<Array<IUser>>;
     selectedUser: Observable<IUser>;
     userErrors: Observable<string[]>;
     loadingUser: Observable<boolean>;
+    organizationId: number = 0;
 
     constructor(private http : Http, private store: Store<AppStore>,  private configService: ConfigService) {
-        this.users = store.select<Array<IUser>>('UsersReducer');
-        this.selectedUser = store.select<IUser>('SelectedUserReducer');
-        this.userErrors = store.select<string[]>('UserErrorsReducer');
-        this.loadingUser = store.select<boolean>('LoadingUserReducer');
-        this.buildUrls(configService.getConfig());
+        this.initialize();
     }
 
-    buildUrls(config: Config) {
+    initialize() {
+        this.users = this.store.select<Array<IUser>>('UsersReducer');
+        this.selectedUser = this.store.select<IUser>('SelectedUserReducer');
+        this.userErrors = this.store.select<string[]>('UserErrorsReducer');
+        this.loadingUser = this.store.select<boolean>('LoadingUserReducer');
+        this.buildUrls();
+    }
+
+    buildUrls() {
+        let config = this.configService.getConfig();
         this.usersUrl = config.apiRoot + this.usersEndpoint;
-        this.orgUsersUrl = config.apiRoot + this.orgUsersEndpoint;
+        this.orgUsersUrl = config.apiRoot + this.orgUsersEndpoint + this.organizationId.toString();
     }
 
-    getUsers(organization_ID: string = '0', onComplete?) {
-        onComplete = onComplete || (()=>{});
-        let options = new RequestOptions(HEADER);
-        options.body = '';
+    setOrganization(organizationId: number) {
+        this.organizationId = organizationId;
+        this.buildUrls();
+    }
 
+    getUsers(onComplete?) {
+        onComplete = onComplete || (()=>{});
+        let options = new RequestOptions(REQUEST);
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: REQUEST_USER });
         this.store.dispatch({ type: CLEAR_ERRORS_USERS });
-        return this.http.get(this.orgUsersUrl + '/' + organization_ID.toString(), options)
+        return this.http.get(this.orgUsersUrl, options)
             .map(this.extractMultipleUsers)
             .map(payload => ({type: ADD_USERS, payload}))
             .subscribe(
@@ -61,7 +73,7 @@ export class UsersService{
 
     createUsers (users: IUser[]) {
         let body = JSON.stringify(users);
-        let options = new RequestOptions(HEADER);
+        let options = new RequestOptions(REQUEST);
 
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: REQUEST_USER });
@@ -88,7 +100,7 @@ export class UsersService{
 
     updateUsers (users: IUser[]) {
         let body = JSON.stringify(users);
-        let options = new RequestOptions(HEADER);
+        let options = new RequestOptions(REQUEST);
         options.body = '';
 
         // dispatch an action to initiate the loading
@@ -129,8 +141,7 @@ export class UsersService{
     }
 
     deleteUser (user: IUser) {
-        let options = new RequestOptions(HEADER);
-        options.body='';
+        let options = new RequestOptions(REQUEST);
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: REQUEST_USER });
         this.store.dispatch({ type: CLEAR_ERRORS_USERS });

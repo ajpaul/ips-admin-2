@@ -161,8 +161,8 @@ describe('UsersService::', () => {
             var service;
             beforeEach((done) => {
                 service = testService;
-                service.orgUsersUrl = service.orgUsersEndpoint;
-                service.getUsers('1?scenario=multipleResults', done);
+                service.orgUsersUrl = service.orgUsersEndpoint + service.organizationId + '?scenario=multipleResults&scope=success';
+                service.getUsers(done);
             });
 
             it('should get users', (done) => {
