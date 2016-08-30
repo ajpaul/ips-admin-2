@@ -170,7 +170,6 @@ export class UsersService{
     }
 
     private extractMultipleUsers(res: Response) {
-        console.log('response: ',res);
         let body = res.json();
         return body ? body.result || [] : [];
     }
