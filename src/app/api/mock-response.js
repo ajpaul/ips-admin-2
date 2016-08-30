@@ -40,8 +40,6 @@ MockResponse.prototype.registerRoutes = function (req) {
 
             found = true;
 
-            console.log('MOCK::PATH::'+reqInfo.path);
-
             var route = routes[i];
 
             //If scope & scenario is passed via the url; then, overwrite the testScope & testScenario properties
@@ -59,7 +57,6 @@ MockResponse.prototype.registerRoutes = function (req) {
             }
 
             var response = _routeResponse(route, req);
-            console.log('MOCK::RESPONSE::'+response);
             return response;
         }
     }
