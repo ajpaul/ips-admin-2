@@ -16,7 +16,6 @@ export class UsersContainer implements OnInit, OnDestroy {
     userErrors: Observable<string[]>;
     userErrorsSubscription: Subscription;
     loadingUser: Observable<boolean>;
-    isLoading: boolean;
     isError: boolean;
 
     constructor(private usersService: UsersService) {
@@ -35,8 +34,6 @@ export class UsersContainer implements OnInit, OnDestroy {
             }
         });
         this.loadingUser = this.usersService.loadingUser;
-        this.isLoading = false;        
-        this.loadingUser.subscribe( isLoading => this.isLoading = isLoading );
         this.usersService.getUsers();
     }
 
