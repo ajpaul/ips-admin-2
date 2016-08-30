@@ -16,8 +16,6 @@ export class UsersService{
 
     usersUrl: string;
     orgUsersUrl: string;
-    usersEndpoint: string = '/api/user';
-    orgUsersEndpoint: string = '/api/user/orgID/';
     users: Observable<Array<IUser>>;
     selectedUser: Observable<IUser>;
     userErrors: Observable<string[]>;
@@ -38,8 +36,8 @@ export class UsersService{
 
     buildUrls() {
         let config = this.configService.getConfig();
-        this.usersUrl = config.apiRoot + this.usersEndpoint;
-        this.orgUsersUrl = config.apiRoot + this.orgUsersEndpoint + this.organizationId.toString();
+        this.usersUrl = config.apiRoot + config.usersEndpoint;
+        this.orgUsersUrl = config.apiRoot + config.orgUsersEndpoint + this.organizationId.toString();
     }
 
     setOrganization(organizationId: number) {

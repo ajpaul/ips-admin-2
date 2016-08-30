@@ -27,4 +27,20 @@ describe('Config::', () => {
         expect(apiRootActualValue).toEqual(apiRootValue);
     });
 
+    it('should be able to set and read usersEndpoint', () => {
+        var config = new Config();
+        var usersEndpointValue = "/blah/blah";
+        config.usersEndpoint = usersEndpointValue;
+        var usersEndpointActualValue = config.usersEndpoint;
+        expect(usersEndpointActualValue).toEqual(usersEndpointValue);
+    });
+
+    it('should be able to set and read orgUsersEndpoint', () => {
+        var config = new Config();
+        var orgUsersEndpointValue = "/blah/blah";
+        config.orgUsersEndpoint = orgUsersEndpointValue;
+        var orgUsersEndpointActualValue = config.orgUsersEndpoint;
+        expect(orgUsersEndpointActualValue).toEqual(orgUsersEndpointValue);
+    });
+
 });

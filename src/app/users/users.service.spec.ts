@@ -161,7 +161,7 @@ describe('UsersService::', () => {
             var service;
             beforeEach((done) => {
                 service = testService;
-                service.orgUsersUrl = service.orgUsersEndpoint + service.organizationId + '?scenario=multipleResults&scope=success';
+                service.orgUsersUrl = service.configService.getConfig().orgUsersEndpoint + service.organizationId + '?scenario=multipleResults&scope=success';
                 service.getUsers(done);
             });
 
