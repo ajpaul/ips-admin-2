@@ -8,7 +8,7 @@ import { LoadingListComponent } from '../../shared/loading-list/loading-list.com
 //-------------------------------------------------------------------
 @Component({
     selector: 'users-list',
-    templateUrl: './users.list.html'
+    templateUrl: './users.list.html',
     directives: [LoadingListComponent],
 })
 export class UsersList {

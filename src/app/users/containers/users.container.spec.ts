@@ -10,23 +10,10 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
 class MockUsersService {
-    userUrl: string = 'http://localhost:8080/users';
-    selectedUser: Observable<IUser> = Observable.of(
-        <IUser>
-        {
-            userName: 'User 33',
-            email: '',
-            userID: 0,
-            organization_ID: 0,
-            tenant_ID: 0,
-            givenName: 'Test GivenName',
-            surname: 'Smith',
-            active: true, 
-        }
-    );
-    loadingUser: Observable<boolean> = Observable.of(false);    
-    isLoading: boolean = false;
-
+    usersEndpoint: string = '/api/user';
+    orgUsersEndpoint: string = '/api/user/orgID';
+    userUrl: string = this.usersEndpoint;
+    orgUsersUrl: string = this.orgUsersEndpoint;
     users: Observable<Array<IUser>> = Observable.of(
         [<IUser>
         {
@@ -40,8 +27,23 @@ class MockUsersService {
             active: true,
         }
     ]);
+    selectedUser: Observable<IUser> = Observable.of(
+        <IUser>
+        {
+            userName: 'User 33',
+            email: '',
+            userID: 0,
+            organization_ID: 0,
+            tenant_ID: 0,
+            givenName: 'Test GivenName',
+            surname: 'Smith',
+            active: true, 
+        }
+    );
+    userErrors: Observable<string[]> = Observable.of(['']);
+    loadingUser: Observable<boolean> = Observable.of(false);
 
-    getUsers(onComplete?) {
+    getUsers(organization_ID: number = 0, onComplete?) {
         this.users = Observable.of(
             [<IUser>
                 {
@@ -66,13 +68,23 @@ class MockUsersService {
                 }]
         );
     }
-
+    createUsers (users: IUser[]) {
+    }
     createUser (user: IUser) {
     }
-    updateUsers (user: IUser): Observable<IUser> {
-        return Observable.of(<IUser>user);
+    updateUsers (user: IUser[]) {
+    }
+    updateUser (user: IUser) {
+    }
+    deleteError(index: number) {
+    }
+    clearErrors() {
+    }
+    selectUser (user: IUser) {
     }
     deleteUser (user: IUser){
+    }
+    resetUser () {
     }
 }
 

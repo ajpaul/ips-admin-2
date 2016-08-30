@@ -161,7 +161,8 @@ describe('UsersService::', () => {
             var service;
             beforeEach((done) => {
                 service = testService;
-                service.userUrl = 'users?scenario=singleResult&scope=success';
+                //service.userUrl = 'users?scenario=singleResult&scope=success';
+                service.orgUsersUrl = service.orgUsersEndpoint;
                 service.getUsers(done);
             });
 

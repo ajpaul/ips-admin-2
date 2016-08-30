@@ -40,6 +40,8 @@ MockResponse.prototype.registerRoutes = function (req) {
 
             found = true;
 
+            console.log('MOCK::PATH::'+reqInfo.path);
+
             var route = routes[i];
 
             //If scope & scenario is passed via the url; then, overwrite the testScope & testScenario properties
@@ -57,6 +59,7 @@ MockResponse.prototype.registerRoutes = function (req) {
             }
 
             var response = _routeResponse(route, req);
+            console.log('MOCK::RESPONSE::'+response);
             return response;
         }
     }
@@ -221,13 +224,12 @@ function _tryParseJSON (jsonString){
 
 function parseUrl (urlString) {
     var urlArray = urlString.split("?");
-    var pathArray = urlArray[0].split("/");
+    var path = urlArray[0]; // TODO: come back to this to actually parse the path
     var query = (urlArray.length > 1)? parseQueryString(urlArray[1]) : null;
-    var path = pathArray[pathArray.length-1];
     return {path: path, query: query};
 }
 
-function parseQueryString( queryString ) {
+function parseQueryString(queryString) {
     var params = {}, queries, temp, i, l;
     // Split into key/value pairs
     queries = queryString.split("&");
