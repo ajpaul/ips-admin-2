@@ -1,17 +1,27 @@
 <ul class="item-list">
-    <li *ngFor="let item of items" (click)="selected.emit(item)" class="bookmark">
+    <li class="error-results" *ngIf="isError === true">
+        <div class="error-results-marker" (click)="clearError()">
+            <div class="fa fa-times-circle-o"></div>
+        </div>
+        <div class="error-results-text">
+            The server didn't respond. Would you like to <a href="">Retry</a>
+            or <a href="">Report Issue</a>?
+        </div>
+    </li>
+    <li *ngFor="let item of items" (click)="selected.emit(item)">
        <!--<input class="list-check" type="checkbox"/>-->
         <i class="fa fa-square list-check"></i>
         <i class="status fa fa-circle"></i>
         <div>
-            <h1>{{item.displayName}}</h1>
-            <span>{{item.displayEmail}}</span>
+            <h1>{{item.givenName}} {{item.surname}}</h1>
+            <span>{{item.email}}</span>
         </div>
     </li>
-    <li class="no-results">
+    <li class="no-results" *ngIf="isError === false && isLoading === false && items.length === 0">
+        <h3>No Results Found</h3>
         <p>
-            Oops, there's no users available right now <i class="fa fa-frown-o" aria-hidden="true"></i>.  
-            No worries, go ahead and <a href="#">create one now.</a>
+            Doh! No users matched your request.  Perhaps you'd like to <a href="#">create a new user?</a>
         </p>
     </li>
+    <app-loading-list [hidden]="!isLoading"></app-loading-list>     
 </ul>

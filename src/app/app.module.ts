@@ -26,7 +26,7 @@ import { Store, provideStore } from '@ngrx/store';
 import { AppStore } from './app.store';
 import { Observable } from 'rxjs/Observable';
 import { LightsReducer } from './lights/lights';
-import { UsersReducer, SelectedUserReducer } from './users/users';
+import { UsersReducer, SelectedUserReducer, LoadingUserReducer, UserErrorsReducer } from './users/users';
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
 //usual imports
@@ -58,7 +58,7 @@ import { provide } from '@angular/core';
         AppComponent
     ],
     providers: [
-        provideStore({ LightsReducer, UsersReducer, SelectedUserReducer }), //add a store
+        provideStore({ LightsReducer, UsersReducer, SelectedUserReducer, LoadingUserReducer, UserErrorsReducer }), //add a store
     ]
 })
 export class AppModule {

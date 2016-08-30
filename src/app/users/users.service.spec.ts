@@ -5,6 +5,7 @@ import {
 import { provide } from '@angular/core';
 import { provideStore }	 	from '@ngrx/store';
 import { IUser, UsersService, UsersReducer, SelectedUserReducer } from './users';
+import { ConfigService } from '../shared/config/config';
 import 'rxjs/add/operator/catch';
 
 
@@ -20,6 +21,7 @@ describe('UsersService::', () => {
     var originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
     beforeEach(() => {
         addProviders([
+            ConfigService,
             UsersService,
             HTTP_PROVIDERS,
             provideStore({ UsersReducer, SelectedUserReducer }), //add a store
@@ -57,9 +59,14 @@ describe('UsersService::', () => {
                 service.usersUrl = 'someValidUrl';
                 let spy = jasmine.createSpy('success');
                 let user: IUser = {
-                    'displayName': 'User 33',
-                    'displayEmail': '',
-                    'bookmarked': false
+                    userName: 'User 123',
+                    email: 'foo@bar.com',
+                    userID: 0,
+                    organization_ID: 0,
+                    tenant_ID: 0,
+                    givenName: 'Test GivenName',
+                    surname: 'Smith',
+                    active: true,
                 };
                 service.deleteUser(user);
                 expect(jasmine.Ajax.requests.mostRecent().method).toBe('DELETE');
@@ -69,9 +76,14 @@ describe('UsersService::', () => {
                 service.usersUrl = 'someValidUrl';
                 let spy = jasmine.createSpy('success');
                 let user: IUser = {
-                    'displayName': 'User 33',
-                    'displayEmail': '',
-                    'bookmarked': false
+                    userName: 'User 123',
+                    email: 'foo@bar.com',
+                    userID: 0,
+                    organization_ID: 0,
+                    tenant_ID: 0,
+                    givenName: 'Test GivenName',
+                    surname: 'Smith',
+                    active: true,
                 };
                 service.createUser(user);
                 expect(jasmine.Ajax.requests.mostRecent().method).toBe('PUT');
@@ -79,16 +91,21 @@ describe('UsersService::', () => {
 
             it('should select user 123', (done) => {
                 let user: IUser = {
-                    'displayName': 'User 123',
-                    'displayEmail': 'foo@bar.com',
-                    'bookmarked': false
+                    userName: 'User 123',
+                    email: 'foo@bar.com',
+                    userID: 0,
+                    organization_ID: 0,
+                    tenant_ID: 0,
+                    givenName: 'Test GivenName',
+                    surname: 'Smith',
+                    active: true,
                 };
                 service.selectUser(user);
                 service.selectedUser.subscribe(
                         action => {
                         let user = <IUser>{};
                         expect(typeof action).toBe(typeof user);
-                        expect(action.displayName).toBe('User 123');
+                        expect(action.userName).toBe('User 123');
                         done();
                     },
                         err => {
@@ -105,6 +122,7 @@ describe('UsersService::', () => {
     var originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
     beforeEach(() => {
         addProviders([
+            ConfigService,
             UsersService,
             MockBackend,
             BaseRequestOptions,
@@ -143,8 +161,8 @@ describe('UsersService::', () => {
             var service;
             beforeEach((done) => {
                 service = testService;
-                service.userUrl = 'users?scenario=singleResult&scope=success';
-                service.getUsers(done);
+                service.orgUsersUrl = service.orgUsersEndpoint;
+                service.getUsers('1?scenario=multipleResults', done);
             });
 
             it('should get users', (done) => {
@@ -152,9 +170,14 @@ describe('UsersService::', () => {
                         action => {
                         expect(action.length).toBeGreaterThan(0);
                         let user:IUser = {
-                            'displayName': 'User 33',
-                            'displayEmail': '',
-                            'bookmarked': false
+                            userName: 'User 123',
+                            email: 'foo@bar.com',
+                            userID: 0,
+                            organization_ID: 0,
+                            tenant_ID: 0,
+                            givenName: 'Test GivenName',
+                            surname: 'Smith',
+                            active: true,
                         };
                         expect(typeof action).toBe(typeof user);
                         done();

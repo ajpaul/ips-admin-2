@@ -9,6 +9,7 @@ export function main(): Promise<any> {
 		.catch(err => console.error(err));
 }
 
+
 // boot on document ready
 bootloader(main);
 

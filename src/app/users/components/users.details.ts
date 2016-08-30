@@ -17,7 +17,7 @@ export class UsersDetail {
     @Output() cancelled = new EventEmitter();
 
     @Input('item') set item(value: IUser){
-        if (value) this.originalName = value.displayName;
+        if (value) this.originalName = value.givenName + ' ' + value.surname;
         this.selectedItem = Object.assign({}, value);
     }
 

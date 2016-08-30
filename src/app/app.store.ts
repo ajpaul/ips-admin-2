@@ -10,4 +10,6 @@ export interface AppStore {
     sites : ISite[];
     users : IUser[];
     selectedUser : IUser;
+    userErrors : string[];
+    isLoadingUser: boolean;
 }

@@ -271,13 +271,25 @@ a { color: @anchorColor; }
         }
     }
     li.no-results {
+        &:hover {
+            background-color: @secondaryColor;
+            cursor: default;
+        }
+        display: block;
         margin: 20px;
         .radius(5px);
-        border: 1px dashed @secondaryAccentColor;
         color: @secondaryAccentColor;
         text-align:center;
+        h3 {
+            display: block;
+            font-size: 1.2em;
+            font-weight: lighter;
+            color: @wetstone;
+            line-height: 2.2em;
 
+        }
         p {
+            display: block;
             line-height: 1.7em;
         }
     }
@@ -295,6 +307,35 @@ a { color: @anchorColor; }
         color: @warningColor;
         top: -2px;
         right: 20px;
+    }
+
+    li.error-results {
+        align-items: stretch; /* Extra space in Cross Axis */
+        padding: 0px;
+        background-color: #fff;
+        &:hover {
+            cursor: default;
+        }
+        .error-results-marker {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: @warningColor;
+            padding: 10px;
+            color: #fff;
+            text-align: center;
+            font-size: 1.25em;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        .error-results-text {
+            background-color: #fff;
+            color: @wetstone;
+            padding: 15px 15px;
+            line-height: 1.4;
+            vertical-align: middle;
+        }
     }
 }
 .list-check { margin-right: 15px; font-size: 1.2em; color: #fff; }

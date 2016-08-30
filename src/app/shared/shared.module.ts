@@ -15,6 +15,8 @@ import { ButtonComponent } from './button/button.component';
 import { ButtonAddComponent } from './buttonAdd/buttonAdd.component';
 import { MapComponent } from './map/map.component';
 import { ToggleComponent } from './toggle/toggle.component';
+import { LoadingListComponent } from './loading-list/loading-list.component';
+import { ConfigService } from './config/config';
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import { ToggleComponent } from './toggle/toggle.component';
         ButtonComponent,
         ButtonAddComponent,
         MapComponent,
-        ToggleComponent
+        ToggleComponent,
+        LoadingListComponent
     ],
     exports: [
         CommonModule,
@@ -45,7 +48,11 @@ import { ToggleComponent } from './toggle/toggle.component';
         ButtonComponent,
         ButtonAddComponent,
         MapComponent,
-        ToggleComponent
+        ToggleComponent,
+        LoadingListComponent
+    ],
+    providers: [
+        ConfigService
     ]
 })
 export class SharedModule {}

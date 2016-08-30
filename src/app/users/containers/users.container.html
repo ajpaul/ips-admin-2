@@ -1,7 +1,6 @@
 <div class="user-parent">
 
     <aside class="panel-left">
-        
         <!-- List Option Tabs -->
         <div class="tab-bar hbox">
             <ul class="tab-list">
@@ -33,8 +32,11 @@
 
         <!-- Users List -->
         <users-list [items]="users | async"
+                    [isLoading]="loadingUser | async"
+                    [isError]="isError"
+                    (onClearError)="onClearError()"
                     (selected)="selectItem($event)"
-                    (deleted)="deleteItem($event)"></users-list>
+                    (deleted)="deleteItem($event)"></users-list>   
 
     </aside>
 
