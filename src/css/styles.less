@@ -272,13 +272,12 @@ a { color: @anchorColor; }
     }
     li.no-results {
         &:hover {
-            background-color: darken(@secondaryColor, 3%);
+            background-color: @secondaryColor;
             cursor: default;
         }
         display: block;
         margin: 20px;
-        background-color: darken(@secondaryColor, 3%);
-        border: none;
+        .radius(5px);
         color: @secondaryAccentColor;
         text-align:center;
         h3 {
@@ -286,13 +285,12 @@ a { color: @anchorColor; }
             font-size: 1.2em;
             font-weight: lighter;
             color: @wetstone;
-            line-height: 2.5em;
+            line-height: 2em;
 
         }
         p {
             display: block;
             line-height: 1.7em;
-            text-align: left;
         }
     }
     li:hover {
@@ -312,19 +310,18 @@ a { color: @anchorColor; }
     }
 
     li.error-results {
-
-        display: flex;
-        flex-direction: row;
+        align-items: stretch; /* Extra space in Cross Axis */
         padding: 0px;
-        height: 55px;
         background-color: #fff;
         &:hover {
             cursor: default;
         }
         .error-results-marker {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             background-color: @warningColor;
-            width: 25px;
-            line-height: 54px;
+            padding: 10px;
             color: #fff;
             text-align: center;
             font-size: 1.25em;
@@ -332,18 +329,14 @@ a { color: @anchorColor; }
                 cursor: pointer;
             }
         }
-
         .error-results-text {
             background-color: #fff;
             color: @wetstone;
-            padding-left: 15px;
-            padding-right: 15px;
-            width: calc(~"100% - 25px");
+            padding: 15px 15px;
             line-height: 1.4;
             vertical-align: middle;
         }
     }
-
 }
 .list-check { margin-right: 15px; font-size: 1.2em; color: #fff; }
 

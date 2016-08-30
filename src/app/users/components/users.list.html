@@ -5,7 +5,7 @@
         </div>
         <div class="error-results-text">
             The server didn't respond. Would you like to <a href="">Retry</a>
-            or <a href="">Report Issue</a>
+            or <a href="">Report Issue</a>?
         </div>
     </li>
     <li *ngFor="let item of items" (click)="selected.emit(item)">
@@ -20,7 +20,7 @@
     <li class="no-results" *ngIf="isError === false && isLoading === false && items.length === 0">
         <h3>No Results Found</h3>
         <p>
-            Would you like to create a site with this name? <a href="#">Yes</a>
+            Doh! No users matched your request.  Perhaps you'd like to <a href="#">create a new user?</a>
         </p>
     </li>
     <app-loading-list [hidden]="!isLoading"></app-loading-list>     
