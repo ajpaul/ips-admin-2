@@ -1,15 +1,13 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { IUser } from '../users';
-import { LoadingListComponent } from '../../shared/loading-list/loading-list.component';
 
 //-------------------------------------------------------------------
 // LIGHTS-LIST
 //-------------------------------------------------------------------
 @Component({
     selector: 'users-list',
-    templateUrl: './users.list.html',
-    directives: [LoadingListComponent],
+    templateUrl: './users.list.html'
 })
 export class UsersList {
     @Input() items: IUser[];
