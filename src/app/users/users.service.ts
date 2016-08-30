@@ -33,7 +33,7 @@ export class UsersService{
         this.orgUsersUrl = config.apiRoot + this.orgUsersEndpoint;
     }
 
-    getUsers(organization_ID: number = 0, onComplete?) {
+    getUsers(organization_ID: string = '0', onComplete?) {
         onComplete = onComplete || (()=>{});
         let options = new RequestOptions(HEADER);
         options.body = '';
@@ -41,7 +41,6 @@ export class UsersService{
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: REQUEST_USER });
         this.store.dispatch({ type: CLEAR_ERRORS_USERS });
-
         return this.http.get(this.orgUsersUrl + '/' + organization_ID.toString(), options)
             .map(this.extractMultipleUsers)
             .map(payload => ({type: ADD_USERS, payload}))
@@ -171,6 +170,7 @@ export class UsersService{
     }
 
     private extractMultipleUsers(res: Response) {
+        console.log('response: ',res);
         let body = res.json();
         return body ? body.result || [] : [];
     }
