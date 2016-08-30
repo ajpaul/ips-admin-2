@@ -163,7 +163,7 @@ describe('UsersService::', () => {
                 service = testService;
                 //service.userUrl = 'users?scenario=singleResult&scope=success';
                 service.orgUsersUrl = service.orgUsersEndpoint;
-                service.getUsers(done);
+                service.getUsers(1, done);
             });
 
             it('should get users', (done) => {
