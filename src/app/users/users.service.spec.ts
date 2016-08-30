@@ -5,7 +5,7 @@ import {
 import { provide } from '@angular/core';
 import { provideStore }	 	from '@ngrx/store';
 import { IUser, UsersService, UsersReducer, SelectedUserReducer, UserErrorsReducer, LoadingUserReducer } from './users';
-import { SelectedOrganizationReducer } from '../organizations/organizations';
+import { SelectedOrgReducer } from '../organizations/organizations';
 import { ConfigService } from '../shared/config/config';
 import 'rxjs/add/operator/catch';
 
@@ -25,7 +25,7 @@ describe('UsersService::', () => {
             ConfigService,
             UsersService,
             HTTP_PROVIDERS,
-            provideStore({ UsersReducer, SelectedUserReducer, SelectedOrganizationReducer, UserErrorsReducer, LoadingUserReducer }), //add a store
+            provideStore({ UsersReducer, SelectedUserReducer, SelectedOrgReducer, UserErrorsReducer, LoadingUserReducer }), //add a store
         ]);
         jasmine.Ajax.install();
         jasmine.DEFAULT_TIMEOUT_INTERVAL = 5000;
@@ -136,7 +136,7 @@ describe('UsersService::', () => {
                     deps: [MockBackend, BaseRequestOptions]
                 }
             ),
-            provideStore({UsersReducer, SelectedUserReducer, SelectedOrganizationReducer, UserErrorsReducer, LoadingUserReducer}), //add a store
+            provideStore({UsersReducer, SelectedUserReducer, SelectedOrgReducer, UserErrorsReducer, LoadingUserReducer}), //add a store
         ]);
     });
 

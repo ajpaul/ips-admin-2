@@ -20,7 +20,7 @@ export class UsersService{
     selectedUser: Observable<IUser>;
     userErrors: Observable<string[]>;
     loadingUser: Observable<boolean>;
-    selectedOrganizationId: Observable<number>;
+    selectedOrgId: Observable<number>;
     organizationId: number = 0;
 
     constructor(private http : Http, private store: Store<AppStore>,  private configService: ConfigService) {
@@ -32,8 +32,8 @@ export class UsersService{
         this.selectedUser = this.store.select<IUser>('SelectedUserReducer');
         this.userErrors = this.store.select<string[]>('UserErrorsReducer');
         this.loadingUser = this.store.select<boolean>('LoadingUserReducer');
-        this.selectedOrganizationId = this.store.select<number>('SelectedOrganizationReducer');
-        this.selectedOrganizationId.subscribe((id) => {
+        this.selectedOrgId = this.store.select<number>('SelectedOrgReducer');
+        this.selectedOrgId.subscribe((id) => {
             this.organizationId = id;
             this.buildUrls();
         })

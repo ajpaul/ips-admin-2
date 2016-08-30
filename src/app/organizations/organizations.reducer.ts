@@ -1,11 +1,11 @@
 
-export const ORGANIZATION_REDUCER_ACTIONS = {
-    SELECT_ORGANIZATION: 'SELECT_ORGANIZATION'
+export const ORG_REDUCER_ACTIONS = {
+    SELECT_ORG: 'SELECT_ORG'
 };
 
-export const SelectedOrganizationReducer = (state: number = 0, {type, payload}) => {
+export const SelectedOrgReducer = (state: number = 0, {type, payload}) => {
     switch (type) {
-        case ORGANIZATION_REDUCER_ACTIONS.SELECT_ORGANIZATION:
+        case ORG_REDUCER_ACTIONS.SELECT_ORG:
             return payload;
         default:
             return state;
