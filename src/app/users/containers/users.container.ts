@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { IUser, UsersService } from '../users';
-import { ButtonAddComponent } from '../../shared/buttonAdd/buttonAdd.component';
-import { OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
+import { IUser, UsersService } from '../users';
+
 @Component({
     selector: 'app-users',
     templateUrl: './users.container.html',
