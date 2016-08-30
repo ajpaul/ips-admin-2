@@ -11,34 +11,47 @@ import { IUser, UsersService } from '../users';
 
 export class UsersContainer implements OnInit, OnDestroy {
 
-    users: Observable<Array<IUser>>;
+    users: Array<IUser>;
+    loadedUsers: Array<IUser> = [];
     selectedUser: Observable<IUser>;
     userErrors: Observable<string[]>;
     userErrorsSubscription: Subscription;
+    usersSubscription: Subscription;
+    loadingUserSubscription: Subscription;
     loadingUser: Observable<boolean>;
-    isError: boolean;
+    isLoading: boolean = true;
+    isError: boolean = false;
 
-    constructor(private usersService: UsersService) {
-        this.isError = false;
-    }
+    constructor(private usersService: UsersService) { }
 
     ngOnInit() {
-        this.users = this.usersService.users;
         this.selectedUser = this.usersService.selectedUser;
         this.userErrors = this.usersService.userErrors;
-        this.userErrorsSubscription = this.userErrors.subscribe(errors => {
-            if (errors.length > 0) {
-                this.isError = true;
-            } else {
-                this.isError = false;
-            }
-        });
         this.loadingUser = this.usersService.loadingUser;
+
+        this.usersSubscription = this.usersService.users.subscribe( users => {
+            this.users = users;
+        });
+
+        this.userErrorsSubscription = this.userErrors.subscribe(errors => {
+            this.isError = errors.length > 0;
+        });
+
+        this.loadingUserSubscription = this.loadingUser.subscribe( isLoading => {
+            //this timeout is here to force a little bit of a loading state even if not necessary
+            //to prevent a FOUC and as a best practice from UX
+            setTimeout(function() {
+                this.isLoading = isLoading;
+                this.loadedUsers = this.users;
+            }.bind(this), 750);
+        });
         this.usersService.getUsers();
     }
 
     ngOnDestroy() {
         this.userErrorsSubscription.unsubscribe();
+        this.usersSubscription.unsubscribe();
+        this.loadingUserSubscription.unsubscribe();
     }
 
     onClearError() {

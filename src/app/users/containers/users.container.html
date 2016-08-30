@@ -31,8 +31,8 @@
         </div>
 
         <!-- Users List -->
-        <users-list [items]="users | async"
-                    [isLoading]="loadingUser | async"
+        <users-list [items]="loadedUsers"
+                    [isLoading]="isLoading"
                     [isError]="isError"
                     (onClearError)="onClearError()"
                     (selected)="selectItem($event)"

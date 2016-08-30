@@ -65,7 +65,7 @@ export const SelectedUserReducer = (state: any = null, {type, payload}) => {
     }
 };
 
-export const LoadingUserReducer = (state: boolean = false, {type, payload}) => {
+export const LoadingUserReducer = (state: boolean = true, {type, payload}) => {
     switch (type) {
         case REQUEST_USER:
             return true;

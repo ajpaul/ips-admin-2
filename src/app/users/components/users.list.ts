@@ -1,5 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Component, Input, Output, EventEmitter, trigger, state, style, transition, animate } from '@angular/core';
 import { IUser } from '../users';
 
 //-------------------------------------------------------------------
@@ -7,7 +6,19 @@ import { IUser } from '../users';
 //-------------------------------------------------------------------
 @Component({
     selector: 'users-list',
-    templateUrl: './users.list.html'
+    templateUrl: './users.list.html',
+    animations: [
+        trigger('myAnimationTrigger', [
+            state('in', style({})),
+            transition('void => *', [
+                style({transform: 'translateX(-100%)'}),
+                animate(250)
+            ]),
+            transition('* => void', [
+                animate(250, style({transform: 'translateX(100%)'}))
+            ])
+        ])
+    ]
 })
 export class UsersList {
     @Input() items: IUser[];
@@ -16,7 +27,11 @@ export class UsersList {
     @Output() onClearError = new EventEmitter();
     @Output() selected = new EventEmitter();
     @Output() deleted = new EventEmitter();
+    animationState: string;
 
+    constructor(){
+        this.animationState = 'in';
+    }
     clearError() {
         this.onClearError.emit({});
     }

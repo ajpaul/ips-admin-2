@@ -1,5 +1,5 @@
 <ul class="item-list">
-    <li class="error-results" *ngIf="isError === true">
+    <li class="error-results" *ngIf="isError === true && !isLoading">
         <div class="error-results-marker" (click)="clearError()">
             <div class="fa fa-times-circle-o"></div>
         </div>
@@ -8,7 +8,8 @@
             or <a href="">Report Issue</a>?
         </div>
     </li>
-    <li *ngFor="let item of items" (click)="selected.emit(item)">
+    <template [ngIf]="!isLoading" >
+    <li *ngFor="let item of items" (click)="selected.emit(item)" [hidden]="isLoading" [@myAnimationTrigger]="animationState">
        <!--<input class="list-check" type="checkbox"/>-->
         <i class="fa fa-square list-check"></i>
         <i class="status fa fa-circle"></i>
@@ -17,11 +18,12 @@
             <span>{{item.email}}</span>
         </div>
     </li>
-    <li class="no-results" *ngIf="isError === false && isLoading === false && items.length === 0">
+    </template>
+    <li class="no-results" *ngIf="isError === false && !isLoading && items.length === 0">
         <h3>No Results Found</h3>
         <p>
             Doh! No users matched your request.  Perhaps you'd like to <a href="#">create a new user?</a>
         </p>
     </li>
-    <app-loading-list [hidden]="!isLoading"></app-loading-list>     
+    <app-loading-list *ngIf="isLoading"></app-loading-list>
 </ul>
