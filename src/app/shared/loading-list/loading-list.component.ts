@@ -72,7 +72,7 @@ export class LoadingListComponent implements OnChanges {
             default:
                 break;
       }
-
+    }
     console.log('loading state in loading list:', this.loadingState);
 
     if (changes.isLoading && changes.isLoading.previousValue !== true && changes.isLoading.currentValue === true) {
