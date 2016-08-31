@@ -31,8 +31,8 @@
         </div>
 
         <!-- Users List -->
-        <users-list [items]="loadedUsers"
-                    [isLoading]="isLoading"
+        <users-list [items]="users$ | async"
+                    [isLoading]="loadingUser$ | async"
                     [isError]="isError"
                     (onClearError)="onClearError()"
                     (selected)="selectItem($event)"
@@ -45,7 +45,7 @@
         <!-- Selected Item Details -->
         <users-detail
                 (saved)="saveItem($event)" (cancelled)="resetItem($event)"
-                [item]="selectedUser | async"></users-detail>
+                [item]="selectedUser$ | async"></users-detail>
 
     </section>
 

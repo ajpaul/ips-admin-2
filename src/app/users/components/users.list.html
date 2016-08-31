@@ -25,5 +25,5 @@
             Doh! No users matched your request.  Perhaps you'd like to <a href="#">create a new user?</a>
         </p>
     </li>
-    <app-loading-list *ngIf="isLoading"></app-loading-list>
+    <app-loading-list [isLoading]="isLoading" [delay]="750"></app-loading-list>
 </ul>
