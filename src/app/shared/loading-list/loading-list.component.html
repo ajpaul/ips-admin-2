@@ -1,4 +1,5 @@
-<li class="loading-results" *ngIf="showLoading === true">
+<!--<li class="loading-results" *ngIf="showLoading === true">-->
+<li class="loading-results" [@loadingHeight]="loadingState">
   <div class="loading-results-marker">
     <div class="fa fa-cog fa-spin"></div>
   </div>

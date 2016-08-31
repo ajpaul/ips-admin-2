@@ -1,4 +1,5 @@
-<ul class="item-list">
+<app-loading-list [isLoading]="isLoading" [isSuccess]="isSuccess" [isError]="isError" [delay]="750"></app-loading-list>
+<ul class="item-list" [@loadingState]="loadingState">
     <li class="error-results" *ngIf="isError === true && !isLoading">
         <div class="error-results-marker" (click)="clearError()">
             <div class="fa fa-times-circle-o"></div>
@@ -25,5 +26,4 @@
             Doh! No users matched your request.  Perhaps you'd like to <a href="#">create a new user?</a>
         </p>
     </li>
-    <app-loading-list [isLoading]="isLoading" [delay]="750"></app-loading-list>
 </ul>
