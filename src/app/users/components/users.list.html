@@ -1,4 +1,4 @@
-<app-loading-list [isLoading]="isLoading" [isSuccess]="isSuccess" [isError]="isError" [delay]="750"></app-loading-list>
+<app-loading-list [loadingStatus]="loadingStatus" [delay]="750"></app-loading-list>
 <ul class="item-list" [@loadingState]="loadingState">
     <li class="error-results" *ngIf="isError === true && !isLoading">
         <div class="error-results-marker" (click)="clearError()">

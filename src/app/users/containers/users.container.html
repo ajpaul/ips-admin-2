@@ -32,9 +32,7 @@
 
         <!-- Users List -->
         <users-list [items]="users$ | async"
-                    [isLoading]="loadingUser$ | async"
-                    [isError]="isError"
-                    [isSuccess]="isSuccess"
+                    [loadingStatus]="loadingUser$ | async"
                     (onClearError)="onClearError()"
                     (selected)="selectItem($event)"
                     (deleted)="deleteItem($event)"></users-list>   
