@@ -11,15 +11,27 @@ import { Component, Input, OnChanges, trigger, state, style, transition, animate
         state('error', style({ backgroundColor: '#ff0000' }))
       ]),
       trigger('loadingHeight', [
-        state('notloading', style({ transform: 'translateX(100%)', backgroundColor: '#0000ff' })),
+        state('notloading', style({ backgroundColor: '#00ff00' })),
         state('loading', style({  backgroundColor: '#0000ff', transform: 'translateX(0)' })),
-        state('success', style({ backgroundColor: '#00ff00', transform: 'translateX(0)' })),
         state('error', style({ backgroundColor: '#ff0000', transform: 'translateX(0)' })),
         transition('* => loading', [
           style({ transform: 'translateX(-100%)', backgroundColor: "#0000ff" }),
           animate('250ms ease-in')
         ]),
-        transition('loading => success', animate('250ms ease-out'))
+        transition('loading => notloading', [
+          animate('250ms ease-out', style({ backgroundColor: '#00ff00' })),
+          animate('250ms 1500ms ease-out', style({ backgroundColor: '#00ff00', transform: 'translateX(100%)' }))
+        ]),
+        transition('loading => error', [
+          animate('250ms ease-out')
+        ]),
+        // transition('success => notloading', [
+        //   animate('250ms ease-out')
+        // ]),
+        transition('error => notloading', [
+          animate('250ms ease-out')
+        ]),
+
       ]),
       trigger('loadingIconIn', [
         state('in', style({ opacity: 1 })),
@@ -29,10 +41,8 @@ import { Component, Input, OnChanges, trigger, state, style, transition, animate
     ]
 })
 export class LoadingListComponent implements OnChanges {
-  @Input() isLoading: boolean;
+  @Input() loadingStatus: number;
   @Input() delay: number;
-  @Input() isSuccess: boolean;
-  @Input() isError: boolean;
   showLoading: boolean = false;
   timeoutId: any = undefined;
   /**
@@ -52,30 +62,30 @@ export class LoadingListComponent implements OnChanges {
 
   ngOnChanges(changes) {
     console.log('in loading comp before load:', this.loadingState);
-    if (changes.isLoading || changes.isSuccess || changes.isError) {
-      // populate the loadingStatus used to determine animations
-      if (this.isLoading) {
-        this.loadingState = "loading";
-      } else if (this.isSuccess) {
-        this.loadingState = "success";
-      } else if (this.isError) {
-        this.loadingState = "error";
-      } else {
-        this.loadingState = "notloading";
+    if (changes.loadingStatus) {
+        // populate the loadingState used to determine animations
+        switch (this.loadingStatus) {
+            case 0:
+                this.loadingState = 'notloading';
+                break;
+            case 1:
+                this.loadingState = 'loading';
+                break;
+            case 2:
+                this.loadingState = 'error';
+                break;
+            default:
+                break;
       }
     }
-
-
     console.log('loading state in loading list:', this.loadingState);
 
-
-
-    if (changes.isLoading.previousValue !== true && changes.isLoading.currentValue === true) {
+    if (changes.isLoading && changes.isLoading.previousValue !== true && changes.isLoading.currentValue === true) {
       this.timeoutId = setTimeout(() => {
         this.showLoading = true;
         this.timeoutId = undefined;
       }, this.delay);
-    } else if (changes.isLoading.currentValue === false) {
+    } else if (changes.isLoading && changes.isLoading.currentValue === false) {
       if (this.timeoutId !== undefined) {
         clearTimeout(this.timeoutId);
         this.timeoutId = undefined;

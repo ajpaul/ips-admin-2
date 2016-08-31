@@ -21,16 +21,15 @@ import { IUser } from '../users';
         trigger('loadingState', [
             state('notloading', style({ top: '140px'})),
             state('loading', style({ top: '205px'})),
-            transition('loading => *', animate('250ms ease-in')),
-            transition('* => loading', animate('250ms ease-in'))
+            transition('loading => error', animate('250ms ease-in')),
+            transition('* => loading', animate('250ms ease-in')),
+            transition('loading => notloading', animate('250ms 1750ms ease-in'))
         ])
     ]
 })
 export class UsersList implements OnChanges {
     @Input() items: IUser[];
-    @Input() isLoading: boolean;
-    @Input() isError: boolean;
-    @Input() isSuccess: boolean;
+    @Input() loadingStatus: number;
     @Output() onClearError = new EventEmitter();
     @Output() selected = new EventEmitter();
     @Output() deleted = new EventEmitter();
@@ -48,16 +47,20 @@ export class UsersList implements OnChanges {
 
   ngOnChanges(changes) {
     console.log('in users list before load:', this.loadingState);
-    if (changes.isLoading || changes.isSuccess || changes.isError) {
-      // populate the loadingStatus used to determine animations
-      if (this.isLoading) {
-        this.loadingState = "loading";
-      } else if (this.isSuccess) {
-        this.loadingState = "success";
-      } else if (this.isError) {
-        this.loadingState = "error";
-      } else {
-        this.loadingState = "notloading";
+    if (changes.loadingStatus) {
+        // populate the loadingState used to determine animations
+        switch (this.loadingStatus) {
+            case 0:
+                this.loadingState = 'notloading';
+                break;
+            case 1:
+                this.loadingState = 'loading';
+                break;
+            case 2:
+                this.loadingState = 'error';
+                break;
+            default:
+                break;
       }
     }
     console.log('loadingState in users list:', this.loadingState);

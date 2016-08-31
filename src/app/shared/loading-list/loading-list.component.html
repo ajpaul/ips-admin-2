@@ -3,14 +3,14 @@
   <div class="loading-results" [@loadingHeight]="loadingState">
     <div class="loading-results-marker">
       <i class="fa fa-cog fa-spin" [@loadingIconIn]="loadingState === 'loading' ? 'in' : 'out'"></i>
-      <i class="fa fa-check" [@loadingIconIn]="loadingState === 'success' ? 'in' : 'out'"></i>
+      <i class="fa fa-check" [@loadingIconIn]="loadingState === 'notloading' ? 'in' : 'out'"></i>
       <i class="fa fa-times-circle-o" [@loadingIconIn]="loadingState === 'error' ? 'in' : 'out'"></i>
     </div>
     <div class="loading-results-text">
       <div [@loadingIconIn]="loadingState === 'loading' ? 'in' : 'out'">
         We're loading the list. It should only take a few seconds...
       </div>
-      <div [@loadingIconIn]="loadingState === 'success' ? 'in' : 'out'">
+      <div [@loadingIconIn]="loadingState === 'notloading' ? 'in' : 'out'">
         Successful!!!
       </div>
       <div [@loadingIconIn]="loadingState === 'error' ? 'in' : 'out'">
