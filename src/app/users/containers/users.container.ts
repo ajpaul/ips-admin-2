@@ -19,6 +19,7 @@ export class UsersContainer implements OnInit, OnDestroy {
     loadingUser$: Observable<boolean>;
     isLoading: boolean = false;
     isError: boolean = false;
+    isSuccess: boolean = true;
 
     constructor(private usersService: UsersService) { }
 
@@ -30,6 +31,14 @@ export class UsersContainer implements OnInit, OnDestroy {
 
         this.userErrorsSubscription = this.userErrors$.subscribe(errors => {
             this.isError = errors.length > 0;
+            this.isSuccess = !this.isError; // $$$ not totally right, but good for now
+            // then in a little bit of time, clear isSuccess
+            if (this.isSuccess) {
+                setTimeout(function() {
+                    console.log('isSuccess = false now');
+                    this.isSuccess = false;
+                }, 250);
+            }
         });
 
         this.usersService.getUsers();

@@ -30,11 +30,13 @@ export class UsersList implements OnChanges {
     @Input() items: IUser[];
     @Input() isLoading: boolean;
     @Input() isError: boolean;
+    @Input() isSuccess: boolean;
     @Output() onClearError = new EventEmitter();
     @Output() selected = new EventEmitter();
     @Output() deleted = new EventEmitter();
+
     animationState: string;
-    isSuccess: boolean = true; // $$$ fix this
+
     loadingState: string = 'notloading';
 
     constructor(){

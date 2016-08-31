@@ -34,6 +34,7 @@
         <users-list [items]="users$ | async"
                     [isLoading]="loadingUser$ | async"
                     [isError]="isError"
+                    [isSuccess]="isSuccess"
                     (onClearError)="onClearError()"
                     (selected)="selectItem($event)"
                     (deleted)="deleteItem($event)"></users-list>   
