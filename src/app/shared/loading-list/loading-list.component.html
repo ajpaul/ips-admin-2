@@ -1,9 +1,22 @@
-<!--<li class="loading-results" *ngIf="showLoading === true">-->
-<li class="loading-results" [@loadingHeight]="loadingState">
-  <div class="loading-results-marker">
-    <div class="fa fa-cog fa-spin"></div>
+<div class="loading-list-component-container">
+  <!--<li class="loading-results" *ngIf="showLoading === true">-->
+  <div class="loading-results" [@loadingHeight]="loadingState">
+    <div class="loading-results-marker">
+      <i class="fa fa-cog fa-spin" [@loadingIconIn]="loadingState === 'loading' ? 'in' : 'out'"></i>
+      <i class="fa fa-check" [@loadingIconIn]="loadingState === 'success' ? 'in' : 'out'"></i>
+      <i class="fa fa-times-circle-o" [@loadingIconIn]="loadingState === 'error' ? 'in' : 'out'"></i>
+    </div>
+    <div class="loading-results-text">
+      <div [@loadingIconIn]="loadingState === 'loading' ? 'in' : 'out'">
+        We're loading the list. It should only take a few seconds...
+      </div>
+      <div [@loadingIconIn]="loadingState === 'success' ? 'in' : 'out'">
+        Successful!!!
+      </div>
+      <div [@loadingIconIn]="loadingState === 'error' ? 'in' : 'out'">
+        The server didn't respond. Would you like to <a href="">Retry</a>
+        or <a href="">Report Issue</a>?
+      </div>
+    </div>
   </div>
-  <div class="loading-results-text">
-    We're loading the list. It should only take a few seconds...
-  </div>
-</li>
+</div>

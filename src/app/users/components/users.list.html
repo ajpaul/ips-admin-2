@@ -1,14 +1,5 @@
 <app-loading-list [isLoading]="isLoading" [isSuccess]="isSuccess" [isError]="isError" [delay]="750"></app-loading-list>
 <ul class="item-list" [@loadingState]="loadingState">
-    <li class="error-results" *ngIf="isError === true && !isLoading">
-        <div class="error-results-marker" (click)="clearError()">
-            <div class="fa fa-times-circle-o"></div>
-        </div>
-        <div class="error-results-text">
-            The server didn't respond. Would you like to <a href="">Retry</a>
-            or <a href="">Report Issue</a>?
-        </div>
-    </li>
     <template [ngIf]="!isLoading" >
     <li *ngFor="let item of items" (click)="selected.emit(item)" [hidden]="isLoading" [@myAnimationTrigger]="animationState">
        <!--<input class="list-check" type="checkbox"/>-->

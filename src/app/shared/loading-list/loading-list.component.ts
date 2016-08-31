@@ -13,14 +13,19 @@ import { Component, Input, OnChanges, trigger, state, style, transition, animate
       trigger('loadingHeight', [
         state('notloading', style({ transform: 'translateX(100%)', backgroundColor: '#0000ff' })),
         state('loading', style({  backgroundColor: '#0000ff', transform: 'translateX(0)' })),
-        state('success', style({ backgroundColor: '#00ff00', transform: 'translateX(100%)' })),
+        state('success', style({ backgroundColor: '#00ff00', transform: 'translateX(0)' })),
         state('error', style({ backgroundColor: '#ff0000', transform: 'translateX(0)' })),
         transition('* => loading', [
           style({ transform: 'translateX(-100%)', backgroundColor: "#0000ff" }),
           animate('250ms ease-in')
         ]),
         transition('loading => success', animate('250ms ease-out'))
-      ])      
+      ]),
+      trigger('loadingIconIn', [
+        state('in', style({ opacity: 1 })),
+        state('out', style({ opacity: 0 })),
+        transition('out <=> in', animate('250ms ease-in'))
+      ])
     ]
 })
 export class LoadingListComponent implements OnChanges {

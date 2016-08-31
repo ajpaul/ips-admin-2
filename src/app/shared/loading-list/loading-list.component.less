@@ -7,6 +7,7 @@
     padding: 0px;
     background-color: #fff;
     height: 65px;
+    border-bottom: 1px solid @secondaryBorderColor;
 }
 
 .loading-results-marker {
@@ -16,7 +17,15 @@
     /*background-color: @activeColor;*/
     padding: 10px;
     color: #fff;
-    font-size: 1.25em;
+    font-size: 1.3em;
+    letter-spacing: normal;
+    width: 32px;
+    text-align: center;
+    i {
+        position: absolute;
+        /* wobbly icon, look at this: https://github.com/FortAwesome/Font-Awesome/issues/671 */
+        transform-origin: 50.5% 47.5%;
+    }
 }
 
 .loading-results-text {
@@ -25,4 +34,8 @@
     padding: 15px 15px;
     line-height: 1.4;
     vertical-align: middle;
+    width: calc(~"100%" - 32px);
+    div {
+        position: absolute;
+    }
 }
