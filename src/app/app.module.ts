@@ -49,7 +49,7 @@ import { provide } from '@angular/core';
         // Note that you must instrument after importing StoreModule
         StoreDevtoolsModule.instrumentStore({
             monitor: useLogMonitor({
-                visible: true,
+                visible: false,
                 position: 'right'
             })
         }),
