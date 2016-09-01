@@ -31,7 +31,7 @@
         </div>
 
         <!-- Users List -->
-        <app-loading-list [loadingStatus]="loadingUser$ | async" (onClearError)="onClearError()" [delay]="750"></app-loading-list>
+        <app-loading-list [loadingStatus]="loadingUser$ | async" (onClearError)="onClearError()"></app-loading-list>
         <users-list [items]="users$ | async"
                     [loadingStatus]="loadingUser$ | async"
                     (selected)="selectItem($event)"

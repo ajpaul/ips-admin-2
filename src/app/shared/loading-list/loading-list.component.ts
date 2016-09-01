@@ -44,30 +44,32 @@ import { warningColor, activeColor, successColor, white } from '../colors/colors
 })
 export class LoadingListComponent implements OnChanges {
     @Input() loadingStatus: number;
-    @Input() delay: number;
+    // TODO implement this delay as a minimum time before show loading
+    //@Input() delay: number;
     @Output() onClearError = new EventEmitter();
     showLoading: boolean = false;
     timeoutId: any = undefined;
+
     /**
      * Loading status represents the current status based on
-     * the isLoading, isSuccess, and isError inputs
+     * the loadingStatus store item
      * It can be one of the following values:
      * notloading
      * loading
-     * success
      * error
      * 
      * @type {string}
      */
     loadingState: string = 'notloading';
+
     constructor() {
     };
 
     clearError() {
         this.onClearError.emit({});
     }
+
     ngOnChanges(changes) {
-        console.log('in loading comp before load:', this.loadingState);
         if (changes.loadingStatus) {
             // populate the loadingState used to determine animations
             switch (this.loadingStatus) {
@@ -83,20 +85,6 @@ export class LoadingListComponent implements OnChanges {
                 default:
                     break;
             }
-        }
-        console.log('loading state in loading list:', this.loadingState);
-
-        if (changes.isLoading && changes.isLoading.previousValue !== true && changes.isLoading.currentValue === true) {
-            this.timeoutId = setTimeout(() => {
-                this.showLoading = true;
-                this.timeoutId = undefined;
-            }, this.delay);
-        } else if (changes.isLoading && changes.isLoading.currentValue === false) {
-            if (this.timeoutId !== undefined) {
-                clearTimeout(this.timeoutId);
-                this.timeoutId = undefined;
-            }
-            this.showLoading = false;
         }
     }
 }

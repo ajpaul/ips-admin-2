@@ -1,5 +1,4 @@
 <div class="loading-list-component-container">
-  <!--<li class="loading-results" *ngIf="showLoading === true">-->
   <div class="loading-results" [@loadingHeight]="loadingState">
     <div class="loading-results-marker">
       <i class="fa fa-cog fa-spin" [@loadingIconIn]="loadingState === 'loading' ? 'in' : 'out'"></i>
