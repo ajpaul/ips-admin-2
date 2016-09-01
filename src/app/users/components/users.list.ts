@@ -34,7 +34,6 @@ import { IUser } from '../users';
 export class UsersList implements OnChanges {
     @Input() items: IUser[];
     @Input() loadingStatus: number;
-    @Output() onClearError = new EventEmitter();
     @Output() selected = new EventEmitter();
     @Output() deleted = new EventEmitter();
 
@@ -45,29 +44,24 @@ export class UsersList implements OnChanges {
     constructor(){
         this.animationState = 'in';
     }
-    clearError() {
-        this.onClearError.emit({});
-    }
 
-  ngOnChanges(changes) {
-    console.log('in users list before load:', this.loadingState);
-    if (changes.loadingStatus) {
-        // populate the loadingState used to determine animations
-        switch (this.loadingStatus) {
-            case 0:
-                this.loadingState = 'notloading';
-                break;
-            case 1:
-                this.loadingState = 'loading';
-                break;
-            case 2:
-                this.loadingState = 'error';
-                break;
-            default:
-                break;
-      }
+    ngOnChanges(changes) {
+        if (changes.loadingStatus) {
+            // populate the loadingState used to determine animations
+            switch (this.loadingStatus) {
+                case 0:
+                    this.loadingState = 'notloading';
+                    break;
+                case 1:
+                    this.loadingState = 'loading';
+                    break;
+                case 2:
+                    this.loadingState = 'error';
+                    break;
+                default:
+                    break;
+            }
+        }
     }
-    console.log('loadingState in users list:', this.loadingState);
-  }
 
 }

@@ -40,9 +40,9 @@ export class UsersService{
         options.body = '';
 
         // dispatch an action to initiate the loading
+        this.store.dispatch({ type: CLEAR_ERRORS_USERS });
         this.store.dispatch({ type: SET_USERS_LOADING });
         this.store.dispatch({ type: CLEAR_USERS });
-        this.store.dispatch({ type: CLEAR_ERRORS_USERS });
         return this.http.get(this.orgUsersUrl + '/' + organization_ID.toString(), options)
             .map(this.extractMultipleUsers)
             .map(payload => ({type: ADD_USERS, payload}))
@@ -66,8 +66,8 @@ export class UsersService{
         let options = new RequestOptions(HEADER);
 
         // dispatch an action to initiate the loading
-        this.store.dispatch({ type: SET_USERS_LOADING });
         this.store.dispatch({ type: CLEAR_ERRORS_USERS });
+        this.store.dispatch({ type: SET_USERS_LOADING });
         //assumption here is that we get back the properly formed user from the put
         //the returned object is what will get added into the store
         return this.http.put(this.usersUrl, body, options)
@@ -94,8 +94,8 @@ export class UsersService{
         options.body = '';
 
         // dispatch an action to initiate the loading
-        this.store.dispatch({ type: SET_USERS_LOADING });
         this.store.dispatch({ type: CLEAR_ERRORS_USERS });
+        this.store.dispatch({ type: SET_USERS_LOADING });
         return this.http.put(this.usersUrl, body, options)
             .map(this.extractMultipleUsers)
             .map(payload => ({type: UPDATE_USERS, payload}))
@@ -124,6 +124,7 @@ export class UsersService{
 
     clearErrors() {
         this.store.dispatch({ type: CLEAR_ERRORS_USERS });
+        this.store.dispatch({ type: SET_USERS_NOT_LOADING });
     }
 
     selectUser (user: IUser) {
@@ -134,8 +135,8 @@ export class UsersService{
         let options = new RequestOptions(HEADER);
         options.body='';
         // dispatch an action to initiate the loading
-        this.store.dispatch({ type: SET_USERS_LOADING });
         this.store.dispatch({ type: CLEAR_ERRORS_USERS });
+        this.store.dispatch({ type: SET_USERS_LOADING });
         return this.http.delete(this.usersUrl+'/'+user.userID, options)
             .map(this.extractSingleUser)
             .subscribe(

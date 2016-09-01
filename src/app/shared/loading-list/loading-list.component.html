@@ -4,7 +4,7 @@
     <div class="loading-results-marker">
       <i class="fa fa-cog fa-spin" [@loadingIconIn]="loadingState === 'loading' ? 'in' : 'out'"></i>
       <i class="fa fa-check" [@loadingIconIn]="loadingState === 'notloading' ? 'in' : 'out'"></i>
-      <i class="fa fa-times-circle-o" [@loadingIconIn]="loadingState === 'error' ? 'in' : 'out'"></i>
+      <i class="fa fa-times-circle-o" (click)="clearError()" [@loadingIconIn]="loadingState === 'error' ? 'in' : 'out'"></i>
     </div>
     <div class="loading-results-text">
       <div [@loadingIconIn]="loadingState === 'loading' ? 'in' : 'out'">
