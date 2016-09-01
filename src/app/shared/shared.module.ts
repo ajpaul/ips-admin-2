@@ -9,7 +9,6 @@ import { MdCheckboxModule } from '@angular2-material/checkbox/checkbox';
 import { MdIconModule } from '@angular2-material/icon/icon';
 import { MdInputModule } from '@angular2-material/input/input';
 import { MdListModule  } from '@angular2-material/list/list';
-import { MdToolbarModule } from '@angular2-material/toolbar/toolbar';
 
 import { ButtonComponent } from './button/button.component';
 import { ButtonAddComponent } from './buttonAdd/buttonAdd.component';
@@ -26,8 +25,7 @@ import { ConfigService } from './config/config';
         RouterModule,
         MdButtonModule,
         MdIconModule,
-        MdListModule,
-        MdToolbarModule
+        MdListModule
     ],
     declarations: [
         ButtonComponent,
@@ -44,7 +42,6 @@ import { ConfigService } from './config/config';
         MdIconModule,
         MdInputModule,
         MdListModule,
-        MdToolbarModule,
         ButtonComponent,
         ButtonAddComponent,
         MapComponent,
