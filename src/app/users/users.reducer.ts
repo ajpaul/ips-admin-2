@@ -5,6 +5,7 @@
 import { IUser } from './users.interface'; 
 
 export const ADD_USERS = 'ADD_USERS';
+export const CLEAR_USERS = 'CLEAR_USERS';
 export const DELETE_USER = 'DELETE_USER';
 export const CREATE_USERS = 'CREATE_USERS';
 export const UPDATE_USERS = 'UPDATE_USERS';
@@ -21,6 +22,8 @@ export const UsersReducer = (state: IUser[] = [], {type, payload}) => {
     switch (type) {
         case ADD_USERS:
             return payload;
+        case CLEAR_USERS:
+            return [];
         case DELETE_USER:
             return state.filter((item: IUser) => {
                 return item.userID !== payload.userID;

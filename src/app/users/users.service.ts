@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { AppStore } from '../app.store';
 import { IUser } from './users.interface';
-import { ADD_USERS, DELETE_USER, CREATE_USERS, SELECT_USER, UPDATE_USERS, ADD_ERROR_USERS, REMOVE_ERROR_USERS, CLEAR_ERRORS_USERS, SET_USERS_NOT_LOADING, SET_USERS_LOADING, SET_USERS_LOADING_ERROR } from './users.reducer';
+import { ADD_USERS, DELETE_USER, CREATE_USERS, SELECT_USER, UPDATE_USERS, ADD_ERROR_USERS, REMOVE_ERROR_USERS, CLEAR_ERRORS_USERS, SET_USERS_NOT_LOADING, SET_USERS_LOADING, SET_USERS_LOADING_ERROR, CLEAR_USERS } from './users.reducer';
 import { ConfigService, Config } from '../shared/config/config';
 
 const HEADER = { headers: new Headers({ 'Content-Type': 'application/json' }) };
@@ -41,6 +41,7 @@ export class UsersService{
 
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: SET_USERS_LOADING });
+        this.store.dispatch({ type: CLEAR_USERS });
         this.store.dispatch({ type: CLEAR_ERRORS_USERS });
         return this.http.get(this.orgUsersUrl + '/' + organization_ID.toString(), options)
             .map(this.extractMultipleUsers)

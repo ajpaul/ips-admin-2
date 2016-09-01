@@ -1,29 +1,29 @@
 import { Component, Input, OnChanges, trigger, state, style, transition, animate } from '@angular/core';
-
+import { warningColor, activeColor, successColor, white } from '../colors/colors.service';
 @Component({
     selector: 'app-loading-list',
     template: require('./loading-list.component.html'),
     styles: [require('./loading-list.component.less')],
     animations: [
       trigger('loadingState', [
-        state('loading', style({ backgroundColor: '#0000ff' })),
-        state('success', style({ backgroundColor: '#00ff00' })),
-        state('error', style({ backgroundColor: '#ff0000' }))
+        state('loading', style({ backgroundColor: activeColor })),
+        state('success', style({ backgroundColor: successColor })),
+        state('error', style({ backgroundColor: warningColor }))
       ]),
       trigger('loadingHeight', [
-        state('notloading', style({ backgroundColor: '#00ff00' })),
-        state('loading', style({  backgroundColor: '#0000ff', transform: 'translateX(0)' })),
-        state('error', style({ backgroundColor: '#ff0000', transform: 'translateX(0)' })),
+        state('notloading', style({ backgroundColor: white })),
+        state('loading', style({  backgroundColor: activeColor, transform: 'translateX(0)' })),
+        state('error', style({ backgroundColor: warningColor, transform: 'translateX(0)' })),
         transition('* => loading', [
-          style({ transform: 'translateX(-100%)', backgroundColor: "#0000ff" }),
-          animate('250ms ease-in')
+          style({ transform: 'translateX(-100%)', backgroundColor: activeColor }),
+          animate('250ms ease')
         ]),
         transition('loading => notloading', [
-          animate('250ms ease-in', style({ backgroundColor: '#00ff00' })),
-          animate('250ms 1750ms linear', style({ backgroundColor: '#00ff00', transform: 'translateX(100%)', height: '0px' }))
+          animate('250ms ease', style({ backgroundColor: successColor })),
+          animate('250ms 1750ms ease', style({ backgroundColor: white, transform: 'translateX(100%)', height: '0px' }))
         ]),
         transition('loading => error', [
-          animate('250ms ease-in')
+          animate('250ms ease')
         ]),
         // transition('success => notloading', [
         //   animate('250ms ease-out')
@@ -36,7 +36,9 @@ import { Component, Input, OnChanges, trigger, state, style, transition, animate
       trigger('loadingIconIn', [
         state('in', style({ opacity: 1 })),
         state('out', style({ opacity: 0 })),
-        transition('out <=> in', animate('250ms ease-in'))
+        transition('out <=> in', [
+          animate('250ms ease')
+        ]),
       ])
     ]
 })

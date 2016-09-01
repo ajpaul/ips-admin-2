@@ -21,11 +21,12 @@ import { IUser } from '../users';
         trigger('loadingState', [
             state('notloading', style({ top: '140px'})),
             state('loading', style({ top: '205px', transform: 'translateY(100%)'})),
-            transition('loading => error', animate('250ms ease-in')),
-            transition('* => loading', animate('0ms ease-in')),
+            state('error', style({ top: '205px', transform: 'translateY(100%)'})),
+            transition('loading => error', animate('250ms ease')),
+            transition('* => loading', animate('0ms ease')),
             transition('loading => notloading', [
-                animate('250ms ease-in', style({ transform: 'translateY(0)' })),
-                animate('250ms 1750ms ease-in')
+                animate('250ms ease', style({ transform: 'translateY(0)' })),
+                animate('250ms 1750ms ease')
             ])
         ])
     ]
