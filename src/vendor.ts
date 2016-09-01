@@ -42,6 +42,8 @@ import 'rxjs/operator/share';
 
 // NGRX
 import '@ngrx/store';
+import '@ngrx/store-devtools';
+import '@ngrx/store-log-monitor';
 
 // Leaflet
 import 'leaflet';
