@@ -1,7 +1,7 @@
 <app-loading-list [loadingStatus]="loadingStatus" [delay]="750"></app-loading-list>
 <ul class="item-list" [@loadingState]="loadingState">
     <template [ngIf]="!isLoading" >
-    <li *ngFor="let item of items" (click)="selected.emit(item)" [hidden]="isLoading" [@myAnimationTrigger]="animationState">
+    <li *ngFor="let item of items" (click)="selected.emit(item)" [hidden]="isLoading">
        <!--<input class="list-check" type="checkbox"/>-->
         <i class="fa fa-square list-check"></i>
         <i class="status fa fa-circle"></i>

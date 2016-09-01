@@ -20,7 +20,7 @@ import { Component, Input, OnChanges, trigger, state, style, transition, animate
         ]),
         transition('loading => notloading', [
           animate('250ms ease-out', style({ backgroundColor: '#00ff00' })),
-          animate('250ms 1500ms ease-out', style({ backgroundColor: '#00ff00', transform: 'translateX(100%)' }))
+          animate('250ms 1500ms ease-out', style({ backgroundColor: '#00ff00', transform: 'translateX(100%)', height: '0px' }))
         ]),
         transition('loading => error', [
           animate('250ms ease-out')

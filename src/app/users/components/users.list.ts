@@ -10,20 +10,22 @@ import { IUser } from '../users';
     animations: [
         trigger('myAnimationTrigger', [
             state('in', style({})),
-            transition('void => *', [
-                style({transform: 'translateX(-100%)'}),
+            transition('loading => notloading', [
+                style({transform: 'translateY(100%)'}),
                 animate(250)
             ]),
             transition('* => void', [
-                animate(250, style({transform: 'translateX(100%)'}))
+                animate(250, style({transform: 'translateY(-100%)'}))
             ])
         ]),
         trigger('loadingState', [
             state('notloading', style({ top: '140px'})),
-            state('loading', style({ top: '205px'})),
+            state('loading', style({ transform: 'translateY(100%)', top: '205px'})),
             transition('loading => error', animate('250ms ease-in')),
             transition('* => loading', animate('250ms ease-in')),
-            transition('loading => notloading', animate('250ms 1750ms ease-in'))
+            transition('loading => notloading', [
+                animate('250ms 1600ms ease-in')
+            ])
         ])
     ]
 })
