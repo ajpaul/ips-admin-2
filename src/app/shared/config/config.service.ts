@@ -29,6 +29,8 @@ export class ConfigService{
         // from another option, like a json config file or
         // from environment variables
         this.config.apiRoot = 'http://localhost:8080';
+        this.config.usersEndpoint = '/api/user';
+        this.config.orgUsersEndpoint = '/api/user/orgID/';
     }
 
 }

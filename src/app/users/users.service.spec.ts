@@ -4,7 +4,8 @@ import {
 } from '@angular/core/testing';
 import { provide } from '@angular/core';
 import { provideStore }	 	from '@ngrx/store';
-import { IUser, UsersService, UsersReducer, SelectedUserReducer } from './users';
+import { IUser, UsersService, UsersReducer, SelectedUserReducer, UserErrorsReducer, LoadingUserReducer } from './users';
+import { SelectedOrgReducer } from '../organizations/organizations';
 import { ConfigService } from '../shared/config/config';
 import 'rxjs/add/operator/catch';
 
@@ -24,7 +25,7 @@ describe('UsersService::', () => {
             ConfigService,
             UsersService,
             HTTP_PROVIDERS,
-            provideStore({ UsersReducer, SelectedUserReducer }), //add a store
+            provideStore({ UsersReducer, SelectedUserReducer, SelectedOrgReducer, UserErrorsReducer, LoadingUserReducer }), //add a store
         ]);
         jasmine.Ajax.install();
         jasmine.DEFAULT_TIMEOUT_INTERVAL = 5000;
@@ -135,7 +136,7 @@ describe('UsersService::', () => {
                     deps: [MockBackend, BaseRequestOptions]
                 }
             ),
-            provideStore({UsersReducer, SelectedUserReducer}), //add a store
+            provideStore({UsersReducer, SelectedUserReducer, SelectedOrgReducer, UserErrorsReducer, LoadingUserReducer}), //add a store
         ]);
     });
 
@@ -161,8 +162,8 @@ describe('UsersService::', () => {
             var service;
             beforeEach((done) => {
                 service = testService;
-                service.orgUsersUrl = service.orgUsersEndpoint;
-                service.getUsers('1?scenario=multipleResults', done);
+                service.orgUsersUrl = service.configService.getConfig().orgUsersEndpoint + service.organizationId + '?scenario=multipleResults&scope=success';
+                service.getUsers(done);
             });
 
             it('should get users', (done) => {

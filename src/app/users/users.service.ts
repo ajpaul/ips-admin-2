@@ -7,43 +7,54 @@ import { IUser } from './users.interface';
 import { ADD_USERS, DELETE_USER, CREATE_USERS, SELECT_USER, UPDATE_USERS, ADD_ERROR_USERS, REMOVE_ERROR_USERS, CLEAR_ERRORS_USERS, SET_USERS_NOT_LOADING, SET_USERS_LOADING, SET_USERS_LOADING_ERROR, CLEAR_USERS } from './users.reducer';
 import { ConfigService, Config } from '../shared/config/config';
 
-const HEADER = { headers: new Headers({ 'Content-Type': 'application/json' }) };
+const REQUEST = {
+    headers: new Headers({ 'Content-Type': 'application/json' }),
+    body: ''
+};
 
 @Injectable()
 export class UsersService{
 
     usersUrl: string;
     orgUsersUrl: string;
-    usersEndpoint: string = '/api/user';
-    orgUsersEndpoint: string = '/api/user/orgID';
     users: Observable<Array<IUser>>;
     selectedUser: Observable<IUser>;
     userErrors: Observable<string[]>;
     loadingUser: Observable<boolean>;
+    selectedOrgId: Observable<number>;
+    organizationId: number = 0;
 
     constructor(private http : Http, private store: Store<AppStore>,  private configService: ConfigService) {
-        this.users = store.select<Array<IUser>>('UsersReducer');
-        this.selectedUser = store.select<IUser>('SelectedUserReducer');
-        this.userErrors = store.select<string[]>('UserErrorsReducer');
-        this.loadingUser = store.select<boolean>('LoadingUserReducer');
-        this.buildUrls(configService.getConfig());
+        this.initialize();
     }
 
-    buildUrls(config: Config) {
-        this.usersUrl = config.apiRoot + this.usersEndpoint;
-        this.orgUsersUrl = config.apiRoot + this.orgUsersEndpoint;
+    initialize() {
+        this.users = this.store.select<Array<IUser>>('UsersReducer');
+        this.selectedUser = this.store.select<IUser>('SelectedUserReducer');
+        this.userErrors = this.store.select<string[]>('UserErrorsReducer');
+        this.loadingUser = this.store.select<boolean>('LoadingUserReducer');
+        this.selectedOrgId = this.store.select<number>('SelectedOrgReducer');
+        this.selectedOrgId.subscribe((id) => {
+            this.organizationId = id;
+            this.buildUrls();
+        })
+        this.buildUrls();
     }
 
-    getUsers(organization_ID: string = '0', onComplete?) {
+    buildUrls() {
+        let config = this.configService.getConfig();
+        this.usersUrl = config.apiRoot + config.usersEndpoint;
+        this.orgUsersUrl = config.apiRoot + config.orgUsersEndpoint + this.organizationId.toString();
+    }
+
+    getUsers(onComplete?) {
         onComplete = onComplete || (()=>{});
-        let options = new RequestOptions(HEADER);
-        options.body = '';
-
+        let options = new RequestOptions(REQUEST);
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: CLEAR_ERRORS_USERS });
         this.store.dispatch({ type: SET_USERS_LOADING });
         this.store.dispatch({ type: CLEAR_USERS });
-        return this.http.get(this.orgUsersUrl + '/' + organization_ID.toString(), options)
+        return this.http.get(this.orgUsersUrl, options)
             .map(this.extractMultipleUsers)
             .map(payload => ({type: ADD_USERS, payload}))
             .subscribe(
@@ -63,7 +74,7 @@ export class UsersService{
 
     createUsers (users: IUser[]) {
         let body = JSON.stringify(users);
-        let options = new RequestOptions(HEADER);
+        let options = new RequestOptions(REQUEST);
 
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: CLEAR_ERRORS_USERS });
@@ -90,7 +101,7 @@ export class UsersService{
 
     updateUsers (users: IUser[]) {
         let body = JSON.stringify(users);
-        let options = new RequestOptions(HEADER);
+        let options = new RequestOptions(REQUEST);
         options.body = '';
 
         // dispatch an action to initiate the loading
@@ -132,8 +143,7 @@ export class UsersService{
     }
 
     deleteUser (user: IUser) {
-        let options = new RequestOptions(HEADER);
-        options.body='';
+        let options = new RequestOptions(REQUEST);
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: CLEAR_ERRORS_USERS });
         this.store.dispatch({ type: SET_USERS_LOADING });
