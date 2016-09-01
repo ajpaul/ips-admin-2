@@ -22,7 +22,6 @@ export class UsersContainer implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.users$ = this.usersService.users;
-        this.users$
         this.selectedUser$ = this.usersService.selectedUser;
         this.userErrors$ = this.usersService.userErrors;
         this.loadingUser$ = this.usersService.loadingUser;
