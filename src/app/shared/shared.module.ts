@@ -16,6 +16,7 @@ import { ButtonAddComponent } from './buttonAdd/buttonAdd.component';
 import { MapComponent } from './map/map.component';
 import { ToggleComponent } from './toggle/toggle.component';
 import { LoadingListComponent } from './loading-list/loading-list.component';
+import { LoadingPanelComponent } from './loading-panel/loading-panel.component';
 import { ConfigService } from './config/config';
 
 
@@ -34,7 +35,8 @@ import { ConfigService } from './config/config';
         ButtonAddComponent,
         MapComponent,
         ToggleComponent,
-        LoadingListComponent
+        LoadingListComponent,
+        LoadingPanelComponent
     ],
     exports: [
         CommonModule,
@@ -49,7 +51,8 @@ import { ConfigService } from './config/config';
         ButtonAddComponent,
         MapComponent,
         ToggleComponent,
-        LoadingListComponent
+        LoadingListComponent,
+        LoadingPanelComponent
     ],
     providers: [
         ConfigService

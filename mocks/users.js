@@ -43,9 +43,9 @@ var GetResults = {
                     '   "userID": {{@index}},' +
                     '   "organization_ID": {{number 0 10}},' +
                     '   "tenant_ID": {{number 0 3}},' +
-                    '   "userName": "{{@index}}",' +
+                    '   "userName": "{{email}}",' +
                     '   "email": "{{email}}",' +
-                    '   "givenName": "{{firstName}},",' +
+                    '   "givenName": "{{firstName}}",' +
                     '   "surname": "{{lastName}}",' +
                     '   "active": {{boolean}}' +
                     '\n}' +

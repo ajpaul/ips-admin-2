@@ -27,7 +27,7 @@
                 <i class="fa fa-circle-thin fa-stack-2x"></i>
                 <i class="fa fa-link fa-stack-1x"></i>
             </span>
-            <ui-buttonAdd></ui-buttonAdd>
+            <ui-buttonAdd (click)="resetItem()"></ui-buttonAdd>
         </div>
 
         <!-- Users List -->
@@ -41,9 +41,9 @@
     </aside>
 
     <section class="panel-right">
-
+        <app-loading-panel *ngIf="loadingUser | async"></app-loading-panel>
         <!-- Selected Item Details -->
-        <users-detail
+        <users-detail *ngIf="!(loadingUser | async)"
                 (saved)="saveItem($event)" (cancelled)="resetItem($event)"
                 [item]="selectedUser | async"></users-detail>
 
