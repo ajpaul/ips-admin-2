@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnChanges, trigger, state, style, transition, animate } from '@angular/core';
 import { IUser } from '../users';
+import { USERS_NOT_LOADING, USERS_LOADING, USERS_LOADING_ERROR } from '../users.reducer';
 
 //-------------------------------------------------------------------
 // LIGHTS-LIST
@@ -56,13 +57,13 @@ export class UsersList implements OnChanges {
         if (changes.loadingStatus) {
             // populate the loadingState used to determine animations
             switch (this.loadingStatus) {
-                case 0:
+                case USERS_NOT_LOADING:
                     this.loadingState = NOT_LOADING;
                     break;
-                case 1:
+                case USERS_LOADING:
                     this.loadingState = LOADING;
                     break;
-                case 2:
+                case USERS_LOADING_ERROR:
                     this.loadingState = ERROR;
                     break;
                 default:
