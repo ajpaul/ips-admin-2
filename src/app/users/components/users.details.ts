@@ -6,6 +6,27 @@ import { activeColor, warningColor, successColor, white } from '../../shared/col
 @Component({
     selector: 'users-detail',
     templateUrl: './users.details.html',
+    animations: [
+        trigger('deletingState', [
+            state('deleting', style({ backgroundColor: activeColor })),
+            state('error', style({ backgroundColor: warningColor })),
+            state('notdeleting', style({ display: 'none' })),
+            transition('deleting => error', [
+                animate('250ms ease')
+            ]),
+            transition('deleting => notdeleting', [
+                style({ backgroundColor: successColor }),
+                animate('250ms 250ms ease')
+            ]),
+        ]),
+        trigger('deletingIconIn', [
+            state('in', style({ display: 'inline-block' })),
+            state('out', style({ display: 'none' })),
+            transition('in => out', [
+                animate('250ms 250ms ease')
+            ]),
+        ])
+    ]
 })
 export class UsersDetail implements OnChanges {
 
@@ -48,6 +69,18 @@ export class UsersDetail implements OnChanges {
         return USERS_DELETING_ERROR;
     }
 
+    isDeletingState() {
+        return this.deletingState === this.DELETING_STATE;
+    }
+
+    isNotDeletingState() {
+        return this.deletingState === this.NOT_DELETING_STATE;
+    }
+
+    isErrorState() {
+        return this.deletingState === this.ERROR_STATE;
+    }
+
     ngOnChanges(changes) {
         if (changes.deletingStatus) {
             // populate the loadingState used to determine animations
@@ -74,6 +107,7 @@ export class UsersDetail implements OnChanges {
     }
 
     confirmDeletion(): void {
+        this.deletingState = this.NOT_DELETING_STATE;
         if(!this.confirmDelete) {
             this.confirmDelete = true;
         } else {

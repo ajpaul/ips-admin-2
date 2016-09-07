@@ -420,16 +420,28 @@ md-input {
 }
 .confirmation-wrapper > .confirmation {
     position: absolute;
-    right: 0px;
     z-index: 50; 
     font-weight: 700;
     font-size: .9em;
+    right: 0px;
+    text-align: right;
+    padding-right: 10px;
+    width: calc(~"100% - 40px");
     .transform(200px, 0, 0);
     .ease(400ms);
 }
 .confirmation-wrapper.show > .confirmation {
-    .transform(-10px, 0, 0);
+    display: inline-block;
+    .transform(0px, 0, 0);
 }
+
+.confirmation-icon {
+    color: @white;
+    display: inline-block;
+    text-align: center;
+    width: 40px;
+} 
+
 .confirmation-wrapper > .deleting { z-index: 100; position: absolute; .no-margin(); background: rgba(255, 255, 255, .7); text-align: center; color: white; }
 
 
