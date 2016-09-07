@@ -31,10 +31,9 @@
         </div>
 
         <!-- Users List -->
-        <users-list [items]="users | async"
-                    [isLoading]="loadingUser | async"
-                    [isError]="isError"
-                    (onClearError)="onClearError()"
+        <app-loading-list [loadingStatus]="loadingUser$ | async" (onClearError)="onClearError()"></app-loading-list>
+        <users-list [items]="users$ | async"
+                    [loadingStatus]="loadingUser$ | async"
                     (selected)="selectItem($event)"
                     (deleted)="deleteItem($event)"></users-list>   
 
@@ -45,7 +44,7 @@
         <!-- Selected Item Details -->
         <users-detail
                 (saved)="saveItem($event)" (cancelled)="resetItem($event)"
-                [item]="selectedUser | async"></users-detail>
+                [item]="selectedUser$ | async"></users-detail>
 
     </section>
 

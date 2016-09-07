@@ -116,7 +116,7 @@ describe('UsersContainer::', () => {
 
             it('should have users', (done) => {
                 component.ngOnInit();
-                component.users.subscribe(
+                component.users$.subscribe(
                         action => {
                         expect(action.length).toBeGreaterThan(0);
                         let user:IUser = {
