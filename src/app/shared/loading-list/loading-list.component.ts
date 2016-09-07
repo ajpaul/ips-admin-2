@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnChanges, trigger, state, style, transition, animate } from '@angular/core';
-import { warningColor, activeColor, successColor, white } from '../colors/colors.service';
+import { warningColor, activeColor, successColor, white } from '../colors/colors';
 @Component({
     selector: 'app-loading-list',
     template: require('./loading-list.component.html'),
