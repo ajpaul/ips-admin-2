@@ -7,9 +7,12 @@ import { IUser } from './users.interface';
 import { ADD_USERS, DELETE_USER, CREATE_USERS, SELECT_USER, UPDATE_USERS, ADD_ERROR_USERS, REMOVE_ERROR_USERS, CLEAR_ERRORS_USERS, SET_USERS_NOT_LOADING, SET_USERS_LOADING, SET_USERS_LOADING_ERROR, CLEAR_USERS } from './users.reducer';
 import { ConfigService, Config } from '../shared/config/config';
 
-const REQUEST = {
+const GETREQUEST = {
     headers: new Headers({ 'Content-Type': 'application/json' }),
     body: ''
+};
+const OTHERREQUEST = {
+    headers: new Headers({ 'Content-Type': 'application/json' })
 };
 
 @Injectable()
@@ -17,6 +20,7 @@ export class UsersService{
 
     usersUrl: string;
     orgUsersUrl: string;
+    updateUserUrl: string;
     users: Observable<Array<IUser>>;
     selectedUser: Observable<IUser>;
     userErrors: Observable<string[]>;
@@ -45,20 +49,25 @@ export class UsersService{
         let config = this.configService.getConfig();
         this.usersUrl = config.apiRoot + config.usersEndpoint;
         this.orgUsersUrl = config.apiRoot + config.orgUsersEndpoint + this.organizationId.toString();
+        this.updateUserUrl = config.apiRoot + config.usersEndpoint;
     }
 
     getUsers(onComplete?) {
         onComplete = onComplete || (()=>{});
-        let options = new RequestOptions(REQUEST);
+
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: CLEAR_ERRORS_USERS });
         this.store.dispatch({ type: SET_USERS_LOADING });
         this.store.dispatch({ type: CLEAR_USERS });
-        return this.http.get(this.orgUsersUrl, options)
+        return this.http.get(this.orgUsersUrl, new RequestOptions(GETREQUEST))
             .map(this.extractMultipleUsers)
-            .map(payload => ({type: ADD_USERS, payload}))
             .subscribe(
-                action => this.store.dispatch(action),
+                action => {
+                    this.store.dispatch({type: ADD_USERS, payload: action});
+                    if(action.length>0){
+                        this.store.dispatch({type: SELECT_USER, payload: action[0]});
+                    }
+                },
                 err => {
                     // dispatch action to say loading is done
                     this.store.dispatch({ type: SET_USERS_LOADING_ERROR });
@@ -72,54 +81,62 @@ export class UsersService{
             );
     }
 
-    createUsers (users: IUser[]) {
+    createUsers (users: IUser[], onComplete?) {
+        onComplete = onComplete || (()=>{});
+
         let body = JSON.stringify(users);
-        let options = new RequestOptions(REQUEST);
 
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: CLEAR_ERRORS_USERS });
-        this.store.dispatch({ type: SET_USERS_LOADING });
         //assumption here is that we get back the properly formed user from the put
         //the returned object is what will get added into the store
-        return this.http.put(this.usersUrl, body, options)
+        return this.http.put(this.updateUserUrl, body, new RequestOptions(OTHERREQUEST))
             .map(this.extractMultipleUsers)
-            .map(payload => ({type: CREATE_USERS, payload}))
-            .subscribe(action => this.store.dispatch(action),
+            .subscribe(
+                action => {
+                    this.store.dispatch({type: CREATE_USERS, payload: action});
+                    if(action.length>0){
+                        this.store.dispatch({type: SELECT_USER, payload: action[0]});
+                    }
+                },
                 err => {
                     // dispatch action to say loading is done
-                    this.store.dispatch({ type: SET_USERS_LOADING_ERROR });
                     this.handleError(err);
                 },
                 // dispatch action to say loading is done
-                () => this.store.dispatch({ type: SET_USERS_NOT_LOADING })
-                );
+                () => {
+                    onComplete();
+                }
+        );
     }
 
     createUser (user: IUser) {
         return this.createUsers([ user ]);
     }
 
-    updateUsers (users: IUser[]) {
+    updateUsers (users: IUser[], onComplete?) {
+        onComplete = onComplete || (()=>{});
+
         let body = JSON.stringify(users);
-        let options = new RequestOptions(REQUEST);
-        options.body = '';
 
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: CLEAR_ERRORS_USERS });
-        this.store.dispatch({ type: SET_USERS_LOADING });
-        return this.http.put(this.usersUrl, body, options)
+        return this.http.post(this.updateUserUrl, body, new RequestOptions(OTHERREQUEST))
             .map(this.extractMultipleUsers)
-            .map(payload => ({type: UPDATE_USERS, payload}))
             .subscribe(
-                action => this.store.dispatch(action),
+                action => {
+                    this.store.dispatch({type: UPDATE_USERS, payload: action});
+                    if (action.length > 0) {
+                        this.store.dispatch({type: SELECT_USER, payload: action[0]});
+                    }
+                },
                 err => {
                     // dispatch action to say loading is done
-                    this.store.dispatch({ type: SET_USERS_LOADING_ERROR });
                     this.handleError(err)
                 },
                 () => {
                     // dispatch action to say loading is done
-                    this.store.dispatch({ type: SET_USERS_NOT_LOADING });
+                    onComplete();
                 }
             );
             // this.store.dispatch({ type: RECEIVE_USER })
@@ -143,11 +160,10 @@ export class UsersService{
     }
 
     deleteUser (user: IUser) {
-        let options = new RequestOptions(REQUEST);
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: CLEAR_ERRORS_USERS });
         this.store.dispatch({ type: SET_USERS_LOADING });
-        return this.http.delete(this.usersUrl+'/'+user.userID, options)
+        return this.http.delete(this.usersUrl+'/'+user.userID, new RequestOptions(OTHERREQUEST))
             .map(this.extractSingleUser)
             .subscribe(
                 action => this.store.dispatch({ type: DELETE_USER, payload: user }),

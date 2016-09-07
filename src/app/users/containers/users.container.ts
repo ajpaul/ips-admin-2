@@ -49,10 +49,10 @@ export class UsersContainer implements OnInit, OnDestroy {
     }
 
     saveItem(user: IUser) {
-        this.usersService.createUser(user);
-
-        // Generally, we would want to wait for the result of `itemsService.saveItem`
-        // before resetting the current item.
-        this.resetItem();
+        if(user.userID) {
+            this.usersService.updateUser(user);
+        } else {
+            this.usersService.createUser(user);
+        }
     }
 }

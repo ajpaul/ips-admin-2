@@ -15,7 +15,7 @@ export class UsersDetail {
     originalName: string;
     selectedItem: IUser = null;
     @Output() create = new EventEmitter();
-    @Output() saved = new EventEmitter();
+    @Output() save = new EventEmitter();
     @Output() cancelled = new EventEmitter();
 
     @Input('item') set item(value: IUser){
@@ -53,5 +53,9 @@ export class UsersDetail {
 
     createUserClick(): void {
         this.create.emit();
+    }
+
+    saveUser(e): void {
+        this.save.emit(this.selectedItem);
     }
 }

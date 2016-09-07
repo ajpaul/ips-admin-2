@@ -26,7 +26,7 @@
         </div>
         <div class="item-toggle">
             <span class="bumpl">Active:</span>
-            <ui-toggle></ui-toggle>
+            <ui-toggle [is-on]="selectedItem.active"></ui-toggle>
         </div>
         <ul class="tab-list wide">
             <li class="active">Details</li>
@@ -44,7 +44,7 @@
             <!-- Button Bar -->
             <div class="toolbar">
                 <button class="btn warn" (click)="confirmDeletion()"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete User</button>
-                <button class="btn"><i class="fa fa-cloud-upload" aria-hidden="true"></i> Save User</button>
+                <button class="btn" (click)="saveUser()"><i class="fa fa-cloud-upload" aria-hidden="true"></i> Save User</button>
             </div>
             <div class="confirmation-wrapper" [ngClass]="{show: confirmDelete}">
                 <div class="confirmation">
