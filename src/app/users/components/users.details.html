@@ -55,12 +55,12 @@
             <h1>USER INFORMATION</h1>
             <div class="form-section">
                 <div class="form-group">
-                    <md-input [(ngModel)]="selectedItem.givenName" name="givenName" required="true" dividerColor="warn" placeholder="First Name"></md-input>
+                    <md-input [(ngModel)]="selectedItem.givenName" name="givenName" required="true" placeholder="First Name"></md-input>
                     <md-input [(ngModel)]="selectedItem.surname" name="surname" required="true" placeholder="Last Name"></md-input>
                 </div>
                 <div class="form-group">
-                    <md-input [(ngModel)]="selectedItem.userName" name="userName" placeholder="User Name"></md-input>
-                    <md-input [(ngModel)]="selectedItem.email" name="email" placeholder="Email Address"></md-input>
+                    <md-input [(ngModel)]="selectedItem.userName" name="userName" required="true" placeholder="User Name"></md-input>
+                    <md-input [(ngModel)]="selectedItem.email" name="email" required="true" placeholder="Email Address"></md-input>
                 </div>
             </div>
         </form>
@@ -69,13 +69,22 @@
 
 </div>
 
-<div *ngIf="!hasSelectedItem()">
-
-    <div class="fa-stack fa-lg">
-        <div class="fa fa-circle fa-stack-2x"></div>
-        <div class="fa fa-user fa-stack-1x fa-inverse"></div>
-    </div>
-    <div >
-        You will need to create users in order to assign access to the sites and site groups.  Once you create your first user, the user will show up in the list to the left.
+<div class="no-user-panel" *ngIf="!hasSelectedItem()">
+    <div class="no-user-panel-content">
+        <div class="section">
+        <div class="fa-stack fa-5x">
+            <div class="fa fa-circle fa-stack-2x"></div>
+            <div class="fa fa-user fa-stack-1x fa-inverse"></div>
+        </div>
+        </div>
+        <div class="section">
+            <h1>Welcome to Users!</h1>
+        </div>
+        <div class="section">
+            <p>You will need to create users in order to assign access to the sites and site groups.  Once you create your first user, the user will show up in the list to the left.</p>
+        </div>
+        <div class="section">
+            <button class="btn anchor" (click)="createUserClick()"><i class="fa fa-plus" aria-hidden="true"></i> Create New User</button>
+        </div>
     </div>
 </div>

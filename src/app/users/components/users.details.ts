@@ -1,10 +1,11 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { IUser } from '../users';
+import { IUser } from '../users.interface';
 
 @Component({
     selector: 'users-detail',
-    templateUrl: './users.details.html'
+    templateUrl: './users.details.html',
+    styleUrls: ['./users.details.less']
 })
 export class UsersDetail {
 
@@ -13,6 +14,7 @@ export class UsersDetail {
     confirmDelete: boolean = false;
     originalName: string;
     selectedItem: IUser = null;
+    @Output() create = new EventEmitter();
     @Output() saved = new EventEmitter();
     @Output() cancelled = new EventEmitter();
 
@@ -49,5 +51,7 @@ export class UsersDetail {
         }
     }
 
-
+    createUserClick(): void {
+        this.create.emit();
+    }
 }
