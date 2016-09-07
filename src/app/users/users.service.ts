@@ -20,7 +20,7 @@ export class UsersService{
     selectedUser: Observable<IUser>;
     userErrors: Observable<string[]>;
     loadingUser: Observable<boolean>;
-    selectedOrgId: Observable<number>;
+    selectedOrg: Observable<number>;
     organizationId: number = 0;
 
     constructor(private http : Http, private store: Store<AppStore>,  private configService: ConfigService) {
@@ -32,8 +32,8 @@ export class UsersService{
         this.selectedUser = this.store.select<IUser>('SelectedUserReducer');
         this.userErrors = this.store.select<string[]>('UserErrorsReducer');
         this.loadingUser = this.store.select<boolean>('LoadingUserReducer');
-        this.selectedOrgId = this.store.select<number>('SelectedOrgReducer');
-        this.selectedOrgId.subscribe((id) => {
+        this.selectedOrg = this.store.select<number>('SelectedOrgReducer');
+        this.selectedOrg.subscribe((id) => {
             this.organizationId = id;
             this.buildUrls();
         })
@@ -161,8 +161,8 @@ export class UsersService{
     resetUser () {
         let emptyUser: IUser = {
             userID: null,
-            organization_ID: null,
-            tenant_ID: null,
+            organization_ID: this.organizationId,
+            tenant_ID: this.configService.getConfig().tenantId,
             userName: '',
             email: '',
             givenName: '',

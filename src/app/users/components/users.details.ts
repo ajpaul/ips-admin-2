@@ -12,7 +12,7 @@ export class UsersDetail {
     showUserSites: boolean = false;
     confirmDelete: boolean = false;
     originalName: string;
-    selectedItem: IUser;
+    selectedItem: IUser = null;
     @Output() saved = new EventEmitter();
     @Output() cancelled = new EventEmitter();
 
@@ -37,6 +37,16 @@ export class UsersDetail {
     showUserSitesClick(): void {
         this.showUserDetails = false;
         this.showUserSites = true;
+    }
+
+    hasSelectedItem(): boolean {
+        if (this.selectedItem === null) {
+            return false;
+        } else if (!this.selectedItem.hasOwnProperty('userID')) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
 

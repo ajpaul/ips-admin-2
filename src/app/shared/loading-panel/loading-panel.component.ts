@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-loading-panel',
-    template: require('./loading-panel.component.html'),
-    styles: [require('./loading-panel.component.less')],
+    templateUrl: './loading-panel.component.html',
+    styleUrls: ['./loading-panel.component.less'],
     
 })
 export class LoadingPanelComponent {
