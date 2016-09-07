@@ -28,7 +28,7 @@ import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
 import { AppStore } from './app.store';
 import { Observable } from 'rxjs/Observable';
 import { LightsReducer } from './lights/lights';
-import { UsersReducer, SelectedUserReducer, LoadingUserReducer, UserErrorsReducer } from './users/users';
+import { UsersReducer, SelectedUserReducer, LoadingUserReducer, UserErrorsReducer, DeletingUserReducer } from './users/users';
 import { SelectedOrgReducer } from './organizations/organizations';
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
@@ -45,7 +45,7 @@ import { provide } from '@angular/core';
         SitesModule,
         UsersModule,
         SharedModule,
-        StoreModule.provideStore({ LightsReducer, UsersReducer, SelectedUserReducer, LoadingUserReducer, UserErrorsReducer, SelectedOrgReducer }), //add a store
+        StoreModule.provideStore({ LightsReducer, UsersReducer, SelectedUserReducer, LoadingUserReducer, DeletingUserReducer, UserErrorsReducer, SelectedOrgReducer }), //add a store
         // Note that you must instrument after importing StoreModule
         StoreDevtoolsModule.instrumentStore({
             monitor: useLogMonitor({

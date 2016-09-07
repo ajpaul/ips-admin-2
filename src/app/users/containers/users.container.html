@@ -44,6 +44,8 @@
         <!-- Selected Item Details -->
         <users-detail
                 (saved)="saveItem($event)" (cancelled)="resetItem($event)"
+                (deleted)="deleteItem($event)"
+                [deletingStatus]="deletingUser$ | async"
                 [item]="selectedUser$ | async"></users-detail>
 
     </section>

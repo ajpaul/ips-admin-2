@@ -1,20 +1,72 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, trigger, state, style, transition, animate } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { IUser } from '../users';
+import { IUser, USERS_DELETING, USERS_DELETING_ERROR, USERS_NOT_DELETING } from '../users';
+import { activeColor, warningColor, successColor, white } from '../../shared/colors/colors';
 
 @Component({
     selector: 'users-detail',
-    templateUrl: './users.details.html'
+    templateUrl: './users.details.html',
 })
-export class UsersDetail {
+export class UsersDetail implements OnChanges {
 
     showUserDetails: boolean = true;
     showUserSites: boolean = false;
     confirmDelete: boolean = false;
     originalName: string;
     selectedItem: IUser;
+    USERS_DELETING: number;
+    USERS_DELETING_ERROR: number;
+    USERS_NOT_DELETING: number;
+    @Input() deletingStatus: number;
     @Output() saved = new EventEmitter();
     @Output() cancelled = new EventEmitter();
+    @Output() deleted = new EventEmitter();
+    
+    NOT_DELETING_STATE: string = 'notdeleting';
+    DELETING_STATE: string = 'deleting';
+    ERROR_STATE: string = 'error';
+    deletingState: string;
+
+    constructor() {
+        this.USERS_DELETING = USERS_DELETING;
+        this.USERS_DELETING_ERROR = USERS_DELETING_ERROR;
+        this.USERS_NOT_DELETING = USERS_NOT_DELETING;
+        this.deletingState = this.NOT_DELETING_STATE;
+    }
+
+    getLoadingStatusLoading() {
+        return USERS_DELETING;
+    }
+
+    // This will be an abstract method overriden in subclasses
+    getLoadingStatusNotLoading() {
+        return USERS_NOT_DELETING;
+    }
+
+    // This will be an abstract method overriden in subclasses
+    getLoadingStatusError() {
+        return USERS_DELETING_ERROR;
+    }
+
+    ngOnChanges(changes) {
+        if (changes.deletingStatus) {
+            // populate the loadingState used to determine animations
+            switch (this.deletingStatus) {
+                case this.getLoadingStatusNotLoading():
+                    this.deletingState = this.NOT_DELETING_STATE;
+                    break;
+                case this.getLoadingStatusLoading():
+                    this.deletingState = this.DELETING_STATE;
+                    break;
+                case this.getLoadingStatusError():
+                    this.deletingState = this.ERROR_STATE;
+                    break;
+                default:
+                    break;
+            }
+        } 
+        console.log(this.deletingState);    
+    }
 
     @Input('item') set item(value: IUser){
         if (value) this.originalName = value.givenName + ' ' + value.surname;
@@ -39,5 +91,8 @@ export class UsersDetail {
         this.showUserSites = true;
     }
 
+    deleteUser(): void {
+        this.deleted.emit({ item: this.selectedItem });
+    }
 
 }

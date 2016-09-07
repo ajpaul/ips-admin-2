@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { AppStore } from '../app.store';
 import { IUser } from './users.interface';
-import { ADD_USERS, DELETE_USER, CREATE_USERS, SELECT_USER, UPDATE_USERS, ADD_ERROR_USERS, REMOVE_ERROR_USERS, CLEAR_ERRORS_USERS, SET_USERS_NOT_LOADING, SET_USERS_LOADING, SET_USERS_LOADING_ERROR, CLEAR_USERS } from './users.reducer';
+import { ADD_USERS, DELETE_USER, CREATE_USERS, SELECT_USER, UPDATE_USERS, ADD_ERROR_USERS, REMOVE_ERROR_USERS, CLEAR_ERRORS_USERS, SET_USERS_NOT_LOADING, SET_USERS_LOADING, SET_USERS_LOADING_ERROR, CLEAR_USERS, SET_USERS_DELETING, SET_USERS_DELETING_ERROR, SET_USERS_NOT_DELETING } from './users.reducer';
 import { ConfigService, Config } from '../shared/config/config';
 
 const REQUEST = {
@@ -20,7 +20,8 @@ export class UsersService{
     users: Observable<Array<IUser>>;
     selectedUser: Observable<IUser>;
     userErrors: Observable<string[]>;
-    loadingUser: Observable<boolean>;
+    loadingUser: Observable<number>;
+    deletingUser: Observable<number>;
     selectedOrgId: Observable<number>;
     organizationId: number = 0;
 
@@ -32,7 +33,8 @@ export class UsersService{
         this.users = this.store.select<Array<IUser>>('UsersReducer');
         this.selectedUser = this.store.select<IUser>('SelectedUserReducer');
         this.userErrors = this.store.select<string[]>('UserErrorsReducer');
-        this.loadingUser = this.store.select<boolean>('LoadingUserReducer');
+        this.loadingUser = this.store.select<number>('LoadingUserReducer');
+        this.deletingUser = this.store.select<number>('DeletingUserReducer');
         this.selectedOrgId = this.store.select<number>('SelectedOrgReducer');
         this.selectedOrgId.subscribe((id) => {
             this.organizationId = id;
@@ -130,7 +132,7 @@ export class UsersService{
     }
 
     deleteError(index: number) {
-        this.store.dispatch({ type: REMOVE_ERROR_USERS, payload: index});
+        this.store.dispatch({ type: REMOVE_ERROR_USERS, payload: index });
     }
 
     clearErrors() {
@@ -146,18 +148,21 @@ export class UsersService{
         let options = new RequestOptions(REQUEST);
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: CLEAR_ERRORS_USERS });
-        this.store.dispatch({ type: SET_USERS_LOADING });
+        this.store.dispatch({ type: SET_USERS_DELETING });
         return this.http.delete(this.usersUrl+'/'+user.userID, options)
             .map(this.extractSingleUser)
             .subscribe(
-                action => this.store.dispatch({ type: DELETE_USER, payload: user }),
+                action => {
+                    this.store.dispatch({ type: DELETE_USER, payload: user })
+                    this.store.dispatch({ type: SET_USERS_NOT_DELETING })
+                },
                 err => {
                     // dispatch action to say loading is done
-                    this.store.dispatch({ type: SET_USERS_LOADING_ERROR });
+                    this.store.dispatch({ type: SET_USERS_DELETING_ERROR });
                     this.handleError(err);
                 },
                 // dispatch action to say loading is done
-                () => this.store.dispatch({ type: SET_USERS_NOT_LOADING })
+                () => this.store.dispatch({ type: SET_USERS_NOT_DELETING })
             );
     }
 

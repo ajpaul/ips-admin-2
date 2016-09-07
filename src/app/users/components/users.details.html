@@ -39,7 +39,6 @@
 
     <!-- User Detail Form -->
     <form class="standard-form">
-
         <!-- Button Bar -->
         <div class="toolbar">
             <button class="btn warn" (click)="confirmDeletion()"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete User</button>
@@ -47,7 +46,7 @@
         </div>
         <div class="confirmation-wrapper" [ngClass]="{show: confirmDelete}">
             <div class="confirmation">
-                <p>You are about to do this action, are you sure? <a class="bumpr">not really</a><span class="bumpl bumpr">|</span><a>yes please</a></p>
+                <p>You are about to do this action, are you sure? <a class="bumpr" (click)="confirmDeletion()">not really</a><span class="bumpl bumpr">|</span><a (click)="deleteUser()">yes please</a></p>
             </div>
         </div>
 

@@ -16,7 +16,8 @@ export class UsersContainer implements OnInit, OnDestroy {
     selectedUser$: Observable<IUser>;
     userErrors$: Observable<string[]>;
     userErrorsSubscription: Subscription;
-    loadingUser$: Observable<boolean>;
+    loadingUser$: Observable<number>;
+    deletingUser$: Observable<number>;
 
     constructor(private usersService: UsersService) { }
 
@@ -25,7 +26,11 @@ export class UsersContainer implements OnInit, OnDestroy {
         this.selectedUser$ = this.usersService.selectedUser;
         this.userErrors$ = this.usersService.userErrors;
         this.loadingUser$ = this.usersService.loadingUser;
+        this.deletingUser$ = this.usersService.deletingUser;
 
+        this.deletingUser$.subscribe((state) => {
+            console.log('DELETING USER STATE:', state);
+        });
         this.usersService.getUsers();
     }
 
@@ -40,7 +45,7 @@ export class UsersContainer implements OnInit, OnDestroy {
         this.usersService.selectUser(item);
     }
 
-    deleteItem(item: IUser) {
+    deleteItem({ item }: { item: IUser }) {
         this.usersService.deleteUser(item);
     }
 
