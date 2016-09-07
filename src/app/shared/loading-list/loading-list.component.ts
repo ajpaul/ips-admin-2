@@ -1,5 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnChanges, trigger, state, style, transition, animate } from '@angular/core';
 import { warningColor, activeColor, successColor, white } from '../colors/colors';
+import { USERS_LOADING, USERS_NOT_LOADING, USERS_LOADING_ERROR } from '../../users/users';
+
 @Component({
     selector: 'app-loading-list',
     template: require('./loading-list.component.html'),
@@ -50,6 +52,10 @@ export class LoadingListComponent implements OnChanges {
     showLoading: boolean = false;
     timeoutId: any = undefined;
 
+    NOT_LOADING_STATE: string = 'notloading';
+    LOADING_STATE: string = 'loading';
+    ERROR_STATE: string = 'error';
+
     /**
      * Loading status represents the current status based on
      * the loadingStatus store item
@@ -69,18 +75,30 @@ export class LoadingListComponent implements OnChanges {
         this.onClearError.emit({});
     }
 
+    isLoadingState() {
+        return this.loadingState === this.LOADING_STATE;
+    }
+
+    isNotLoadingState() {
+        return this.loadingState === this.NOT_LOADING_STATE;
+    }
+
+    isErrorState() {
+        return this.loadingState === this.ERROR_STATE;
+    }
+
     ngOnChanges(changes) {
         if (changes.loadingStatus) {
             // populate the loadingState used to determine animations
             switch (this.loadingStatus) {
-                case 0:
-                    this.loadingState = 'notloading';
+                case USERS_NOT_LOADING:
+                    this.loadingState = this.NOT_LOADING_STATE;
                     break;
-                case 1:
-                    this.loadingState = 'loading';
+                case USERS_LOADING:
+                    this.loadingState = this.LOADING_STATE;
                     break;
-                case 2:
-                    this.loadingState = 'error';
+                case USERS_LOADING_ERROR:
+                    this.loadingState = this.ERROR_STATE;
                     break;
                 default:
                     break;

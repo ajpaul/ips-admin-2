@@ -18,6 +18,11 @@ export const SET_USERS_NOT_LOADING = 'SET_USERS_NOT_LOADING';
 export const SET_USERS_LOADING = 'SET_USERS_LOADING';
 export const SET_USERS_LOADING_ERROR = 'SET_USERS_LOADING_ERROR';
 
+// loading states
+export const USERS_NOT_LOADING = 0;
+export const USERS_LOADING = 1;
+export const USERS_LOADING_ERROR = 2;
+
 export const UsersReducer = (state: IUser[] = [], {type, payload}) => {
     switch (type) {
         case ADD_USERS:
@@ -73,11 +78,11 @@ export const SelectedUserReducer = (state: any = null, {type, payload}) => {
 export const LoadingUserReducer = (state: number = 0, {type, payload}): number => {
     switch (type) {
         case SET_USERS_NOT_LOADING:
-            return 0;
+            return USERS_NOT_LOADING;
         case SET_USERS_LOADING:
-            return 1;
+            return USERS_LOADING;
         case SET_USERS_LOADING_ERROR:
-            return 2;
+            return USERS_LOADING_ERROR;
         default:
             return state;
     }
