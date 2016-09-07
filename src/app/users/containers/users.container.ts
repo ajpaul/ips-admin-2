@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
 import { IUser, UsersService } from '../users';
+import { UsersLoadingListComponent } from '../components/users.loading-list.component';
 
 @Component({
     selector: 'app-users',

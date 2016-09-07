@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
-import { UsersDetail, UsersList, UsersService } from './users';
+import { UsersDetail, UsersList, UsersService, UsersLoadingListComponent } from './users';
 import { UsersContainer } from './containers/users.container';
 
 @NgModule({
@@ -10,12 +10,14 @@ import { UsersContainer } from './containers/users.container';
     declarations: [
         UsersContainer,
         UsersList,
-        UsersDetail
+        UsersDetail,
+        UsersLoadingListComponent
     ],
     exports: [
         UsersContainer,
         UsersDetail,
-        UsersList
+        UsersList,
+        UsersLoadingListComponent
     ],
     providers: [
         UsersService

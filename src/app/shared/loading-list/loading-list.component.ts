@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnChanges, trigger, state, style, transition, animate } from '@angular/core';
 import { warningColor, activeColor, successColor, white } from '../colors/colors';
-import { USERS_LOADING, USERS_NOT_LOADING, USERS_LOADING_ERROR } from '../../users/users';
 
 @Component({
     selector: 'app-loading-list',
@@ -77,17 +76,17 @@ export class LoadingListComponent implements OnChanges {
 
     // This will be an abstract method overriden in subclasses
     getLoadingStatusLoading() {
-        return USERS_LOADING;
+        throw Error("Must implement getLoadingStatusLoading in subclass of LoadingListComponent");
     }
 
     // This will be an abstract method overriden in subclasses
     getLoadingStatusNotLoading() {
-        return USERS_NOT_LOADING;
+        throw Error("Must Implement getLoadingStatusNotLoading in subclass of LoadingListComponent");
     }
 
     // This will be an abstract method overriden in subclasses
     getLoadingStatusError() {
-        return USERS_LOADING_ERROR;
+        throw Error("Must Implement getLoadingStatusError in subclass of LoadingListComponent")
     }
 
     isLoadingState() {
