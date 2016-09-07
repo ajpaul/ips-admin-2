@@ -3,7 +3,7 @@
     <li *ngFor="let item of items" (click)="selected.emit(item)" [hidden]="isLoading()">
        <!--<input class="list-check" type="checkbox"/>-->
         <i class="fa fa-square list-check"></i>
-        <i class="status fa fa-circle"></i>
+        <i class="fa fa-circle" [class.status]="item.active" [class.status-inactive]="!item.active"></i>
         <div>
             <h1>{{item.givenName}} {{item.surname}}</h1>
             <span>{{item.email}}</span>
@@ -13,7 +13,7 @@
     <li class="no-results" *ngIf="!hasSomeResults()">
         <h3>No Users Yet</h3>
         <p>
-            You don't appear to have any ysers yet.  Perhaps you'd like to <a href="#">create a new user?</a>
+            You don't appear to have any users yet.  Perhaps you'd like to <a href="#">create a new user?</a>
         </p>
     </li>
 </ul>

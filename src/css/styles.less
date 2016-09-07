@@ -265,8 +265,14 @@ a { color: @anchorColor; }
             .truncate;
         }
         i.status {
-            font-size:.6em; 
-            color: @successColor; 
+            font-size:.6em;
+            color: @successColor;
+            width: 20px;
+            display: none;
+        }
+        i.status-inactive {
+            font-size:.6em;
+            color: @stormcloud;
             width: 20px;
             display: none;
         }
@@ -497,7 +503,7 @@ md-input {
     }
     .item-list {
         li {
-            i.status {
+            i.status, i.status-inactive {
                 display: inline;
             }
             span {
