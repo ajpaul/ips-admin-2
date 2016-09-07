@@ -39,6 +39,18 @@ export class UsersList implements OnChanges {
 
     loadingState: string = 'notloading';
 
+    hasSomeResults() {
+        return this.loadingState === 'notloading' && this.items && this.items.length > 0;
+    }
+
+    hasNoResults() {
+        return this.loadingState === 'notloading' && this.items && this.items.length === 0;
+    }
+
+    isLoading() {
+        return (this.loadingState === 'loading');
+    }
+
     ngOnChanges(changes) {
         if (changes.loadingStatus) {
             // populate the loadingState used to determine animations
