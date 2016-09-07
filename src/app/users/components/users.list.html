@@ -10,7 +10,7 @@
         </div>
     </li>
     </template>
-    <li class="no-results" *ngIf="hasNoResults()">
+    <li class="no-results" *ngIf="!hasSomeResults()">
         <h3>No Results Found</h3>
         <p>
             Doh! No users matched your request.  Perhaps you'd like to <a href="#">create a new user?</a>

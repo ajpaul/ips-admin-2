@@ -4,6 +4,11 @@ import { IUser } from '../users';
 //-------------------------------------------------------------------
 // LIGHTS-LIST
 //-------------------------------------------------------------------
+
+const NOT_LOADING = 'notloading';
+const LOADING = 'loading';
+const ERROR = 'error';
+
 @Component({
     selector: 'users-list',
     templateUrl: './users.list.html',
@@ -37,18 +42,14 @@ export class UsersList implements OnChanges {
     @Output() selected = new EventEmitter();
     @Output() deleted = new EventEmitter();
 
-    loadingState: string = 'notloading';
+    loadingState: string = NOT_LOADING;
 
     hasSomeResults() {
-        return this.loadingState === 'notloading' && this.items && this.items.length > 0;
-    }
-
-    hasNoResults() {
-        return this.loadingState === 'notloading' && this.items && this.items.length === 0;
+        return this.loadingState === NOT_LOADING && this.items && this.items.length > 0;
     }
 
     isLoading() {
-        return (this.loadingState === 'loading');
+        return (this.loadingState === LOADING);
     }
 
     ngOnChanges(changes) {
@@ -56,19 +57,17 @@ export class UsersList implements OnChanges {
             // populate the loadingState used to determine animations
             switch (this.loadingStatus) {
                 case 0:
-                    this.loadingState = 'notloading';
+                    this.loadingState = NOT_LOADING;
                     break;
                 case 1:
-                    this.loadingState = 'loading';
+                    this.loadingState = LOADING;
                     break;
                 case 2:
-                    this.loadingState = 'error';
+                    this.loadingState = ERROR;
                     break;
                 default:
                     break;
             }
-            console.log(this.loadingState);
         }
     }
-
 }
