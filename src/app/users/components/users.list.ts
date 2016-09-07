@@ -42,7 +42,7 @@ export class UsersList implements OnChanges {
     @Output() selected = new EventEmitter();
     @Output() deleted = new EventEmitter();
 
-    loadingState: string = NOT_LOADING;
+    loadingState: string = LOADING;
 
     hasSomeResults() {
         return this.loadingState === NOT_LOADING && this.items && this.items.length > 0;
