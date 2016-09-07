@@ -6,4 +6,3 @@ export { UsersReducer, SelectedUserReducer, UserErrorsReducer, LoadingUserReduce
 export { USERS_NOT_LOADING, USERS_LOADING, USERS_LOADING_ERROR } from './users.reducer';
 export { UsersList } from './components/users.list';
 export { UsersDetail } from './components/users.details';
-export { UsersLoadingListComponent } from './components/users.loading-list.component';
