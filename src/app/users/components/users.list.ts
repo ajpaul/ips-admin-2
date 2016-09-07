@@ -37,13 +37,7 @@ export class UsersList implements OnChanges {
     @Output() selected = new EventEmitter();
     @Output() deleted = new EventEmitter();
 
-    animationState: string;
-
     loadingState: string = 'notloading';
-
-    constructor(){
-        this.animationState = 'in';
-    }
 
     ngOnChanges(changes) {
         if (changes.loadingStatus) {
@@ -61,6 +55,7 @@ export class UsersList implements OnChanges {
                 default:
                     break;
             }
+            console.log(this.loadingState);
         }
     }
 
