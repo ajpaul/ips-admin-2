@@ -1,14 +1,6 @@
-<ul class="item-list">
-    <li class="error-results" *ngIf="isError === true">
-        <div class="error-results-marker" (click)="clearError()">
-            <div class="fa fa-times-circle-o"></div>
-        </div>
-        <div class="error-results-text">
-            The server didn't respond. Would you like to <a href="">Retry</a>
-            or <a href="">Report Issue</a>?
-        </div>
-    </li>
-    <li *ngFor="let item of items" (click)="selected.emit(item)">
+<ul class="item-list" [@loadingState]="loadingState">
+    <template [ngIf]="hasSomeResults()" >
+    <li *ngFor="let item of items" (click)="selected.emit(item)" [hidden]="isLoading()">
        <!--<input class="list-check" type="checkbox"/>-->
         <i class="fa fa-square list-check"></i>
         <i class="status fa fa-circle"></i>
@@ -17,11 +9,11 @@
             <span>{{item.email}}</span>
         </div>
     </li>
-    <li class="no-results" *ngIf="isError === false && isLoading === false && items.length === 0">
+    </template>
+    <li class="no-results" *ngIf="!hasSomeResults()">
         <h3>No Users Yet</h3>
         <p>
             You don't appear to have any ysers yet.  Perhaps you'd like to <a href="#">create a new user?</a>
         </p>
     </li>
-    <app-loading-list [hidden]="!isLoading"></app-loading-list>     
 </ul>

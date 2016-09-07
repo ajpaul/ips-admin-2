@@ -119,7 +119,7 @@ a { color: @anchorColor; }
         font-weight: 300;
     }
 }
-.action-bar {
+.list-action-bar {
     border-bottom: 2px solid @secondaryBorderColor;
     height: @actionBarHeight;
     position: relative;
@@ -200,6 +200,7 @@ a { color: @anchorColor; }
     bottom: 0px; right: 0px; left: 0px;
     padding: 40px;
     overflow: auto;
+    background-color: #ffffff;
 }
 
 
@@ -307,35 +308,6 @@ a { color: @anchorColor; }
         color: @warningColor;
         top: -2px;
         right: 20px;
-    }
-
-    li.error-results {
-        align-items: stretch; /* Extra space in Cross Axis */
-        padding: 0px;
-        background-color: #fff;
-        &:hover {
-            cursor: default;
-        }
-        .error-results-marker {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: @warningColor;
-            padding: 10px;
-            color: #fff;
-            text-align: center;
-            font-size: 1.25em;
-            &:hover {
-                cursor: pointer;
-            }
-        }
-        .error-results-text {
-            background-color: #fff;
-            color: @wetstone;
-            padding: 15px 15px;
-            line-height: 1.4;
-            vertical-align: middle;
-        }
     }
 }
 .list-check { margin-right: 15px; font-size: 1.2em; color: #fff; }

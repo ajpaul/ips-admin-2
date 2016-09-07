@@ -16,7 +16,7 @@
         </div>
 
         <!-- List Action Bar -->
-        <div class="action-bar">
+        <div class="list-action-bar">
             <!--<input type="checkbox" class="list-check"/>-->
             <i class="fa fa-square list-check"></i>
             <span class="fa-stack fa-lg" style="font-size: 1em">
@@ -31,21 +31,20 @@
         </div>
 
         <!-- Users List -->
-        <users-list [items]="users | async"
-                    [isLoading]="loadingUser | async"
-                    [isError]="isError"
-                    (onClearError)="onClearError()"
+        <app-loading-list [loadingStatus]="loadingUser$ | async" (onClearError)="onClearError()"></app-loading-list>
+        <users-list [items]="users$ | async"
+                    [loadingStatus]="loadingUser$ | async"
                     (selected)="selectItem($event)"
                     (deleted)="deleteItem($event)"></users-list>   
 
     </aside>
 
     <section class="panel-right">
-        <app-loading-panel *ngIf="(loadingUser | async)"></app-loading-panel>
+        <app-loading-panel *ngIf="(loadingUser$ | async)"></app-loading-panel>
         <!-- Selected Item Details -->
-        <users-detail *ngIf="!(loadingUser | async)"
+        <users-detail *ngIf="!(loadingUser$ | async)"
                 (saved)="saveItem($event)" (cancelled)="resetItem($event)" (create)="resetItem($event)"
-                [item]="selectedUser | async"></users-detail>
+                [item]="selectedUser$ | async"></users-detail>
 
     </section>
 

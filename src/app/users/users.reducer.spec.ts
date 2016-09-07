@@ -1,5 +1,5 @@
-import { UsersReducer, SelectedUserReducer, LoadingUserReducer, UserErrorsReducer, IUser, ADD_USERS, DELETE_USER, CREATE_USERS, UPDATE_USERS, ADD_ERROR_USERS, REMOVE_ERROR_USERS, CLEAR_ERRORS_USERS } from './users';
-
+import { UsersReducer, SelectedUserReducer, LoadingUserReducer, UserErrorsReducer, ADD_USERS, DELETE_USER, CREATE_USERS, UPDATE_USERS, ADD_ERROR_USERS, REMOVE_ERROR_USERS, CLEAR_ERRORS_USERS, SET_USERS_LOADING, SET_USERS_NOT_LOADING, SET_USERS_LOADING_ERROR } from './users.reducer';
+import { IUser } from './users.interface';
 describe('UsersReducer::', ()=> {
     var makeUser = ({ userID=0, userName='' }: { userID?: number, userName?: string }): IUser => {
         return {
@@ -86,19 +86,24 @@ describe('SelectedUserReducer::', ()=> {
 });
 
 describe('LoadingUserReducer::', ()=> {
-    it('returns false by default', ()=>{
+    it('returns 0 by default', ()=>{
         let defaultState = LoadingUserReducer(undefined, {type: 'random', payload: null });
-        expect(defaultState).toEqual(false);
+        expect(defaultState).toEqual(0);
     });
 
-    it('REQUEST_USER changes store to true', ()=>{
-        let loadingItem = LoadingUserReducer(undefined, {type: 'REQUEST_USER', payload: null });
-        expect(loadingItem).toEqual(true);
+    it('SET_USERS_NOT_LOADING changes store to 0', ()=>{
+        let loadingItem = LoadingUserReducer(undefined, {type: SET_USERS_NOT_LOADING, payload: null });
+        expect(loadingItem).toEqual(0);
     });
 
-    it('RECEIVE_USER changes store to false', ()=>{
-        let loadingItem = LoadingUserReducer(undefined, {type: 'RECEIVE_USER', payload: null });
-        expect(loadingItem).toEqual(false);
+    it('SET_USERS_LOADING changes store to 1', ()=>{
+        let loadingItem = LoadingUserReducer(undefined, {type: SET_USERS_LOADING, payload: null });
+        expect(loadingItem).toEqual(1);
+    });        
+
+    it('SET_USERS_LOADING_ERROR changes store to 2', ()=>{
+        let loadingItem = LoadingUserReducer(undefined, {type: SET_USERS_LOADING_ERROR, payload: null });
+        expect(loadingItem).toEqual(2);
     });        
 });
 

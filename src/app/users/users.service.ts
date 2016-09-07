@@ -3,7 +3,8 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { AppStore } from '../app.store';
-import { IUser, ADD_USERS, DELETE_USER, CREATE_USERS, SELECT_USER, UPDATE_USERS, ADD_ERROR_USERS, REMOVE_ERROR_USERS, REQUEST_USER, RECEIVE_USER, CLEAR_ERRORS_USERS  } from './users';
+import { IUser } from './users.interface';
+import { ADD_USERS, DELETE_USER, CREATE_USERS, SELECT_USER, UPDATE_USERS, ADD_ERROR_USERS, REMOVE_ERROR_USERS, CLEAR_ERRORS_USERS, SET_USERS_NOT_LOADING, SET_USERS_LOADING, SET_USERS_LOADING_ERROR, CLEAR_USERS } from './users.reducer';
 import { ConfigService, Config } from '../shared/config/config';
 
 const REQUEST = {
@@ -50,8 +51,9 @@ export class UsersService{
         onComplete = onComplete || (()=>{});
         let options = new RequestOptions(REQUEST);
         // dispatch an action to initiate the loading
-        this.store.dispatch({ type: REQUEST_USER });
         this.store.dispatch({ type: CLEAR_ERRORS_USERS });
+        this.store.dispatch({ type: SET_USERS_LOADING });
+        this.store.dispatch({ type: CLEAR_USERS });
         return this.http.get(this.orgUsersUrl, options)
             .map(this.extractMultipleUsers)
             .map(payload => ({type: ADD_USERS, payload}))
@@ -59,12 +61,12 @@ export class UsersService{
                 action => this.store.dispatch(action),
                 err => {
                     // dispatch action to say loading is done
-                    this.store.dispatch({ type: RECEIVE_USER });
+                    this.store.dispatch({ type: SET_USERS_LOADING_ERROR });
                     this.handleError(err)
                 },
                 () => {
                     // dispatch action to say loading is done
-                    this.store.dispatch({ type: RECEIVE_USER });
+                    this.store.dispatch({ type: SET_USERS_NOT_LOADING });
                     onComplete();
                 }
             );
@@ -75,8 +77,8 @@ export class UsersService{
         let options = new RequestOptions(REQUEST);
 
         // dispatch an action to initiate the loading
-        this.store.dispatch({ type: REQUEST_USER });
         this.store.dispatch({ type: CLEAR_ERRORS_USERS });
+        this.store.dispatch({ type: SET_USERS_LOADING });
         //assumption here is that we get back the properly formed user from the put
         //the returned object is what will get added into the store
         return this.http.put(this.usersUrl, body, options)
@@ -85,11 +87,11 @@ export class UsersService{
             .subscribe(action => this.store.dispatch(action),
                 err => {
                     // dispatch action to say loading is done
-                    this.store.dispatch({ type: RECEIVE_USER });
+                    this.store.dispatch({ type: SET_USERS_LOADING_ERROR });
                     this.handleError(err);
                 },
                 // dispatch action to say loading is done
-                () => this.store.dispatch({ type: RECEIVE_USER })
+                () => this.store.dispatch({ type: SET_USERS_NOT_LOADING })
                 );
     }
 
@@ -103,8 +105,8 @@ export class UsersService{
         options.body = '';
 
         // dispatch an action to initiate the loading
-        this.store.dispatch({ type: REQUEST_USER });
         this.store.dispatch({ type: CLEAR_ERRORS_USERS });
+        this.store.dispatch({ type: SET_USERS_LOADING });
         return this.http.put(this.usersUrl, body, options)
             .map(this.extractMultipleUsers)
             .map(payload => ({type: UPDATE_USERS, payload}))
@@ -112,12 +114,12 @@ export class UsersService{
                 action => this.store.dispatch(action),
                 err => {
                     // dispatch action to say loading is done
-                    this.store.dispatch({ type: RECEIVE_USER });
+                    this.store.dispatch({ type: SET_USERS_LOADING_ERROR });
                     this.handleError(err)
                 },
                 () => {
                     // dispatch action to say loading is done
-                    this.store.dispatch({ type: RECEIVE_USER });
+                    this.store.dispatch({ type: SET_USERS_NOT_LOADING });
                 }
             );
             // this.store.dispatch({ type: RECEIVE_USER })
@@ -133,6 +135,7 @@ export class UsersService{
 
     clearErrors() {
         this.store.dispatch({ type: CLEAR_ERRORS_USERS });
+        this.store.dispatch({ type: SET_USERS_NOT_LOADING });
     }
 
     selectUser (user: IUser) {
@@ -142,19 +145,19 @@ export class UsersService{
     deleteUser (user: IUser) {
         let options = new RequestOptions(REQUEST);
         // dispatch an action to initiate the loading
-        this.store.dispatch({ type: REQUEST_USER });
         this.store.dispatch({ type: CLEAR_ERRORS_USERS });
+        this.store.dispatch({ type: SET_USERS_LOADING });
         return this.http.delete(this.usersUrl+'/'+user.userID, options)
             .map(this.extractSingleUser)
             .subscribe(
                 action => this.store.dispatch({ type: DELETE_USER, payload: user }),
                 err => {
                     // dispatch action to say loading is done
-                    this.store.dispatch({ type: RECEIVE_USER });
+                    this.store.dispatch({ type: SET_USERS_LOADING_ERROR });
                     this.handleError(err);
                 },
                 // dispatch action to say loading is done
-                () => this.store.dispatch({ type: RECEIVE_USER })
+                () => this.store.dispatch({ type: SET_USERS_NOT_LOADING })
             );
     }
 
