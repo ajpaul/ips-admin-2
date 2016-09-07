@@ -68,8 +68,6 @@ export class UsersList implements OnChanges {
                 default:
                     break;
             }
-            console.log(this.loadingState);
         }
     }
-
 }
