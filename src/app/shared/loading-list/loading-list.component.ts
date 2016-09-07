@@ -75,6 +75,21 @@ export class LoadingListComponent implements OnChanges {
         this.onClearError.emit({});
     }
 
+    // This will be an abstract method overriden in subclasses
+    getLoadingStatusLoading() {
+        return USERS_LOADING;
+    }
+
+    // This will be an abstract method overriden in subclasses
+    getLoadingStatusNotLoading() {
+        return USERS_NOT_LOADING;
+    }
+
+    // This will be an abstract method overriden in subclasses
+    getLoadingStatusError() {
+        return USERS_LOADING_ERROR;
+    }
+
     isLoadingState() {
         return this.loadingState === this.LOADING_STATE;
     }
@@ -91,13 +106,13 @@ export class LoadingListComponent implements OnChanges {
         if (changes.loadingStatus) {
             // populate the loadingState used to determine animations
             switch (this.loadingStatus) {
-                case USERS_NOT_LOADING:
+                case this.getLoadingStatusNotLoading():
                     this.loadingState = this.NOT_LOADING_STATE;
                     break;
-                case USERS_LOADING:
+                case this.getLoadingStatusLoading():
                     this.loadingState = this.LOADING_STATE;
                     break;
-                case USERS_LOADING_ERROR:
+                case this.getLoadingStatusError():
                     this.loadingState = this.ERROR_STATE;
                     break;
                 default:
