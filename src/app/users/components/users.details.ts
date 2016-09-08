@@ -12,23 +12,18 @@ export class UsersDetail {
     showUserDetails: boolean = true;
     showUserSites: boolean = false;
     confirmDelete: boolean = false;
-    originalName: string;
+    originalUser: IUser = null;
     selectedItem: IUser = null;
     @Output() create = new EventEmitter();
     @Output() save = new EventEmitter();
-    @Output() cancelled = new EventEmitter();
 
     @Input('item') set item(value: IUser){
-        if (value) this.originalName = value.givenName + ' ' + value.surname;
-        this.selectedItem = Object.assign({}, value);
+        this.originalUser = value;
+        this.setSelectedItem();
     }
 
     confirmDeletion(): void {
-        if(!this.confirmDelete) {
-            this.confirmDelete = true;
-        } else {
-            this.confirmDelete = false;
-        }
+        this.confirmDelete = !this.confirmDelete;
     }
 
     showUserDetailsClick(): void {
@@ -42,13 +37,19 @@ export class UsersDetail {
     }
 
     hasSelectedItem(): boolean {
-        if (this.selectedItem === null) {
-            return false;
-        } else if (!this.selectedItem.hasOwnProperty('userID')) {
-            return false;
-        } else {
-            return true;
-        }
+        return this.selectedItem !== null && this.selectedItem.hasOwnProperty('userID');
+    }
+
+    isExistingUser(): boolean {
+        return this.selectedItem && this.selectedItem.hasOwnProperty('userID') && this.selectedItem.userID !== null;
+    }
+
+    setSelectedItem(): void {
+        this.selectedItem = (this.originalUser)? Object.assign({}, this.originalUser): null;
+    }
+
+    cancel(): void {
+        this.setSelectedItem();
     }
 
     createUserClick(): void {

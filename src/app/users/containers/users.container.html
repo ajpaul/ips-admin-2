@@ -43,7 +43,7 @@
         <app-loading-panel *ngIf="(loadingUser$ | async)"></app-loading-panel>
         <!-- Selected Item Details -->
         <users-detail *ngIf="!(loadingUser$ | async)"
-                (save)="saveItem($event)" (cancelled)="resetItem($event)" (create)="resetItem($event)"
+                (save)="saveItem($event)" (create)="resetItem($event)"
                 [item]="selectedUser$ | async"></users-detail>
 
     </section>
