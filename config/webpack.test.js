@@ -1,12 +1,12 @@
 module.exports = {
     resolve: {
         extensions: ['', '.js', '.ts'],
-        alias: {
-            handlebars: 'handlebars/dist/handlebars.min.js'
-        }
+        // alias: {
+        //     handlebars: 'handlebars/dist/handlebars.min.js'
+        // }
     },
 
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'inline-source-map',
 
     module: {
         loaders: [
