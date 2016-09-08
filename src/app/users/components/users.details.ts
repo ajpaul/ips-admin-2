@@ -1,13 +1,11 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { IUser } from '../users.interface';
-import { MdInput } from '@angular2-material/input';
 
 @Component({
     selector: 'users-detail',
     templateUrl: './users.details.html',
-    styleUrls: ['./users.details.less'],
-    directives: [ MdInput ]
+    styleUrls: ['./users.details.less']
 })
 export class UsersDetail {
 
