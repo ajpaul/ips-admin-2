@@ -24,9 +24,6 @@ import { activeColor, warningColor, successColor, white } from '../../shared/col
         trigger('deletingIconIn', [
             state('in', style({ display: 'inline-block' })),
             state('out', style({ display: 'none' })),
-            transition('in => out', [
-                animate('500ms ease')
-            ]),
         ])
     ]
 })
@@ -45,6 +42,11 @@ export class UsersDetail implements OnChanges {
     @Output() cancelled = new EventEmitter();
     @Output() deleted = new EventEmitter();
     
+    @Input('item') set item(value: IUser){
+        if (value) this.originalName = value.givenName + ' ' + value.surname;
+        this.selectedItem = Object.assign({}, value);
+    }
+
     NOT_DELETING_STATE: string = 'notdeleting';
     DELETING_STATE: string = 'deleting';
     ERROR_STATE: string = 'error';
@@ -84,7 +86,7 @@ export class UsersDetail implements OnChanges {
     }
 
     ngOnChanges(changes) {
-        if (changes.deletingStatus) {
+        if (changes.hasOwnProperty('deletingStatus') === true) {
             // populate the loadingState used to determine animations
             switch (this.deletingStatus) {
                 case this.getLoadingStatusNotLoading():
@@ -100,12 +102,6 @@ export class UsersDetail implements OnChanges {
                     break;
             }
         } 
-        console.log(this.deletingState);    
-    }
-
-    @Input('item') set item(value: IUser){
-        if (value) this.originalName = value.givenName + ' ' + value.surname;
-        this.selectedItem = Object.assign({}, value);
     }
 
     confirmDeletion(): void {

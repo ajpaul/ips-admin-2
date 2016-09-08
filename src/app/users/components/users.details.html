@@ -46,8 +46,8 @@
         </div>
         <div class="confirmation-wrapper" [ngClass]="{show: confirmDelete}">
             <span class="confirmation-icon" [@deletingState]="deletingState">
-                <i class="fa fa-cog fa-spin" [@deletingIconIn]="isDeletingState() ? 'in' : 'in'"></i>
-                <i class="fa fa-times-circle-o" [@deletingIconIn]="isErrorState() ? 'in' : 'in'"></i>
+                <i class="fa fa-cog fa-spin" [@deletingIconIn]="isDeletingState() ? 'in' : 'out'"></i>
+                <i class="fa fa-times-circle-o" [@deletingIconIn]="isErrorState() ? 'in' : 'out'"></i>
             </span>
             <div class="confirmation">
                 <p class="confirmation-details">
