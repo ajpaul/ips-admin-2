@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-
-import { IUser, UsersService } from '../users';
+import { IUser } from '../users.interface';
+import { UsersService } from '../users.service';
 
 @Component({
     selector: 'app-users',

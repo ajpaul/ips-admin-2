@@ -1,4 +1,8 @@
-import { Component, ROUTER_DIRECTIVES, Input, ISite, MdInput, MdCheckbox } from '../site-detail';
+import { Component, Input } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router';
+import { ISite } from '../../sites-all';
+import { MdInput } from '@angular2-material/input';
+import { MdCheckbox } from '@angular2-material/checkbox';
 
 @Component({
     selector: 'app-site-detail',

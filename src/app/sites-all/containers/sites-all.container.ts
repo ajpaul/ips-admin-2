@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import { ISite, AllSitesService } from '../sites-all';
+import { ISite } from '../sites-all.interface';
+import { AllSitesService } from '../sites-all.service';
 
 @Component({
     selector: 'app-sites-all',

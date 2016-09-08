@@ -7,3 +7,4 @@ export { DeletingUserReducer, SET_USERS_DELETING, SET_USERS_DELETING_ERROR, SET_
 export { USERS_NOT_LOADING, USERS_LOADING, USERS_LOADING_ERROR } from './users.reducer';
 export { UsersList } from './components/users.list';
 export { UsersDetail } from './components/users.details';
+export { UsersContainer } from './containers/users.container';

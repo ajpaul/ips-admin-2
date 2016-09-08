@@ -26,10 +26,9 @@ import { StoreModule, Store } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
 import { AppStore } from './app.store';
-import { Observable } from 'rxjs/Observable';
-import { LightsReducer } from './lights/lights';
-import { UsersReducer, SelectedUserReducer, LoadingUserReducer, UserErrorsReducer, DeletingUserReducer } from './users/users';
-import { SelectedOrgReducer } from './organizations/organizations';
+import { LightsReducer } from './lights';
+import { UsersReducer, SelectedUserReducer, LoadingUserReducer, UserErrorsReducer, DeletingUserReducer } from './users';
+import { SelectedOrgReducer } from './organizations';
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
 //usual imports
