@@ -52,7 +52,6 @@ export class UsersDetail implements OnChanges {
     @Input('item') set item(value: IUser) {
         this.originalUser = value;
         this.setSelectedItem();
-        this.confirmDelete = false;
     }
 
     NOT_DELETING_STATE: string = 'notdeleting';
@@ -140,6 +139,7 @@ export class UsersDetail implements OnChanges {
 
     setSelectedItem(): void {
         this.selectedItem = (this.originalUser)? Object.assign({}, this.originalUser): null;
+        this.confirmDelete = false;
     }
 
     cancel(): void {
