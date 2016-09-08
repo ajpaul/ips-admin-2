@@ -70,7 +70,31 @@ var GetResults = {
         }
     ]
 };
+
 mocks.push(GetResults);
+
+var DeleteResults = {
+    name: 'DeleteResults',
+    mockRoute: '\/api\/user\/.*', //a regex for the route, ex. '\/api\/steps\/.*\/users' is a valid route
+    testScope: 'success', //success=200 & a scenario response | notFound=404 | error=500 and there's many more...
+    testScenario: 'successfulDelete',  //change this to one of hte scenario names below and restart the mock server to get new data
+    latency: '2000-5000', //add this line ot implement 1-5 seconds of random latency per call
+    jsonTemplate: [
+        {
+            //you can use regular javascript to create objects to be served
+            successfulDelete: function () {
+                var users = {
+                    'result': [
+                        {}
+                    ]
+                };
+                return JSON.stringify(users);
+            }
+        }
+    ]
+};
+
+mocks.push(DeleteResults);
 
 var UpdateUser = {
     name: 'UpdateUser',

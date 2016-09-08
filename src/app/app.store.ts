@@ -12,5 +12,5 @@ export interface AppStore {
     selectedUser : IUser;
     selectedOrg : number;
     userErrors : string[];
-    isLoadingUser: boolean;
+    loadingUser: number;
 }
