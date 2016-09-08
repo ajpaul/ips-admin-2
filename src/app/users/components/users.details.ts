@@ -1,32 +1,29 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { IUser } from '../users';
+import { IUser } from '../users.interface';
 
 @Component({
     selector: 'users-detail',
-    templateUrl: './users.details.html'
+    templateUrl: './users.details.html',
+    styleUrls: ['./users.details.less']
 })
 export class UsersDetail {
 
     showUserDetails: boolean = true;
     showUserSites: boolean = false;
     confirmDelete: boolean = false;
-    originalName: string;
-    selectedItem: IUser;
-    @Output() saved = new EventEmitter();
-    @Output() cancelled = new EventEmitter();
+    originalUser: IUser = null;
+    selectedItem: IUser = null;
+    @Output() create = new EventEmitter();
+    @Output() save = new EventEmitter();
 
     @Input('item') set item(value: IUser){
-        if (value) this.originalName = value.givenName + ' ' + value.surname;
-        this.selectedItem = Object.assign({}, value);
+        this.originalUser = value;
+        this.setSelectedItem();
     }
 
     confirmDeletion(): void {
-        if(!this.confirmDelete) {
-            this.confirmDelete = true;
-        } else {
-            this.confirmDelete = false;
-        }
+        this.confirmDelete = !this.confirmDelete;
     }
 
     showUserDetailsClick(): void {
@@ -39,5 +36,27 @@ export class UsersDetail {
         this.showUserSites = true;
     }
 
+    hasSelectedItem(): boolean {
+        return this.selectedItem !== null && this.selectedItem.hasOwnProperty('userID');
+    }
 
+    isExistingUser(): boolean {
+        return this.selectedItem && this.selectedItem.hasOwnProperty('userID') && this.selectedItem.userID !== null;
+    }
+
+    setSelectedItem(): void {
+        this.selectedItem = (this.originalUser)? Object.assign({}, this.originalUser): null;
+    }
+
+    cancel(): void {
+        this.setSelectedItem();
+    }
+
+    createUserClick(): void {
+        this.create.emit();
+    }
+
+    saveUser(e): void {
+        this.save.emit(this.selectedItem);
+    }
 }

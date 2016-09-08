@@ -265,8 +265,14 @@ a { color: @anchorColor; }
             .truncate;
         }
         i.status {
-            font-size:.6em; 
-            color: @successColor; 
+            font-size:.6em;
+            color: @successColor;
+            width: 20px;
+            display: none;
+        }
+        i.status-inactive {
+            font-size:.6em;
+            color: @stormcloud;
             width: 20px;
             display: none;
         }
@@ -401,6 +407,12 @@ md-input {
     -webkit-box-shadow: inset 0 -2px @warningShadowColor;
     box-shadow: inset 0 -2px @warningShadowColor;
 }
+.btn.anchor {
+    background: @anchorColor;
+    border-bottom: 2px solid @anchorShadowColor;
+    -webkit-box-shadow: inset 0 -2px @anchorShadowColor;
+    box-shadow: inset 0 -2px @anchorShadowColor;
+}
 
 // ----------------------------
 // TRANSITIONS
@@ -491,7 +503,7 @@ md-input {
     }
     .item-list {
         li {
-            i.status {
+            i.status, i.status-inactive {
                 display: inline;
             }
             span {
