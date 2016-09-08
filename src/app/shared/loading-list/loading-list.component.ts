@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnChanges, trigger, state, style, transition, animate } from '@angular/core';
 import { warningColor, activeColor, successColor, white } from '../colors/colors';
-import { USERS_LOADING, USERS_NOT_LOADING, USERS_LOADING_ERROR } from '../../users';
+import { Loading } from './loading.enum';
 
 @Component({
     selector: 'app-loading-list',
@@ -45,7 +45,7 @@ import { USERS_LOADING, USERS_NOT_LOADING, USERS_LOADING_ERROR } from '../../use
     ]
 })
 export class LoadingListComponent implements OnChanges {
-    @Input() loadingStatus: number;
+    @Input() loadingStatus: Loading;
     // TODO implement this delay as a minimum time before show loading
     //@Input() delay: number;
     @Output() onClearError = new EventEmitter();
@@ -75,21 +75,6 @@ export class LoadingListComponent implements OnChanges {
         this.onClearError.emit({});
     }
 
-    // This will be an abstract method overriden in subclasses
-    getLoadingStatusLoading() {
-        return USERS_LOADING;
-    }
-
-    // This will be an abstract method overriden in subclasses
-    getLoadingStatusNotLoading() {
-        return USERS_NOT_LOADING;
-    }
-
-    // This will be an abstract method overriden in subclasses
-    getLoadingStatusError() {
-        return USERS_LOADING_ERROR;
-    }
-
     isLoadingState() {
         return this.loadingState === this.LOADING_STATE;
     }
@@ -106,13 +91,13 @@ export class LoadingListComponent implements OnChanges {
         if (changes.loadingStatus) {
             // populate the loadingState used to determine animations
             switch (this.loadingStatus) {
-                case this.getLoadingStatusNotLoading():
+                case Loading.NotLoading:
                     this.loadingState = this.NOT_LOADING_STATE;
                     break;
-                case this.getLoadingStatusLoading():
+                case Loading.Loading:
                     this.loadingState = this.LOADING_STATE;
                     break;
-                case this.getLoadingStatusError():
+                case Loading.Error:
                     this.loadingState = this.ERROR_STATE;
                     break;
                 default:

@@ -6,6 +6,7 @@ import { AppStore } from '../app.store';
 import { IUser } from './users.interface';
 import { ADD_USERS, DELETE_USER, CREATE_USERS, SELECT_USER, UPDATE_USERS, ADD_ERROR_USERS, REMOVE_ERROR_USERS, CLEAR_ERRORS_USERS, SET_USERS_NOT_LOADING, SET_USERS_LOADING, SET_USERS_LOADING_ERROR, CLEAR_USERS, SET_USERS_DELETING, SET_USERS_DELETING_ERROR, SET_USERS_NOT_DELETING, CLEAR_SELECTED_USER } from './users.reducer';
 import { ConfigService, Config } from '../shared/config';
+import { Loading } from '../shared/loading-list';
 
 const GETREQUEST = {
     headers: new Headers({ 'Content-Type': 'application/json' }),
@@ -24,8 +25,8 @@ export class UsersService{
     users: Observable<Array<IUser>>;
     selectedUser: Observable<IUser>;
     userErrors: Observable<string[]>;
-    deletingUser: Observable<number>;
-    loadingUser: Observable<number>;
+    loadingUser: Observable<Loading>;
+    deletingUser: Observable<Loading>;
     selectedOrg: Observable<number>;
     organizationId: number = 0;
 
@@ -37,8 +38,8 @@ export class UsersService{
         this.users = this.store.select<Array<IUser>>('UsersReducer');
         this.selectedUser = this.store.select<IUser>('SelectedUserReducer');
         this.userErrors = this.store.select<string[]>('UserErrorsReducer');
-        this.loadingUser = this.store.select<number>('LoadingUserReducer');
-        this.deletingUser = this.store.select<number>('DeletingUserReducer');
+        this.loadingUser = this.store.select<Loading>('LoadingUserReducer');
+        this.deletingUser = this.store.select<Loading>('DeletingUserReducer');
         this.selectedOrg = this.store.select<number>('SelectedOrgReducer');
         this.selectedOrg.subscribe((id) => {
             this.organizationId = id;

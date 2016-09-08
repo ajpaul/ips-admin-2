@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { IUser } from '../users.interface';
 import { UsersService } from '../users.service';
+import { Loading } from '../../shared/loading-list';
 
 @Component({
     selector: 'app-users',
@@ -16,8 +17,8 @@ export class UsersContainer implements OnInit, OnDestroy {
     selectedUser$: Observable<IUser>;
     userErrors$: Observable<string[]>;
     userErrorsSubscription: Subscription;
-    loadingUser$: Observable<number>;
-    deletingUser$: Observable<number>;
+    loadingUser$: Observable<Loading>;
+    deletingUser$: Observable<Loading>;
 
     constructor(private usersService: UsersService) { }
 
