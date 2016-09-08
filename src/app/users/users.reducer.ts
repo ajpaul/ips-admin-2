@@ -13,6 +13,7 @@ export const ADD_ERROR_USERS = 'ADD_ERROR_USERS';
 export const REMOVE_ERROR_USERS = 'REMOVE_ERROR_USERS';
 export const CLEAR_ERRORS_USERS = 'CLEAR_ERRORS_USERS';
 export const SELECT_USER = 'SELECT_USER';
+export const CLEAR_SELECTED_USER = 'CLEAR_SELECTED_USER';
 
 export const SET_USERS_NOT_LOADING = 'SET_USERS_NOT_LOADING';
 export const SET_USERS_LOADING = 'SET_USERS_LOADING';
@@ -22,6 +23,16 @@ export const SET_USERS_LOADING_ERROR = 'SET_USERS_LOADING_ERROR';
 export const USERS_NOT_LOADING = 0;
 export const USERS_LOADING = 1;
 export const USERS_LOADING_ERROR = 2;
+
+
+export const SET_USERS_NOT_DELETING = 'SET_USERS_NOT_DELETING';
+export const SET_USERS_DELETING = 'SET_USERS_DELETING';
+export const SET_USERS_DELETING_ERROR = 'SET_USERS_DELETING_ERROR';
+
+// deleting states
+export const USERS_NOT_DELETING = 0;
+export const USERS_DELETING = 1;
+export const USERS_DELETING_ERROR = 2;
 
 export const UsersReducer = (state: IUser[] = [], {type, payload}) => {
     switch (type) {
@@ -66,10 +77,12 @@ export const UserErrorsReducer = (state: string[] = [], {type, payload}) => {
     }
 }
 
-export const SelectedUserReducer = (state: any = null, {type, payload}) => {
+export const SelectedUserReducer = (state: IUser = null, {type, payload}) => {
     switch (type) {
         case SELECT_USER:
             return payload;
+        case CLEAR_SELECTED_USER:
+            return null;
         default:
             return state;
     }
@@ -83,6 +96,19 @@ export const LoadingUserReducer = (state: number = 0, {type, payload}): number =
             return USERS_LOADING;
         case SET_USERS_LOADING_ERROR:
             return USERS_LOADING_ERROR;
+        default:
+            return state;
+    }
+};
+
+export const DeletingUserReducer = (state: number = 0, {type, payload}): number => {
+    switch (type) {
+        case SET_USERS_NOT_DELETING:
+            return USERS_NOT_DELETING;
+        case SET_USERS_DELETING:
+            return USERS_DELETING;
+        case SET_USERS_DELETING_ERROR:
+            return USERS_DELETING_ERROR;
         default:
             return state;
     }
