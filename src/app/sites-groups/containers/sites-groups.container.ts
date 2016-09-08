@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {ISiteGroups, SiteGroupsService } from '../sites-groups';
+import { ISiteGroups } from '../sites-groups.interface';
+import { SiteGroupsService } from '../sites-groups.service';
 
 @Component({
     selector: 'app-sites-groups',

@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnChanges, trigger, state, style, transition, animate } from '@angular/core';
-import { IUser } from '../users';
+import { IUser } from '../users.interface';
 import { USERS_NOT_LOADING, USERS_LOADING, USERS_LOADING_ERROR } from '../users.reducer';
 
 //-------------------------------------------------------------------

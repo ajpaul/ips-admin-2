@@ -1,6 +1,8 @@
-import { Component, ROUTER_DIRECTIVES, ISite, AllSitesService, OnInit, OnDestroy, Subscription } from '../site-detail';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 import { SiteDetailComponent } from '../components/site-detail.component';
-
+import { ISite, AllSitesService } from '../../sites-all';
 
 // This is just a placeholder container used to pull a single site
 // from the allSitesService and pass it into the SiteDetailComponent

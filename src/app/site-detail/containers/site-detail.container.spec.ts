@@ -4,7 +4,7 @@ import {
 } from '@angular/core/testing';
 import { provide } from '@angular/core';
 import { SiteDetailContainer } from '../containers/site-detail.container';
-import { ISite, AllSitesService } from '../../sites-all/sites-all';
+import { ISite, AllSitesService } from '../../sites-all';
 
 import { Observable }     from 'rxjs/Observable';
 import 'rxjs/add/observable/of';

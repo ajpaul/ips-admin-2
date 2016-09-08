@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
-import { UsersDetail, UsersList, UsersService } from './users';
+import { UsersDetail } from './components/users.details';
+import { UsersList } from './components/users.list';
+import { UsersService } from './users.service';
 import { UsersContainer } from './containers/users.container';
 
 @NgModule({

@@ -1,5 +1,8 @@
 import { Routes, RouterModule } from '@angular/router';
-import { SitesComponent, SitesAllContainer, SitesGroupsComponent, SitesFavoritesComponent  } from './sites';
+import { SitesComponent } from './sites.component';
+import { SitesAllContainer } from '../sites-all';
+import { SitesGroupsComponent } from '../sites-groups';
+import { SitesFavoritesComponent  } from '../sites-favorites';
 
 export const sitesRoutes: Routes = <Routes>[
     {

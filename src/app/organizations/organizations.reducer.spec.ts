@@ -1,4 +1,4 @@
-import { SelectedOrgReducer, ORG_REDUCER_ACTIONS } from './organizations';
+import { SelectedOrgReducer, ORG_REDUCER_ACTIONS } from './';
 
 describe('OrganizationReducer::', ()=> {
 
