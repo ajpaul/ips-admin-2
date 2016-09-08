@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<testsuite name="Chrome 52.0.2743 (Mac OS X 10.11.5)" package="" timestamp="2016-09-08T13:13:31" id="0" hostname="adams-mbp.acuitylightinggroup.com" tests="67" errors="0" failures="0" time="0.798">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36"/>
+  </properties>
+  <testcase name="AuthRedirectComponent:: should instantiate by injection" time="0.056" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).AuthRedirectComponent::"/>
+  <testcase name="AuthenticationComponent:: should pass tests" time="0.002" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).AuthenticationComponent::"/>
+  <testcase name="DashboardComponent:: should instantiate by injection" time="0.034" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).DashboardComponent::"/>
+  <testcase name="GroupDetails:: withProviders:: instantiated should instantiate by injection" time="0.022" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).GroupDetails::"/>
+  <testcase name="GroupSitesContainer:: withProviders:: instantiated should instantiate by injection" time="0.026" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).GroupSitesContainer::"/>
+  <testcase name="GroupSitesContainer:: withProviders:: instantiated should have sites" time="0.017" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).GroupSitesContainer::"/>
+  <testcase name="GroupSitesComponent:: withProviders:: instantiated should instantiate by injection" time="0.018" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).GroupSitesComponent::"/>
+  <testcase name="LightsDetail:: should instantiate by injection" time="0.016" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).LightsDetail::"/>
+  <testcase name="LightsList:: should instantiate by injection" time="0.016" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).LightsList::"/>
+  <testcase name="LightsContainer:: withProviders:: instantiated should instantiate with injection" time="0.019" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).LightsContainer::"/>
+  <testcase name="LightsContainer:: withProviders:: instantiated should have columns" time="0.012" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).LightsContainer::"/>
+  <testcase name="LightsContainer:: withProviders:: instantiated should have filters values" time="0.019" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).LightsContainer::"/>
+  <testcase name="LightsReducer:: returns and empty array by default" time="0.006" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).LightsReducer::"/>
+  <testcase name="LightsReducer:: ADD_LIGHTS adds the provided payload" time="0.005" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).LightsReducer::"/>
+  <testcase name="LightsReducer:: DELETE_LIGHT removes the provided payload" time="0.004" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).LightsReducer::"/>
+  <testcase name="LightsService::JasmineAjax:: withAjax:: injected:: Calls api endpoint to retrieves lights" time="0.025" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).LightsService::JasmineAjax::"/>
+  <testcase name="LightsService::JasmineAjax:: withAjax:: injected:: Calls api endpoint to delete a light" time="0.015" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).LightsService::JasmineAjax::"/>
+  <testcase name="OrganizationReducer:: returns 0 by default" time="0.005" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).OrganizationReducer::"/>
+  <testcase name="OrganizationReducer:: SELECT_ORGANIZATION sets provided payload" time="0.004" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).OrganizationReducer::"/>
+  <testcase name="ButtonComponent:: should instantiate by injection" time="0.012" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).ButtonComponent::"/>
+  <testcase name="ButtonComponent:: should do something when clicked" time="0.009" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).ButtonComponent::"/>
+  <testcase name="Config:: should instantiate via new" time="0.005" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).Config::"/>
+  <testcase name="Config:: should be able to set and read apiRoot" time="0.004" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).Config::"/>
+  <testcase name="Config:: should be able to set and read usersEndpoint" time="0.005" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).Config::"/>
+  <testcase name="Config:: should be able to set and read orgUsersEndpoint" time="0.004" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).Config::"/>
+  <testcase name="ConfigService:: should instantiate by injection" time="0.011" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).ConfigService::"/>
+  <testcase name="ConfigService:: should be able to return valid Config object" time="0.011" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).ConfigService::"/>
+  <testcase name="LoadingListComponent:: should instantiate by injection" time="0.012" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).LoadingListComponent::"/>
+  <testcase name="MapComponent:: should instantiate by injection" time="0.012" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).MapComponent::"/>
+  <testcase name="ToggleComponent:: should instantiate by injection" time="0.011" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).ToggleComponent::"/>
+  <testcase name="SiteDetailComponent:: should instantiate by injection" time="0.01" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).SiteDetailComponent::"/>
+  <testcase name="SiteDetailContainer:: withProviders:: instantiated should instantiate by injection" time="0.012" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).SiteDetailContainer::"/>
+  <testcase name="SiteDetailContainer:: withProviders:: instantiated should have a site" time="0.012" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).SiteDetailContainer::"/>
+  <testcase name="SitesAllContainer:: withProviders:: instantiated should instantiate by injection" time="0.011" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).SitesAllContainer::"/>
+  <testcase name="SitesAllContainer:: withProviders:: instantiated should have sites" time="0.011" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).SitesAllContainer::"/>
+  <testcase name="SitesAllContainer:: withProviders:: instantiated should do something when clicked" time="0.012" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).SitesAllContainer::"/>
+  <testcase name="AllSitesService:: should instantiate by injection" time="0.011" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).AllSitesService::"/>
+  <testcase name="SitesFavoritesComponent:: withProviders:: instantiated should instantiate by injection" time="0.012" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).SitesFavoritesComponent::"/>
+  <testcase name="SitesFavoritesComponent:: withProviders:: instantiated should have sites" time="0.012" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).SitesFavoritesComponent::"/>
+  <testcase name="SitesFavoritesComponent:: withProviders:: instantiated should do something when clicked" time="0.01" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).SitesFavoritesComponent::"/>
+  <testcase name="SiteGroupsService:: should instantiate by injection" time="0.013" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).SiteGroupsService::"/>
+  <testcase name="SitesFavoritesComponent:: withProviders:: instantiated should instantiate by injection" time="0.01" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).SitesFavoritesComponent::"/>
+  <testcase name="SitesFavoritesComponent:: withProviders:: instantiated should have sites" time="0.011" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).SitesFavoritesComponent::"/>
+  <testcase name="SitesFavoritesComponent:: withProviders:: instantiated should do something when clicked" time="0.009" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).SitesFavoritesComponent::"/>
+  <testcase name="SiteGroupsService:: should instantiate by injection" time="0.011" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).SiteGroupsService::"/>
+  <testcase name="UsersDetail:: should instantiate by injection" time="0.012" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).UsersDetail::"/>
+  <testcase name="UsersList:: should instantiate by injection" time="0.01" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).UsersList::"/>
+  <testcase name="UsersContainer:: withProviders:: instantiated should instantiate with injection" time="0.012" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).UsersContainer::"/>
+  <testcase name="UsersContainer:: withProviders:: instantiated should have users" time="0.011" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).UsersContainer::"/>
+  <testcase name="UsersReducer:: returns and empty array by default" time="0.005" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).UsersReducer::"/>
+  <testcase name="UsersReducer:: ADD_USERS adds the provided payload" time="0.005" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).UsersReducer::"/>
+  <testcase name="UsersReducer:: DELETE_USER removes the provided payload" time="0.005" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).UsersReducer::"/>
+  <testcase name="UsersReducer:: CREATE_USERS appends users to the users list" time="0.006" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).UsersReducer::"/>
+  <testcase name="UsersReducer:: UPDATE_USERS should update the user with the same id" time="0.005" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).UsersReducer::"/>
+  <testcase name="SelectedUserReducer:: returns the payload" time="0.005" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).SelectedUserReducer::"/>
+  <testcase name="LoadingUserReducer:: returns 0 by default" time="0.005" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).LoadingUserReducer::"/>
+  <testcase name="LoadingUserReducer:: SET_USERS_NOT_LOADING changes store to 0" time="0.004" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).LoadingUserReducer::"/>
+  <testcase name="LoadingUserReducer:: SET_USERS_LOADING changes store to 1" time="0.006" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).LoadingUserReducer::"/>
+  <testcase name="LoadingUserReducer:: SET_USERS_LOADING_ERROR changes store to 2" time="0.004" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).LoadingUserReducer::"/>
+  <testcase name="UserErrorsReducer:: returns empty array by default" time="0.005" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).UserErrorsReducer::"/>
+  <testcase name="UserErrorsReducer:: ADD_ERROR_USERS adds error to array" time="0.005" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).UserErrorsReducer::"/>
+  <testcase name="UserErrorsReducer:: REMOVE_ERROR_USERS removes error" time="0.005" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).UserErrorsReducer::"/>
+  <testcase name="UsersService:: JasmineAjax:: injected:: Calls api endpoint to retrieve users" time="0.02" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).UsersService::"/>
+  <testcase name="UsersService:: JasmineAjax:: injected:: Calls api endpoint to delete a user" time="0.012" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).UsersService::"/>
+  <testcase name="UsersService:: JasmineAjax:: injected:: Calls api endpoint to create a user" time="0.013" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).UsersService::"/>
+  <testcase name="UsersService:: JasmineAjax:: injected:: should select user 123" time="0.01" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).UsersService::"/>
+  <testcase name="UsersService:: MockBackend:: mockAPI:: should get users" time="0.049" classname="Chrome_52_0_2743_(Mac_OS_X_10_11_5).UsersService::"/>
+  <system-out>
+    <![CDATA[
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>
