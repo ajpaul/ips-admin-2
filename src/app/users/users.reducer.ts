@@ -13,6 +13,7 @@ export const ADD_ERROR_USERS = 'ADD_ERROR_USERS';
 export const REMOVE_ERROR_USERS = 'REMOVE_ERROR_USERS';
 export const CLEAR_ERRORS_USERS = 'CLEAR_ERRORS_USERS';
 export const SELECT_USER = 'SELECT_USER';
+export const CLEAR_SELECTED_USER = 'CLEAR_SELECTED_USER';
 
 export const SET_USERS_NOT_LOADING = 'SET_USERS_NOT_LOADING';
 export const SET_USERS_LOADING = 'SET_USERS_LOADING';
@@ -80,6 +81,8 @@ export const SelectedUserReducer = (state: IUser = null, {type, payload}) => {
     switch (type) {
         case SELECT_USER:
             return payload;
+        case CLEAR_SELECTED_USER:
+            return null;
         default:
             return state;
     }

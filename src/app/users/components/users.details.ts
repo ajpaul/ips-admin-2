@@ -25,7 +25,11 @@ import { IUser } from '../users.interface';
         trigger('deletingIconIn', [
             state('in', style({ display: 'inline-block' })),
             state('out', style({ display: 'none' })),
-        ])
+        ]),
+        trigger('deletingConfirmationIn', [
+            state('in', style({ opacity: 1 })),
+            state('out', style({ opacity: 0 })),
+        ]),
     ],
     styleUrls: ['./users.details.less']
 })
@@ -48,6 +52,7 @@ export class UsersDetail implements OnChanges {
     @Input('item') set item(value: IUser) {
         this.originalUser = value;
         this.setSelectedItem();
+        this.confirmDelete = false;
     }
 
     NOT_DELETING_STATE: string = 'notdeleting';

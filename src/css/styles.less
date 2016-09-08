@@ -438,6 +438,7 @@ md-input {
     right: 0px;
     text-align: right;
     padding-right: 10px;
+    padding-left: 10px;
     width: calc(~"100% - 40px");
     .transform(200px, 0, 0);
     .ease(400ms);
@@ -456,6 +457,14 @@ md-input {
 
 .confirmation-wrapper > .deleting { z-index: 100; position: absolute; .no-margin(); background: rgba(255, 255, 255, .7); text-align: center; color: white; }
 
+.confirmation > .confirmation-left {
+    text-align: left;
+    font-weight: normal;
+}
+
+.confirmation > .confirmation-right {
+    text-align: right;
+}
 
 // ----------------------------
 // HACKS AND TRICKS

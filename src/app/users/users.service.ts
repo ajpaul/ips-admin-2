@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { AppStore } from '../app.store';
 import { IUser } from './users.interface';
-import { ADD_USERS, DELETE_USER, CREATE_USERS, SELECT_USER, UPDATE_USERS, ADD_ERROR_USERS, REMOVE_ERROR_USERS, CLEAR_ERRORS_USERS, SET_USERS_NOT_LOADING, SET_USERS_LOADING, SET_USERS_LOADING_ERROR, CLEAR_USERS, SET_USERS_DELETING, SET_USERS_DELETING_ERROR, SET_USERS_NOT_DELETING } from './users.reducer';
+import { ADD_USERS, DELETE_USER, CREATE_USERS, SELECT_USER, UPDATE_USERS, ADD_ERROR_USERS, REMOVE_ERROR_USERS, CLEAR_ERRORS_USERS, SET_USERS_NOT_LOADING, SET_USERS_LOADING, SET_USERS_LOADING_ERROR, CLEAR_USERS, SET_USERS_DELETING, SET_USERS_DELETING_ERROR, SET_USERS_NOT_DELETING, CLEAR_SELECTED_USER } from './users.reducer';
 import { ConfigService, Config } from '../shared/config/config';
 
 const GETREQUEST = {
@@ -159,6 +159,7 @@ export class UsersService{
 
     selectUser (user: IUser) {
         this.store.dispatch({type: SELECT_USER, payload: user});
+        this.store.dispatch({type: SET_USERS_NOT_DELETING });
     }
 
     deleteUser (user: IUser) {
@@ -171,6 +172,7 @@ export class UsersService{
                 action => {
                     this.store.dispatch({ type: DELETE_USER, payload: user })
                     this.store.dispatch({ type: SET_USERS_NOT_DELETING })
+                    this.store.dispatch({ type: CLEAR_SELECTED_USER });
                 },
                 err => {
                     // dispatch action to say loading is done

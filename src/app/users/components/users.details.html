@@ -57,7 +57,9 @@
                     <i class="fa fa-times-circle-o" [@deletingIconIn]="isErrorState() ? 'in' : 'out'"></i>
                 </span>
                 <div class="confirmation">
-                    <p>You are about to do this action, are you sure? <a class="bumpr" (click)="confirmDeletion()">not really</a><span class="bumpl bumpr">|</span><a (click)="deleteUser()">yes please</a></p>
+                    <p class="confirmation-right" *ngIf="isNotDeletingState() === true">You are about to do this action, are you sure? <a class="bumpr" (click)="confirmDeletion()">not really</a><span class="bumpl bumpr">|</span><a (click)="deleteUser()">yes please</a></p>
+                    <p class="confirmation-left" *ngIf="isDeletingState() === true">Deleting...</p>
+                    <p class="confirmation-left" *ngIf="isErrorState() === true">Sorry, we couldn't connect to the server to delete. <a (click)="deleteUser()">Try Again</a></p>
                 </div>
             </div>
 
