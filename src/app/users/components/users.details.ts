@@ -12,14 +12,13 @@ import { activeColor, warningColor, successColor, white } from '../../shared/col
             state('error', style({ backgroundColor: warningColor })),
             state('notdeleting', style({ opacity: 0 })),
             transition('deleting => error', [
-                animate('250ms ease')
+                animate('500ms ease')
             ]),
             transition('notdeleting => deleting', [
                 animate('500ms ease')
             ]),
             transition('deleting => notdeleting', [
-                animate('500ms ease', style({ backgroundColor: successColor })),
-                animate('500ms 500ms ease')
+                animate('500ms ease')
             ]),
         ]),
         trigger('deletingIconIn', [
