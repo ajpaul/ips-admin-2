@@ -2,7 +2,8 @@
  * Created by sxd15 on 8/10/2016.
  */
 
-import { IUser } from './users.interface'; 
+import { IUser } from './users.interface';
+import { Loading } from '../shared/loading-list';
 
 export const ADD_USERS = 'ADD_USERS';
 export const CLEAR_USERS = 'CLEAR_USERS';
@@ -17,11 +18,6 @@ export const SELECT_USER = 'SELECT_USER';
 export const SET_USERS_NOT_LOADING = 'SET_USERS_NOT_LOADING';
 export const SET_USERS_LOADING = 'SET_USERS_LOADING';
 export const SET_USERS_LOADING_ERROR = 'SET_USERS_LOADING_ERROR';
-
-// loading states
-export const USERS_NOT_LOADING = 0;
-export const USERS_LOADING = 1;
-export const USERS_LOADING_ERROR = 2;
 
 export const UsersReducer = (state: IUser[] = [], {type, payload}) => {
     switch (type) {
@@ -75,14 +71,14 @@ export const SelectedUserReducer = (state: any = null, {type, payload}) => {
     }
 };
 
-export const LoadingUserReducer = (state: number = 0, {type, payload}): number => {
+export const LoadingUserReducer = (state: Loading = Loading.NotLoading, {type, payload}): Loading => {
     switch (type) {
         case SET_USERS_NOT_LOADING:
-            return USERS_NOT_LOADING;
+            return Loading.NotLoading;
         case SET_USERS_LOADING:
-            return USERS_LOADING;
+            return Loading.Loading;
         case SET_USERS_LOADING_ERROR:
-            return USERS_LOADING_ERROR;
+            return Loading.Error;
         default:
             return state;
     }
