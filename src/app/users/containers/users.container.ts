@@ -27,15 +27,7 @@ export class UsersContainer implements OnInit, OnDestroy {
         this.userErrors$ = this.usersService.userErrors;
         this.loadingUser$ = this.usersService.loadingUser;
         this.deletingUser$ = this.usersService.deletingUser;
-
-        this.deletingUser$.subscribe((state) => {
-            console.log('DELETING USER STATE:', state);
-        });
         this.usersService.getUsers();
-
-        this.selectedUser$.subscribe((u) => {
-            console.log('selectedUser:: ', u);
-        })
     }
 
     ngOnDestroy() {

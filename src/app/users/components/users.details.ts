@@ -46,7 +46,6 @@ export class UsersDetail implements OnChanges {
     @Output() save = new EventEmitter();
 
     @Input('item') set item(value: IUser) {
-        console.log('VALUE', value);
         this.originalUser = value;
         this.setSelectedItem();
     }
