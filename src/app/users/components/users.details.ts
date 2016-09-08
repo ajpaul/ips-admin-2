@@ -10,20 +10,23 @@ import { activeColor, warningColor, successColor, white } from '../../shared/col
         trigger('deletingState', [
             state('deleting', style({ backgroundColor: activeColor })),
             state('error', style({ backgroundColor: warningColor })),
-            state('notdeleting', style({ display: 'none' })),
+            state('notdeleting', style({ opacity: 0 })),
             transition('deleting => error', [
                 animate('250ms ease')
             ]),
+            transition('notdeleting => deleting', [
+                animate('500ms ease')
+            ]),
             transition('deleting => notdeleting', [
-                style({ backgroundColor: successColor }),
-                animate('250ms 250ms ease')
+                animate('500ms ease', style({ backgroundColor: successColor })),
+                animate('500ms 500ms ease')
             ]),
         ]),
         trigger('deletingIconIn', [
             state('in', style({ display: 'inline-block' })),
             state('out', style({ display: 'none' })),
             transition('in => out', [
-                animate('250ms 250ms ease')
+                animate('500ms ease')
             ]),
         ])
     ]
