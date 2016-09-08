@@ -31,6 +31,7 @@ export class ConfigService{
         this.config.apiRoot = 'http://localhost:8080';
         this.config.usersEndpoint = '/api/user';
         this.config.orgUsersEndpoint = '/api/user/orgID/';
+        this.config.tenantId = 123;
     }
 
 }

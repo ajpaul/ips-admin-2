@@ -4,7 +4,7 @@ describe('OrganizationReducer::', ()=> {
 
     it('returns 0 by default', ()=>{
         let defaultState = SelectedOrgReducer(undefined, {type: 'random', payload: {}});
-        expect(defaultState).toEqual(0);
+        expect(defaultState).toEqual(1);
     });
 
     it('SELECT_ORGANIZATION sets provided payload', ()=>{

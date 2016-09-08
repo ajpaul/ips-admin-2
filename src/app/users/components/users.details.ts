@@ -1,7 +1,8 @@
 import { Component, Input, Output, EventEmitter, OnChanges, trigger, state, style, transition, animate } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { IUser, USERS_DELETING, USERS_DELETING_ERROR, USERS_NOT_DELETING } from '../users';
+import { USERS_DELETING, USERS_DELETING_ERROR, USERS_NOT_DELETING } from '../users.reducer';
 import { activeColor, warningColor, successColor, white } from '../../shared/colors/colors';
+import { IUser } from '../users.interface';
 
 @Component({
     selector: 'users-detail',
@@ -25,26 +26,29 @@ import { activeColor, warningColor, successColor, white } from '../../shared/col
             state('in', style({ display: 'inline-block' })),
             state('out', style({ display: 'none' })),
         ])
-    ]
+    ],
+    styleUrls: ['./users.details.less']
 })
 export class UsersDetail implements OnChanges {
 
     showUserDetails: boolean = true;
     showUserSites: boolean = false;
     confirmDelete: boolean = false;
-    originalName: string;
+
+    originalUser: IUser = null;
     selectedItem: IUser;
     USERS_DELETING: number;
     USERS_DELETING_ERROR: number;
     USERS_NOT_DELETING: number;
     @Input() deletingStatus: number;
-    @Output() saved = new EventEmitter();
-    @Output() cancelled = new EventEmitter();
-    @Output() deleted = new EventEmitter();
-    
-    @Input('item') set item(value: IUser){
-        if (value) this.originalName = value.givenName + ' ' + value.surname;
-        this.selectedItem = Object.assign({}, value);
+    @Output() delete = new EventEmitter();
+    @Output() create = new EventEmitter();
+    @Output() save = new EventEmitter();
+
+    @Input('item') set item(value: IUser) {
+        console.log('VALUE', value);
+        this.originalUser = value;
+        this.setSelectedItem();
     }
 
     NOT_DELETING_STATE: string = 'notdeleting';
@@ -105,12 +109,7 @@ export class UsersDetail implements OnChanges {
     }
 
     confirmDeletion(): void {
-        this.deletingState = this.NOT_DELETING_STATE;
-        if(!this.confirmDelete) {
-            this.confirmDelete = true;
-        } else {
-            this.confirmDelete = false;
-        }
+        this.confirmDelete = !this.confirmDelete;
     }
 
     showUserDetailsClick(): void {
@@ -124,7 +123,30 @@ export class UsersDetail implements OnChanges {
     }
 
     deleteUser(): void {
-        this.deleted.emit({ item: this.selectedItem });
+        this.delete.emit({ item: this.selectedItem });
     }
 
+    hasSelectedItem(): boolean {
+        return this.selectedItem !== null && this.selectedItem.hasOwnProperty('userID');
+    }
+
+    isExistingUser(): boolean {
+        return this.selectedItem && this.selectedItem.hasOwnProperty('userID') && this.selectedItem.userID !== null;
+    }
+
+    setSelectedItem(): void {
+        this.selectedItem = (this.originalUser)? Object.assign({}, this.originalUser): null;
+    }
+
+    cancel(): void {
+        this.setSelectedItem();
+    }
+
+    createUserClick(): void {
+        this.create.emit();
+    }
+
+    saveUser(e): void {
+        this.save.emit(this.selectedItem);
+    }
 }

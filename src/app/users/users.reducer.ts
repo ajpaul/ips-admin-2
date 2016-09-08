@@ -76,7 +76,7 @@ export const UserErrorsReducer = (state: string[] = [], {type, payload}) => {
     }
 }
 
-export const SelectedUserReducer = (state: any = null, {type, payload}) => {
+export const SelectedUserReducer = (state: IUser = null, {type, payload}) => {
     switch (type) {
         case SELECT_USER:
             return payload;
