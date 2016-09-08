@@ -1,4 +1,11 @@
-import { Store, Observable, Injectable, Http, Headers, RequestOptions, Response, AppStore, ILight, ADD_LIGHTS, DELETE_LIGHT } from './lights';
+import { ILight } from './lights.interface';
+import { ADD_LIGHTS, DELETE_LIGHT } from './lights.reducer';
+
+import { AppStore } from '../app.store';
+import { Injectable } from '@angular/core';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
 
 const HEADER = { headers: new Headers({ 'Content-Type': 'application/json' }) };
 

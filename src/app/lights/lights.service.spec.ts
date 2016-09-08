@@ -5,7 +5,7 @@ import {
 import { HTTP_PROVIDERS } from '@angular/http';
 import { provideStore }	 	from '@ngrx/store';
 
-import { ILight, LightsService, LightsReducer } from './lights';
+import { ILight, LightsService, LightsReducer } from './';
 import 'rxjs/add/operator/catch';
 
 describe('LightsService::JasmineAjax::', () => {

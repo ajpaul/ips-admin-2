@@ -4,9 +4,9 @@ import {
 } from '@angular/core/testing';
 import { provide } from '@angular/core';
 import { provideStore }	 	from '@ngrx/store';
-import { IUser, UsersService, UsersReducer, SelectedUserReducer, UserErrorsReducer, LoadingUserReducer } from './users';
-import { SelectedOrgReducer } from '../organizations/organizations';
-import { ConfigService } from '../shared/config/config';
+import { IUser, UsersService, UsersReducer, SelectedUserReducer, UserErrorsReducer, LoadingUserReducer } from './';
+import { SelectedOrgReducer } from '../organizations';
+import { ConfigService } from '../shared/config';
 import 'rxjs/add/operator/catch';
 
 

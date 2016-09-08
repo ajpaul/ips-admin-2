@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { AppStore } from '../app.store';
 import { IUser } from './users.interface';
 import { ADD_USERS, DELETE_USER, CREATE_USERS, SELECT_USER, UPDATE_USERS, ADD_ERROR_USERS, REMOVE_ERROR_USERS, CLEAR_ERRORS_USERS, SET_USERS_NOT_LOADING, SET_USERS_LOADING, SET_USERS_LOADING_ERROR, CLEAR_USERS } from './users.reducer';
-import { ConfigService, Config } from '../shared/config/config';
+import { ConfigService, Config } from '../shared/config';
 
 const GETREQUEST = {
     headers: new Headers({ 'Content-Type': 'application/json' }),

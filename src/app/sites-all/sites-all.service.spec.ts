@@ -5,7 +5,7 @@ import {
 
 import { XHRBackend, HTTP_PROVIDERS } from '@angular/http';
 
-import { ISite, AllSitesService } from './sites-all';
+import { ISite, AllSitesService } from './';
 import 'rxjs/add/operator/catch';
 
 describe('AllSitesService::', () => {

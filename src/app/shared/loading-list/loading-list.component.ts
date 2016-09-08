@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnChanges, trigger, state, style, transition, animate } from '@angular/core';
 import { warningColor, activeColor, successColor, white } from '../colors/colors';
-import { USERS_LOADING, USERS_NOT_LOADING, USERS_LOADING_ERROR } from '../../users/users';
+import { USERS_LOADING, USERS_NOT_LOADING, USERS_LOADING_ERROR } from '../../users';
 
 @Component({
     selector: 'app-loading-list',

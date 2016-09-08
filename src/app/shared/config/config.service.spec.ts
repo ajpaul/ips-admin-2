@@ -4,7 +4,7 @@ import {
 } from '@angular/core/testing';
 
 
-import { Config, ConfigService } from './config';
+import { Config, ConfigService } from './';
 import 'rxjs/add/operator/catch';
 
 describe('ConfigService::', () => {
