@@ -163,7 +163,7 @@ export class UsersService{
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: CLEAR_ERRORS_USERS });
         this.store.dispatch({ type: SET_USERS_LOADING });
-        return this.http.delete(this.usersUrl+'/'+user.userID, new RequestOptions(OTHERREQUEST))
+        return this.http.delete(this.usersUrl+'/'+user.userID, new RequestOptions(GETREQUEST))
             .map(this.extractSingleUser)
             .subscribe(
                 action => this.store.dispatch({ type: DELETE_USER, payload: user }),
