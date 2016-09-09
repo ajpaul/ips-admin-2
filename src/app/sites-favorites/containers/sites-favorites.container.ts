@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ISiteFavorites, SiteFavoritesService } from '../sites-favorites';
+import { ISiteFavorites } from '../sites-favorites.interface';
+import { SiteFavoritesService } from '../sites-favorites.service';
 
 @Component({
     selector: 'app-sites-groups',

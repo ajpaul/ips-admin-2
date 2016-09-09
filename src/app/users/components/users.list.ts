@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnChanges, trigger, state, style, transition, animate } from '@angular/core';
-import { IUser } from '../users';
-import { USERS_NOT_LOADING, USERS_LOADING, USERS_LOADING_ERROR } from '../users.reducer';
+import { IUser } from '../users.interface';
+import { Loading } from '../../shared/loading-list';
 
 //-------------------------------------------------------------------
 // LIGHTS-LIST
@@ -39,7 +39,7 @@ const ERROR = 'error';
 })
 export class UsersList implements OnChanges {
     @Input() items: IUser[];
-    @Input() loadingStatus: number;
+    @Input() loadingStatus: Loading;
     @Output() selected = new EventEmitter();
     @Output() deleted = new EventEmitter();
 
@@ -57,13 +57,13 @@ export class UsersList implements OnChanges {
         if (changes.loadingStatus) {
             // populate the loadingState used to determine animations
             switch (this.loadingStatus) {
-                case USERS_NOT_LOADING:
+                case Loading.NotLoading:
                     this.loadingState = NOT_LOADING;
                     break;
-                case USERS_LOADING:
+                case Loading.Loading:
                     this.loadingState = LOADING;
                     break;
-                case USERS_LOADING_ERROR:
+                case Loading.Error:
                     this.loadingState = ERROR;
                     break;
                 default:

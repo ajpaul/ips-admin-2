@@ -4,7 +4,7 @@ import {
 } from '@angular/core/testing';
 import { provide } from '@angular/core';
 import { SitesGroupsComponent } from './sites-groups.container';
-import { ISiteGroups, SiteGroupsService } from '../sites-groups';
+import { ISiteGroups, SiteGroupsService } from '../';
 
 import { Observable }     from 'rxjs/Observable';
 import 'rxjs/add/observable/of';

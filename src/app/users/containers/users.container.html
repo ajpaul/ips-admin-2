@@ -51,7 +51,10 @@
         <app-loading-panel *ngIf="(loadingUser$ | async)"></app-loading-panel>
         <!-- Selected Item Details -->
         <users-detail *ngIf="!(loadingUser$ | async) && (selectedUser$ | async)"
-                (save)="saveItem($event)" (cancelled)="cancelNewItem()"
+                (save)="saveItem($event)"
+                (cancelled)="cancelNewItem()"
+                (delete)="deleteItem($event)"
+                [deletingStatus]="deletingUser$ | async"
                 [item]="selectedUser$ | async"></users-detail>
         <users-messages *ngIf="!(loadingUser$ | async) && !(selectedUser$ | async)"
                 [welcome]="!hasUsers" (create)="resetItem()"></users-messages>

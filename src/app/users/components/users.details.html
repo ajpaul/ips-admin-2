@@ -43,8 +43,14 @@
                 <button class="btn" (click)="saveUser()"><i class="fa fa-cloud-upload" aria-hidden="true"></i> Create User</button>
             </div>
             <div class="confirmation-wrapper" [ngClass]="{show: confirmDelete}">
+                <span class="confirmation-icon" [@deletingState]="deletingState">
+                    <i class="fa fa-cog fa-spin" [@deletingIconIn]="isDeletingState() ? 'in' : 'out'"></i>
+                    <i class="fa fa-times-circle-o" [@deletingIconIn]="isErrorState() ? 'in' : 'out'"></i>
+                </span>
                 <div class="confirmation">
-                    <p>You are about to do this action, are you sure? <a class="bumpr">not really</a><span class="bumpl bumpr">|</span><a>yes please</a></p>
+                    <p class="confirmation-right" *ngIf="isNotDeletingState() === true">You are about to do this action, are you sure? <a class="bumpr" (click)="confirmDeletion()">not really</a><span class="bumpl bumpr">|</span><a (click)="deleteUser()">yes please</a></p>
+                    <p class="confirmation-left" *ngIf="isDeletingState() === true">Deleting...</p>
+                    <p class="confirmation-left" *ngIf="isErrorState() === true">Sorry, we couldn't connect to the server to delete. <a (click)="deleteUser()">Try Again</a></p>
                 </div>
             </div>
 

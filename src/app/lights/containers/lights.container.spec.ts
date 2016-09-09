@@ -4,7 +4,8 @@ import {
 } from '@angular/core/testing';
 import { provide } from '@angular/core';
 import { provideStore }	 	from '@ngrx/store';
-import { ILight, LightsService, Observable, LightsReducer } from '../lights';
+import { Observable } from 'rxjs/Observable';
+import { ILight, LightsService, LightsReducer } from '../';
 import { LightsContainer } from './lights.container';
 import 'rxjs/add/observable/of';
 

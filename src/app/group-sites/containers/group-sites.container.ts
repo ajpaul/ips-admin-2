@@ -1,4 +1,7 @@
-import { Component, ROUTER_DIRECTIVES, ISite, AllSitesService, OnInit, OnDestroy, Subscription } from '../group-sites';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router';
+import { ISite, AllSitesService } from '../../sites-all';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     selector: 'app-group-sites-container',

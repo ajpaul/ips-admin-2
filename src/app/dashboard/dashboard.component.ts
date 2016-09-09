@@ -1,4 +1,5 @@
-import { Component, AuthenticationComponent } from './dashboard';
+import { Component } from '@angular/core';
+import { AuthenticationComponent } from '../authentication/authentication.component';
 
 @Component({
     selector: 'app-dashboard',

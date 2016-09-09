@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
-import { ISite } from '../sites-all/sites-all.interface';
+import { ISite } from './sites-all.interface';
 
 @Injectable()
 export class AllSitesService{
