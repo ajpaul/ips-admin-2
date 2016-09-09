@@ -116,7 +116,7 @@ describe('UsersService::', () => {
                 );
             });
 
-            it('should clear the selected', (done) => {
+            it('should clear the selected user', (done) => {
                 let user: IUser = {
                     userName: 'User 123',
                     email: 'foo@bar.com',
