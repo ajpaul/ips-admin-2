@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Loading } from '../loading-list'
 
 @Component({
     selector: 'app-loading-panel',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
     styleUrls: ['./loading-panel.component.less']
 })
 export class LoadingPanelComponent {
-  constructor() {};
+    @Input() loadingStatus: Loading;
+    @Output() refresh = new EventEmitter();
+
+    constructor() {}
+
+    isError():boolean {
+        return this.loadingStatus == Loading.Error;
+    }
+
+    refreshClick(): void {
+        this.refresh.emit();
+    }
 }

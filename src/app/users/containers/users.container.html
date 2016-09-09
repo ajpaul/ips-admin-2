@@ -48,7 +48,7 @@
             <a href="#">Deepwood Motte</a>
         </div>
 
-        <app-loading-panel *ngIf="(loadingUser$ | async)"></app-loading-panel>
+        <app-loading-panel [loadingStatus]="loadingUser$ | async" *ngIf="(loadingUser$ | async)" (refresh)="getUsers()"></app-loading-panel>
         <!-- Selected Item Details -->
         <users-detail *ngIf="!(loadingUser$ | async) && (selectedUser$ | async)"
                 (save)="saveItem($event)"
