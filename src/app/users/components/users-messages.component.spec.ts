@@ -3,7 +3,7 @@ import {
     inject
 } from '@angular/core/testing';
 
-import { UsersMessages } from './users.messages';
+import { UsersMessages } from './users-messages.component';
 
 describe('UsersMessages::', () => {
 
@@ -13,5 +13,11 @@ describe('UsersMessages::', () => {
 
     it('should instantiate by injection', inject([UsersMessages], (component: UsersMessages) => {
         expect(component).toEqual(jasmine.any(UsersMessages));
+    }));
+
+    it('should emit create when create button clicked', inject([UsersMessages], (component: UsersMessages) => {
+        spyOn(component.create, 'emit');
+        component.createUserClick();
+        expect(component.create.emit).toHaveBeenCalled();
     }));
 });

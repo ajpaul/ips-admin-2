@@ -52,7 +52,7 @@
         <!-- Selected Item Details -->
         <users-detail *ngIf="!(loadingUser$ | async) && (selectedUser$ | async)"
                 (save)="saveItem($event)"
-                (cancelled)="cancelNewItem()"
+                (cancelled)="clearSelectedUser()"
                 (delete)="deleteItem($event)"
                 [deletingStatus]="deletingUser$ | async"
                 [item]="selectedUser$ | async"></users-detail>

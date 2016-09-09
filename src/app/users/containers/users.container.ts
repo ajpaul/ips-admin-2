@@ -59,7 +59,7 @@ export class UsersContainer implements OnInit, OnDestroy {
         this.usersService.resetUser()
     }
 
-    cancelNewItem() {
+    clearSelectedUser() {
         this.usersService.clearSelectedUser();
     }
 
