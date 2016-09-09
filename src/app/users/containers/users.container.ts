@@ -17,6 +17,7 @@ export class UsersContainer implements OnInit, OnDestroy {
     userErrors$: Observable<string[]>;
     userErrorsSubscription: Subscription;
     loadingUser$: Observable<boolean>;
+    hasUsers: boolean = false;
 
     constructor(private usersService: UsersService) { }
 
@@ -26,11 +27,10 @@ export class UsersContainer implements OnInit, OnDestroy {
         this.userErrors$ = this.usersService.userErrors;
         this.loadingUser$ = this.usersService.loadingUser;
 
+        this.users$.subscribe((ul)=>{
+            this.hasUsers = ul && ul.length>0
+        });
         this.usersService.getUsers();
-
-        this.selectedUser$.subscribe((u) => {
-            console.log('selectedUser:: ', u);
-        })
     }
 
     ngOnDestroy() {
@@ -50,6 +50,10 @@ export class UsersContainer implements OnInit, OnDestroy {
 
     resetItem() {
         this.usersService.resetUser()
+    }
+
+    cancelNewItem() {
+        this.usersService.clearSelectedUser();
     }
 
     saveItem(user: IUser) {

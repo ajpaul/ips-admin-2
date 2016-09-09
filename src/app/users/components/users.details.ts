@@ -14,7 +14,7 @@ export class UsersDetail {
     confirmDelete: boolean = false;
     originalUser: IUser = null;
     selectedItem: IUser = null;
-    @Output() create = new EventEmitter();
+    @Output() cancelled = new EventEmitter();
     @Output() save = new EventEmitter();
 
     @Input('item') set item(value: IUser){
@@ -36,10 +36,6 @@ export class UsersDetail {
         this.showUserSites = true;
     }
 
-    hasSelectedItem(): boolean {
-        return this.selectedItem !== null && this.selectedItem.hasOwnProperty('userID');
-    }
-
     isExistingUser(): boolean {
         return this.selectedItem && this.selectedItem.hasOwnProperty('userID') && this.selectedItem.userID !== null;
     }
@@ -49,11 +45,7 @@ export class UsersDetail {
     }
 
     cancel(): void {
-        this.setSelectedItem();
-    }
-
-    createUserClick(): void {
-        this.create.emit();
+        this.cancelled.emit();
     }
 
     saveUser(e): void {
