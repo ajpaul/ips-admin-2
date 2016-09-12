@@ -40,14 +40,24 @@
     </aside>
 
     <section class="panel-right">
-        <app-loading-panel *ngIf="(loadingUser$ | async)"></app-loading-panel>
+
+        <!-- Recents -->
+        <div class="recent-bar">
+            <span class="bumpl">Recent Sites: </span>
+            <a href="#">Castle Black</a>,
+            <a href="#">Deepwood Motte</a>
+        </div>
+
+        <app-loading-panel [loadingStatus]="loadingUser$ | async" *ngIf="(loadingUser$ | async)" (refresh)="getUsers()"></app-loading-panel>
         <!-- Selected Item Details -->
-        <users-detail *ngIf="!(loadingUser$ | async)"
+        <users-detail *ngIf="!(loadingUser$ | async) && (selectedUser$ | async)"
                 (save)="saveItem($event)"
-                (create)="resetItem($event)"
+                (cancelled)="clearSelectedUser()"
                 (delete)="deleteItem($event)"
                 [deletingStatus]="deletingUser$ | async"
                 [item]="selectedUser$ | async"></users-detail>
+        <users-messages *ngIf="!(loadingUser$ | async) && !(selectedUser$ | async)"
+                [welcome]="!hasUsers" (create)="resetItem()"></users-messages>
 
     </section>
 

@@ -163,6 +163,10 @@ export class UsersService{
         this.store.dispatch({type: SET_USERS_NOT_DELETING });
     }
 
+    clearSelectedUser () {
+        this.store.dispatch({ type: CLEAR_SELECTED_USER });
+    }
+
     deleteUser (user: IUser) {
         // dispatch an action to initiate the loading
         this.store.dispatch({ type: CLEAR_ERRORS_USERS });
