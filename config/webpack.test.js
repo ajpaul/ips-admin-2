@@ -1,16 +1,20 @@
 module.exports = {
     resolve: {
-        extensions: ['', '.js', '.ts'],
-        // alias: {
-        //     handlebars: 'handlebars/dist/handlebars.min.js'
-        // }
+        extensions: ['', '.js', '.ts']
     },
 
     devtool: 'inline-source-map',
 
     module: {
         loaders: [
-            { test: /\.ts$/, exclude: /node_modules/, loader: 'awesome-typescript-loader'},
+            // { test: /\.ts$/, exclude: /node_modules/, loader: 'awesome-typescript-loader'},
+            {
+                test: /\.ts$/,
+                loaders: [
+                    'awesome-typescript-loader',
+                    'angular2-template-loader'
+                ]
+            },
             { test: /\.html$/, exclude: /node_modules/, loader: 'raw-loader' },
 
             // Extract css files
