@@ -46,7 +46,7 @@ export class UsersDetail implements OnChanges {
     USERS_NOT_DELETING: number;
     @Input() deletingStatus: number;
     @Output() delete = new EventEmitter();
-    @Output() create = new EventEmitter();
+    @Output() cancelled = new EventEmitter();
     @Output() save = new EventEmitter();
 
     @Input('item') set item(value: IUser) {
@@ -114,11 +114,7 @@ export class UsersDetail implements OnChanges {
     deleteUser(): void {
         this.delete.emit({ item: this.selectedItem });
     }
-
-    hasSelectedItem(): boolean {
-        return this.selectedItem !== null && this.selectedItem.hasOwnProperty('userID');
-    }
-
+    
     isExistingUser(): boolean {
         return this.selectedItem && this.selectedItem.hasOwnProperty('userID') && this.selectedItem.userID !== null;
     }
@@ -129,11 +125,7 @@ export class UsersDetail implements OnChanges {
     }
 
     cancel(): void {
-        this.setSelectedItem();
-    }
-
-    createUserClick(): void {
-        this.create.emit();
+        this.cancelled.emit();
     }
 
     saveUser(e): void {

@@ -115,6 +115,32 @@ describe('UsersService::', () => {
                     }
                 );
             });
+
+            it('should clear the selected user', (done) => {
+                let user: IUser = {
+                    userName: 'User 123',
+                    email: 'foo@bar.com',
+                    userID: 0,
+                    organization_ID: 0,
+                    tenant_ID: 0,
+                    givenName: 'Test GivenName',
+                    surname: 'Smith',
+                    active: true,
+                };
+                service.selectUser(user);
+                service.clearSelectedUser();
+                service.selectedUser.subscribe(
+                        action => {
+                        expect(action).toBe(null);
+                        done();
+                    },
+                        err => {
+                        expect(err).toBe(0);
+                        done();
+                    }
+                );
+            });
+
         });
     });
 });

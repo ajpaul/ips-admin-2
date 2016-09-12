@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
+import { UsersMessages } from './components/users-messages.component';
 import { UsersDetail } from './components/users.details';
 import { UsersList } from './components/users.list';
 import { UsersService } from './users.service';
@@ -12,12 +13,14 @@ import { UsersContainer } from './containers/users.container';
     declarations: [
         UsersContainer,
         UsersList,
-        UsersDetail
+        UsersDetail,
+        UsersMessages
     ],
     exports: [
         UsersContainer,
         UsersDetail,
-        UsersList
+        UsersList,
+        UsersMessages
     ],
     providers: [
         UsersService
