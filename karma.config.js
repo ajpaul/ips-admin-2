@@ -31,8 +31,13 @@ module.exports = function(config) {
 
         exclude: ['./dist'],
 
+        proxies: {
+            '/assets/': '/base/app/assets/'
+        },
+
         files: [
-            {pattern: './config/karma-test-shim.js', watched: false}
+            {pattern: './config/karma-test-shim.js', watched: false},
+            {pattern: './src/assets/*.png', watched: false, included: false, served: true},
         ],
 
         preprocessors: {

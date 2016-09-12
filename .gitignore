@@ -4,3 +4,4 @@ typings/
 .idea/
 store.json
 npm-debug.log
+*.xml

@@ -10,18 +10,11 @@ TestBed
 
 import { AppComponent } from './app.component';
 
-describe('AuthRedirectComponent::', () => {
+describe('TestSpec::', () => {
 
-    // beforeEach(() => {
-    //     addProviders([AuthRedirectComponent]);
-    // });
     beforeEach(() => {
         TestBed.configureTestingModule({ declarations: [AppComponent]});
     });
-
-    // it('should instantiate by injection', inject([AuthRedirectComponent], (component: AuthRedirectComponent) => {
-    //     expect(component).toEqual(jasmine.any(AuthRedirectComponent));
-    // }));
 
     it ('should work', () => {
         let fixture = TestBed.createComponent(AppComponent);

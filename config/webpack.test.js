@@ -15,6 +15,11 @@ module.exports = {
                     'angular2-template-loader'
                 ]
             },
+            // File loader for supporting images, for example, in CSS files.
+            // {
+            //     test: /\.(png|gif|jpg)$/, 
+            //     loader: "file?name=images/[name].[ext]" 
+            // },
             { test: /\.html$/, exclude: /node_modules/, loader: 'raw-loader' },
 
             // Extract css files
