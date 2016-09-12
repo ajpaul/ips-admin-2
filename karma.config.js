@@ -36,7 +36,7 @@ module.exports = function(config) {
         ],
 
         preprocessors: {
-            './config/karma-test-shim.js': ['webpack', 'sourcemap']
+            './config/karma-test-shim.js': ['webpack']
         },
 
         webpack: webpackConfig,
@@ -47,6 +47,6 @@ module.exports = function(config) {
 
         webpackServer: {
             noInfo: true
-        },
+        }
     });
 }

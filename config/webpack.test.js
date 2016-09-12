@@ -20,10 +20,11 @@ module.exports = {
             },
             // Optionally extract less files
             // or any other compile-to-css language
-            {
-                test: /\.less$/,
-                loader: 'null'
-            }
+            // {
+            //     test: /\.less$/,
+            //     loader: 'null'
+            // }
+            { test: /\.less$/, loaders: ['to-string-loader', 'css-loader', 'less-loader'] }
         ]
     },
     node: {

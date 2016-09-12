@@ -11,7 +11,7 @@ require('zone.js/dist/async-test');
 require('jasmine-ajax');
 
 var appContext = require.context('../src/app', false, /\.spec\.ts/);
-console.log(appContext.keys());
+
 appContext.keys().forEach(appContext);
 
 var testing = require('@angular/core/testing');
@@ -21,4 +21,3 @@ testing.TestBed.initTestEnvironment(
     browser.BrowserDynamicTestingModule,
     browser.platformBrowserDynamicTesting()
 );
-console.log('789');
