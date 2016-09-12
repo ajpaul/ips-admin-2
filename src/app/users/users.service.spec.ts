@@ -49,6 +49,14 @@ describe('UsersService::', () => {
                 service = testService;
             });
 
+            it('Initializes and builds URLs from the config', (done) => {
+                expect(service.usersUrl).toBeDefined();
+                service.selectedOrg.subscribe((org) => {
+                    expect(service.organizationId).toBe(org);
+                    done();
+                });
+            });
+
             it('Calls api endpoint to retrieve users', () => {
                 service.usersUrl = 'someValidUrl';
                 let spy = jasmine.createSpy('success');
@@ -88,6 +96,39 @@ describe('UsersService::', () => {
                 };
                 service.createUser(user);
                 expect(jasmine.Ajax.requests.mostRecent().method).toBe('PUT');
+            });
+
+            it('Calls api endpoint to update a user', () => {
+                service.usersUrl = 'someValidUrl';
+                let spy = jasmine.createSpy('success');
+                let user: IUser = {
+                    userName: 'User 123',
+                    email: 'foo@bar.com',
+                    userID: 0,
+                    organization_ID: 0,
+                    tenant_ID: 0,
+                    givenName: 'Test GivenName',
+                    surname: 'Smith',
+                    active: true,
+                };
+                service.updateUser(user);
+                expect(jasmine.Ajax.requests.mostRecent().method).toBe('POST');
+            });
+
+            it('should reset the selected user to an empty user', (done) => {
+                service.resetUser();
+                service.selectedUser.subscribe(
+                        action => {
+                        let user = <IUser>{};
+                        expect(typeof action).toBe(typeof user);
+                        expect(action.userID).toBeNull();
+                        done();
+                    },
+                        err => {
+                        expect(err).toBe(0);
+                        done();
+                    }
+                );
             });
 
             it('should select user 123', (done) => {
