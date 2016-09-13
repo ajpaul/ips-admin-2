@@ -1,5 +1,6 @@
-import { UsersReducer, SelectedUserReducer, LoadingUserReducer, UserErrorsReducer, ADD_USERS, DELETE_USER, CREATE_USERS, UPDATE_USERS, ADD_ERROR_USERS, REMOVE_ERROR_USERS, CLEAR_ERRORS_USERS, SET_USERS_LOADING, SET_USERS_NOT_LOADING, SET_USERS_LOADING_ERROR } from './users.reducer';
+import { UsersReducer, SelectedUserReducer, LoadingUserReducer, DeletingUserReducer, UserErrorsReducer, ADD_USERS, DELETE_USER, CREATE_USERS, UPDATE_USERS, ADD_ERROR_USERS, REMOVE_ERROR_USERS, CLEAR_ERRORS_USERS, SET_USERS_LOADING, SET_USERS_NOT_LOADING, SET_USERS_LOADING_ERROR, SET_USERS_DELETING, SET_USERS_NOT_DELETING, SET_USERS_DELETING_ERROR } from './users.reducer';
 import { IUser } from './users.interface';
+import { Loading } from '../shared/loading-list';
 describe('UsersReducer::', ()=> {
     var makeUser = ({ userID=0, userName='' }: { userID?: number, userName?: string }): IUser => {
         return {
@@ -105,6 +106,28 @@ describe('LoadingUserReducer::', ()=> {
         let loadingItem = LoadingUserReducer(undefined, {type: SET_USERS_LOADING_ERROR, payload: null });
         expect(loadingItem).toEqual(2);
     });        
+});
+
+describe('DeletingUserReducer::', ()=> {
+    it('returns 0 by default', ()=>{
+        let defaultState = DeletingUserReducer(undefined, {type: 'random', payload: null });
+        expect(defaultState).toEqual(Loading.NotLoading);
+    });
+
+    it('SET_USERS_NOT_DELETING changes store to 0', ()=>{
+        let loadingItem = DeletingUserReducer(undefined, {type: SET_USERS_NOT_DELETING, payload: null });
+        expect(loadingItem).toEqual(Loading.NotLoading);
+    });
+
+    it('SET_USERS_DELETING changes store to 1', ()=>{
+        let loadingItem = DeletingUserReducer(undefined, {type: SET_USERS_DELETING, payload: null });
+        expect(loadingItem).toEqual(Loading.Loading);
+    });
+
+    it('SET_USERS_DELETING_ERROR changes store to 2', ()=>{
+        let loadingItem = DeletingUserReducer(undefined, {type: SET_USERS_DELETING_ERROR, payload: null });
+        expect(loadingItem).toEqual(Loading.Error);
+    });
 });
 
 describe('UserErrorsReducer::', ()=> {
