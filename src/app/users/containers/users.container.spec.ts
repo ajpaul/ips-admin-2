@@ -3,9 +3,9 @@ import {
     inject,
 } from '@angular/core/testing';
 import { provide } from '@angular/core';
-import { IUser, UsersService, UsersReducer } from '../users';
+import { IUser, UsersService, UsersReducer } from '../';
 import { UsersContainer } from './users.container';
-import { ConfigService } from '../../shared/config/config';
+import { ConfigService } from '../../shared/config';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
@@ -86,6 +86,8 @@ class MockUsersService {
     }
     resetUser () {
     }
+    clearSelectedUser () {
+    }
 }
 
 describe('UsersContainer::', () => {
@@ -130,6 +132,7 @@ describe('UsersContainer::', () => {
                             active: true,
                         };
                         expect(typeof action).toBe(typeof user);
+                        expect(component.hasUsers).toBe(true);
                         done();
                     },
                         err => {
@@ -137,6 +140,22 @@ describe('UsersContainer::', () => {
                         done();
                     }
                 );
+            });
+
+            it('should use the UsersService to get users', ()=>{
+                component.usersService = new MockUsersService();
+                //have to override the injected usersService because it is a private property and you can't spyOn a private property
+                spyOn(component.usersService, 'getUsers');
+                component.getUsers();
+                expect(component.usersService.getUsers).toHaveBeenCalled();
+            });
+
+            it('should use the UsersService to clear the selected user', ()=>{
+                component.usersService = new MockUsersService();
+                //have to override the injected usersService because it is a private property and you can't spyOn a private property
+                spyOn(component.usersService, 'clearSelectedUser');
+                component.clearSelectedUser();
+                expect(component.usersService.clearSelectedUser).toHaveBeenCalled();
             });
         });
     });

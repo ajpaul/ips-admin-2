@@ -1,0 +1,36 @@
+<div class="users-messages-panel">
+    <div class="content" *ngIf="welcome">
+        <section>
+            <div class="fa-stack fa-5x">
+                <div class="fa fa-circle fa-stack-2x"></div>
+                <div class="fa fa-user fa-stack-1x fa-inverse"></div>
+            </div>
+        </section>
+        <section>
+            <h1>Welcome to Users!</h1>
+        </section>
+        <section>
+            <p>You will need to create users in order to assign access to the sites and site groups.  Once you create your first user, the user will show up in the list to the left.</p>
+        </section>
+        <section>
+            <button class="btn anchor" (click)="createUserClick()"><i class="fa fa-plus" aria-hidden="true"></i> Create New User</button>
+        </section>
+    </div>
+    <div class="content" *ngIf="!welcome">
+        <section>
+            <div class="fa-stack fa-5x">
+                <div class="fa fa-circle fa-stack-2x"></div>
+                <div class="fa fa-user fa-stack-1x fa-inverse"></div>
+            </div>
+        </section>
+        <section>
+            <h1>Select or add a new user to view details.</h1>
+        </section>
+        <section>
+            <p>Use the list to the left to view an existing user's details. Or, to create a user, use the &quot;+&quot; button on the toolbar or the button below.  We love new users.</p>
+        </section>
+        <section>
+            <button class="btn anchor" (click)="createUserClick()"><i class="fa fa-plus" aria-hidden="true"></i> Create New User</button>
+        </section>
+    </div>
+</div>

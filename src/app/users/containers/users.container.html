@@ -27,7 +27,7 @@
                 <i class="fa fa-circle-thin fa-stack-2x"></i>
                 <i class="fa fa-link fa-stack-1x"></i>
             </span>
-            <ui-buttonAdd></ui-buttonAdd>
+            <ui-buttonAdd (click)="resetItem()"></ui-buttonAdd>
         </div>
 
         <!-- Users List -->
@@ -41,10 +41,23 @@
 
     <section class="panel-right">
 
+        <!-- Recents -->
+        <div class="recent-bar">
+            <span class="bumpl">Recent Sites: </span>
+            <a href="#">Castle Black</a>,
+            <a href="#">Deepwood Motte</a>
+        </div>
+
+        <app-loading-panel [loadingStatus]="loadingUser$ | async" *ngIf="(loadingUser$ | async)" (refresh)="getUsers()"></app-loading-panel>
         <!-- Selected Item Details -->
-        <users-detail
-                (saved)="saveItem($event)" (cancelled)="resetItem($event)"
+        <users-detail *ngIf="!(loadingUser$ | async) && (selectedUser$ | async)"
+                (save)="saveItem($event)"
+                (cancelled)="clearSelectedUser()"
+                (delete)="deleteItem($event)"
+                [deletingStatus]="deletingUser$ | async"
                 [item]="selectedUser$ | async"></users-detail>
+        <users-messages *ngIf="!(loadingUser$ | async) && !(selectedUser$ | async)"
+                [welcome]="!hasUsers" (create)="resetItem()"></users-messages>
 
     </section>
 

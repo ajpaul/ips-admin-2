@@ -4,9 +4,9 @@ import {
 } from '@angular/core/testing';
 import { provide } from '@angular/core';
 import { provideStore }	 	from '@ngrx/store';
-import { IUser, UsersService, UsersReducer, SelectedUserReducer, UserErrorsReducer, LoadingUserReducer } from './users';
-import { SelectedOrgReducer } from '../organizations/organizations';
-import { ConfigService } from '../shared/config/config';
+import { IUser, UsersService, UsersReducer, SelectedUserReducer, UserErrorsReducer, LoadingUserReducer } from './';
+import { SelectedOrgReducer } from '../organizations';
+import { ConfigService } from '../shared/config';
 import 'rxjs/add/operator/catch';
 
 
@@ -115,6 +115,32 @@ describe('UsersService::', () => {
                     }
                 );
             });
+
+            it('should clear the selected user', (done) => {
+                let user: IUser = {
+                    userName: 'User 123',
+                    email: 'foo@bar.com',
+                    userID: 0,
+                    organization_ID: 0,
+                    tenant_ID: 0,
+                    givenName: 'Test GivenName',
+                    surname: 'Smith',
+                    active: true,
+                };
+                service.selectUser(user);
+                service.clearSelectedUser();
+                service.selectedUser.subscribe(
+                        action => {
+                        expect(action).toBe(null);
+                        done();
+                    },
+                        err => {
+                        expect(err).toBe(0);
+                        done();
+                    }
+                );
+            });
+
         });
     });
 });

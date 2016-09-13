@@ -1,7 +1,12 @@
-import { Component, ChangeDetectionStrategy,
-    Observable, Store, LightsList, LightsDetail,
-    ILight, LightsService, ButtonComponent,
-     AppStore} from '../lights';
+import { AppStore } from '../../app.store';
+import { Component, ChangeDetectionStrategy} from '@angular/core';
+import { Store } from '@ngrx/store';
+import { ButtonComponent } from '../../shared/button/button.component';
+import { Observable } from 'rxjs/Observable';    
+import { ILight } from '../lights.interface';
+import { LightsService } from '../lights.service';
+import { LightsList } from '../components/lights.list';
+import { LightsDetail } from '../components/lights.detail'; 
 
 //-------------------------------------------------------------------
 // MAIN COMPONENT

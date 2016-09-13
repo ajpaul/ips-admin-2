@@ -1,0 +1,29 @@
+<div class="loading-panel">
+  <div class="loading-panel-content" *ngIf="!isError()">
+    <section>
+      <div class="fa-5x">
+        <div class="fa fa-2x fa-spinner fa-pulse"></div>
+      </div>
+    </section>
+    <section>
+      <h1>Loading ...</h1>
+    </section>
+  </div>
+  <div class="loading-panel-content" *ngIf="isError()">
+    <section>
+      <div class="fa-stack fa-5x">
+        <div class="fa fa-circle fa-stack-2x"></div>
+        <div class="fa fa-exclamation fa-stack-1x fa-inverse"></div>
+      </div>
+    </section>
+    <section>
+      <h1>Oops, the list didn't load.</h1>
+    </section>
+    <section>
+      <p>It looks like we had a problem loading the list. Hit the button below to try again. Or <a href="#">report and issue here</a>.</p>
+    </section>
+    <section>
+      <button class="btn anchor" (click)="refreshClick()"><i class="fa fa-refresh" aria-hidden="true"></i> Reload List</button>
+    </section>
+  </div>
+</div>

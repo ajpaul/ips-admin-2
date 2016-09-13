@@ -1,4 +1,5 @@
-import { LightsReducer, Observable } from './lights';
+import { LightsReducer } from './';
+import { Observable } from 'rxjs/Observable';
 
 describe('LightsReducer::', ()=> {
 

@@ -5,7 +5,7 @@ import {
 
 import { XHRBackend, HTTP_PROVIDERS } from '@angular/http';
 
-import { ISiteGroups, SiteGroupsService } from './sites-groups';
+import { ISiteGroups, SiteGroupsService } from './';
 import 'rxjs/add/operator/catch';
 
 describe('SiteGroupsService::', () => {

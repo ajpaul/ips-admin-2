@@ -4,7 +4,7 @@ import {
 } from '@angular/core/testing';
 import { provide } from '@angular/core';
 import { SitesFavoritesComponent } from './sites-favorites.container';
-import { ISiteFavorites, SiteFavoritesService } from '../sites-favorites';
+import { ISiteFavorites, SiteFavoritesService } from '../';
 
 import { Observable }     from 'rxjs/Observable';
 import 'rxjs/add/observable/of';

@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
-import { SitesComponent, SitesAllContainer, SitesFavoritesComponent, SitesGroupsComponent } from './sites';
+import { SitesComponent } from './sites.component';
+import { SitesAllContainer } from '../sites-all';
+import { SitesGroupsComponent } from '../sites-groups';
+import { SitesFavoritesComponent } from '../sites-favorites';
 import { SITES_ROUTER } from './sites.routes';
-import { AllSitesService } from '../sites-all/sites-all';
-import { SiteGroupsService } from '../sites-groups/sites-groups';
-import { SiteFavoritesService } from '../sites-favorites/sites-favorites';
+import { AllSitesService } from '../sites-all';
+import { SiteGroupsService } from '../sites-groups';
+import { SiteFavoritesService } from '../sites-favorites';
 
 @NgModule({
     imports: [

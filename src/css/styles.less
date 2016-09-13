@@ -265,8 +265,14 @@ a { color: @anchorColor; }
             .truncate;
         }
         i.status {
-            font-size:.6em; 
-            color: @successColor; 
+            font-size:.6em;
+            color: @successColor;
+            width: 20px;
+            display: none;
+        }
+        i.status-inactive {
+            font-size:.6em;
+            color: @stormcloud;
             width: 20px;
             display: none;
         }
@@ -401,6 +407,12 @@ md-input {
     -webkit-box-shadow: inset 0 -2px @warningShadowColor;
     box-shadow: inset 0 -2px @warningShadowColor;
 }
+.btn.anchor {
+    background: @anchorColor;
+    border-bottom: 2px solid @anchorShadowColor;
+    -webkit-box-shadow: inset 0 -2px @anchorShadowColor;
+    box-shadow: inset 0 -2px @anchorShadowColor;
+}
 
 // ----------------------------
 // TRANSITIONS
@@ -420,18 +432,39 @@ md-input {
 }
 .confirmation-wrapper > .confirmation {
     position: absolute;
-    right: 0px;
     z-index: 50; 
     font-weight: 700;
     font-size: .9em;
+    right: 0px;
+    text-align: right;
+    padding-right: 10px;
+    padding-left: 10px;
+    width: calc(~"100% - 40px");
     .transform(200px, 0, 0);
     .ease(400ms);
 }
 .confirmation-wrapper.show > .confirmation {
-    .transform(-10px, 0, 0);
+    display: inline-block;
+    .transform(0px, 0, 0);
 }
+
+.confirmation-icon {
+    color: @white;
+    display: inline-block;
+    text-align: center;
+    width: 40px;
+} 
+
 .confirmation-wrapper > .deleting { z-index: 100; position: absolute; .no-margin(); background: rgba(255, 255, 255, .7); text-align: center; color: white; }
 
+.confirmation > .confirmation-left {
+    text-align: left;
+    font-weight: normal;
+}
+
+.confirmation > .confirmation-right {
+    text-align: right;
+}
 
 // ----------------------------
 // HACKS AND TRICKS
@@ -491,7 +524,7 @@ md-input {
     }
     .item-list {
         li {
-            i.status {
+            i.status, i.status-inactive {
                 display: inline;
             }
             span {

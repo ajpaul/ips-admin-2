@@ -1,4 +1,4 @@
-import { Component } from './notFound';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-notFound',
