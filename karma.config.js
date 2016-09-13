@@ -32,7 +32,7 @@ module.exports = function(config) {
         exclude: ['./dist'],
 
         proxies: {
-            '/assets/': '/base/app/assets/'
+            '/assets/': '/base/src/assets/'
         },
 
         files: [

@@ -10,7 +10,7 @@ require('zone.js/dist/jasmine-patch');
 require('zone.js/dist/async-test');
 require('jasmine-ajax');
 
-var appContext = require.context('../src/app', false, /\.spec\.ts/);
+var appContext = require.context('../src/app', true, /\.spec\.ts/);
 
 appContext.keys().forEach(appContext);
 
