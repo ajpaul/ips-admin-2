@@ -4,9 +4,6 @@ import { DashboardComponent, BlankComponent,
     LightsContainer, AuthenticationComponent, NotFoundComponent,
     UsersContainer, SiteDetailContainer, GroupDetails, GroupSitesContainer } from './app';
 
-
-//BlankComponent == I haven't implemented it yet ​
-
 export const routes: Routes = <Routes>[
     { path: '', component: DashboardComponent },
     { path: 'lights', component: LightsContainer },

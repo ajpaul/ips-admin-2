@@ -3,14 +3,26 @@ module.exports = {
         extensions: ['', '.js', '.ts'],
         alias: {
             handlebars: 'handlebars/dist/handlebars.min.js'
-        }
+        },
     },
 
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'inline-source-map',
 
     module: {
         loaders: [
-            { test: /\.ts$/, exclude: /node_modules/, loader: 'awesome-typescript-loader'},
+            // { test: /\.ts$/, exclude: /node_modules/, loader: 'awesome-typescript-loader'},
+            {
+                test: /\.ts$/,
+                loaders: [
+                    'awesome-typescript-loader',
+                    'angular2-template-loader'
+                ]
+            },
+            // File loader for supporting images, for example, in CSS files.
+            // {
+            //     test: /\.(png|gif|jpg)$/, 
+            //     loader: "file?name=images/[name].[ext]" 
+            // },
             { test: /\.html$/, exclude: /node_modules/, loader: 'raw-loader' },
 
             // Extract css files
@@ -20,10 +32,11 @@ module.exports = {
             },
             // Optionally extract less files
             // or any other compile-to-css language
-            {
-                test: /\.less$/,
-                loader: 'null'
-            }
+            // {
+            //     test: /\.less$/,
+            //     loader: 'null'
+            // }
+            { test: /\.less$/, loaders: ['to-string-loader', 'css-loader', 'less-loader'] }
         ]
     },
     node: {
