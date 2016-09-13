@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "scripts": {
     "build": "webpack --config config/webpack.dev",
-    "build:prod": "rimraf dist && cross-env NODE_ENV=production webpack --config config/webpack.prod --progress --bail",
+    "build:prod": "rimraf dist && npm run test && cross-env NODE_ENV=production webpack --config config/webpack.prod --progress --bail",
     "start": "webpack-dev-server --config config/webpack.dev.js --watch --content-base src/",
     "start:dev": "npm start -- --inline",
     "start:dev:hot": "npm run start:dev -- --hot",
