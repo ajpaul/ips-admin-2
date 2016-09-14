@@ -15,7 +15,6 @@ import { BaseRequestOptions, Response, ResponseOptions, ConnectionBackend, Http,
 import { MockBackend } from '@angular/http/testing';
 
 describe('UsersService::', () => {
-    var originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
     beforeEach(() => {
         addProviders([
             ConfigService,
