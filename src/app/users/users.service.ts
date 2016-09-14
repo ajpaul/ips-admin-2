@@ -113,8 +113,8 @@ export class UsersService{
         );
     }
 
-    createUser (user: IUser) {
-        return this.createUsers([ user ]);
+    createUser (user: IUser, onComplete?) {
+        return this.createUsers([ user ], onComplete);
     }
 
     updateUsers (users: IUser[], onComplete?) {
@@ -145,8 +145,34 @@ export class UsersService{
             // this.store.dispatch({ type: RECEIVE_USER })
     }
 
-    updateUser (user: IUser) {
-        return this.updateUsers([ user ]);
+    updateUser (user: IUser, onComplete?) {
+        return this.updateUsers([ user ], onComplete);
+    }
+
+    deleteUser (user: IUser, onComplete?) {
+        onComplete = onComplete || (()=>{});
+        // dispatch an action to initiate the loading
+        this.store.dispatch({ type: CLEAR_ERRORS_USERS });
+        this.store.dispatch({ type: SET_USERS_DELETING });
+        return this.http.delete(this.usersUrl+'/'+user.userID, new RequestOptions(GETREQUEST))
+            .map(this.extractSingleUser)
+            .subscribe(
+                action => {
+                this.store.dispatch({ type: DELETE_USER, payload: user })
+                this.store.dispatch({ type: SET_USERS_NOT_DELETING })
+                this.store.dispatch({ type: CLEAR_SELECTED_USER });
+            },
+                err => {
+                // dispatch action to say loading is done
+                this.store.dispatch({ type: SET_USERS_DELETING_ERROR });
+                this.handleError(err);
+            },
+            // dispatch action to say loading is done
+            () => {
+                this.store.dispatch({ type: SET_USERS_NOT_DELETING })
+                onComplete();
+            }
+        );
     }
 
     deleteError(index: number) {
@@ -165,28 +191,6 @@ export class UsersService{
 
     clearSelectedUser () {
         this.store.dispatch({ type: CLEAR_SELECTED_USER });
-    }
-
-    deleteUser (user: IUser) {
-        // dispatch an action to initiate the loading
-        this.store.dispatch({ type: CLEAR_ERRORS_USERS });
-        this.store.dispatch({ type: SET_USERS_DELETING });
-        return this.http.delete(this.usersUrl+'/'+user.userID, new RequestOptions(GETREQUEST))
-            .map(this.extractSingleUser)
-            .subscribe(
-                action => {
-                    this.store.dispatch({ type: DELETE_USER, payload: user })
-                    this.store.dispatch({ type: SET_USERS_NOT_DELETING })
-                    this.store.dispatch({ type: CLEAR_SELECTED_USER });
-                },
-                err => {
-                    // dispatch action to say loading is done
-                    this.store.dispatch({ type: SET_USERS_DELETING_ERROR });
-                    this.handleError(err);
-                },
-                // dispatch action to say loading is done
-                () => this.store.dispatch({ type: SET_USERS_NOT_DELETING })
-            );
     }
 
     resetUser () {

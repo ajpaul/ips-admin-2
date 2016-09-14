@@ -4,6 +4,7 @@
 import { ILight } from './lights';
 import { ISite } from './sites-all';
 import { IUser } from './users';
+import { Loading } from './shared/loading-list';
 
 export interface AppStore {
     lights: ILight[];
@@ -12,5 +13,6 @@ export interface AppStore {
     selectedUser : IUser;
     selectedOrg : number;
     userErrors : string[];
-    loadingUser: number;
+    loadingUser: Loading;
+    deletingUser : Loading;
 }
