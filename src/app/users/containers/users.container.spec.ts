@@ -126,7 +126,8 @@ describe('UsersContainer::', () => {
             });
 
             it('should instantiate with injection', () => {
-                expect(component).toEqual(jasmine.any(UsersContainer));
+                // expect(component).toEqual(jasmine.any(UsersContainer));
+                expect(component).toEqual(1234567655443);
             });
 
             it('should have users', (done) => {
