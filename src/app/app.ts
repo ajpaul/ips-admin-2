@@ -1,7 +1,6 @@
 //Barrel file for app.component.ts
 
 export { AuthenticationComponent } from './authentication/authentication.component';
-//import { AuthRedirectComponent } from './authRedirect/authRedirect.component';
 export { DashboardComponent } from './dashboard/dashboard.component';
 export { SitesAllContainer } from './sites-all';
 export { SitesGroupsComponent } from './sites-groups';
