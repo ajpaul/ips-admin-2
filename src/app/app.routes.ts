@@ -2,7 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardComponent, BlankComponent,
     LightsContainer, AuthenticationComponent, NotFoundComponent,
-    UsersContainer, SiteDetailContainer, GroupDetails, GroupSitesContainer } from './app';
+    UsersContainer, SiteDetailContainer, GroupDetails, GroupSitesContainer, Login2Component } from './app';
 
 export const routes: Routes = <Routes>[
     { path: '', component: DashboardComponent },
@@ -11,7 +11,7 @@ export const routes: Routes = <Routes>[
     { path: 'detail', component: SiteDetailContainer },
     { path: 'groupsites', component: GroupSitesContainer },
     { path: 'group', component: GroupDetails },
-
+    { path: 'login2', component: Login2Component },
     { path: 'login', component: AuthenticationComponent },
     { path: '**', component: NotFoundComponent } //404 support
 ];

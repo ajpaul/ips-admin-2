@@ -13,3 +13,4 @@ export { NotFoundComponent } from './notFound';
 export { SiteDetailContainer } from './site-detail';
 export { GroupSitesComponent, GroupSitesContainer } from './group-sites';
 export { GroupDetails } from './group-details';
+export { Login2Component } from './login/login.component';

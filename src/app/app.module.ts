@@ -20,7 +20,7 @@ import {
     LightsContainer,
     NotFoundComponent,
     SiteDetailContainer,
-    SitesGroupsComponent} from './app';
+    SitesGroupsComponent } from './app';
 
 import { StoreModule, Store } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
